@@ -38,7 +38,7 @@ const TeamCard = ({ member, index }: { member: typeof team[0]; index: number }) 
       <div className="relative w-full max-w-xs aspect-[3/4] mb-8 overflow-hidden rounded-2xl bg-muted group">
         {member.photo ? (
           <div
-            className="absolute inset-0 bg-cover bg-top grayscale transition-transform duration-700 ease-out group-hover:scale-105"
+            className="absolute inset-0 bg-cover bg-no-repeat bg-top grayscale transition-transform duration-700 ease-out group-hover:scale-105"
             style={{
               backgroundImage: `url(${member.photo})`,
               backgroundPosition: member.name === "Théo" ? "center calc(20% + 15px)" : "center 20%",
