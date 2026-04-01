@@ -4,6 +4,7 @@ import ProblemSection from "@/components/ProblemSection";
 import ApproachSection from "@/components/ApproachSection";
 import ProcessSection from "@/components/ProcessSection";
 import CaseStudySection from "@/components/CaseStudySection";
+import ClientLogosSection from "@/components/ClientLogosSection";
 import TeamSection from "@/components/TeamSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
