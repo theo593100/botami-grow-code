@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container-wide">
       <div className="grid md:grid-cols-3 gap-10 mb-10">
         <div>
-          <p className="font-heading text-xl font-bold mb-3">Botami</p>
+          <p className="font-heading text-xl font-bold mb-3">Botami Software</p>
           <p className="text-sm opacity-70 leading-relaxed max-w-xs">
             Applications sur mesure pour PME. Livrées en semaines. À vous pour toujours.
           </p>
