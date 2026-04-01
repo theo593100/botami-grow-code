@@ -59,7 +59,8 @@ const ProcessSection = () => (
               <div className="pt-1 md:pt-3">
                 <div className="flex flex-wrap items-baseline gap-3 mb-2">
                   <h3 className="font-heading text-xl font-bold">{s.title}</h3>
-                  <span className="text-sm font-medium text-accent">{s.meta}</span>
+                  {s.meta && <span className="text-sm font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-0.5 rounded">{s.meta}</span>}
+                  <span className="text-sm font-medium text-muted-foreground">{s.metaExtra}</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed max-w-lg">{s.desc}</p>
               </div>
