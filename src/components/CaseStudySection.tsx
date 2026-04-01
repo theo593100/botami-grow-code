@@ -117,11 +117,16 @@ const CaseStudySection = () => (
       </div>
 
       {/* Quote */}
-      <div className="rounded-xl border bg-card p-6 md:p-8 mb-12 flex gap-4">
-        <Quote className="w-8 h-8 text-accent/40 shrink-0 mt-1" />
-        <blockquote className="text-foreground/90 italic leading-relaxed">
-          "Bug détecté à 10h, corrigé à 10h30, déployé à 11h. Essaie ça avec le support de Weezevent."
-        </blockquote>
+      <div className="rounded-xl border bg-card p-6 md:p-8 mb-12">
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Journal de réactivité — Jour J</p>
+        <div className="font-mono text-sm leading-loose text-foreground/90 space-y-1">
+          <p><span className="text-accent font-semibold">10h03</span> — bug détecté.</p>
+          <p><span className="text-accent font-semibold">10h20</span> — résolu.</p>
+          <p><span className="text-accent font-semibold">15h20</span> — le scan QR ne marche plus.</p>
+          <p><span className="text-accent font-semibold">15h23</span> — c'est réglé.</p>
+          <p><span className="text-accent font-semibold">11h27</span> — un bug.</p>
+          <p><span className="text-accent font-semibold">11h36</span> — corrigé.</p>
+        </div>
       </div>
 
       {/* Screenshot placeholder */}
