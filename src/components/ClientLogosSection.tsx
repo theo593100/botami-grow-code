@@ -51,7 +51,7 @@ const ClientLogosSection = () => (
           ))}
         </div>
         <p className="text-sm text-foreground">
-          L'équipe Botami est aussi notée <strong>4.8/5 sur 50 avis</strong> pour son accompagnement en acquisition digitale.
+          L'équipe Botami Software est aussi notée <strong>4.8/5 sur 50 avis</strong> pour son accompagnement en acquisition digitale. <strong>4.8/5 sur 50 avis</strong> pour son accompagnement en acquisition digitale.
         </p>
       </div>
     </div>

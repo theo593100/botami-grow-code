@@ -66,7 +66,7 @@ const ApproachSection = () => (
               <tr className="border-b bg-muted/40">
                 <th className="text-left p-4 font-medium text-muted-foreground w-[40%]" />
                 <th className="p-4 font-semibold text-center text-muted-foreground">SaaS empilés <span className="text-xs font-normal block">(300–800 €/mois)</span></th>
-                <th className="p-4 font-semibold text-center text-accent">App sur mesure <span className="text-xs font-normal block">(Botami)</span></th>
+                <th className="p-4 font-semibold text-center text-accent">App sur mesure <span className="text-xs font-normal block"><th className="p-4 font-semibold text-center text-accent">App sur mesure <span className="text-xs font-normal block">(Botami Software)</span></th></span></th>
               </tr>
             </thead>
             <tbody>

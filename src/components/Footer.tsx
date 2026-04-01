@@ -30,7 +30,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-primary-foreground/20 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-xs opacity-50">
-        <span>© 2026 Botami SAS. Tous droits réservés.</span>
+        <span>© 2026 Botami Software SAS. Tous droits réservés.</span>
         <span>SIREN 102688132 — Nîmes (30)</span>
       </div>
     </div>
