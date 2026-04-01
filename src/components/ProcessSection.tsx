@@ -1,32 +1,37 @@
 const steps = [
   {
     num: "01",
-    title: "Diagnostic",
-    meta: "Gratuit · 1-2h",
+    title: "Audit",
+    meta: "GRATUIT",
+    metaExtra: " · 1-2h",
     desc: "On écoute votre problème, on challenge le besoin, on dit si le sur-mesure est la bonne réponse. Parfois, ce n'est pas le cas — et on vous le dit.",
   },
   {
     num: "02",
     title: "Cahier des charges",
-    meta: "~1 semaine",
+    meta: "",
+    metaExtra: "~1 semaine",
     desc: "On rédige ce que l'application va faire, écran par écran. Vous validez avant qu'une seule ligne de code n'existe.",
   },
   {
     num: "03",
     title: "Développement",
-    meta: "2-6 semaines",
+    meta: "",
+    metaExtra: "1 semaine",
     desc: "On développe. Vous voyez l'avancement et pouvez tester en cours de route. Pas de tunnel de 3 mois sans nouvelles.",
   },
   {
     num: "04",
     title: "Recette",
-    meta: "~1 semaine",
+    meta: "",
+    metaExtra: "~1 semaine",
     desc: "On teste ensemble sur vos cas réels. Les corrections sont incluses dans le forfait — pas de surprise.",
   },
   {
     num: "05",
     title: "Livraison",
-    meta: "1-2 jours",
+    meta: "",
+    metaExtra: "1-2 jours",
     desc: "Installation sur votre hébergement. Formation de votre équipe. Documentation complète. Transfert du code source et de tous les accès.",
   },
 ];
