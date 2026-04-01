@@ -1,4 +1,4 @@
-import { CreditCard, FileSpreadsheet, PackageOpen } from "lucide-react";
+import { CreditCard, FileSpreadsheet, Layers } from "lucide-react";
 
 const problems = [
   {
