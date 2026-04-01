@@ -4,7 +4,7 @@ import { Star, ShieldCheck, Zap } from "lucide-react";
 const stats = [
   { icon: Star, value: "4.8/5", label: "Satisfaction client" },
   { icon: ShieldCheck, value: "100%", label: "Proprio du code" },
-  { icon: Zap, value: "4 sem.", label: "Délai moyen" },
+  { icon: Zap, value: "3 sem.", label: "Délai moyen" },
 ];
 
 const HeroSection = () => (
