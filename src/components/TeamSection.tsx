@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import eliasPhoto from "@/assets/elias.png";
 
 const team = [
   {
@@ -7,7 +8,7 @@ const team = [
     tagline: "10 ans d'expertise Facebook Ads & Google Ads",
     desc: "Compréhension des flux métier, expérience client en agences. Il sait ce que vos outils doivent résoudre au quotidien.",
     initials: "E",
-    photo: "", // Remplacer par le chemin de la photo
+    photo: eliasPhoto,
   },
   {
     name: "Théo",
