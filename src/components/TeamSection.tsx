@@ -1,5 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import eliasPhoto from "@/assets/elias.png";
+import theoPhoto from "@/assets/theo.png";
 
 const team = [
   {
