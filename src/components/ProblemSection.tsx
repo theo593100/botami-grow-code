@@ -14,10 +14,10 @@ const problems = [
     desc: "Ça marchait au début. Maintenant c'est un chaos de versions, de macros cassées, et personne n'ose y toucher.",
   },
   {
-    icon: PackageOpen,
-    title: "L'outil obsolète",
-    hook: "Développé par quelqu'un qui n'est plus là",
-    desc: "Un logiciel qui tourne à moitié, impossible à maintenir. Et pourtant, toute votre activité repose dessus.",
+    icon: Layers,
+    title: "Le logiciel usine à gaz",
+    hook: "1 000 fonctions, vous en utilisez 10",
+    desc: "Votre SaaS fait tout, mal. Vous payez pour des features que vous n'utiliserez jamais, et celles dont vous avez besoin marchent à moitié.",
   },
 ];
 
