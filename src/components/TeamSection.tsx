@@ -17,7 +17,7 @@ const team = [
     tagline: "Responsable marketing en startup",
     desc: "Vision produit, UX, process de développement. Il structure le besoin et s'assure que l'outil fonctionne pour vous — pas juste techniquement.",
     initials: "T",
-    photo: "", // Remplacer par le chemin de la photo
+    photo: theoPhoto,
   },
 ];
 
