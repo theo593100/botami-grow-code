@@ -17,7 +17,7 @@ const HeroSection = () => (
         On remplace vos SaaS, Excel et outils bricolés par des applications qui vous appartiennent.
       </h1>
       <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
-        Forfait transparent de 5&nbsp;000 à 15&nbsp;000&nbsp;€. Code source, données, hébergement — tout est chez vous. Livré en semaines.
+        Forfait transparent de 5&nbsp;000 à 15&nbsp;000&nbsp;€. Code source, données, hébergement — tout est chez vous.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 mb-16">
         <a href="#contact">
