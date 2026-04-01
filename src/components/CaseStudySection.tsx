@@ -133,29 +133,6 @@ const CaseStudySection = () => (
             </div>
           </div>
 
-          {/* Client logos */}
-          <div className="flex flex-wrap items-center justify-center gap-8 mb-12">
-            {clientLogos.map((logo, i) => (
-              <img
-                key={i}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-              />
-            ))}
-          </div>
-
-          {/* Rating banner */}
-          <div className="rounded-xl bg-accent/10 p-6 text-center">
-            <div className="flex items-center justify-center gap-1 mb-2">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-              ))}
-            </div>
-            <p className="text-sm text-foreground">
-              L'équipe Botami est aussi notée <strong>4.8/5 sur 50 avis</strong> pour son accompagnement en acquisition digitale.
-            </p>
-          </div>
         </div>
 
         {/* Right sticky video — 1/3 */}
