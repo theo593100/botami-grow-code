@@ -1,4 +1,4 @@
-import { Star, ExternalLink, Check, X, ArrowRight, Quote } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 
 
 const comparisonRows = [
