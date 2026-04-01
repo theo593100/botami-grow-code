@@ -1,3 +1,5 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const steps = [
   {
     num: "01",
@@ -36,6 +38,38 @@ const steps = [
   },
 ];
 
+const StepItem = ({ step, index }: { step: typeof steps[0]; index: number }) => {
+  const { ref, isVisible } = useScrollReveal(0.2);
+
+  return (
+    <div
+      ref={ref}
+      className="flex gap-6 md:gap-8 items-start transition-all duration-700 ease-out"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(32px)",
+        transitionDelay: `${index * 120}ms`,
+      }}
+    >
+      <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading font-bold text-lg md:text-xl relative z-10">
+        {step.num}
+      </div>
+      <div className="pt-1 md:pt-3">
+        <div className="flex flex-wrap items-baseline gap-3 mb-2">
+          <h3 className="font-heading text-xl font-bold">{step.title}</h3>
+          {step.meta && (
+            <span className="text-sm font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-0.5 rounded">
+              {step.meta}
+            </span>
+          )}
+          <span className="text-sm font-medium text-muted-foreground">{step.metaExtra}</span>
+        </div>
+        <p className="text-muted-foreground leading-relaxed max-w-lg">{step.desc}</p>
+      </div>
+    </div>
+  );
+};
+
 const ProcessSection = () => (
   <section id="process" className="section-padding section-alt">
     <div className="container-narrow">
@@ -52,19 +86,7 @@ const ProcessSection = () => (
 
         <div className="flex flex-col gap-10">
           {steps.map((s, i) => (
-            <div key={s.num} className="flex gap-6 md:gap-8 items-start">
-              <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading font-bold text-lg md:text-xl relative z-10">
-                {s.num}
-              </div>
-              <div className="pt-1 md:pt-3">
-                <div className="flex flex-wrap items-baseline gap-3 mb-2">
-                  <h3 className="font-heading text-xl font-bold">{s.title}</h3>
-                  {s.meta && <span className="text-sm font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-0.5 rounded">{s.meta}</span>}
-                  <span className="text-sm font-medium text-muted-foreground">{s.metaExtra}</span>
-                </div>
-                <p className="text-muted-foreground leading-relaxed max-w-lg">{s.desc}</p>
-              </div>
-            </div>
+            <StepItem key={s.num} step={s} index={i} />
           ))}
         </div>
       </div>

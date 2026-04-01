@@ -45,7 +45,7 @@ const CellValue = ({ value }: { value: string | boolean }) => {
 };
 
 const CaseStudySection = () => (
-  <section id="realisation" className="section-padding bg-section-alt">
+  <section id="realisation" className="section-padding">
     <div className="container-narrow">
       <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Déjà en production</h2>
 
@@ -129,13 +129,16 @@ const CaseStudySection = () => (
         </div>
       </div>
 
-      {/* Screenshot placeholder */}
-      <div className="rounded-2xl border bg-muted flex items-center justify-center min-h-[280px] p-8 mb-12">
-        <div className="text-center">
-          <div className="w-20 h-20 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-            <ExternalLink className="w-8 h-8 text-accent" />
+      {/* Video placeholder */}
+      <div className="rounded-2xl border bg-muted overflow-hidden mb-12 flex items-center justify-center mx-auto max-w-sm aspect-[9/16]">
+        {/* Replace the placeholder below with your YouTube/Vimeo embed URL */}
+        {/* Example: <iframe src="https://www.youtube.com/embed/VOTRE_ID" ... /> */}
+        <div className="text-center p-8">
+          <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+            <ExternalLink className="w-7 h-7 text-accent" />
           </div>
-          <p className="text-sm text-muted-foreground">Screenshot à venir</p>
+          <p className="text-sm text-muted-foreground font-medium">Vidéo verticale à venir</p>
+          <p className="text-xs text-muted-foreground mt-1">Collez ici votre lien YouTube ou Vimeo</p>
         </div>
       </div>
 
