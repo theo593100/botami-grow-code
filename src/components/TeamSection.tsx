@@ -41,7 +41,7 @@ const TeamCard = ({ member, index }: { member: typeof team[0]; index: number }) 
             className="absolute inset-0 bg-cover bg-top grayscale transition-transform duration-700 ease-out group-hover:scale-105"
             style={{
               backgroundImage: `url(${member.photo})`,
-              backgroundPosition: "center 20%",
+              backgroundPosition: member.name === "Théo" ? "center calc(20% + 15px)" : "center 20%",
             }}
           />
         ) : (
