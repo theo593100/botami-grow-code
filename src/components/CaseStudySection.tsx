@@ -45,7 +45,7 @@ const CellValue = ({ value }: { value: string | boolean }) => {
 };
 
 const CaseStudySection = () => (
-  <section id="realisation" className="section-padding bg-section-alt">
+  <section id="realisation" className="section-padding">
     <div className="container-narrow">
       <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Déjà en production</h2>
 
