@@ -1,4 +1,4 @@
-import { Crosshair, Key, Rocket, Check, X } from "lucide-react";
+import { Crosshair, Key, Rocket, Check, X, Minus } from "lucide-react";
 
 const pillars = [
   {
@@ -18,11 +18,25 @@ const pillars = [
   },
 ];
 
-const comparison = [
-  { label: "SaaS à 200 €/mois", cost: "7 200 € sur 3 ans", own: false },
-  { label: "SaaS à 500 €/mois", cost: "18 000 € sur 3 ans", own: false },
-  { label: "Notre app (standard)", cost: "~10 000 € une fois", own: true, highlight: true },
+type CellValue = true | false | "partial" | string;
+
+const comparisonRows: { label: string; saas: CellValue; custom: CellValue; highlight?: boolean }[] = [
+  { label: "Coût année 1", saas: "3 600 – 9 600 €", custom: "5 000 – 15 000 €" },
+  { label: "Coût sur 3 ans", saas: "10 800 – 28 800 €", custom: "5 000 – 15 000 €", highlight: true },
+  { label: "Propriété du code", saas: false, custom: true },
+  { label: "Propriété des données", saas: "Hébergées chez l'éditeur", custom: "100 % chez vous" },
+  { label: "Adaptation à votre métier", saas: "Limité aux options prévues", custom: "Conçu pour votre workflow" },
+  { label: "Risque de lock-in", saas: "Élevé — migration coûteuse", custom: "Aucun — code open & portable" },
+  { label: "Hausse de prix unilatérale", saas: "Fréquente (+20-40 %/an)", custom: "Impossible — forfait unique" },
+  { label: "Risque de fermeture / pivot", saas: "Vous perdez tout", custom: "Votre app tourne indéfiniment" },
 ];
+
+const CellIcon = ({ value }: { value: CellValue }) => {
+  if (value === true) return <Check className="w-5 h-5 text-accent" />;
+  if (value === false) return <X className="w-5 h-5 text-destructive" />;
+  if (value === "partial") return <Minus className="w-5 h-5 text-muted-foreground" />;
+  return <span>{value}</span>;
+};
 
 const ApproachSection = () => (
   <section id="approche" className="section-padding">
@@ -45,32 +59,38 @@ const ApproachSection = () => (
       </div>
 
       {/* Comparison table */}
-      <div className="grid md:grid-cols-3 gap-4">
-        {comparison.map((c) => (
-          <div
-            key={c.label}
-            className={`rounded-xl border p-6 text-center transition-shadow ${
-              c.highlight
-                ? "bg-primary text-primary-foreground border-primary shadow-xl scale-[1.03]"
-                : "bg-card"
-            }`}
-          >
-            <p className={`text-sm font-medium mb-2 ${c.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-              {c.label}
-            </p>
-            <p className="text-2xl font-heading font-bold mb-4">{c.cost}</p>
-            <div className="flex items-center justify-center gap-2">
-              {c.own ? (
-                <Check className="w-5 h-5 text-accent" />
-              ) : (
-                <X className={`w-5 h-5 ${c.highlight ? "text-primary-foreground/50" : "text-destructive"}`} />
-              )}
-              <span className="text-sm font-medium">
-                Vous possédez : {c.own ? "Tout" : "Rien"}
-              </span>
-            </div>
-          </div>
-        ))}
+      <div className="rounded-2xl border bg-card overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/40">
+                <th className="text-left p-4 font-medium text-muted-foreground w-[40%]" />
+                <th className="p-4 font-semibold text-center text-muted-foreground">SaaS empilés <span className="text-xs font-normal block">(300–800 €/mois)</span></th>
+                <th className="p-4 font-semibold text-center text-accent">App sur mesure <span className="text-xs font-normal block">(Botami)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row, i) => (
+                <tr key={i} className={`border-b last:border-0 ${row.highlight ? "bg-accent/5" : ""}`}>
+                  <td className="p-4 font-medium">{row.label}</td>
+                  <td className="p-4 text-center text-muted-foreground">
+                    <div className="flex items-center justify-center">
+                      <CellIcon value={row.saas} />
+                    </div>
+                  </td>
+                  <td className={`p-4 text-center font-medium ${row.highlight ? "text-accent font-bold" : ""}`}>
+                    <div className="flex items-center justify-center">
+                      <CellIcon value={row.custom} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="border-t px-4 py-3 text-xs text-muted-foreground text-center">
+          * Hébergement de votre app : 5–20 €/mois (serveur + domaine), géré par vous ou par nous.
+        </div>
       </div>
     </div>
   </section>
