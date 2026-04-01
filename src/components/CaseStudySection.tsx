@@ -129,17 +129,16 @@ const CaseStudySection = () => (
         </div>
       </div>
 
-      {/* Video placeholder */}
-      <div className="rounded-2xl border bg-muted overflow-hidden mb-12 flex items-center justify-center mx-auto max-w-sm aspect-[9/16]">
-        {/* Replace the placeholder below with your YouTube/Vimeo embed URL */}
-        {/* Example: <iframe src="https://www.youtube.com/embed/VOTRE_ID" ... /> */}
-        <div className="text-center p-8">
-          <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-            <ExternalLink className="w-7 h-7 text-accent" />
-          </div>
-          <p className="text-sm text-muted-foreground font-medium">Vidéo verticale à venir</p>
-          <p className="text-xs text-muted-foreground mt-1">Collez ici votre lien YouTube ou Vimeo</p>
-        </div>
+      {/* Video Vimeo */}
+      <div className="rounded-2xl border overflow-hidden mb-12 mx-auto max-w-sm aspect-[9/16]">
+        <iframe
+          src="https://player.vimeo.com/video/1179192157?badge=0&autopause=0&player_id=0&app_id=58479"
+          className="w-full h-full"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Étude de cas — Transitions Pro"
+        />
       </div>
 
       {/* Client logos */}
