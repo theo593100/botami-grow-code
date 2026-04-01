@@ -158,9 +158,9 @@ const CaseStudySection = () => (
         </div>
 
         {/* Right sticky video — 1/3 */}
-        <div className="hidden lg:block lg:w-1/3 shrink-0">
+        <div className="hidden lg:block lg:w-[40%] shrink-0">
           <div className="sticky top-24 flex items-center justify-center" style={{ height: 'calc(100vh - 6rem)' }}>
-            <div className="rounded-2xl border overflow-hidden aspect-[9/16]">
+            <div className="rounded-2xl border overflow-hidden aspect-[9/16] w-full max-h-[80vh]">
               <iframe
                 src="https://player.vimeo.com/video/1179192157?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
                 className="w-full h-full"
