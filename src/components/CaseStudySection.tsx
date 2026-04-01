@@ -51,7 +51,7 @@ const CaseStudySection = () => (
 
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Left content */}
-        <div className="flex-1 min-w-0">
+        <div className="lg:w-2/3 min-w-0">
           {/* Client context */}
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2">Étude de cas</p>
@@ -157,9 +157,9 @@ const CaseStudySection = () => (
           </div>
         </div>
 
-        {/* Right sticky video */}
-        <div className="hidden lg:block w-[300px] shrink-0">
-          <div className="sticky top-24">
+        {/* Right sticky video — 1/3 */}
+        <div className="hidden lg:block lg:w-1/3 shrink-0">
+          <div className="sticky top-24 flex items-center justify-center" style={{ height: 'calc(100vh - 6rem)' }}>
             <div className="rounded-2xl border overflow-hidden aspect-[9/16]">
               <iframe
                 src="https://player.vimeo.com/video/1179192157?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
