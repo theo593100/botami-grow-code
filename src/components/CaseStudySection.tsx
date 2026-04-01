@@ -10,6 +10,9 @@ import logoProvence from "@/assets/clients/mademoiselle-provence.png";
 import logoNotaires from "@/assets/clients/notaires-de-france.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
+import logoSkills from "@/assets/clients/skills-communication.png";
+import logoSkinCafeine from "@/assets/clients/skin-cafeine.png";
+import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 
 const clientLogos = [
   { src: logoBlackfox, alt: "Blackfox" },
@@ -22,6 +25,9 @@ const clientLogos = [
   { src: logoNotaires, alt: "Notaires de France" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
+  { src: logoSkills, alt: "Skills Communication" },
+  { src: logoSkinCafeine, alt: "Skin Cafeine" },
+  { src: logoStAubin, alt: "St-Aubin Avocats" },
 ];
 
 const comparisonRows = [
