@@ -51,7 +51,7 @@ const CaseStudySection = () => (
 
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Left content */}
-        <div className="flex-1 min-w-0">
+        <div className="lg:w-2/3 min-w-0">
           {/* Client context */}
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2">Étude de cas</p>
