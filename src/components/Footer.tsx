@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container-wide">
       <div className="grid md:grid-cols-3 gap-10 mb-10">
         <div>
-          <p className="font-heading text-xl font-bold mb-3">Botami</p>
+          <p className="font-heading text-xl font-bold mb-3">Botami Software</p>
           <p className="text-sm opacity-70 leading-relaxed max-w-xs">
             Applications sur mesure pour PME. Livrées en semaines. À vous pour toujours.
           </p>
@@ -30,7 +30,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-primary-foreground/20 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-xs opacity-50">
-        <span>© 2026 Botami SAS. Tous droits réservés.</span>
+        <span>© 2026 Botami Software SAS. Tous droits réservés.</span>
         <span>SIREN 102688132 — Nîmes (30)</span>
       </div>
     </div>

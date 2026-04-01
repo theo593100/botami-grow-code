@@ -34,7 +34,7 @@ const Navbar = () => {
     >
       <div className="container-wide flex items-center justify-between h-full px-4 md:px-8">
         <a href="#" className="font-heading text-2xl font-bold tracking-tight text-foreground">
-          Botami
+          Botami Software
         </a>
 
         {/* Desktop links */}
