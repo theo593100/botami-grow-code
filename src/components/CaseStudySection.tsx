@@ -1,5 +1,29 @@
 import { Star, ExternalLink, Check, X, ArrowRight, Quote } from "lucide-react";
 
+import logoBlackfox from "@/assets/clients/blackfox.png";
+import logoDesMurs from "@/assets/clients/des-murs-a-paris.png";
+import logoErgosante from "@/assets/clients/ergosante.png";
+import logoJD from "@/assets/clients/jd-sports.png";
+import logoKijiji from "@/assets/clients/kijiji.png";
+import logoLibralerte from "@/assets/clients/libralerte.png";
+import logoProvence from "@/assets/clients/mademoiselle-provence.png";
+import logoNotaires from "@/assets/clients/notaires-de-france.png";
+import logoPoupina from "@/assets/clients/poupina.png";
+import logoProarti from "@/assets/clients/proarti.png";
+
+const clientLogos = [
+  { src: logoBlackfox, alt: "Blackfox" },
+  { src: logoDesMurs, alt: "Des Murs à Paris" },
+  { src: logoErgosante, alt: "Ergo Santé" },
+  { src: logoJD, alt: "JD Sports" },
+  { src: logoKijiji, alt: "Kijiji" },
+  { src: logoLibralerte, alt: "Libr'Alerte" },
+  { src: logoProvence, alt: "Mademoiselle Provence" },
+  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoPoupina, alt: "Poupina" },
+  { src: logoProarti, alt: "Proarti" },
+];
+
 const comparisonRows = [
   { label: "Coût", before: "~15 000 €/an", after: "5 800 € (une fois)", highlight: true },
   { label: "Inscription par atelier", before: false, after: true },
@@ -133,14 +157,14 @@ const CaseStudySection = () => (
           </div>
 
           {/* Client logos */}
-          <div className="flex flex-wrap items-center justify-center gap-10 mb-12">
-            {[1, 2, 3].map((n) => (
-              <div
-                key={n}
-                className="w-32 h-16 rounded-lg bg-muted flex items-center justify-center text-sm text-muted-foreground"
-              >
-                Logo client {n}
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-12">
+            {clientLogos.map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
             ))}
           </div>
 
