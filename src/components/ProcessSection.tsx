@@ -1,32 +1,37 @@
 const steps = [
   {
     num: "01",
-    title: "Diagnostic",
-    meta: "Gratuit · 1-2h",
+    title: "Audit",
+    meta: "GRATUIT",
+    metaExtra: " · 1-2h",
     desc: "On écoute votre problème, on challenge le besoin, on dit si le sur-mesure est la bonne réponse. Parfois, ce n'est pas le cas — et on vous le dit.",
   },
   {
     num: "02",
     title: "Cahier des charges",
-    meta: "~1 semaine",
+    meta: "",
+    metaExtra: "~1 semaine",
     desc: "On rédige ce que l'application va faire, écran par écran. Vous validez avant qu'une seule ligne de code n'existe.",
   },
   {
     num: "03",
     title: "Développement",
-    meta: "2-6 semaines",
+    meta: "",
+    metaExtra: "1 semaine",
     desc: "On développe. Vous voyez l'avancement et pouvez tester en cours de route. Pas de tunnel de 3 mois sans nouvelles.",
   },
   {
     num: "04",
     title: "Recette",
-    meta: "~1 semaine",
+    meta: "",
+    metaExtra: "~1 semaine",
     desc: "On teste ensemble sur vos cas réels. Les corrections sont incluses dans le forfait — pas de surprise.",
   },
   {
     num: "05",
     title: "Livraison",
-    meta: "1-2 jours",
+    meta: "",
+    metaExtra: "1-2 jours",
     desc: "Installation sur votre hébergement. Formation de votre équipe. Documentation complète. Transfert du code source et de tous les accès.",
   },
 ];
@@ -54,7 +59,8 @@ const ProcessSection = () => (
               <div className="pt-1 md:pt-3">
                 <div className="flex flex-wrap items-baseline gap-3 mb-2">
                   <h3 className="font-heading text-xl font-bold">{s.title}</h3>
-                  <span className="text-sm font-medium text-accent">{s.meta}</span>
+                  {s.meta && <span className="text-sm font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-0.5 rounded">{s.meta}</span>}
+                  <span className="text-sm font-medium text-muted-foreground">{s.metaExtra}</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed max-w-lg">{s.desc}</p>
               </div>
