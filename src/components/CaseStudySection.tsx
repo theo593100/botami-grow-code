@@ -1,35 +1,136 @@
-import { Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink, Check, X, ArrowRight, Quote } from "lucide-react";
+
+const comparisonRows = [
+  { label: "Coût", before: "~15 000 €/an", after: "5 800 € (une fois)", highlight: true },
+  { label: "Inscription par atelier", before: false, after: true },
+  { label: "Scan par atelier", before: false, after: "Oui — multi-niveaux, hors-ligne" },
+  { label: "Emails personnalisés", before: "Non — rappels génériques", after: "Oui — avec SES ateliers, SES horaires" },
+  { label: "Stats temps réel", before: false, after: "Oui — dashboard live par atelier" },
+  { label: "Couverture du besoin", before: "~60%", after: "100%" },
+  { label: "Propriété", before: "Location (abonnement)", after: "Le client possède tout" },
+];
+
+const features = [
+  {
+    title: "Inscription en ligne",
+    desc: "Sélection de créneaux avec gestion des capacités en temps réel, liste d'attente automatique et QR code généré à l'inscription.",
+  },
+  {
+    title: "Scanner multi-niveaux",
+    desc: "Entrée générale + scan par atelier, fonctionnement hors-ligne, 10+ scanners simultanés sans ralentissement.",
+  },
+  {
+    title: "Emails automatisés",
+    desc: "Intégration Klaviyo : rappel J-2 personnalisé, J-1 rappel, post-event segmenté présents/absents.",
+  },
+  {
+    title: "Dashboard temps réel",
+    desc: "Inscrits, présents, no-show, taux de remplissage par atelier, walk-in, export CSV en un clic.",
+  },
+];
+
+const stats = [
+  { value: "2 500+", label: "inscrits" },
+  { value: "850+", label: "présents" },
+  { value: "~20", label: "ateliers sur 3 jours" },
+  { value: "5 000+", label: "emails envoyés" },
+  { value: "3 sem.", label: "de développement" },
+  { value: "5 800 €", label: "forfait unique" },
+];
+
+const CellValue = ({ value }: { value: string | boolean }) => {
+  if (value === true) return <Check className="w-5 h-5 text-accent mx-auto" />;
+  if (value === false) return <X className="w-5 h-5 text-muted-foreground/50 mx-auto" />;
+  return <span>{value}</span>;
+};
 
 const CaseStudySection = () => (
-  <section id="realisation" className="section-padding">
+  <section id="realisation" className="section-padding bg-section-alt">
     <div className="container-narrow">
-      <h2 className="font-heading text-3xl md:text-4xl font-bold mb-12">Déjà en production</h2>
+      <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Déjà en production</h2>
 
-      {/* Case study card */}
+      {/* Client context */}
+      <div className="mb-10 max-w-2xl">
+        <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2">Étude de cas</p>
+        <h3 className="font-heading text-2xl font-bold mb-1">Transitions Pro Île-de-France</h3>
+        <p className="text-muted-foreground mb-3">Organisme public — reconversion professionnelle</p>
+        <p className="text-foreground/80 text-sm leading-relaxed">
+          Organise des événements multi-jours (conférences, ateliers, RDV individuels).
+          Utilisait Weezevent pour l'inscription et le check-in — mais les 40 % restants étaient gérés en Excel et listes papier.
+        </p>
+      </div>
+
+      {/* Price delta banner */}
+      <div className="rounded-xl bg-accent/10 border border-accent/20 p-5 mb-10 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+        <span className="text-lg line-through text-muted-foreground">15 000 €/an</span>
+        <ArrowRight className="w-5 h-5 text-accent hidden sm:block" />
+        <span className="text-2xl font-heading font-bold text-accent">5 800 € une fois</span>
+      </div>
+
+      {/* Comparison table */}
       <div className="rounded-2xl border bg-card overflow-hidden mb-12">
-        <div className="grid md:grid-cols-2">
-          {/* Screenshot placeholder */}
-          <div className="bg-muted flex items-center justify-center min-h-[260px] p-8">
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                <ExternalLink className="w-8 h-8 text-accent" />
-              </div>
-              <p className="text-sm text-muted-foreground">Screenshot à venir</p>
-            </div>
-          </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/40">
+                <th className="text-left p-4 font-medium text-muted-foreground w-[40%]" />
+                <th className="p-4 font-semibold text-center text-muted-foreground">Weezevent <span className="text-xs font-normal">(avant)</span></th>
+                <th className="p-4 font-semibold text-center text-accent">GATEFORGE TP <span className="text-xs font-normal">(après)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row, i) => (
+                <tr key={i} className={`border-b last:border-0 ${row.highlight ? "bg-accent/5" : ""}`}>
+                  <td className="p-4 font-medium">{row.label}</td>
+                  <td className={`p-4 text-center ${row.highlight ? "text-muted-foreground line-through" : "text-muted-foreground"}`}>
+                    <CellValue value={row.before} />
+                  </td>
+                  <td className={`p-4 text-center font-medium ${row.highlight ? "text-accent font-bold" : ""}`}>
+                    <CellValue value={row.after} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-          {/* Details */}
-          <div className="p-8 md:p-10 flex flex-col justify-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-3">Étude de cas</p>
-            <h3 className="font-heading text-2xl font-bold mb-2">Transition Pro</h3>
-            <p className="text-muted-foreground mb-4">Organisme public — reconversion professionnelle</p>
-            <p className="font-medium mb-1">Le RDV de la Reconversion — Édition Printemps 2026</p>
-            <p className="text-sm text-muted-foreground mb-6">Application web événementielle</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 rounded-full bg-muted text-xs font-medium">Lovable</span>
-              <span className="px-3 py-1 rounded-full bg-muted text-xs font-medium">Supabase</span>
-            </div>
+      {/* What we built */}
+      <h3 className="font-heading text-xl font-bold mb-6">Ce qu'on a construit</h3>
+      <div className="grid sm:grid-cols-2 gap-4 mb-12">
+        {features.map((f, i) => (
+          <div key={i} className="rounded-xl border bg-card p-6">
+            <p className="font-semibold mb-2">{f.title}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
           </div>
+        ))}
+      </div>
+
+      {/* Stats grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+        {stats.map((s, i) => (
+          <div key={i} className="rounded-xl bg-card border p-6 text-center">
+            <p className="font-heading text-2xl md:text-3xl font-bold text-accent">{s.value}</p>
+            <p className="text-sm text-muted-foreground mt-1">{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Quote */}
+      <div className="rounded-xl border bg-card p-6 md:p-8 mb-12 flex gap-4">
+        <Quote className="w-8 h-8 text-accent/40 shrink-0 mt-1" />
+        <blockquote className="text-foreground/90 italic leading-relaxed">
+          "Bug détecté à 10h, corrigé à 10h30, déployé à 11h. Essaie ça avec le support de Weezevent."
+        </blockquote>
+      </div>
+
+      {/* Screenshot placeholder */}
+      <div className="rounded-2xl border bg-muted flex items-center justify-center min-h-[280px] p-8 mb-12">
+        <div className="text-center">
+          <div className="w-20 h-20 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+            <ExternalLink className="w-8 h-8 text-accent" />
+          </div>
+          <p className="text-sm text-muted-foreground">Screenshot à venir</p>
         </div>
       </div>
 
