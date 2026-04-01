@@ -157,14 +157,14 @@ const CaseStudySection = () => (
           </div>
 
           {/* Client logos */}
-          <div className="flex flex-wrap items-center justify-center gap-10 mb-12">
-            {[1, 2, 3].map((n) => (
-              <div
-                key={n}
-                className="w-32 h-16 rounded-lg bg-muted flex items-center justify-center text-sm text-muted-foreground"
-              >
-                Logo client {n}
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-12">
+            {clientLogos.map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
             ))}
           </div>
 
