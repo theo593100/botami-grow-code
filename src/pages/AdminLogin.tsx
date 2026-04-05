@@ -24,7 +24,7 @@ const AdminLogin = () => {
       setError("Email ou mot de passe incorrect.");
       setLoading(false);
     } else {
-      navigate("/admin/dashboard");
+      navigate("/admin/landing-pages");
     }
   };
 
