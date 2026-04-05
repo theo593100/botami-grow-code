@@ -7,7 +7,6 @@ import Index from "./pages/Index.tsx";
 import LandingPrix from "./pages/LandingPrix.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
-import Dashboard from "./pages/admin/Dashboard.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
