@@ -17,7 +17,6 @@ import {
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
-  { title: "Tableau de bord", url: "/admin/dashboard", icon: LayoutDashboard },
   { title: "Landing pages", url: "/admin/landing-pages", icon: FileText },
   { title: "Utilisateurs", url: "/admin/users", icon: Users },
 ];
