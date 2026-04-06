@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ExternalLink, Download } from "lucide-react";
+
+const PUBLISHED_URL = "https://botami-grow-code.lovable.app";
 
 const LandingPages = () => {
   const { data: pages, isLoading } = useQuery({
@@ -17,48 +20,90 @@ const LandingPages = () => {
     },
   });
 
+  const exportCSV = () => {
+    if (!pages?.length) return;
+    const headers = ["Titre interne", "Balise title", "URL", "Statut"];
+    const rows = pages.map((p) => [
+      p.title,
+      (p as any).meta_title || "",
+      `${PUBLISHED_URL}${p.route}`,
+      p.is_active ? "Active" : "Inactive",
+    ]);
+    const csv = [headers, ...rows].map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "landing-pages.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <div className="space-y-6">
-      <h2 className="font-heading text-2xl font-bold">Landing pages</h2>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="font-heading text-2xl font-bold">Landing pages</h2>
+        <Button variant="outline" size="sm" onClick={exportCSV} disabled={!pages?.length}>
+          <Download className="h-4 w-4 mr-2" />
+          Exporter CSV
+        </Button>
+      </div>
 
       {isLoading ? (
         <p className="text-muted-foreground">Chargement...</p>
       ) : !pages?.length ? (
-        <Card>
-          <CardContent className="py-12 text-center text-muted-foreground">
-            Aucune landing page enregistrée.
-          </CardContent>
-        </Card>
+        <p className="text-muted-foreground text-center py-12">Aucune landing page enregistrée.</p>
       ) : (
-        <div className="grid gap-4">
-          {pages.map((page) => (
-            <Card key={page.id}>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <div>
-                  <CardTitle className="text-base">{page.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">{page.route}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Badge variant={page.is_active ? "default" : "secondary"}>
-                    {page.is_active ? "Active" : "Inactive"}
-                  </Badge>
-                  <a
-                    href={page.route}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-              </CardHeader>
-              {page.description && (
-                <CardContent className="pt-0">
-                  <p className="text-sm text-muted-foreground">{page.description}</p>
-                </CardContent>
-              )}
-            </Card>
-          ))}
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Titre interne</TableHead>
+                <TableHead>Balise title</TableHead>
+                <TableHead>URL</TableHead>
+                <TableHead className="w-24 text-center">Statut</TableHead>
+                <TableHead className="w-12" />
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {pages.map((page) => {
+                const fullUrl = `${PUBLISHED_URL}${page.route}`;
+                return (
+                  <TableRow key={page.id}>
+                    <TableCell className="font-medium">{page.title}</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      {(page as any).meta_title || "—"}
+                    </TableCell>
+                    <TableCell>
+                      <a
+                        href={fullUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary hover:underline break-all"
+                      >
+                        {fullUrl}
+                      </a>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Badge variant={page.is_active ? "default" : "secondary"}>
+                        {page.is_active ? "Active" : "Inactive"}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <a
+                        href={page.route}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
         </div>
       )}
     </div>
