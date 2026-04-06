@@ -69,6 +69,14 @@ const AdminLogin = () => {
               {loading ? "Connexion..." : "Se connecter"}
             </Button>
           </form>
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => navigate("/admin/signup")}
+              className="text-sm text-muted-foreground hover:text-foreground underline"
+            >
+              Pas encore de compte ? Créer un compte
+            </button>
+          </div>
         </CardContent>
       </Card>
     </div>
