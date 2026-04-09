@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/lp/prix" element={<LandingPrix />} />
           <Route path="/lp/google" element={<LandingGoogle />} />
+          <Route path="/lp/google/alternative-saas" element={<LandingGoogleSaas />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
