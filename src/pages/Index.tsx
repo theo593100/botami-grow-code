@@ -18,8 +18,10 @@ const Index = () => (
       <ProblemSection />
       <ApproachSection />
       <ProcessSection />
+      {/* TODO: remettre après validation client
       <CaseStudySection />
       <ClientLogosSection />
+      */}
       <TeamSection />
       <FAQSection />
       <ContactSection />
