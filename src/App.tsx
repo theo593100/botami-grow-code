@@ -15,6 +15,7 @@ import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
+import CaseStudy from "./pages/CaseStudy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/lp/google/dev-sur-mesure" element={<LandingGoogleDev />} />
           <Route path="/lp/google/stack-bricole" element={<LandingGoogleStack />} />
           <Route path="/lp/google/prix" element={<LandingGooglePrix />} />
+          <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
