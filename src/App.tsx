@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import LandingPrix from "./pages/LandingPrix.tsx";
+import LandingGoogle from "./pages/LandingGoogle.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
@@ -23,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/lp/prix" element={<LandingPrix />} />
+          <Route path="/lp/google" element={<LandingGoogle />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
