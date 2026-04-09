@@ -1,4 +1,4 @@
-import { CreditCard, FileSpreadsheet, Layers } from "lucide-react";
+import { CreditCard, FileSpreadsheet, Layers, ShieldOff } from "lucide-react";
 
 const problems = [
   {
@@ -18,6 +18,12 @@ const problems = [
     title: "Le logiciel usine à gaz",
     hook: "1 000 fonctions, vous en utilisez 10",
     desc: "Votre SaaS fait tout, mal. Vous payez pour des features que vous n'utiliserez jamais, et celles dont vous avez besoin marchent à moitié.",
+  },
+  {
+    icon: ShieldOff,
+    title: "Des données qui ne vous appartiennent pas",
+    hook: "Vos données sont chez eux, pas chez vous",
+    desc: "Vos données clients, vos historiques, vos fichiers… tout est stocké sur les serveurs d'un SaaS. Le jour où vous partez, bonne chance pour les récupérer.",
   },
 ];
 
