@@ -21,6 +21,7 @@ import {
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import eliasPhoto from "@/assets/elias.png";
 import theoPhoto from "@/assets/theo.png";
+import logo from "@/assets/logo-botami.svg";
 
 /* ─── palette tokens (standalone from site design system) ─── */
 const C = {
@@ -294,7 +295,8 @@ const LandingGoogle = () => {
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
       {/* ─── Header ─── */}
       <header className="py-5 px-4 md:px-8 border-b" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto flex items-center gap-2.5">
+          <img src={logo} alt="Botami Software" className="h-8 w-8" />
           <span className={`${heading} text-xl md:text-2xl`} style={{ color: C.text }}>
             Botami Software
           </span>
@@ -337,12 +339,18 @@ const LandingGoogle = () => {
               const Icon = c.icon;
               return (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg transition-all duration-300 group" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                    <div
-                      className="flex items-center justify-center w-12 h-12 rounded-xl mb-5 transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: C.amberLight }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: C.amber }} />
+                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+                    <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: C.success }} />
+                    <div className="flex items-center justify-between mb-5">
+                      <div
+                        className="flex items-center justify-center w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: C.amberLight }}
+                      >
+                        <Icon className="w-6 h-6" style={{ color: C.amber }} />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full" style={{ backgroundColor: "#ECFDF5", color: C.success }}>
+                        Inclus
+                      </span>
                     </div>
                     <h3 className={`${heading} text-lg md:text-xl mb-3`}>{c.title}</h3>
                     <p className="leading-relaxed" style={{ color: C.textSec }}>
@@ -567,7 +575,10 @@ const LandingGoogle = () => {
       <footer className="px-4 md:px-8 py-10 md:py-14 text-sm" style={{ backgroundColor: C.footer, color: "#D1D5DB" }}>
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-2">
-            <span className={`${heading} text-lg text-white block`}>Botami Software</span>
+            <div className="flex items-center gap-2.5 mb-1">
+              <img src={logo} alt="Botami Software" className="h-7 w-7 brightness-0 invert" />
+              <span className={`${heading} text-lg text-white`}>Botami Software</span>
+            </div>
             <p>Entreprise française</p>
             <a href="mailto:contact@botami.fr" className="hover:text-white transition-colors block">
               contact@botami.fr
