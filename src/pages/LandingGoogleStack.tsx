@@ -91,9 +91,6 @@ const ProcessTimeline = () => {
 };
 
 const LandingGoogleStack = () => {
-  const [form, setForm] = useState({ prenom: "", email: "", tel: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   return (
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
