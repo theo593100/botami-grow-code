@@ -63,11 +63,21 @@ const LPFormCalendly = ({
       script.async = true;
       document.body.appendChild(script);
     }
+
+    // Listen for Calendly scheduled event → conversion
+    const handleCalendlyMessage = (e: MessageEvent) => {
+      if (e.origin === "https://calendly.com" && e.data?.event === "calendly.event_scheduled") {
+        (window as any).gtag_report_rdv?.();
+      }
+    };
+    window.addEventListener("message", handleCalendlyMessage);
+    return () => window.removeEventListener("message", handleCalendlyMessage);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    (window as any).gtag_report_lead_form?.();
   };
 
   return (
