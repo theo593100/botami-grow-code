@@ -24,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/lp/prix" element={<LandingPrix />} />
+          <Route path="/lp/google" element={<LandingGoogle />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
