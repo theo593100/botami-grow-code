@@ -397,7 +397,7 @@ const LandingGooglePrix = () => {
         <div className="max-w-2xl mx-auto">
           <Reveal>
             <p className="text-lg md:text-xl font-medium mb-8" style={{ color: C.text }}>
-              Entreprise française. Prix honnête, code source remis, pas de surprises. Entre 5 000€ et 15 000€.
+              🇫🇷 Entreprise française. Prix honnête, code source remis, pas de surprises. Entre 5 000€ et 15 000€.
             </p>
           </Reveal>
           <Reveal delay={100}>
@@ -414,7 +414,7 @@ const LandingGooglePrix = () => {
               <img src={logo} alt="Botami Software" className="h-7 w-7 brightness-0 invert" />
               <span className={`${heading} text-lg text-white`}>Botami Software</span>
             </div>
-            <p>Entreprise française</p>
+            <p>🇫🇷 Entreprise française</p>
             <a href="mailto:contact@botami.fr" className="hover:text-white transition-colors block">
               contact@botami.fr
             </a>
