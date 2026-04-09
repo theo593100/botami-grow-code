@@ -367,9 +367,12 @@ const LandingGoogle = () => {
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
+            <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>
               Comment ça se passe
             </h2>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide mb-4" style={{ color: C.success }}>
+              ~4 semaines du brief à la livraison
+            </p>
           </Reveal>
           <Reveal delay={100}>
             <p className="text-lg text-center mb-14 max-w-2xl mx-auto" style={{ color: C.textSec }}>
