@@ -339,12 +339,18 @@ const LandingGoogle = () => {
               const Icon = c.icon;
               return (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg transition-all duration-300 group" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                    <div
-                      className="flex items-center justify-center w-12 h-12 rounded-xl mb-5 transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: C.amberLight }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: C.amber }} />
+                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+                    <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: C.success }} />
+                    <div className="flex items-center justify-between mb-5">
+                      <div
+                        className="flex items-center justify-center w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: C.amberLight }}
+                      >
+                        <Icon className="w-6 h-6" style={{ color: C.amber }} />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full" style={{ backgroundColor: "#ECFDF5", color: C.success }}>
+                        Inclus
+                      </span>
                     </div>
                     <h3 className={`${heading} text-lg md:text-xl mb-3`}>{c.title}</h3>
                     <p className="leading-relaxed" style={{ color: C.textSec }}>
