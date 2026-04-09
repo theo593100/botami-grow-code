@@ -109,29 +109,29 @@ const steps = [
   {
     num: "01",
     icon: FileText,
-    title: "Cahier des charges",
-    time: "1-2 semaines",
+    title: "Cadrage & cahier des charges",
+    time: "~1 semaine",
     desc: "On identifie votre besoin ensemble. Livrable : un document clair qui décrit exactement ce qu'on va construire.",
   },
   {
     num: "02",
     icon: Layers,
-    title: "Maquette",
-    time: "1-2 semaines",
+    title: "Maquette & validation",
+    time: "~1 semaine",
     desc: "Prototype cliquable, écrans réels. Vous validez avant qu'on écrive une seule ligne de code.",
   },
   {
     num: "03",
     icon: Hammer,
     title: "Développement",
-    time: "4-8 semaines",
+    time: "~1-2 semaines",
     desc: "On construit. Versions testables à chaque étape. Pas de tunnel de 3 mois sans nouvelles.",
   },
   {
     num: "04",
     icon: PackageCheck,
     title: "Livraison + formation",
-    time: "1 semaine",
+    time: "~2-3 jours",
     desc: "Application en production. Données migrées. Équipe formée. Code source entre vos mains.",
   },
 ];
@@ -339,8 +339,7 @@ const LandingGoogle = () => {
               const Icon = c.icon;
               return (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                    <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: C.success }} />
+                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
                     <div className="flex items-center justify-between mb-5">
                       <div
                         className="flex items-center justify-center w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
@@ -368,9 +367,12 @@ const LandingGoogle = () => {
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
+            <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>
               Comment ça se passe
             </h2>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide mb-4" style={{ color: C.success }}>
+              ~4 semaines du brief à la livraison
+            </p>
           </Reveal>
           <Reveal delay={100}>
             <p className="text-lg text-center mb-14 max-w-2xl mx-auto" style={{ color: C.textSec }}>
