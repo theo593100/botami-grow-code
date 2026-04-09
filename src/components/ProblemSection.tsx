@@ -1,4 +1,4 @@
-import { CreditCard, FileSpreadsheet, Layers } from "lucide-react";
+import { CreditCard, FileSpreadsheet, Layers, ShieldOff } from "lucide-react";
 
 const problems = [
   {
@@ -19,6 +19,12 @@ const problems = [
     hook: "1 000 fonctions, vous en utilisez 10",
     desc: "Votre SaaS fait tout, mal. Vous payez pour des features que vous n'utiliserez jamais, et celles dont vous avez besoin marchent à moitié.",
   },
+  {
+    icon: ShieldOff,
+    title: "Des données qui ne vous appartiennent pas",
+    hook: "Vos données sont chez eux, pas chez vous",
+    desc: "Vos données clients, vos historiques, vos fichiers… tout est stocké sur les serveurs d'un SaaS. Le jour où vous partez, bonne chance pour les récupérer.",
+  },
 ];
 
 const ProblemSection = () => (
@@ -28,7 +34,7 @@ const ProblemSection = () => (
       <p className="text-lg text-muted-foreground max-w-2xl mb-12">
         Les PME paient des outils qui coûtent trop cher pour ce qu'elles en font, sans les fonctionnalités dont elles ont vraiment besoin.
       </p>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {problems.map((p) => (
           <div
             key={p.title}
