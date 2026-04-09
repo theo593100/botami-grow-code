@@ -34,7 +34,7 @@ const ProblemSection = () => (
       <p className="text-lg text-muted-foreground max-w-2xl mb-12">
         Les PME paient des outils qui coûtent trop cher pour ce qu'elles en font, sans les fonctionnalités dont elles ont vraiment besoin.
       </p>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {problems.map((p) => (
           <div
             key={p.title}
