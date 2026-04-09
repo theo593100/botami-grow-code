@@ -22,7 +22,6 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import eliasPhoto from "@/assets/elias.png";
 import theoPhoto from "@/assets/theo.png";
 import logo from "@/assets/logo-botami.svg";
-import theoPhoto from "@/assets/theo.png";
 
 /* ─── palette tokens (standalone from site design system) ─── */
 const C = {
