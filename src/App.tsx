@@ -8,6 +8,7 @@ import LandingPrix from "./pages/LandingPrix.tsx";
 import LandingGoogle from "./pages/LandingGoogle.tsx";
 import LandingGoogleSaas from "./pages/LandingGoogleSaas.tsx";
 import LandingGoogleDev from "./pages/LandingGoogleDev.tsx";
+import LandingGoogleStack from "./pages/LandingGoogleStack.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
