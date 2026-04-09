@@ -259,49 +259,11 @@ const LandingGoogleDev = () => {
         </div>
       </section>
 
-      {/* Formulaire */}
-      <section id="formulaire" className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-xl mx-auto">
-          <Reveal><h2 className={`${heading} text-2xl md:text-3xl mb-3 text-center`}>Réservez votre appel découverte gratuit</h2></Reveal>
-          <Reveal delay={100}><p className="text-center mb-10" style={{ color: C.textSec }}>15-20 minutes pour parler de votre projet. Sans engagement.</p></Reveal>
-          <Reveal delay={200}>
-            {submitted ? (
-              <div className="rounded-2xl p-8 text-center border" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                <CheckCircle2 className="w-12 h-12 mx-auto mb-4" style={{ color: C.success }} />
-                <h3 className={`${heading} text-xl mb-2`}>Demande envoyée !</h3>
-                <p style={{ color: C.textSec }}>On vous recontacte sous 24h.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="rounded-2xl p-6 md:p-8 border space-y-5" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                <div>
-                  <label className="block text-sm font-medium mb-1.5">Prénom <span style={{ color: C.amber }}>*</span></label>
-                  <input required type="text" value={form.prenom} onChange={(e) => setForm({ ...form, prenom: e.target.value })}
-                    className="w-full rounded-lg border px-4 py-3 text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:border-transparent"
-                    style={{ borderColor: "#D1D5DB", "--tw-ring-color": C.amber } as React.CSSProperties} placeholder="Votre prénom" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1.5">Email professionnel <span style={{ color: C.amber }}>*</span></label>
-                  <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-lg border px-4 py-3 text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:border-transparent"
-                    style={{ borderColor: "#D1D5DB", "--tw-ring-color": C.amber } as React.CSSProperties} placeholder="prenom@entreprise.com" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1.5">Téléphone</label>
-                  <input type="tel" value={form.tel} onChange={(e) => setForm({ ...form, tel: e.target.value })}
-                    className="w-full rounded-lg border px-4 py-3 text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:border-transparent"
-                    style={{ borderColor: "#D1D5DB", "--tw-ring-color": C.amber } as React.CSSProperties} placeholder="06 12 34 56 78" />
-                </div>
-                <button type="submit" className={`${ctaBtn} w-full text-center`} style={{ backgroundColor: C.amber }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = C.amberHover)}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = C.amber)}>
-                  Je réserve mon appel découverte gratuit
-                </button>
-                <p className="text-center text-sm" style={{ color: C.textSec }}>Réponse sous 24h.</p>
-              </form>
-            )}
-          </Reveal>
-        </div>
-      </section>
+      {/* Formulaire + Calendly */}
+      <LPFormCalendly
+        title="Réservez votre appel découverte gratuit"
+        subtitle="15-20 minutes pour parler de votre projet. Sans engagement."
+      />
 
       {/* Dernier CTA */}
       <section className="px-4 md:px-8 py-16 md:py-20 text-center" style={{ backgroundColor: C.amberLight }}>
