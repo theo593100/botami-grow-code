@@ -30,6 +30,7 @@ const App = () => (
           <Route path="/lp/google" element={<LandingGoogle />} />
           <Route path="/lp/google/alternative-saas" element={<LandingGoogleSaas />} />
           <Route path="/lp/google/dev-sur-mesure" element={<LandingGoogleDev />} />
+          <Route path="/lp/google/stack-bricole" element={<LandingGoogleStack />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
