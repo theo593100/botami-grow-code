@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import {
   Banknote,
+  Clock,
   CalendarCheck,
   Code2,
   Users,
