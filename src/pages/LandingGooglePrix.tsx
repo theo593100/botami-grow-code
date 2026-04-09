@@ -162,16 +162,16 @@ const guarantees = [
 const team = [
   {
     name: "Elias",
-    role: "Co-fondateur",
+    role: "CEO",
     photo: eliasPhoto,
-    desc: "10 ans en publicité digitale (Google Ads, Meta Ads). Il connaît le coût réel des outils.",
+    desc: "Il cadre votre projet et pilote la relation client. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.",
     objectPosition: "center 20%",
   },
   {
     name: "Théo",
-    role: "Co-fondateur",
+    role: "CTO",
     photo: theoPhoto,
-    desc: "Parcours marketing en startup. Pragmatique sur les budgets.",
+    desc: "Il conçoit et développe votre application de A à Z. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.",
     objectPosition: "center 35%",
   },
 ];
