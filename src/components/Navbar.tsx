@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo-botami.svg";
 
 const navLinks = [
   { label: "Le problème", href: "#probleme" },
@@ -33,8 +34,9 @@ const Navbar = () => {
       style={{ height: "var(--nav-height)" }}
     >
       <div className="container-wide flex items-center justify-between h-full px-4 md:px-8">
-        <a href="#" className="font-heading text-2xl font-bold tracking-tight text-foreground">
-          Botami Software
+        <a href="#" className="flex items-center gap-2.5">
+          <img src={logo} alt="Botami Software" className="h-8 w-8" />
+          <span className="font-heading text-2xl font-bold tracking-tight text-foreground">Botami Software</span>
         </a>
 
         {/* Desktop links */}
