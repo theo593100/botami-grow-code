@@ -13,7 +13,7 @@ const pillars = [
   },
   {
     icon: Rocket,
-    title: "Livré en semaines",
+    title: "Livré en quelques semaines",
     desc: "L'IA comme assistant de développement nous permet de livrer vite, à des budgets PME. Forfait transparent, prix fixe annoncé avant de commencer.",
   },
 ];
