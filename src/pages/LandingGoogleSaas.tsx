@@ -476,6 +476,7 @@ const LandingGoogleSaas = () => {
 
       {/* ─── Bloc 6 — Formulaire + Calendly ─── */}
       <LPFormCalendly
+              route="/lp/google/alternative-saas"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour évaluer votre situation. Sans engagement."
       />

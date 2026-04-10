@@ -606,6 +606,7 @@ const LandingGoogleAgenceDevWeb = () => {
 
       {/* ─── Bloc 6 — Formulaire ─── */}
       <LPFormCalendly
+              route="/lp/google/agence-dev-web"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour parler de votre application web métier. Sans engagement."
       />

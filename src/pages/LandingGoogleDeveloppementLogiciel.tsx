@@ -339,6 +339,7 @@ const LandingGoogleDeveloppementLogiciel = () => {
 
       {/* Bloc 6 — Formulaire Calendly */}
       <LPFormCalendly
+              route="/lp/google/developpement-logiciel"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour parler de votre logiciel. Sans engagement."
         buttonLabel="Je réserve mon appel découverte gratuit"
