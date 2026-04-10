@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      landing_page_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          route: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          route: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          route?: string
+        }
+        Relationships: []
+      }
       landing_pages: {
         Row: {
           created_at: string
