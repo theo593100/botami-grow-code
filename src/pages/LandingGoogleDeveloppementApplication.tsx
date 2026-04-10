@@ -256,7 +256,11 @@ const LandingGoogleDeveloppementApplication = () => {
       </section>
 
       <section className="px-4 md:px-8 py-16 md:py-24">
+        <div className="max-w-3xl mx-auto">
+          <Reveal>
+            <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>Comment ça se passe</h2>
             <div className="flex justify-center mb-4">
+
               <span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
                 <Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison
               </span>
