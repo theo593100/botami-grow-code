@@ -88,6 +88,9 @@ const LPFormCalendly = ({
     e.preventDefault();
     setSubmitted(true);
     (window as any).gtag_report_lead_form?.();
+    if (route) {
+      supabase.from("landing_page_events").insert({ route, event_type: "cta_click" }).then();
+    }
   };
 
   return (
