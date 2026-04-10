@@ -69,7 +69,14 @@ const AdminLogin = () => {
               {loading ? "Connexion..." : "Se connecter"}
             </Button>
           </form>
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center space-y-2">
+            <button
+              onClick={() => navigate("/admin/forgot-password")}
+              className="text-sm text-muted-foreground hover:text-foreground underline"
+            >
+              Mot de passe oublié ?
+            </button>
+            <br />
             <button
               onClick={() => navigate("/admin/signup")}
               className="text-sm text-muted-foreground hover:text-foreground underline"
