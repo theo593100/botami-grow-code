@@ -77,10 +77,10 @@ const comparatifRows = [
 ];
 
 const steps = [
-  { num: "01", icon: FileText, title: "Cahier des charges", time: "1-2 semaines", desc: "On cartographie votre flux actuel : comment les factures arrivent, qui les saisit, qui valide, comment ça part au cabinet, quel reporting vous voulez piloter. On identifie les points de friction et les automatisations possibles." },
-  { num: "02", icon: Layers, title: "Maquette", time: "1-2 semaines", desc: "Prototype cliquable : capture de factures, rapprochement bancaire, écrans de validation, tableaux de bord financiers. Vous validez avec votre expert-comptable avant le code." },
-  { num: "03", icon: Hammer, title: "Développement", time: "4-8 semaines", desc: "Construction itérative. Vous testez chaque semaine sur un environnement de staging avec vos vraies factures et relevés bancaires. Corrections et ajustements en continu avec le cabinet." },
-  { num: "04", icon: PackageCheck, title: "Livraison + formation", time: "1 semaine", desc: "Mise en production. Connexion à votre banque (agrégateur), à votre outil actuel si besoin, au logiciel du cabinet (Sage, Cegid, Pennylane…). Formation équipe. Remise du code source, des accès et de la documentation." },
+  { num: "01", icon: FileText, title: "Cadrage & cahier des charges", time: "~1 semaine", desc: "On identifie votre besoin ensemble. Livrable : un document clair qui décrit exactement ce qu'on va construire." },
+  { num: "02", icon: Layers, title: "Maquette & validation", time: "~1 semaine", desc: "Prototype cliquable, écrans réels. Vous validez avant qu'on écrive une seule ligne de code." },
+  { num: "03", icon: Hammer, title: "Développement", time: "~1-2 semaines", desc: "On construit. Versions testables à chaque étape. Pas de tunnel de 3 mois sans nouvelles." },
+  { num: "04", icon: PackageCheck, title: "Livraison + formation", time: "~2-3 jours", desc: "Application en production. Données migrées. Équipe formée. Code source entre vos mains." },
 ];
 
 const faqs = [
@@ -224,7 +224,7 @@ const LandingGoogleLogicielComptabilite = () => {
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>Comment ça se passe</h2>
-            <div className="flex justify-center mb-4"><span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}><Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison</span></div>
+            <div className="flex justify-center mb-4"><span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}><Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison</span></div>
           </Reveal>
           <Reveal delay={100}><p className="text-lg text-center mb-14 max-w-2xl mx-auto" style={{ color: C.textSec }}>Vous ne gérez pas un projet IT. On pose les questions, on propose, vous validez.</p></Reveal>
           <ProcessTimeline />

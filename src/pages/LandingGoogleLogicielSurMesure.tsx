@@ -151,30 +151,30 @@ const steps = [
   {
     num: "01",
     icon: FileText,
-    title: "Cahier des charges",
-    time: "1-2 semaines",
-    desc: "On vient voir comment vous travaillez. On liste les écrans, les données, les règles de gestion, les rôles utilisateur, les intégrations nécessaires. On propose une architecture claire.",
+    title: "Cadrage & cahier des charges",
+    time: "~1 semaine",
+    desc: "On identifie votre besoin ensemble. Livrable : un document clair qui décrit exactement ce qu'on va construire.",
   },
   {
     num: "02",
     icon: Layers,
-    title: "Maquette",
-    time: "1-2 semaines",
-    desc: "Prototype cliquable de tous les écrans du périmètre. Vous testez la navigation, validez les parcours, ajustez avant qu'on code une ligne.",
+    title: "Maquette & validation",
+    time: "~1 semaine",
+    desc: "Prototype cliquable, écrans réels. Vous validez avant qu'on écrive une seule ligne de code.",
   },
   {
     num: "03",
     icon: Hammer,
     title: "Développement",
-    time: "4-8 semaines",
-    desc: "Construction itérative sur un environnement de staging. Vous testez chaque semaine avec vos vrais cas d'usage. Corrections et ajustements au fil de l'eau.",
+    time: "~1-2 semaines",
+    desc: "On construit. Versions testables à chaque étape. Pas de tunnel de 3 mois sans nouvelles.",
   },
   {
     num: "04",
     icon: PackageCheck,
     title: "Livraison + formation",
-    time: "1 semaine",
-    desc: "Mise en production. Import de vos données existantes (Excel, SaaS actuels). Formation des équipes. Remise du code source, des accès et de la documentation.",
+    time: "~2-3 jours",
+    desc: "Application en production. Données migrées. Équipe formée. Code source entre vos mains.",
   },
 ];
 
@@ -508,7 +508,7 @@ const LandingGoogleLogicielSurMesure = () => {
             </h2>
             <div className="flex justify-center mb-4">
               <span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
-                <Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison
+                <Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison
               </span>
             </div>
           </Reveal>
