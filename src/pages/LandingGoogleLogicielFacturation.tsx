@@ -90,10 +90,10 @@ const comparatifRows = [
 ];
 
 const steps = [
-  { num: "01", icon: FileText, title: "Cahier des charges", time: "1-2 semaines", desc: "On cartographie votre modèle de facturation : types de factures, règles TVA, acomptes, récurrence, relances, intégration compta. On propose une architecture conforme à la réglementation." },
-  { num: "02", icon: Layers, title: "Maquette", time: "1-2 semaines", desc: "Prototype cliquable de tous les écrans : création devis, facture, vue client, relances, tableau de bord. Templates de documents à votre charte graphique. Vous validez avant le code." },
-  { num: "03", icon: Hammer, title: "Développement", time: "4-8 semaines", desc: "Construction itérative. Vous testez chaque semaine sur un environnement de staging avec des devis et factures de test. Vérifications comptables et fiscales en continu." },
-  { num: "04", icon: PackageCheck, title: "Livraison + formation", time: "1 semaine", desc: "Mise en production. Import de vos clients et historique de facturation si exportable. Formation équipe. Remise du code source, des accès et de la documentation." },
+  { num: "01", icon: FileText, title: "Cadrage & cahier des charges", time: "~1 semaine", desc: "On identifie votre besoin ensemble. Livrable : un document clair qui décrit exactement ce qu'on va construire." },
+  { num: "02", icon: Layers, title: "Maquette & validation", time: "~1 semaine", desc: "Prototype cliquable, écrans réels. Vous validez avant qu'on écrive une seule ligne de code." },
+  { num: "03", icon: Hammer, title: "Développement", time: "~1-2 semaines", desc: "On construit. Versions testables à chaque étape. Pas de tunnel de 3 mois sans nouvelles." },
+  { num: "04", icon: PackageCheck, title: "Livraison + formation", time: "~2-3 jours", desc: "Application en production. Données migrées. Équipe formée. Code source entre vos mains." },
 ];
 
 const faqs = [
@@ -188,7 +188,7 @@ const LandingGoogleLogicielFacturation = () => {
       <section className="px-4 md:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal><p className="text-sm font-semibold uppercase tracking-widest mb-5" style={{ color: C.amber }}>Logiciel de facturation sur mesure</p></Reveal>
-          <Reveal delay={100}><h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>Logiciel de facturation sur mesure. Conçu pour comment vous facturez vraiment.</h1></Reveal>
+          <Reveal delay={100}><h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>Logiciel de facturation sur mesure. Fait pour votre modèle, pas l'inverse.</h1></Reveal>
           <Reveal delay={200}><p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: C.textSec }}>Facturation au projet, récurrente, à l'avancement, multi-devises, acomptes, avoirs, relances automatiques — votre logiciel suit votre modèle, pas l'inverse. Conforme à la facturation électronique 2026. Forfait 5&nbsp;000 à 15&nbsp;000€, 4 à 8 semaines, code source à vous.</p></Reveal>
           <Reveal delay={300}><CTA id="cta-hero" /></Reveal>
         </div>
@@ -297,7 +297,7 @@ const LandingGoogleLogicielFacturation = () => {
             <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>Comment ça se passe</h2>
             <div className="flex justify-center mb-4">
               <span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
-                <Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison
+                <Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison
               </span>
             </div>
           </Reveal>
