@@ -324,6 +324,10 @@ const ProcessTimeline = () => {
 
 /* ─── Page ─── */
 const LandingGoogleLogicielSurMesure = () => {
+  useEffect(() => {
+    document.title = "Logiciel sur mesure pour entreprise | Botami Software";
+  }, []);
+
   return (
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
       {/* ─── Header ─── */}
@@ -344,17 +348,17 @@ const LandingGoogleLogicielSurMesure = () => {
               className="text-sm font-semibold uppercase tracking-widest mb-5"
               style={{ color: C.amber }}
             >
-              Développement logiciel sur mesure pour PME
+              Logiciel sur mesure pour entreprise
             </p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>
-              Logiciel sur mesure pour votre PME. Fini les outils génériques.
+              Logiciel sur mesure. Construit autour de votre métier, pas l'inverse.
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: C.textSec }}>
-              Vous faites un métier unique. Les logiciels standard ne couvrent que 60% de vos besoins. On crée votre logiciel qui fait 100% de votre métier — prix forfaitaire, livraison 4 à 8 semaines.
+              Vous avez un process métier que personne sur le marché ne fait exactement. On construit le logiciel qui le reflète — pas un SaaS qui vous force à changer votre manière de travailler. Forfait 5&nbsp;000 à 15&nbsp;000€, 4 à 8 semaines, code source à vous.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -439,11 +443,11 @@ const LandingGoogleLogicielSurMesure = () => {
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
-              ERP/CRM standard vs Botami Software
+             <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
+              SaaS générique vs Botami Software
             </h2>
             <p className="text-lg text-center mb-14 max-w-2xl mx-auto" style={{ color: C.textSec }}>
-              Un logiciel qui fait votre métier, pas un outil générique qu'on configure pendant 6 mois.
+              Pourquoi un logiciel générique finit toujours par ne pas faire exactement ce qu'il faut.
             </p>
           </Reveal>
 
@@ -454,7 +458,7 @@ const LandingGoogleLogicielSurMesure = () => {
                 <thead>
                   <tr style={{ backgroundColor: C.bg }}>
                     <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>Critère</th>
-                    <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>ERP ou CRM standard (type Odoo, Sage, Salesforce)</th>
+                    <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>SaaS générique du marché</th>
                     <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.amber }}>Botami Software</th>
                   </tr>
                 </thead>
@@ -479,7 +483,7 @@ const LandingGoogleLogicielSurMesure = () => {
                   <h4 className="text-sm font-semibold mb-3" style={{ color: C.text }}>{r.critere}</h4>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-xs font-medium mb-1" style={{ color: C.textSec }}>ERP/CRM standard</p>
+                     <p className="text-xs font-medium mb-1" style={{ color: C.textSec }}>SaaS générique</p>
                       <p className="text-sm" style={{ color: C.textSec }}>{r.erp}</p>
                     </div>
                     <div className="pt-2 border-t" style={{ borderColor: "#E5E7EB" }}>
@@ -611,7 +615,7 @@ const LandingGoogleLogicielSurMesure = () => {
             <LPFormCalendly
               route="/lp/google/logiciel-sur-mesure"
               title="Réservez votre appel découverte gratuit"
-              subtitle="15-20 minutes pour comprendre votre métier. Sans engagement."
+              subtitle="15-20 minutes pour évaluer votre besoin. On vous dit honnêtement si un logiciel sur mesure est pertinent pour votre cas, ou pas."
               buttonLabel="Je réserve mon appel découverte gratuit"
             />
           </Reveal>
@@ -622,13 +626,12 @@ const LandingGoogleLogicielSurMesure = () => {
       <section className="px-4 md:px-8 py-16 text-center">
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-3xl mb-6`}>
-              Prêt à remplacer vos outils génériques ?
-            </h2>
-            <CTA id="cta-bottom" />
-            <p className="mt-6 text-sm" style={{ color: C.textSec }}>
-              Entreprise française. Code source remis. Prix transparent. Logiciel pensé pour votre métier.
+            <p className="text-lg md:text-xl font-medium mb-8" style={{ color: C.text }}>
+              🇫🇷 Entreprise française. Code source remis à chaque projet. Prix forfaitaire. Votre métier, pas un template.
             </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <CTA id="cta-bottom" />
           </Reveal>
         </div>
       </section>
