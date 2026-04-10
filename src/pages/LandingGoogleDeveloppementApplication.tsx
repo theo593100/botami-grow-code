@@ -1,33 +1,36 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  CheckCircle2,
-  Clock,
-  Euro,
-  FileText,
-  Hammer,
-  Layers,
-  Linkedin,
-  Mail,
-  PackageCheck,
-  Phone,
-  Shield,
-} from "lucide-react";
+import { useEffect } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Check } from "lucide-react";
+import LPFormCalendly from "@/components/lp/LPFormCalendly";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import LPFormCalendly from "@/components/lp/LPFormCalendly";
+
+import logoBlackfox from "@/assets/clients/blackfox.png";
+import logoDesMurs from "@/assets/clients/des-murs-a-paris.png";
+import logoErgosante from "@/assets/clients/ergosante.png";
+import logoJD from "@/assets/clients/jd-sports.png";
+import logoKijiki from "@/assets/clients/kijiji.png";
+import logoLibralerte from "@/assets/clients/libralerte.png";
+import logoProvence from "@/assets/clients/mademoiselle-provence.png";
+import logoNotaires from "@/assets/clients/notaires-de-france.png";
+import logoPoupina from "@/assets/clients/poupina.png";
+import logoProarti from "@/assets/clients/proarti.png";
+import logoSkills from "@/assets/clients/skills-communication.png";
+import logoSkinCafeine from "@/assets/clients/skin-cafeine.png";
+import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 
 const C = {
   bg: "#FAF7F2",
   card: "#FFFFFF",
   amber: "#C4872C",
   amberHover: "#D4A04A",
-  amberPale: "#FEF3E2",
-  charcoal: "#1A1A1A",
-  slate: "#6B7280",
+  amberLight: "#FEF3E2",
+  text: "#1A1A1A",
+  textSec: "#6B7280",
   success: "#10B981",
   footer: "#1A1A1A",
 } as const;
@@ -35,211 +38,53 @@ const C = {
 const heading = "font-heading font-bold";
 const ctaBtn =
   "inline-block font-body font-semibold text-white rounded-lg px-8 py-4 text-base md:text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5";
-
-const steps = [
-  {
-    num: "01",
-    icon: FileText,
-    title: "Cahier des charges",
-    time: "1-2 semaines",
-    desc: "On comprend votre besoin métier. On définit les fonctionnalités, les écrans, les intégrations, les règles de gestion. On propose une architecture claire.",
-  },
-  {
-    num: "02",
-    icon: Layers,
-    title: "Maquette",
-    time: "1-2 semaines",
-    desc: "Prototype cliquable de toute l'application. Vous testez la navigation, validez les écrans, ajustez avant qu'on code une ligne.",
-  },
-  {
-    num: "03",
-    icon: Hammer,
-    title: "Développement",
-    time: "4-8 semaines",
-    desc: "On construit. Versions testables chaque semaine sur un environnement de staging. Vous testez sur vos vrais cas d'usage. Bugs corrigés en continu.",
-  },
-  {
-    num: "04",
-    icon: PackageCheck,
-    title: "Livraison + formation",
-    time: "1 semaine",
-    desc: "Mise en production. Migration des données si besoin. Formation de l'équipe. Remise du code source, des accès, de la documentation.",
-  },
-];
-
-const valueProps = [
-  {
-    icon: Euro,
-    title: "Comparaison 3 ans : app vs SaaS",
-    desc: "SaaS à 200€/mois = 7 200€ sur 3 ans. À 500€/mois = 18 000€. Votre app : 5 000–15 000€ une seule fois. Propriété totale, zéro abonnement après.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Le prix qu'on annonce est le prix que vous payez",
-    desc: "Pas de TJM qui traîne. Pas de surprise à la facturation. Forfait transparent. Honnêteté.",
-  },
-  {
-    icon: Shield,
-    title: "Chaque euro dépensé ajoute une fonction",
-    desc: "L'app ne fait que ce dont vous avez besoin. Pas de 50 fonctionnalités inutiles. Budget rentabilisé rapidement.",
-  },
-  {
-    icon: Clock,
-    title: "Après livraison, moins coûteux",
-    desc: "Plus d'abonnements SaaS. Application stable, documentée. Maintenance minimale. Coût total baisse.",
-  },
-];
-
-const faqs = [
-  {
-    q: "5 000€-15 000€, c'est cher ?",
-    a: "Non. Comparez : SaaS à 200€/mois = 7 200€ sur 3 ans, sans propriété. SaaS à 500€/mois = 18 000€ sur 3 ans. Votre app vous appartient, elle se rentabilise vite.",
-  },
-  {
-    q: "Quels sont les coûts après la livraison ?",
-    a: "L'app est stable et documentée. Maintenance minimale si bien construite. Mises à jour OS, corrections mineures. Pas d'abonnement obligatoire — maintenance optionnelle.",
-  },
-  {
-    q: "Quel est le prix minimum ? Et le maximum ?",
-    a: "Minimum : 5 000€. En dessous, c'est trop court pour une vraie app. Maximum : dépasse rarement 15 000€. Si votre besoin est hors budget, on réduit le scope ensemble.",
-  },
-  {
-    q: "Pouvez-vous développer une app à 3 000€ ?",
-    a: "Non. À 3 000€, c'est trop court. Ça pourrait être du no-code ailleurs, ou une app très minimale, mais une vraie application professionnelle : 5 000€ minimum.",
-  },
-  {
-    q: "Puis-je payer en plusieurs fois ?",
-    a: "Oui. Pour un forfait standard : dépôt à la signature, reste à la livraison. Pour gros projets : jalons intermédiaires. On discute du financement ensemble — flexibilité.",
-  },
-];
-
-const comparisonRows = [
-  { label: "Modèle de prix", competitor: "TJM 500-800€ × estimation de jours", botami: "Forfait 5 000-15 000€, une seule fois" },
-  { label: "Propriété du code", competitor: "Variable, à négocier", botami: "Oui, code source remis à la livraison" },
-  { label: "Délai de livraison", competitor: "4 à 12 mois selon la charge", botami: "4 à 8 semaines" },
-  { label: "Personnalisation", competitor: "Totale mais à surfacturer", botami: "Conçu sur mesure pour votre métier" },
-  { label: "Dépendance au fournisseur", competitor: "Forte (maintenance facturée)", botami: "Zéro — vous pouvez partir avec tout" },
-  { label: "Coût sur 3 ans", competitor: "25 000 à 90 000€", botami: "5 000-15 000€ (payé une fois)" },
-];
+const card = "rounded-2xl p-6 md:p-8 border shadow-sm transition-all duration-300 hover:shadow-lg";
 
 const clientLogos = [
-  { name: "My Garden Loft", src: "/logos/mygardenloft.png" },
-  { name: "Le Cannet Luxury Real Estate", src: "/logos/cannet-luxury-real-estate.png" },
-  { name: "Fondation Mérieux", src: "/logos/fondation-merieux.png" },
-  { name: "Esquare", src: "/logos/esquare.png" },
-  { name: "YBA", src: "/logos/yba.png" },
-  { name: "Léa", src: "/logos/lea.png" },
-  { name: "Carré Privé", src: "/logos/carre-prive.svg" },
-  { name: "Clinique Axium", src: "/logos/axium.png" },
-  { name: "Harmonie", src: "/logos/harmonie.png" },
-  { name: "Toundra", src: "/logos/toundra.png" },
+  { name: "Blackfox", src: logoBlackfox },
+  { name: "Des Murs à Paris", src: logoDesMurs },
+  { name: "Ergosanté", src: logoErgosante },
+  { name: "JD Sports", src: logoJD },
+  { name: "Kijiji", src: logoKijiki },
+  { name: "Libralerte", src: logoLibralerte },
+  { name: "Mademoiselle Provence", src: logoProvence },
+  { name: "Notaires de France", src: logoNotaires },
+  { name: "Poupina", src: logoPoupina },
+  { name: "Proarti", src: logoProarti },
+  { name: "Skills Communication", src: logoSkills },
+  { name: "Skin Caféine", src: logoSkinCafeine },
+  { name: "St Aubin Avocats", src: logoStAubin },
 ];
 
-const Header = () => (
-  <header className="py-6 px-4 md:px-8" style={{ backgroundColor: C.card }}>
-    <div className="max-w-6xl mx-auto flex items-center justify-center md:justify-start">
-      <span className={`${heading} text-xl`} style={{ color: C.charcoal }}>
-        Botami Software
-      </span>
-    </div>
-  </header>
-);
-
-const Footer = () => (
-  <footer style={{ backgroundColor: C.footer }} className="py-12 px-4 md:px-8">
-    <div className="max-w-6xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-center md:text-left">
-          <h3 className="font-heading font-bold text-xl text-white mb-2">Botami Software</h3>
-          <p className="text-sm opacity-80" style={{ color: C.slate }}>
-            🇫🇷 Entreprise française
-          </p>
-        </div>
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-left">
-          <a href="mailto:contact@botami-agency.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
-            <Mail className="w-4 h-4" />
-            <span className="text-sm">contact@botami-agency.com</span>
-          </a>
-          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
-            <Linkedin className="w-4 h-4" />
-            <span className="text-sm">LinkedIn</span>
-          </a>
-        </div>
-      </div>
-      <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: C.slate }}>
-        <div className="flex gap-4">
-          <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-          <span className="opacity-50">|</span>
-          <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
-        </div>
-        <p className="opacity-60">© 2024 Botami Software</p>
-      </div>
-    </div>
-  </footer>
-);
-
 const LandingGoogleDeveloppementApplication = () => {
-  const logosRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const scrollReveal = useScrollReveal();
 
   useEffect(() => {
-    document.title = "Développement application sur mesure | Botami Software";
-
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    // Google Fonts
-    const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const el = logosRef.current;
-    if (!el) return;
-    let raf: number;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const max = el.scrollWidth - el.clientWidth;
-        if (max <= 0) return;
-        const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        el.scrollLeft = progress * max;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
+    document.title = "Développement d'applications sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute("content", "Développement d'applications web, mobile et métier sur mesure. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
+    }
   }, []);
 
   return (
-    <div className="min-h-screen font-body" style={{ backgroundColor: C.bg }}>
-      <style>{`
-        :root {
-          --font-heading: 'Space Grotesk', sans-serif;
-          --font-body: 'DM Sans', sans-serif;
-        }
-        .font-heading { font-family: var(--font-heading); }
-        .font-body { font-family: var(--font-body); }
-      `}</style>
-
-      <Header />
+    <div style={{ backgroundColor: C.bg, color: C.text }} className="font-body">
+      {/* Header */}
+      <header className="px-4 md:px-8 py-6 border-b" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
+        <div className="max-w-7xl mx-auto">
+          <span className={`${heading} text-xl`}>Botami Software</span>
+        </div>
+      </header>
 
       {/* Bloc 1 — Hero */}
-      <section className="px-4 md:px-8 pt-12 md:pt-20 pb-16 md:pb-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className={`${heading} text-3xl md:text-5xl lg:text-6xl mb-6`} style={{ color: C.charcoal }}>
-            Combien coûte vraiment de développer une application ?
+      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className={`${heading} text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight`}>
+            Développement d'applications sur mesure. Mobile, web, métier.
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10" style={{ color: C.slate }}>
-            Entre 5 000€ et 15 000€. Prix forfaitaire, transparent, livré en 4 à 8 semaines. Pour comprendre ce prix, ce que vous en tirez, et comment ça se compare au SaaS, parlons de votre situation.
+          <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: C.textSec }}>
+            Votre application conçue pour votre métier — pas un template adapté à la va-vite.
+            Prix forfaitaire de 5 000 à 15 000€, livrée en 4 à 8 semaines, code source à vous.
           </p>
           <a
             href="#formulaire"
@@ -250,21 +95,40 @@ const LandingGoogleDeveloppementApplication = () => {
           >
             Je réserve mon appel découverte gratuit
           </a>
-          <p className="mt-4 text-sm" style={{ color: C.slate }}>
-            Réponse sous 24h.
-          </p>
         </div>
       </section>
 
-      {/* Bloc 2 — Proposition de valeur */}
-      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.bg }}>
+      {/* Bloc 2 — Value props */}
+      <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {valueProps.map((vp, idx) => (
-              <div key={idx} className="p-6 rounded-xl border shadow-sm" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
-                <vp.icon className="w-8 h-8 mb-4" style={{ color: C.amber }} />
-                <h3 className={`${heading} text-lg mb-2`} style={{ color: C.charcoal }}>{vp.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: C.slate }}>{vp.desc}</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Application web, mobile ou les deux",
+                desc: "Appli métier interne, portail client, app mobile terrain, outil de gestion — on développe ce dont votre activité a besoin, sur la plateforme qui fait sens.",
+              },
+              {
+                title: "Conçue autour de vos process",
+                desc: "Pas de compromis avec un SaaS générique. Chaque écran, chaque workflow, chaque règle métier existe parce que votre équipe en a besoin au quotidien.",
+              },
+              {
+                title: "Code source à vous, zéro dépendance",
+                desc: "À la livraison, vous recevez tout : code, données, documentation, accès serveur. Vous pouvez changer de prestataire demain. Zéro lock-in.",
+              },
+              {
+                title: "Forfait transparent, livraison rapide",
+                desc: "5 000 à 15 000€ selon la complexité. C'est le prix qu'on annonce, c'est celui que vous payez. Livraison en 4 à 8 semaines, pas 6 mois.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`${card} ${scrollReveal}`}
+                style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}
+              >
+                <h3 className={`${heading} text-xl mb-3`}>{item.title}</h3>
+                <p className="leading-relaxed" style={{ color: C.textSec }}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -272,150 +136,189 @@ const LandingGoogleDeveloppementApplication = () => {
       </section>
 
       {/* Bloc 2B — Trust bar */}
-      <section className="px-4 md:px-8 py-12 md:py-16" style={{ backgroundColor: C.bg }}>
-        <div className="max-w-6xl mx-auto">
-          <p className={`${heading} text-sm uppercase tracking-widest text-center mb-8`} style={{ color: C.slate }}>
+      <section className="px-4 md:px-8 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-base md:text-lg mb-8 font-medium" style={{ color: C.textSec }}>
             Notre équipe accompagne des entreprises en acquisition digitale depuis des années
           </p>
 
-          <div
-            ref={logosRef}
-            className="flex gap-8 overflow-x-auto scrollbar-hide py-4 opacity-60"
-            style={{ scrollBehavior: "auto" }}
-          >
-            {clientLogos.map((logo, idx) => (
-              <div key={idx} className="flex-shrink-0 h-12 w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                {logo.src ? (
-                  <img src={logo.src} alt={logo.name} className="max-h-full max-w-full object-contain" />
-                ) : (
-                  <span className="font-heading font-semibold text-sm" style={{ color: C.charcoal }}>
-                    {logo.name}
-                  </span>
-                )}
-              </div>
-            ))}
+          <div className="mb-10 py-8 rounded-2xl" style={{ backgroundColor: C.bg }}>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale">
+              {clientLogos.map((logo, idx) => (
+                <img key={idx} src={logo.src} alt={logo.name} className="h-8 md:h-10 object-contain" />
+              ))}
+            </div>
           </div>
 
-          <p className="text-center mt-8 max-w-3xl mx-auto text-base italic" style={{ color: C.slate }}>
-            "On les a vues se battre avec des SaaS trop chers, des Excel qui craquent, des outils qui ne collent pas à leur métier. Botami Software est né de ce constat : quand les outils du marché ne suffisent plus, on construit celui qu'il vous faut."
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-base md:text-lg leading-relaxed italic" style={{ color: C.textSec }}>
+              On les a vues se battre avec{" "}
+              <span style={{ color: C.amber }} className="not-italic font-medium">
+                des SaaS trop chers
+              </span>
+              ,{" "}
+              <span style={{ color: C.amber }} className="not-italic font-medium">
+                des Excel qui craquent
+              </span>
+              ,{" "}
+              <span style={{ color: C.amber }} className="not-italic font-medium">
+                des outils qui ne collent pas à leur métier
+              </span>
+              . Botami Software est né de ce constat : quand les outils du marché ne suffisent plus, on construit celui qu'il vous faut.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Bloc 2C — Comparatif */}
-      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.bg }}>
+      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-4 text-center`} style={{ color: C.charcoal }}>
-            Devis agence au TJM vs Botami Software
+          <h2 className={`${heading} text-3xl md:text-4xl mb-3 text-center`}>
+            Agence classique vs Botami Software
           </h2>
-          <p className="text-center mb-10 max-w-2xl mx-auto" style={{ color: C.slate }}>
-            Pourquoi le prix d'une application au forfait est honnête — et celui au TJM est un pari.
+          <p className="text-center mb-12 text-lg" style={{ color: C.textSec }}>
+            Pourquoi le modèle agence traditionnelle coûte plus cher pour un résultat incertain.
           </p>
 
-          <div className="rounded-xl overflow-hidden border shadow-sm" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr style={{ backgroundColor: C.amberPale }}>
-                    <th className="text-left p-4 font-heading font-semibold" style={{ color: C.charcoal }}>Critère</th>
-                    <th className="text-left p-4 font-heading font-semibold" style={{ color: C.charcoal }}>Devis agence traditionnelle</th>
-                    <th className="text-left p-4 font-heading font-semibold" style={{ color: C.amber }}>Botami Software</th>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr style={{ borderBottom: `2px solid ${C.amber}` }}>
+                  <th className="text-left p-4 font-heading font-bold">Critère</th>
+                  <th className="text-left p-4 font-heading font-bold">Agence / ESN classique</th>
+                  <th className="text-left p-4 font-heading font-bold" style={{ color: C.amber }}>
+                    Botami Software
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Modèle de prix", "TJM 500-800€ × estimation de jours", "Forfait 5 000-15 000€, une seule fois"],
+                  ["Propriété du code", "Variable, souvent à négocier", "Oui, code source remis à la livraison"],
+                  ["Délai de livraison", "3 à 12 mois selon la charge", "4 à 8 semaines"],
+                  ["Interlocuteur", "Chef de projet, puis développeurs qui tournent", "2 fondateurs, de A à Z"],
+                  ["Personnalisation", "Totale mais surfacturée au TJM", "Conçue sur mesure, incluse dans le forfait"],
+                  ["Dépendance au fournisseur", "Forte (maintenance facturée, code retenu)", "Zéro — vous partez avec tout"],
+                  ["Coût sur 3 ans", "25 000 à 90 000€", "5 000-15 000€ (payé une fois)"],
+                ].map(([crit, col1, col2], i) => (
+                  <tr key={i} style={{ borderBottom: "1px solid #E5E7EB" }}>
+                    <td className="p-4 font-medium">{crit}</td>
+                    <td className="p-4" style={{ color: C.textSec }}>{col1}</td>
+                    <td className="p-4 font-medium" style={{ color: C.amber }}>{col2}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row, idx) => (
-                    <tr key={idx} className="border-t" style={{ borderColor: "#E5E7EB" }}>
-                      <td className="p-4 font-medium" style={{ color: C.charcoal }}>{row.label}</td>
-                      <td className="p-4 text-sm" style={{ color: C.slate }}>{row.competitor}</td>
-                      <td className="p-4 text-sm font-medium" style={{ color: C.amber }}>{row.botami}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
+
+          <p className="text-sm mt-6 text-center max-w-3xl mx-auto" style={{ color: C.textSec }}>
+            Une agence reste pertinente pour des projets très complexes avec des équipes dédiées sur plusieurs mois.
+            Le sur mesure Botami convient aux PME/ETI qui veulent un outil fonctionnel rapidement, sans gérer un projet IT lourd.
+          </p>
         </div>
       </section>
 
       {/* Bloc 3 — Process */}
-      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-3xl mx-auto">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-4 text-center`} style={{ color: C.charcoal }}>
+      <section className="px-4 md:px-8 py-16 md:py-24">
+        <div className="max-w-5xl mx-auto">
+          <h2 className={`${heading} text-3xl md:text-4xl mb-12 text-center`}>
             Comment ça se passe
           </h2>
-          <div className="flex justify-center mb-12">
-            <span className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
-              <Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison
-            </span>
-          </div>
-          <div className="flex flex-col gap-10">
-            {steps.map((s) => {
-              const Icon = s.icon;
-              return (
-                <div key={s.num} className="flex gap-6 items-start">
+
+          <div className="relative">
+            <div
+              className="absolute left-8 top-0 bottom-0 w-0.5 hidden md:block"
+              style={{ backgroundColor: C.amber, opacity: 0.3 }}
+            />
+
+            <div className="space-y-8">
+              {[
+                {
+                  num: "1",
+                  title: "Cahier des charges",
+                  time: "1-2 semaines",
+                  desc: "On cartographie votre besoin métier : les utilisateurs, les fonctionnalités, les intégrations, les règles de gestion. On propose une architecture claire et un forfait ferme.",
+                },
+                {
+                  num: "2",
+                  title: "Maquette",
+                  time: "1-2 semaines",
+                  desc: "Prototype cliquable de tous les écrans. Navigation, workflows, logique métier visible. Votre équipe teste et valide avant qu'on code une seule ligne.",
+                },
+                {
+                  num: "3",
+                  title: "Développement",
+                  time: "4-8 semaines",
+                  desc: "Construction itérative. Versions testables chaque semaine sur un environnement de staging. Retours intégrés en continu. Bugs corrigés au fil de l'eau.",
+                },
+                {
+                  num: "4",
+                  title: "Livraison + formation",
+                  time: "1 semaine",
+                  desc: "Mise en production. Migration des données si besoin. Formation de votre équipe. Remise du code source, des accès et de la documentation complète.",
+                },
+              ].map((step, i) => (
+                <div key={i} className="flex gap-6 md:gap-8 items-start">
                   <div
-                    className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-md"
-                    style={{ backgroundColor: C.amber, color: "#FFFFFF" }}
+                    className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center ${heading} text-2xl text-white relative z-10`}
+                    style={{ backgroundColor: C.amber }}
                   >
-                    <Icon className="w-5 h-5" />
+                    {step.num}
                   </div>
-                  <div className="pt-1">
-                    <div className="flex flex-wrap items-baseline gap-3 mb-2">
-                      <h3 className={`${heading} text-lg md:text-xl`} style={{ color: C.charcoal }}>
-                        {s.title}
-                      </h3>
-                      <span
-                        className="text-sm font-medium px-2.5 py-0.5 rounded-full"
-                        style={{ color: C.slate, backgroundColor: C.amberPale }}
-                      >
-                        {s.time}
+
+                  <div className={`flex-1 ${card} ${scrollReveal}`} style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
+                    <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                      <h3 className={`${heading} text-xl`}>{step.title}</h3>
+                      <span className="text-sm font-medium" style={{ color: C.amber }}>
+                        {step.time}
                       </span>
                     </div>
-                    <p className="leading-relaxed max-w-lg" style={{ color: C.slate }}>
-                      {s.desc}
+                    <p className="leading-relaxed" style={{ color: C.textSec }}>
+                      {step.desc}
                     </p>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Bloc 4 — Crédibilité */}
-      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.bg }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-10 text-center`} style={{ color: C.charcoal }}>
+      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
+        <div className="max-w-5xl mx-auto">
+          <h2 className={`${heading} text-3xl md:text-4xl mb-12 text-center`}>
             Qui est derrière Botami
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 rounded-xl border" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
-              <h3 className={`${heading} text-xl mb-2`} style={{ color: C.charcoal }}>Elias — CEO</h3>
-              <p className="text-sm leading-relaxed" style={{ color: C.slate }}>
-                Il cadre votre projet et vous donne un prix honnête dès le départ. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.
+            <div className={card} style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+              <h3 className={`${heading} text-xl mb-2`}>Elias — CEO</h3>
+              <p className="leading-relaxed" style={{ color: C.textSec }}>
+                Il cadre votre projet et pilote la relation client. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.
               </p>
             </div>
-            <div className="p-6 rounded-xl border" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
-              <h3 className={`${heading} text-xl mb-2`} style={{ color: C.charcoal }}>Théo — CTO</h3>
-              <p className="text-sm leading-relaxed" style={{ color: C.slate }}>
-                Il développe votre application et garantit que le budget couvre le livrable. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.
+
+            <div className={card} style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+              <h3 className={`${heading} text-xl mb-2`}>Théo — CTO</h3>
+              <p className="leading-relaxed" style={{ color: C.textSec }}>
+                Il conçoit et développe votre application de A à Z. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.
               </p>
             </div>
           </div>
 
-          <div className="rounded-xl p-6 border" style={{ backgroundColor: C.amberPale, borderColor: "#E5E7EB" }}>
-            <h4 className={`${heading} text-lg mb-4`} style={{ color: C.charcoal }}>Garanties</h4>
+          <div className={`${card} max-w-3xl mx-auto`} style={{ backgroundColor: C.amberLight, borderColor: C.amber }}>
+            <h3 className={`${heading} text-xl mb-4 text-center`}>Garanties</h3>
             <ul className="space-y-3">
               {[
                 "Prix forfaitaire annoncé avant de commencer",
                 "Code source remis à la livraison",
                 "Maquette validée avant le développement",
                 "Droit de changer de prestataire à tout moment",
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: C.success }} />
-                  <span className="text-sm" style={{ color: C.charcoal }}>{item}</span>
+              ].map((g, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: C.success }} />
+                  <span className="leading-relaxed">{g}</span>
                 </li>
               ))}
             </ul>
@@ -424,20 +327,41 @@ const LandingGoogleDeveloppementApplication = () => {
       </section>
 
       {/* Bloc 5 — FAQ */}
-      <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
+      <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-10 text-center`} style={{ color: C.charcoal }}>
-            Questions sur le coût
+          <h2 className={`${heading} text-3xl md:text-4xl mb-12 text-center`}>
+            Questions fréquentes
           </h2>
 
-          <Accordion type="single" collapsible defaultValue="item-0" className="space-y-4">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border rounded-xl px-6" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                <AccordionTrigger className={`${heading} text-left hover:no-underline py-4`} style={{ color: C.charcoal }}>
-                  {f.q}
+          <Accordion type="single" collapsible defaultValue="item-0">
+            {[
+              {
+                q: "Vous développez des applications mobiles ou web ?",
+                a: "Les deux. Application web accessible depuis un navigateur, application mobile native (iOS/Android), ou les deux combinées. On recommande la solution la plus adaptée à votre usage réel — souvent une webapp responsive suffit et coûte moins cher qu'une app native.",
+              },
+              {
+                q: "Pourquoi pas une agence classique ?",
+                a: "Une agence facture au TJM, avec des développeurs qui tournent sur votre projet. Résultat : délais longs, coût imprévisible, interlocuteur qui change. Chez Botami, vous parlez aux deux fondateurs, du brief à la livraison. Forfait fixe, pas de surprise.",
+              },
+              {
+                q: "Et si mon besoin évolue après la livraison ?",
+                a: "Le code est à vous. Vous pouvez nous confier les évolutions, ou les faire faire par un autre développeur. Maintenance optionnelle la première année, puis à la demande. Zéro engagement.",
+              },
+              {
+                q: "Vous pouvez intégrer mon application avec mes outils existants ?",
+                a: "Oui. APIs, exports/imports, synchronisation temps réel avec vos outils (CRM, ERP, compta, email, etc.). C'est inclus dans le scope initial si c'est au cahier des charges.",
+              },
+              {
+                q: "Combien de temps pour être opérationnel ?",
+                a: "4 à 8 semaines du brief à la mise en production. Cahier des charges et maquette en 2-4 semaines, développement en 4-8 semaines, livraison et formation en 1 semaine.",
+              },
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-b" style={{ borderColor: "#E5E7EB" }}>
+                <AccordionTrigger className="text-left font-heading font-semibold text-base py-5 hover:no-underline">
+                  {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="pb-4" style={{ color: C.slate }}>
-                  {f.a}
+                <AccordionContent className="leading-relaxed pb-5" style={{ color: C.textSec }}>
+                  {faq.a}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -445,20 +369,20 @@ const LandingGoogleDeveloppementApplication = () => {
         </div>
       </section>
 
-      {/* Bloc 6 — Réservation */}
+      {/* Bloc 6 — Formulaire */}
       <LPFormCalendly
-              route="/lp/google/developpement-application"
-        title="Parlons de votre budget et votre projet"
-        subtitle="15-20 minutes pour évaluer la complexité et le coût de votre app. Sans engagement."
+        route="/lp/google/developpement-application"
+        title="Réservez votre appel découverte gratuit"
+        subtitle="15-20 minutes pour évaluer votre besoin. On vous dit honnêtement si une application sur mesure est la bonne réponse."
         buttonLabel="Je réserve mon appel découverte gratuit"
       />
 
       {/* Bloc 7 — Dernier CTA */}
-      <section className="px-4 md:px-8 py-16" style={{ backgroundColor: C.amberPale }}>
+      <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-6`} style={{ color: C.charcoal }}>
-            Prêt à discuter de votre projet et de votre budget ?
-          </h2>
+          <p className="text-lg md:text-xl mb-6 leading-relaxed" style={{ color: C.textSec }}>
+            Entreprise française. Code source remis à chaque projet. Prix forfaitaire. Votre application, pas un template.
+          </p>
           <a
             href="#formulaire"
             className={ctaBtn}
@@ -468,13 +392,53 @@ const LandingGoogleDeveloppementApplication = () => {
           >
             Je réserve mon appel découverte gratuit
           </a>
-          <p className="mt-4 text-sm" style={{ color: C.slate }}>
-            Entreprise française. Prix honnête, code source remis, pas de surprise. Entre 5 000€ et 15 000€.
-          </p>
         </div>
       </section>
 
-      <Footer />
+      {/* Bloc 8 — Footer */}
+      <footer className="px-4 md:px-8 py-12" style={{ backgroundColor: C.footer, color: C.card }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className={`${heading} text-lg mb-3`}>Botami Software</h3>
+              <p className="text-sm opacity-80 mb-2">Entreprise française 🇫🇷</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-3">Contact</h4>
+              <p className="text-sm mb-2">
+                <a href="mailto:contact@botami-agency.com" className="hover:underline opacity-80">
+                  contact@botami-agency.com
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-3">Légal</h4>
+              <p className="text-sm mb-2">
+                <a href="#" className="hover:underline opacity-80">Mentions légales</a>
+              </p>
+              <p className="text-sm opacity-80">
+                <a href="#" className="hover:underline">Politique de confidentialité</a>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-center pt-6 border-t border-white/20">
+            <a
+              href="https://www.linkedin.com/company/botami"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+              aria-label="LinkedIn"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
