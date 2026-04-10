@@ -348,6 +348,10 @@ const ProcessTimeline = () => {
 
 /* ─── Page ─── */
 const LandingGoogleAgenceDevWeb = () => {
+  useEffect(() => {
+    document.title = "Agence web — applications et sites sur mesure | Botami Software";
+  }, []);
+
   return (
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
       {/* ─── Header ─── */}
@@ -608,7 +612,7 @@ const LandingGoogleAgenceDevWeb = () => {
       <LPFormCalendly
               route="/lp/google/agence-dev-web"
         title="Réservez votre appel découverte gratuit"
-        subtitle="15-20 minutes pour parler de votre application web métier. Sans engagement."
+        subtitle="15-20 minutes pour parler de votre projet web. Sans engagement."
       />
 
       {/* ─── Bloc 7 — Dernier CTA ─── */}
