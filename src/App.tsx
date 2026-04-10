@@ -33,14 +33,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/lp/prix" element={<LandingPrix />} />
           <Route path="/lp/google" element={<LandingGoogle />} />
-          <Route path="/lp/google/alternative-saas" element={<LandingGoogleSaas />} />
-          <Route path="/lp/google/dev-sur-mesure" element={<LandingGoogleDev />} />
-          <Route path="/lp/google/stack-bricole" element={<LandingGoogleStack />} />
-          <Route path="/lp/google/prix" element={<LandingGooglePrix />} />
           <Route path="/lp/google/application-mobile" element={<LandingGoogleMobile />} />
           <Route path="/lp/google/agence-dev-web" element={<LandingGoogleAgenceDevWeb />} />
-          <Route path="/lp/google/agence-dev-application" element={<LandingGoogleAgenceDevApplication />} />
-          <Route path="/lp/google/application-sur-mesure" element={<LandingGoogleApplicationSurMesure />} />
           <Route path="/lp/google/developpement-logiciel" element={<LandingGoogleDeveloppementLogiciel />} />
           <Route path="/lp/google/application-web-sur-mesure" element={<LandingGoogleApplicationWebSurMesure />} />
           <Route path="/lp/google/developpement-application" element={<LandingGoogleDeveloppementApplication />} />
