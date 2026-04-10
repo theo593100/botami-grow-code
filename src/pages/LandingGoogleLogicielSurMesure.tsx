@@ -622,7 +622,7 @@ const LandingGoogleLogicielSurMesure = () => {
       </section>
 
       {/* ─── Bloc 7 — Dernier CTA ─── */}
-      <section className="px-4 md:px-8 py-16 text-center">
+      <section className="px-4 md:px-8 py-16 md:py-20 text-center" style={{ backgroundColor: C.amberLight }}>
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <p className="text-lg md:text-xl font-medium mb-8" style={{ color: C.text }}>
