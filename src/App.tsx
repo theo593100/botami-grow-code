@@ -14,6 +14,7 @@ import LandingGoogleMobile from "./pages/LandingGoogleMobile.tsx";
 import LandingGoogleAgenceDevWeb from "./pages/LandingGoogleAgenceDevWeb.tsx";
 import LandingGoogleAgenceDevApplication from "./pages/LandingGoogleAgenceDevApplication.tsx";
 import LandingGoogleApplicationSurMesure from "./pages/LandingGoogleApplicationSurMesure.tsx";
+import LandingGoogleDeveloppementLogiciel from "./pages/LandingGoogleDeveloppementLogiciel.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/lp/google/agence-dev-web" element={<LandingGoogleAgenceDevWeb />} />
           <Route path="/lp/google/agence-dev-application" element={<LandingGoogleAgenceDevApplication />} />
           <Route path="/lp/google/application-sur-mesure" element={<LandingGoogleApplicationSurMesure />} />
+          <Route path="/lp/google/developpement-logiciel" element={<LandingGoogleDeveloppementLogiciel />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
