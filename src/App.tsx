@@ -39,6 +39,7 @@ const App = () => (
           <Route path="/lp/google/developpement-logiciel" element={<LandingGoogleDeveloppementLogiciel />} />
           <Route path="/lp/google/application-web-sur-mesure" element={<LandingGoogleApplicationWebSurMesure />} />
           <Route path="/lp/google/developpement-application" element={<LandingGoogleDeveloppementApplication />} />
+          <Route path="/lp/google/logiciel-btp" element={<LandingGoogleLogicielBtp />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
