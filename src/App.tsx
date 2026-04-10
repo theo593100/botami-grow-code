@@ -18,6 +18,7 @@ import LandingGoogleCrmSurMesure from "./pages/LandingGoogleCrmSurMesure.tsx";
 import LandingGoogleLogicielFacturation from "./pages/LandingGoogleLogicielFacturation.tsx";
 import LandingGoogleLogicielComptabilite from "./pages/LandingGoogleLogicielComptabilite.tsx";
 import LandingGoogleLogicielSurMesure from "./pages/LandingGoogleLogicielSurMesure.tsx";
+import LandingGoogleLogicielSurMesure from "./pages/LandingGoogleLogicielSurMesure.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/lp/google/crm-sur-mesure" element={<LandingGoogleCrmSurMesure />} />
           <Route path="/lp/google/logiciel-facturation" element={<LandingGoogleLogicielFacturation />} />
           <Route path="/lp/google/logiciel-comptabilite" element={<LandingGoogleLogicielComptabilite />} />
+          <Route path="/lp/google/logiciel-sur-mesure" element={<LandingGoogleLogicielSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
