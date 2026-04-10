@@ -19,6 +19,8 @@ import LandingGoogleApplicationWebSurMesure from "./pages/LandingGoogleApplicati
 import LandingGoogleDeveloppementApplication from "./pages/LandingGoogleDeveloppementApplication.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
+import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
+import AdminResetPassword from "./pages/AdminResetPassword.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
@@ -53,6 +55,8 @@ const App = () => (
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/signup" element={<AdminSignup />} />
+          <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+          <Route path="/admin/reset-password" element={<AdminResetPassword />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="landing-pages" element={<LandingPages />} />
             <Route path="users" element={<UsersPage />} />
