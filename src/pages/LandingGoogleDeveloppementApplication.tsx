@@ -187,6 +187,8 @@ const LandingGoogleDeveloppementApplication = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    document.title = "Développement application sur mesure | Botami Software";
+
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
