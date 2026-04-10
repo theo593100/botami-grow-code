@@ -325,6 +325,8 @@ const ProcessTimeline = () => {
 const LandingGoogleLogicielSurMesure = () => {
   useEffect(() => {
     document.title = "Logiciel sur mesure pour entreprise | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Logiciel sur mesure pour remplacer vos SaaS et fichiers Excel. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
   }, []);
 
   return (

@@ -138,6 +138,12 @@ const ProcessTimeline = () => {
   const [activeSteps, setActiveSteps] = useState<boolean[]>(new Array(steps.length).fill(false));
 
   useEffect(() => {
+    document.title = "Logiciel RH sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Logiciel RH sur mesure adapté à vos process. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const timeline = timelineRef.current;
       if (!timeline) return;

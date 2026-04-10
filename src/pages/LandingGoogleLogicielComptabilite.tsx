@@ -141,7 +141,11 @@ const ProcessTimeline = () => {
 };
 
 const LandingGoogleLogicielComptabilite = () => {
-  useEffect(() => { document.title = "Logiciel comptabilité sur mesure | Botami Software"; }, []);
+  useEffect(() => {
+    document.title = "Logiciel comptabilité sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Logiciel comptabilité sur mesure pour automatiser la pré-compta et le reporting. Forfait 5 000–15 000€, code source à vous.");
+  }, []);
   return (
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
       <header className="py-5 px-4 md:px-8 border-b" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>

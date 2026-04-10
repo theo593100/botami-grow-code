@@ -171,6 +171,8 @@ const ProcessTimeline = () => {
 const LandingGoogleLogicielFacturation = () => {
   useEffect(() => {
     document.title = "Logiciel de facturation sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Logiciel de facturation sur mesure conforme 2026. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
   }, []);
 
   return (

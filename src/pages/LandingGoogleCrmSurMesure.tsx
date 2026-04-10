@@ -326,6 +326,8 @@ const ProcessTimeline = () => {
 const LandingGoogleCrmSurMesure = () => {
   useEffect(() => {
     document.title = "CRM sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "CRM sur mesure conçu pour votre cycle de vente. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
   }, []);
 
   return (
