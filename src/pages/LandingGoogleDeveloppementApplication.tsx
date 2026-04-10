@@ -3,13 +3,13 @@ import {
   CheckCircle2,
   Clock,
   Code2,
-  Globe,
+  Euro,
+  Layers,
   Linkedin,
   Mail,
   Phone,
   Shield,
-  Smartphone,
-  Zap,
+  Users,
 } from "lucide-react";
 import {
   Accordion,
@@ -35,86 +35,82 @@ const heading = "font-heading font-bold";
 const ctaBtn =
   "inline-block font-body font-semibold text-white rounded-lg px-8 py-4 text-base md:text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5";
 
-const processSteps = [
+const pricingFactors = [
+  {
+    icon: Layers,
+    title: "Complexité métier",
+    desc: "Gestion simple de commandes : ~5 000-7 000€. Système d'automatisation complexe avec 10 workflows : 10 000-15 000€.",
+  },
+  {
+    icon: Clock,
+    title: "Volume de données et reporting",
+    desc: "Peu de données : prix bas. Énormes volumes, rapports sophisqués, historique détaillé : prix monte.",
+  },
   {
     icon: Code2,
-    title: "Cahier des charges",
-    desc: "On comprend votre workflow en détail. Modules, rôles utilisateur, données, intégrations. On propose une architecture web scalable.",
-    duration: "1-2 semaines",
+    title: "Intégrations externes",
+    desc: "App isolée : moins cher. Connexions à 3-5 outils externes (Stripe, Google Sheets, Salesforce) : coût augmente.",
   },
   {
-    icon: Smartphone,
-    title: "Maquette",
-    desc: "Prototype cliquable complet. Backoffice, front client, tous les écrans. Vous testez la navigation avant le code.",
-    duration: "1-2 semaines",
-  },
-  {
-    icon: Globe,
-    title: "Développement",
-    desc: "Backend + frontend en parallèle. Bases de données sécurisées. Versions testables sur serveur de staging. Vous testez en continu.",
-    duration: "4-8 semaines",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Livraison + formation",
-    desc: "Migration des données. Lancement en production. Formation détaillée. Code source, documentation, accès — vous êtes autonomes.",
-    duration: "1 semaine",
+    icon: Users,
+    title: "Délai souhaité",
+    desc: "Vous voulez vite ? C'est faisable, mais c'est du travail. Délai un peu plus long = coût peut baisser un peu. Discutons ensemble.",
   },
 ];
 
 const valueProps = [
   {
-    icon: Globe,
-    title: "Accès de partout",
-    desc: "Web app = une URL. Vos utilisateurs se connectent depuis n'importe quel appareil, n'importe où. Bureau, mobile, tablette — même application adaptée.",
+    icon: Euro,
+    title: "Comparaison 3 ans : app vs SaaS",
+    desc: "SaaS à 200€/mois = 7 200€ sur 3 ans. À 500€/mois = 18 000€. Votre app : 5 000–15 000€ une seule fois. Propriété totale, zéro abonnement après.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Le prix qu'on annonce est le prix que vous payez",
+    desc: "Pas de TJM qui traîne. Pas de surprise à la facturation. Forfait transparent. Honnêteté.",
   },
   {
     icon: Shield,
-    title: "Sécurité et performance",
-    desc: "Architecture solide, données chiffrées, hébergement français. Votre app supporte les pics de charge sans ralentir. Mises à jour de sécurité continues.",
-  },
-  {
-    icon: Zap,
-    title: "Prix fixe, vous êtes propriétaires",
-    desc: "Entre 5 000€ et 15 000€ une seule fois. Code source à vous. Aucune dépendance. Vous pouvez embaucher quelqu'un ou nous confier la maintenance.",
+    title: "Chaque euro dépensé ajoute une fonction",
+    desc: "L'app ne fait que ce dont vous avez besoin. Pas de 50 fonctionnalités inutiles. Budget rentabilisé rapidement.",
   },
   {
     icon: Clock,
-    title: "Livraison complète en 4-8 semaines",
-    desc: "2 semaines : cahier des charges + maquette. Puis développement itératif. Production rapidement, sans délai qui traîne.",
+    title: "Après livraison, moins coûteux",
+    desc: "Plus d'abonnements SaaS. Application stable, documentée. Maintenance minimale. Coût total baisse.",
   },
 ];
 
 const faqs = [
   {
-    q: "Quelle différence entre une web app sur mesure et un SaaS commercial ?",
-    a: "SaaS = c'est à eux, vous louez. Web app = c'est à vous, vous achetez une seule fois. SaaS veut vous enfermer, web app sur mesure vous donne la propriété totale.",
+    q: "5 000€-15 000€, c'est cher ?",
+    a: "Non. Comparez : SaaS à 200€/mois = 7 200€ sur 3 ans, sans propriété. SaaS à 500€/mois = 18 000€ sur 3 ans. Votre app vous appartient, elle se rentabilise vite.",
   },
   {
-    q: "Combien de temps avant d'être en production ?",
-    a: "4 à 8 semaines après signature. Les 2 premières : cahier des charges + maquette. La suite : développement en continu, tests réguliers. Puis lancement.",
+    q: "Quels sont les coûts après la livraison ?",
+    a: "L'app est stable et documentée. Maintenance minimale si bien construite. Mises à jour OS, corrections mineures. Pas d'abonnement obligatoire — maintenance optionnelle.",
   },
   {
-    q: "Mon app web peut marcher sans connexion internet ?",
-    a: "Partiellement. Les données se sync quand la connexion revient. C'est possible, mais c'est du travail supplémentaire — à inclure dans le cahier des charges.",
+    q: "Quel est le prix minimum ? Et le maximum ?",
+    a: "Minimum : 5 000€. En dessous, c'est trop court pour une vraie app. Maximum : dépasse rarement 15 000€. Si votre besoin est hors budget, on réduit le scope ensemble.",
   },
   {
-    q: "Combien d'utilisateurs simultanés peut supporter mon app ?",
-    a: "Dépend du volume de données et de la complexité. Pour une PME : 100-1000 utilisateurs simultanés sans souci. Gros volume ? On dimensionne l'infra ensemble.",
+    q: "Pouvez-vous développer une app à 3 000€ ?",
+    a: "Non. À 3 000€, c'est trop court. Ça pourrait être du no-code ailleurs, ou une app très minimale, mais une vraie application professionnelle : 5 000€ minimum.",
   },
   {
-    q: "Et après la livraison ? Qui maintient l'app ?",
-    a: "C'est votre choix. Code documenté et transférable. Vous l'embauchez quelqu'un, nous proposez la maintenance, ou restez autonome. Zéro obligation.",
+    q: "Puis-je payer en plusieurs fois ?",
+    a: "Oui. Pour un forfait standard : dépôt à la signature, reste à la livraison. Pour gros projets : jalons intermédiaires. On discute du financement ensemble — flexibilité.",
   },
 ];
 
 const comparisonRows = [
-  { label: "Modèle de prix", competitor: "Abonnement mensuel par utilisateur", botami: "Forfait 5 000-15 000€, une seule fois" },
-  { label: "Propriété du code", competitor: "Non, code source chez l'éditeur", botami: "Oui, code source remis à la livraison" },
-  { label: "Délai de livraison", competitor: "Immédiat, mais adaptation impossible", botami: "4 à 8 semaines" },
-  { label: "Personnalisation", competitor: "Contrainte par le template multi-clients", botami: "Conçu sur mesure pour votre métier" },
-  { label: "Dépendance au fournisseur", competitor: "Totale (données, tarif, fermeture éventuelle)", botami: "Zéro — vous pouvez partir avec tout" },
-  { label: "Coût sur 3 ans", competitor: "7 200 à 30 000€ (selon utilisateurs)", botami: "5 000-15 000€ (payé une fois)" },
+  { label: "Modèle de prix", competitor: "TJM 500-800€ × estimation de jours", botami: "Forfait 5 000-15 000€, une seule fois" },
+  { label: "Propriété du code", competitor: "Variable, à négocier", botami: "Oui, code source remis à la livraison" },
+  { label: "Délai de livraison", competitor: "4 à 12 mois selon la charge", botami: "4 à 8 semaines" },
+  { label: "Personnalisation", competitor: "Totale mais à surfacturer", botami: "Conçu sur mesure pour votre métier" },
+  { label: "Dépendance au fournisseur", competitor: "Forte (maintenance facturée)", botami: "Zéro — vous pouvez partir avec tout" },
+  { label: "Coût sur 3 ans", competitor: "25 000 à 90 000€", botami: "5 000-15 000€ (payé une fois)" },
 ];
 
 const clientLogos = [
@@ -177,7 +173,7 @@ const Footer = () => (
   </footer>
 );
 
-const LandingGoogleApplicationWebSurMesure = () => {
+const LandingGoogleDeveloppementApplication = () => {
   const logosRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -233,10 +229,10 @@ const LandingGoogleApplicationWebSurMesure = () => {
       <section className="px-4 md:px-8 pt-12 md:pt-20 pb-16 md:pb-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-6xl mx-auto text-center">
           <h1 className={`${heading} text-3xl md:text-5xl lg:text-6xl mb-6`} style={{ color: C.charcoal }}>
-            Application web sur mesure. Accessible partout, sécurisée, votre propriété.
+            Combien coûte vraiment de développer une application ?
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10" style={{ color: C.slate }}>
-            Vous avez un besoin métier pour une application web. On la construit entièrement sur mesure — backoffice, front client, intégrations — prix forfaitaire, livraison 4 à 8 semaines, code source à vous.
+            Entre 5 000€ et 15 000€. Prix forfaitaire, transparent, livré en 4 à 8 semaines. Pour comprendre ce prix, ce que vous en tirez, et comment ça se compare au SaaS, parlons de votre situation.
           </p>
           <a
             href="#formulaire"
@@ -303,10 +299,10 @@ const LandingGoogleApplicationWebSurMesure = () => {
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.bg }}>
         <div className="max-w-5xl mx-auto">
           <h2 className={`${heading} text-2xl md:text-3xl mb-4 text-center`} style={{ color: C.charcoal }}>
-            SaaS commercial vs Botami Software
+            Devis agence au TJM vs Botami Software
           </h2>
           <p className="text-center mb-10 max-w-2xl mx-auto" style={{ color: C.slate }}>
-            Votre SaaS privé : accessible depuis n'importe où, propriété totale, zéro abonnement.
+            Pourquoi le prix d'une application au forfait est honnête — et celui au TJM est un pari.
           </p>
 
           <div className="rounded-xl overflow-hidden border shadow-sm" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
@@ -315,7 +311,7 @@ const LandingGoogleApplicationWebSurMesure = () => {
                 <thead>
                   <tr style={{ backgroundColor: C.amberPale }}>
                     <th className="text-left p-4 font-heading font-semibold" style={{ color: C.charcoal }}>Critère</th>
-                    <th className="text-left p-4 font-heading font-semibold" style={{ color: C.charcoal }}>SaaS commercial en ligne</th>
+                    <th className="text-left p-4 font-heading font-semibold" style={{ color: C.charcoal }}>Devis agence traditionnelle</th>
                     <th className="text-left p-4 font-heading font-semibold" style={{ color: C.amber }}>Botami Software</th>
                   </tr>
                 </thead>
@@ -334,33 +330,18 @@ const LandingGoogleApplicationWebSurMesure = () => {
         </div>
       </section>
 
-      {/* Bloc 3 — Process */}
+      {/* Bloc 3 — Facteurs de prix */}
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`${heading} text-2xl md:text-3xl mb-12 text-center`} style={{ color: C.charcoal }}>
-            Comment ça se passe
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`${heading} text-2xl md:text-3xl mb-4 text-center`} style={{ color: C.charcoal }}>
+            Pourquoi le coût varie entre 5 000€ et 15 000€
           </h2>
-
-          <div className="space-y-8">
-            {processSteps.map((step, idx) => (
-              <div key={idx} className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: C.amberPale }}>
-                    <step.icon className="w-6 h-6" style={{ color: C.amber }} />
-                  </div>
-                  {idx < processSteps.length - 1 && (
-                    <div className="w-0.5 h-full mx-auto mt-4" style={{ backgroundColor: "#E5E7EB" }} />
-                  )}
-                </div>
-                <div className="flex-1 pb-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className={`${heading} text-xl`} style={{ color: C.charcoal }}>{step.title}</h3>
-                    <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: C.amberPale, color: C.amber }}>
-                      {step.duration}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed" style={{ color: C.slate }}>{step.desc}</p>
-                </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            {pricingFactors.map((pf, idx) => (
+              <div key={idx} className="p-6 rounded-xl border" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+                <pf.icon className="w-8 h-8 mb-4" style={{ color: C.amber }} />
+                <h3 className={`${heading} text-lg mb-2`} style={{ color: C.charcoal }}>{pf.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: C.slate }}>{pf.desc}</p>
               </div>
             ))}
           </div>
@@ -378,13 +359,13 @@ const LandingGoogleApplicationWebSurMesure = () => {
             <div className="p-6 rounded-xl border" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
               <h3 className={`${heading} text-xl mb-2`} style={{ color: C.charcoal }}>Elias — CEO</h3>
               <p className="text-sm leading-relaxed" style={{ color: C.slate }}>
-                Il cadre votre projet et pilote la relation client. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.
+                Il cadre votre projet et vous donne un prix honnête dès le départ. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.
               </p>
             </div>
             <div className="p-6 rounded-xl border" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
               <h3 className={`${heading} text-xl mb-2`} style={{ color: C.charcoal }}>Théo — CTO</h3>
               <p className="text-sm leading-relaxed" style={{ color: C.slate }}>
-                Il conçoit et développe votre application de A à Z. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.
+                Il développe votre application et garantit que le budget couvre le livrable. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.
               </p>
             </div>
           </div>
@@ -412,7 +393,7 @@ const LandingGoogleApplicationWebSurMesure = () => {
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-3xl mx-auto">
           <h2 className={`${heading} text-2xl md:text-3xl mb-10 text-center`} style={{ color: C.charcoal }}>
-            Questions fréquentes
+            Questions sur le coût
           </h2>
 
           <Accordion type="single" collapsible defaultValue="item-0" className="space-y-4">
@@ -432,8 +413,8 @@ const LandingGoogleApplicationWebSurMesure = () => {
 
       {/* Bloc 6 — Réservation */}
       <LPFormCalendly
-        title="Réservez votre appel découverte gratuit"
-        subtitle="15-20 minutes pour évaluer votre application web. Sans engagement."
+        title="Parlons de votre budget et votre projet"
+        subtitle="15-20 minutes pour évaluer la complexité et le coût de votre app. Sans engagement."
         buttonLabel="Je réserve mon appel découverte gratuit"
       />
 
@@ -441,7 +422,7 @@ const LandingGoogleApplicationWebSurMesure = () => {
       <section className="px-4 md:px-8 py-16" style={{ backgroundColor: C.amberPale }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`${heading} text-2xl md:text-3xl mb-6`} style={{ color: C.charcoal }}>
-            Prêt à construire votre application web ?
+            Prêt à discuter de votre projet et de votre budget ?
           </h2>
           <a
             href="#formulaire"
@@ -453,7 +434,7 @@ const LandingGoogleApplicationWebSurMesure = () => {
             Je réserve mon appel découverte gratuit
           </a>
           <p className="mt-4 text-sm" style={{ color: C.slate }}>
-            Entreprise française. Code source remis. Prix forfaitaire. Application web scalable et sécurisée.
+            Entreprise française. Prix honnête, code source remis, pas de surprise. Entre 5 000€ et 15 000€.
           </p>
         </div>
       </section>
@@ -463,4 +444,4 @@ const LandingGoogleApplicationWebSurMesure = () => {
   );
 };
 
-export default LandingGoogleApplicationWebSurMesure;
+export default LandingGoogleDeveloppementApplication;
