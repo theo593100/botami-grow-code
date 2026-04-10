@@ -20,8 +20,8 @@ const Index = () => (
       <ProcessSection />
       {/* TODO: remettre après validation client
       <CaseStudySection />
-      <ClientLogosSection />
       */}
+      <ClientLogosSection />
       <TeamSection />
       <FAQSection />
       <ContactSection />
