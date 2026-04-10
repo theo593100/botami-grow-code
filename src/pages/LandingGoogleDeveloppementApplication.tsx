@@ -60,10 +60,10 @@ const LandingGoogleDeveloppementApplication = () => {
   const scrollReveal = useScrollReveal();
 
   useEffect(() => {
-    document.title = "Développement d'applications sur mesure | Botami Software";
+    document.title = "Développement application sur mesure | Botami Software";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
-      meta.setAttribute("content", "Développement d'applications web, mobile et métier sur mesure. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
+      meta.setAttribute("content", "Développement d'application sur mesure mobile, web ou métier. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
     }
   }, []);
 
@@ -80,11 +80,11 @@ const LandingGoogleDeveloppementApplication = () => {
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-4xl mx-auto text-center">
           <h1 className={`${heading} text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight`}>
-            Développement d'applications sur mesure. Mobile, web, métier.
+            Développement d'applications sur mesure. Mobile, web, métier — on construit la vôtre.
           </h1>
           <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: C.textSec }}>
-            Votre application conçue pour votre métier — pas un template adapté à la va-vite.
-            Prix forfaitaire de 5 000 à 15 000€, livrée en 4 à 8 semaines, code source à vous.
+            On conçoit, on développe, on livre votre application en 4 à 8 semaines.
+            Forfait 5&nbsp;000–15&nbsp;000€. Code source à vous à la livraison.
           </p>
           <a
             href="#formulaire"
@@ -104,20 +104,20 @@ const LandingGoogleDeveloppementApplication = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                title: "Application web, mobile ou les deux",
-                desc: "Appli métier interne, portail client, app mobile terrain, outil de gestion — on développe ce dont votre activité a besoin, sur la plateforme qui fait sens.",
+                title: "Cadrage métier avant une ligne de code",
+                desc: "On commence par comprendre votre activité, vos utilisateurs, vos contraintes. Pas de code tant que le besoin n'est pas verrouillé. Résultat : pas de surprise à la livraison.",
               },
               {
-                title: "Conçue autour de vos process",
-                desc: "Pas de compromis avec un SaaS générique. Chaque écran, chaque workflow, chaque règle métier existe parce que votre équipe en a besoin au quotidien.",
+                title: "Maquette validée avant le dev",
+                desc: "Prototype cliquable de tous les écrans. Votre équipe teste la navigation, les parcours, la logique métier. On ne code rien tant que vous n'avez pas validé.",
               },
               {
-                title: "Code source à vous, zéro dépendance",
-                desc: "À la livraison, vous recevez tout : code, données, documentation, accès serveur. Vous pouvez changer de prestataire demain. Zéro lock-in.",
+                title: "Testable chaque semaine sur staging",
+                desc: "Développement itératif. Chaque semaine, une version testable sur un environnement dédié. Retours intégrés en continu, pas de tunnel de 6 mois.",
               },
               {
-                title: "Forfait transparent, livraison rapide",
-                desc: "5 000 à 15 000€ selon la complexité. C'est le prix qu'on annonce, c'est celui que vous payez. Livraison en 4 à 8 semaines, pas 6 mois.",
+                title: "Formation et code source remis à la livraison",
+                desc: "Mise en production, formation de votre équipe, remise du code source et de la documentation. Vous êtes autonome dès le jour 1.",
               },
             ].map((item, i) => (
               <div

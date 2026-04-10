@@ -99,23 +99,23 @@ const CTA = ({ id }: { id?: string }) => (
 const valueProps = [
   {
     icon: Monitor,
-    title: "Votre métier, pas un template",
+    title: "Collé à votre métier, pas à un standard",
     desc: "Chaque entreprise a ses règles : comment on facture, comment on suit un dossier, comment on valide, comment on archive. Un SaaS générique vous oblige à rentrer dans ses cases. On fait l'inverse : l'outil suit vos règles.",
   },
   {
     icon: Layers2,
-    title: "Un seul outil, pas 7 abonnements",
+    title: "Un seul outil au lieu de cinq qui ne se parlent pas",
     desc: "Beaucoup d'entreprises paient 4 à 8 SaaS qui ne se parlent pas, plus des Excel partagés, plus un Notion pour relier le tout. On remplace cette stack par un seul outil conçu pour votre flux de travail.",
   },
   {
     icon: Code2,
-    title: "Prix forfaitaire, propriété totale",
+    title: "Prix forfaitaire, pas abonnement par utilisateur",
     desc: "Pas d'abonnement par utilisateur, pas de licence qui se renouvelle, pas de module facturé à part. Un forfait, une fois. Le code est à vous. Vos données sont chez vous. Vous pouvez changer de prestataire demain.",
   },
   {
     icon: Clock,
-    title: "4 à 8 semaines, pas 6 mois",
-    desc: "Maquette validée en semaine 2. Développement itératif. Vous voyez avancer chaque semaine sur un environnement de staging. Pas de tunnel de 6 mois avec une livraison qu'on découvre à la fin.",
+    title: "Code source à vous, zéro lock-in",
+    desc: "À la livraison, vous recevez tout : code source, données, documentation, accès serveur. Vous pouvez changer de prestataire demain. Pas de dépendance, pas de piège.",
   },
 ];
 
@@ -181,24 +181,24 @@ const steps = [
 /* ─── FAQ ─── */
 const faqs = [
   {
-    q: "C'est quoi la différence avec un SaaS que je peux louer ?",
-    a: "Un SaaS, vous le louez — chaque mois, par utilisateur, tant que vous l'utilisez. Un logiciel sur mesure, vous l'achetez — une fois, pour votre cas précis. Le SaaS a du sens quand votre besoin est standard. Le sur mesure a du sens quand il ne l'est pas, ou quand les abonnements cumulés deviennent disproportionnés.",
+    q: "C'est vraiment moins cher qu'un SaaS ?",
+    a: "Sur 3 ans, oui. Un SaaS facture par utilisateur, par mois, avec des modules en option. Avec 10-20 utilisateurs, vous dépassez souvent 15 000€ sur 3 ans — pour un outil qui ne fait pas exactement ce qu'il vous faut. Le sur mesure, vous le payez une fois.",
   },
   {
-    q: "À partir de quelle taille d'entreprise ça vaut le coup ?",
-    a: "Pas une question de taille mais de décalage entre vos besoins et ce que le marché propose. Une TPE de 5 personnes avec un process métier précis peut avoir plus besoin de sur mesure qu'une ETI de 200 qui utilise du standard. Bilan honnête en appel découverte.",
+    q: "Comment on se lance ?",
+    a: "Un appel découverte de 15-20 minutes. On évalue votre besoin, on vous dit honnêtement si le sur mesure est pertinent ou pas. Si oui, on démarre par le cahier des charges (1-2 semaines). Pas d'engagement avant la validation du devis.",
   },
   {
-    q: "Et si notre besoin évolue dans 2 ans ?",
-    a: "Vous avez le code, vous choisissez. Soit on ajoute des fonctionnalités au cas par cas, soit vous reprenez en interne, soit un autre prestataire reprend. Pas d'abonnement qui vous force à rester.",
+    q: "Combien de temps ça prend ?",
+    a: "4 à 8 semaines du cahier des charges à la livraison. Maquette validée en semaine 2. Développement itératif avec accès staging chaque semaine. Pas de tunnel de 6 mois.",
   },
   {
-    q: "Comment on migre depuis nos outils actuels ?",
-    a: "Inclus dans la semaine de livraison. Export depuis vos SaaS actuels (CSV, API) ou vos fichiers Excel, import dans le nouveau logiciel. L'historique est préservé quand les données sont exportables.",
+    q: "Et la maintenance après ?",
+    a: "Garantie de correction des bugs sur le périmètre livré. Les évolutions sont discutées au cas par cas. Pas d'abonnement de maintenance obligatoire — vous payez quand il y a quelque chose à faire.",
   },
   {
-    q: "Vous faites quoi si on a un bug après la livraison ?",
-    a: "Garantie de correction des bugs sur le périmètre livré. Les évolutions (nouvelles fonctionnalités) sont discutées au cas par cas. Pas d'abonnement de maintenance obligatoire — vous payez quand il y a quelque chose à faire.",
+    q: "Puis-je changer de prestataire ?",
+    a: "Oui, à tout moment. Vous avez le code source, la documentation, les accès serveur. Un autre développeur peut reprendre demain. C'est dans le contrat.",
   },
 ];
 
@@ -354,12 +354,12 @@ const LandingGoogleLogicielSurMesure = () => {
           </Reveal>
           <Reveal delay={100}>
             <h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>
-              Logiciel sur mesure. Construit autour de votre métier, pas l'inverse.
+              Logiciel sur mesure. L'alternative aux SaaS et Excel qui craquent.
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: C.textSec }}>
-              Vous avez un process métier que personne sur le marché ne fait exactement. On construit le logiciel qui le reflète — pas un SaaS qui vous force à changer votre manière de travailler. Forfait 5&nbsp;000 à 15&nbsp;000€, 4 à 8 semaines, code source à vous.
+              Vos process, pas ceux d'un SaaS générique. Vos règles métier, pas celles d'un éditeur. Forfait 5&nbsp;000–15&nbsp;000€, livré en 4 à 8 semaines, code source à vous.
             </p>
           </Reveal>
           <Reveal delay={300}>
