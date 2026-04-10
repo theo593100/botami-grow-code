@@ -373,9 +373,6 @@ const LandingPrix = () => {
                 <a href="mailto:contact@botami-agency.com" className="block hover:text-white transition-colors">
                   contact@botami-agency.com
                 </a>
-                <a href="tel:+33600000000" className="block hover:text-white transition-colors">
-                  +33 6 00 00 00 00
-                </a>
               </div>
             </div>
             <div className="text-sm space-y-2">

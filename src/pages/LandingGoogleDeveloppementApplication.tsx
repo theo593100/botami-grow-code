@@ -160,10 +160,6 @@ const Footer = () => (
             <Mail className="w-4 h-4" />
             <span className="text-sm">contact@botami-agency.com</span>
           </a>
-          <a href="tel:+33600000000" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
-            <Phone className="w-4 h-4" />
-            <span className="text-sm">Téléphone</span>
-          </a>
           <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
             <Linkedin className="w-4 h-4" />
             <span className="text-sm">LinkedIn</span>

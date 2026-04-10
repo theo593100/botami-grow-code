@@ -380,9 +380,6 @@ const LandingGoogleDeveloppementLogiciel = () => {
                 </a>
               </p>
               <p className="text-sm opacity-80">
-                <a href="tel:+33123456789" className="hover:underline">
-                  +33 1 23 45 67 89
-                </a>
               </p>
             </div>
 
