@@ -24,6 +24,36 @@ import eliasPhoto from "@/assets/elias.png";
 import theoPhoto from "@/assets/theo.png";
 import logo from "@/assets/logo-botami.svg";
 
+import logoBlackfox from "@/assets/clients/blackfox.png";
+import logoDesMurs from "@/assets/clients/des-murs-a-paris.png";
+import logoErgosante from "@/assets/clients/ergosante.png";
+import logoJD from "@/assets/clients/jd-sports.png";
+import logoKijiji from "@/assets/clients/kijiji.png";
+import logoLibralerte from "@/assets/clients/libralerte.png";
+import logoProvence from "@/assets/clients/mademoiselle-provence.png";
+import logoNotaires from "@/assets/clients/notaires-de-france.png";
+import logoPoupina from "@/assets/clients/poupina.png";
+import logoProarti from "@/assets/clients/proarti.png";
+import logoSkills from "@/assets/clients/skills-communication.png";
+import logoSkinCafeine from "@/assets/clients/skin-cafeine.png";
+import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
+
+const clientLogos = [
+  { src: logoBlackfox, alt: "Blackfox" },
+  { src: logoDesMurs, alt: "Des Murs à Paris" },
+  { src: logoErgosante, alt: "Ergo Santé" },
+  { src: logoJD, alt: "JD Sports" },
+  { src: logoKijiji, alt: "Kijiji" },
+  { src: logoLibralerte, alt: "Libr'Alerte" },
+  { src: logoProvence, alt: "Mademoiselle Provence" },
+  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoPoupina, alt: "Poupina" },
+  { src: logoProarti, alt: "Proarti" },
+  { src: logoSkills, alt: "Skills Communication" },
+  { src: logoSkinCafeine, alt: "Skin Cafeine" },
+  { src: logoStAubin, alt: "St-Aubin Avocats" },
+];
+
 const C = {
   bg: "#FAF7F2",
   card: "#FFFFFF",
@@ -190,11 +220,47 @@ const LandingGoogleApplicationWebSurMesure = () => {
         </div>
       </section>
 
+      {/* ─── Trust bar ─── */}
+      <section className="px-4 md:px-8 py-16 md:py-24">
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <p className={`${heading} text-lg md:text-xl text-center mb-10`}>
+              Notre équipe accompagne des entreprises en acquisition digitale depuis des années
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
+              {clientLogos.map((l, i) => (
+                <img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <div className="relative max-w-2xl mx-auto px-6 py-8">
+              <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
+              <span className="absolute bottom-0 right-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
+              <p className="text-center text-lg md:text-xl leading-relaxed italic" style={{ color: C.textSec }}>
+                On les a vues se battre avec des{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>SaaS trop chers</span>,
+                des{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>Excel qui craquent</span>,
+                des outils qui ne collent pas à leur métier.
+                <br className="hidden md:block" />{" "}
+                <span className="font-bold" style={{ color: C.text }}>Botami Software</span> est né de ce constat&nbsp;:{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>quand les outils du marché ne suffisent plus</span>,
+                on construit celui qu'il vous faut.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <h2 className={`${heading} text-2xl md:text-4xl mb-2 text-center`}>Comment ça se passe</h2>
             <div className="flex justify-center mb-4">
+
               <span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
                 <Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison
               </span>
