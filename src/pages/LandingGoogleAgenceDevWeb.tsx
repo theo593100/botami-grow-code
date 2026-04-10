@@ -117,23 +117,23 @@ const CTA = ({ id }: { id?: string }) => (
 const valueProps = [
   {
     icon: Monitor,
-    title: "Application métier, pas un site",
-    desc: "On ne crée pas de sites vitrines. On développe des outils qui automatisent, centralisent, et simplifient votre workflow. Vos utilisateurs l'utiliseront tous les jours.",
+    title: "Du site au logiciel métier",
+    desc: "Site vitrine, e-commerce, application métier, plateforme SaaS interne — on couvre tout le spectre web. Un seul interlocuteur, une seule approche.",
   },
   {
     icon: Globe,
-    title: "Accessible de partout",
-    desc: "Web app = connexion depuis n'importe quel appareil, n'importe où. Pas d'installation, pas de maintenance client. Une URL, c'est tout.",
+    title: "Prix forfaitaire, pas de TJM flou",
+    desc: "Entre 5 000€ et 15 000€ selon la complexité. Vous connaissez le prix avant de signer. Pas de facture surprise à la fin, pas de rallonge sur les évolutions.",
   },
   {
     icon: ShieldCheck,
-    title: "Sécurisé et performant",
-    desc: "Architecture solide, données chiffrées, hébergement français. Votre app supporte les pics de charge. Pas de ralentissements.",
+    title: "Code source à vous, zéro lock-in",
+    desc: "Tout est livré : code, accès, hébergement, documentation. Vous pouvez changer d'agence demain, reprendre en interne, ou faire évoluer sans notre accord. Votre projet vous appartient.",
   },
   {
     icon: Rocket,
-    title: "Livraison rapide et prévisible",
-    desc: "Entre 5 000€ et 15 000€, 4 à 8 semaines. Maquette validée avant le code. Versions testables régulièrement. Vous suivez le chemin.",
+    title: "4 à 8 semaines, pas 6 mois",
+    desc: "Maquette validée en semaine 2. Développement itératif. Vous voyez avancer chaque semaine. Pas de tunnel de 6 mois avec une livraison qu'on découvre à la fin.",
   },
 ];
 
@@ -144,28 +144,28 @@ const steps = [
     icon: FileText,
     title: "Cahier des charges",
     time: "1-2 semaines",
-    desc: "On comprend votre processus métier en détail. On définit les modules, les rôles utilisateur, les intégrations. On propose une architecture claire.",
+    desc: "On comprend votre besoin web — site, outil interne, plateforme client. On définit les fonctionnalités, les pages, les intégrations.",
   },
   {
     num: "02",
     icon: Layers,
     title: "Maquette",
     time: "1-2 semaines",
-    desc: "Prototype cliquable complet. Backoffice, front client, toutes les pages. Vous validez l'UX avant le développement.",
+    desc: "Prototype cliquable de toutes les pages. Vous validez l'UX, la navigation, le design. Aucun code écrit avant votre accord.",
   },
   {
     num: "03",
     icon: Hammer,
     title: "Développement",
     time: "4-8 semaines",
-    desc: "Backend + frontend simultanément. Versions testables sur un serveur de staging. Vous testez sur vos vrais cas. Bugs corrigés en continu.",
+    desc: "On construit. Versions testables sur staging, chaque semaine. Vous testez, on ajuste. Pas de tunnel opaque.",
   },
   {
     num: "04",
     icon: PackageCheck,
     title: "Livraison + formation",
     time: "1 semaine",
-    desc: "Migration des données. Lancement en production. Formation de l'équipe. Code source, accès, documentation remis.",
+    desc: "Mise en production. Formation équipe. Remise du code source, des accès, de la doc. L'agence peut disparaître demain, votre projet continue.",
   },
 ];
 
@@ -173,13 +173,13 @@ const steps = [
 const comparatifRows = [
   {
     critere: "Modèle de prix",
-    agence: "TJM variable + abonnement CMS",
+    agence: "TJM 400-700€ × jours flous + abonnement CMS",
     botami: "Forfait 5 000-15 000€, une seule fois",
   },
   {
     critere: "Propriété du code",
-    agence: "Partielle (thèmes, plugins liés à l'agence)",
-    botami: "Oui, code source remis à la livraison",
+    agence: "Partielle (thèmes, plugins, CMS propriétaires)",
+    botami: "Oui, code source complet remis",
   },
   {
     critere: "Délai de livraison",
@@ -188,13 +188,13 @@ const comparatifRows = [
   },
   {
     critere: "Personnalisation",
-    agence: "Limitée au framework choisi (WordPress, Webflow…)",
-    botami: "Conçu sur mesure pour votre métier",
+    agence: "Limitée au framework (WordPress, Webflow, Shopify…)",
+    botami: "Sur mesure, aucune limite de framework",
   },
   {
     critere: "Dépendance au fournisseur",
-    agence: "Forte pour les évolutions",
-    botami: "Zéro — vous pouvez partir avec tout",
+    agence: "Forte (évolutions facturées à l'heure)",
+    botami: "Zéro — vous partez avec tout",
   },
   {
     critere: "Coût sur 3 ans",
@@ -206,24 +206,24 @@ const comparatifRows = [
 /* ─── FAQ data ─── */
 const faqs = [
   {
-    q: "C'est quoi la différence entre une web app et un site web ?",
-    a: "Un site web montre de l'info. Une web app vous laisse faire des choses — gérer des données, automatiser des processus, collaborer. C'est un outil, pas un catalogue.",
+    q: "Vous faites des sites WordPress ou du vrai sur mesure ?",
+    a: "Du vrai sur mesure. React, Next.js, backend Node/Python selon le besoin. WordPress convient pour un blog ou une vitrine simple. Quand on vient nous voir, c'est généralement qu'on a dépassé ce stade.",
   },
   {
-    q: "Mon app peut marcher sur mobile aussi ?",
-    a: "Oui, la web app est responsive par défaut. Téléphone, tablette, desktop — mêmes fonctionnalités, interface adaptée à l'écran. Pas besoin d'app mobile séparée sauf cas très spécialisé.",
+    q: "C'est combien pour un site vitrine simple ?",
+    a: "Bas de la fourchette : 5 000€. Mais honnêtement, pour un site purement vitrine, une agence locale ou un template Webflow fait le job. On est pertinents quand il y a du métier — formulaires complexes, espace client, automatisations, intégrations.",
   },
   {
-    q: "Combien d'utilisateurs simultanés peut gérer l'app ?",
-    a: "Dépend de la complexité et du volume de données. On dimensionne l'infrastructure selon votre cas. Pour une PME : 100-1000 utilisateurs simultanés, aucun souci. Gros volume ? On en parle.",
+    q: "Et si je veux faire évoluer l'app plus tard ?",
+    a: "Vous avez le code, vous choisissez. Soit vous reprenez en interne, soit un autre prestataire, soit on discute au cas par cas. Pas d'abonnement qui vous oblige à rester.",
   },
   {
-    q: "Et si vous arrêtez demain ?",
-    a: "Votre code est à vous. Vous pouvez embaucher quelqu'un ou nous proposer une maintenance. Aucune dépendance du vendor, aucun lock-in.",
+    q: "Comment vous hébergez ?",
+    a: "Hébergement cloud européen (OVH, Scaleway, ou équivalent) selon les contraintes RGPD. On vous remet les accès à la livraison, vous pouvez migrer quand vous voulez.",
   },
   {
-    q: "Comment vous évitez les failles de sécurité ?",
-    a: "Code reviewed, authentification sécurisée, chiffrement des données sensibles, hébergement certifié, mises à jour de sécurité régulières. Pas de raccourci.",
+    q: "Pourquoi 4-8 semaines et pas 3 mois ?",
+    a: "Parce qu'on travaille à deux, focalisés, avec un scope cadré. Les délais longs, c'est souvent du scope flou ou des équipes dispersées. Chez nous, vous avez les développeurs qui construisent, directement.",
   },
 ];
 
