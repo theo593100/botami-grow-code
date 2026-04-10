@@ -12,6 +12,7 @@ import LandingGoogleStack from "./pages/LandingGoogleStack.tsx";
 import LandingGooglePrix from "./pages/LandingGooglePrix.tsx";
 import LandingGoogleMobile from "./pages/LandingGoogleMobile.tsx";
 import LandingGoogleAgenceDevWeb from "./pages/LandingGoogleAgenceDevWeb.tsx";
+import LandingGoogleLogicielSurMesure from "./pages/LandingGoogleLogicielSurMesure.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/lp/google/prix" element={<LandingGooglePrix />} />
           <Route path="/lp/google/application-mobile" element={<LandingGoogleMobile />} />
           <Route path="/lp/google/agence-dev-web" element={<LandingGoogleAgenceDevWeb />} />
+          <Route path="/lp/google/logiciel-sur-mesure" element={<LandingGoogleLogicielSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
