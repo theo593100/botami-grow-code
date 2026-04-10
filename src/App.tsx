@@ -14,6 +14,7 @@ import LandingGoogleDeveloppementApplication from "./pages/LandingGoogleDevelopp
 import LandingGoogleLogicielBtp from "./pages/LandingGoogleLogicielBtp.tsx";
 import LandingGoogleLogicielRh from "./pages/LandingGoogleLogicielRh.tsx";
 import LandingGoogleErpSurMesure from "./pages/LandingGoogleErpSurMesure.tsx";
+import LandingGoogleCrmSurMesure from "./pages/LandingGoogleCrmSurMesure.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/lp/google/logiciel-btp" element={<LandingGoogleLogicielBtp />} />
           <Route path="/lp/google/logiciel-rh" element={<LandingGoogleLogicielRh />} />
           <Route path="/lp/google/erp-sur-mesure" element={<LandingGoogleErpSurMesure />} />
+          <Route path="/lp/google/crm-sur-mesure" element={<LandingGoogleCrmSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
