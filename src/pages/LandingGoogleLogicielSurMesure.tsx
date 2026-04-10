@@ -11,7 +11,6 @@ import {
   Layers2,
   Code2,
   Clock,
-  Settings2,
   FileText,
   Layers,
   Hammer,
