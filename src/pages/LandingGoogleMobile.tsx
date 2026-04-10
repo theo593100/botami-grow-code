@@ -416,9 +416,22 @@ const LandingGoogleMobile = () => {
             </div>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-center max-w-2xl mx-auto leading-relaxed" style={{ color: C.textSec }}>
-              On les a vues se battre avec des SaaS trop chers, des Excel qui craquent, des outils qui ne collent pas à leur métier. Botami Software est né de ce constat : quand les outils du marché ne suffisent plus, on construit celui qu'il vous faut.
-            </p>
+            <div className="relative max-w-2xl mx-auto px-6 py-8">
+              {/* Decorative quote marks */}
+              <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.primary, opacity: 0.25 }}>"</span>
+              <span className="absolute bottom-0 right-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.primary, opacity: 0.25 }}>"</span>
+              <p className="text-center text-lg md:text-xl leading-relaxed italic" style={{ color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
+                On les a vues se battre avec des{" "}
+                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.primary, textDecorationColor: C.primary }}>SaaS trop chers</em>,
+                des{" "}
+                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.primary, textDecorationColor: C.primary }}>Excel qui craquent</em>,
+                des outils qui ne collent pas à leur métier.
+                <br className="hidden md:block" />{" "}
+                <span className="font-bold" style={{ color: C.text }}>Botami Software</span> est né de ce constat&nbsp;:{" "}
+                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.primary, textDecorationColor: C.primary }}>quand les outils du marché ne suffisent plus</em>,
+                on construit celui qu'il vous faut.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
