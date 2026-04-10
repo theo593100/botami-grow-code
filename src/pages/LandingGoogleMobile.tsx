@@ -417,18 +417,17 @@ const LandingGoogleMobile = () => {
           </Reveal>
           <Reveal delay={200}>
             <div className="relative max-w-2xl mx-auto px-6 py-8">
-              {/* Decorative quote marks */}
               <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
               <span className="absolute bottom-0 right-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
-              <p className="text-center text-lg md:text-xl leading-relaxed italic" style={{ color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-center text-lg md:text-xl leading-relaxed italic" style={{ color: C.textSec }}>
                 On les a vues se battre avec des{" "}
-                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.amber, textDecorationColor: C.amber }}>SaaS trop chers</em>,
+                <span className="font-semibold" style={{ color: C.amber }}>SaaS trop chers</span>,
                 des{" "}
-                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.amber, textDecorationColor: C.amber }}>Excel qui craquent</em>,
+                <span className="font-semibold" style={{ color: C.amber }}>Excel qui craquent</span>,
                 des outils qui ne collent pas à leur métier.
                 <br className="hidden md:block" />{" "}
                 <span className="font-bold" style={{ color: C.text }}>Botami Software</span> est né de ce constat&nbsp;:{" "}
-                <em className="not-italic font-semibold underline decoration-2 underline-offset-4" style={{ color: C.amber, textDecorationColor: C.amber }}>quand les outils du marché ne suffisent plus</em>,
+                <span className="font-semibold" style={{ color: C.amber }}>quand les outils du marché ne suffisent plus</span>,
                 on construit celui qu'il vous faut.
               </p>
             </div>
