@@ -11,6 +11,7 @@ import LandingGoogleAgenceDevWeb from "./pages/LandingGoogleAgenceDevWeb.tsx";
 import LandingGoogleDeveloppementLogiciel from "./pages/LandingGoogleDeveloppementLogiciel.tsx";
 import LandingGoogleApplicationWebSurMesure from "./pages/LandingGoogleApplicationWebSurMesure.tsx";
 import LandingGoogleDeveloppementApplication from "./pages/LandingGoogleDeveloppementApplication.tsx";
+import LandingGoogleLogicielBtp from "./pages/LandingGoogleLogicielBtp.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/lp/google/developpement-logiciel" element={<LandingGoogleDeveloppementLogiciel />} />
           <Route path="/lp/google/application-web-sur-mesure" element={<LandingGoogleApplicationWebSurMesure />} />
           <Route path="/lp/google/developpement-application" element={<LandingGoogleDeveloppementApplication />} />
+          <Route path="/lp/google/logiciel-btp" element={<LandingGoogleLogicielBtp />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           
           {/* Admin */}
