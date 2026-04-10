@@ -605,26 +605,13 @@ const LandingGoogleLogicielSurMesure = () => {
 
       {/* ─── Bloc 6 — Réservation ─── */}
       <section id="formulaire" className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <Reveal>
-            <div className="rounded-2xl p-8 md:p-12 border text-center" style={{ backgroundColor: C.card, borderColor: "#E5E7EB" }}>
-              <h2 className={`${heading} text-2xl md:text-3xl mb-3`}>
-                Réservez votre appel découverte gratuit
-              </h2>
-              <p className="mb-8" style={{ color: C.textSec }}>
-                15-20 minutes pour parler de votre application web métier. Sans engagement.
-              </p>
-              <div className="text-left">
-                <LPFormCalendly
-                  context="Landing Google - Logiciel sur mesure"
-                  btnColor={C.amber}
-                  btnHoverColor={C.amberHover}
-                />
-              </div>
-              <p className="mt-6 text-sm" style={{ color: C.textSec }}>
-                Réponse sous 24h.
-              </p>
-            </div>
+            <LPFormCalendly
+              title="Réservez votre appel découverte gratuit"
+              subtitle="15-20 minutes pour comprendre votre métier. Sans engagement."
+              buttonLabel="Je réserve mon appel découverte gratuit"
+            />
           </Reveal>
         </div>
       </section>
