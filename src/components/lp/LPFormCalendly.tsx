@@ -58,6 +58,13 @@ const LPFormCalendly = ({
   });
   const [submitted, setSubmitted] = useState(false);
 
+  // Track page view
+  useEffect(() => {
+    if (route) {
+      supabase.from("landing_page_events").insert({ route, event_type: "page_view" }).then();
+    }
+  }, [route]);
+
   useEffect(() => {
     // Load Calendly widget script
     if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
