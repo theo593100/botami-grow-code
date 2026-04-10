@@ -370,8 +370,8 @@ const LandingPrix = () => {
             <div>
               <p className={`${heading} text-lg text-white mb-4`}>Botami Software</p>
               <div className="space-y-2 text-sm">
-                <a href="mailto:contact@botami.fr" className="block hover:text-white transition-colors">
-                  contact@botami.fr
+                <a href="mailto:contact@botami-agency.com" className="block hover:text-white transition-colors">
+                  contact@botami-agency.com
                 </a>
                 <a href="tel:+33600000000" className="block hover:text-white transition-colors">
                   +33 6 00 00 00 00

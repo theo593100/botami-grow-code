@@ -296,7 +296,7 @@ const LandingGoogleErpSurMesure = () => {
           <div className="space-y-2">
             <div className="flex items-center gap-2.5 mb-1"><img src={logo} alt="Botami Software" className="h-7 w-7 brightness-0 invert" /><span className={`${heading} text-lg text-white`}>Botami Software</span></div>
             <p>🇫🇷 Entreprise française</p>
-            <a href="mailto:contact@botami.fr" className="hover:text-white transition-colors block">contact@botami.fr</a>
+            <a href="mailto:contact@botami-agency.com" className="hover:text-white transition-colors block">contact@botami-agency.com</a>
             <a href="tel:+33600000000" className="hover:text-white transition-colors block">06 00 00 00 00</a>
           </div>
           <div className="flex flex-col md:items-end gap-4">

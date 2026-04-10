@@ -375,8 +375,8 @@ const LandingGoogleDeveloppementLogiciel = () => {
             <div>
               <h4 className="font-semibold mb-3">Contact</h4>
               <p className="text-sm mb-2">
-                <a href="mailto:contact@botami.fr" className="hover:underline opacity-80">
-                  contact@botami.fr
+                <a href="mailto:contact@botami-agency.com" className="hover:underline opacity-80">
+                  contact@botami-agency.com
                 </a>
               </p>
               <p className="text-sm opacity-80">

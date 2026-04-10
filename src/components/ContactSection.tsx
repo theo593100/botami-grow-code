@@ -43,9 +43,9 @@ const ContactSection = () => {
               Diagnostic gratuit, sans engagement. On vous dit si le sur-mesure est la bonne réponse pour vous.
             </p>
             <div className="flex flex-col gap-5">
-              <a href="mailto:contact@botami.fr" className="flex items-center gap-3 text-foreground hover:text-accent transition-colors">
+              <a href="mailto:contact@botami-agency.com" className="flex items-center gap-3 text-foreground hover:text-accent transition-colors">
                 <Mail className="w-5 h-5 text-accent" />
-                contact@botami.fr
+                contact@botami-agency.com
               </a>
               <div className="flex items-center gap-3 text-foreground">
                 <MapPin className="w-5 h-5 text-accent" />

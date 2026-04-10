@@ -649,7 +649,7 @@ const LandingGoogleLogicielSurMesure = () => {
             <div>
               <h4 className="font-semibold mb-3">Contact</h4>
               <p className="text-sm opacity-70 mb-1">
-                <a href="mailto:contact@botami.fr" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>contact@botami.fr</a>
+                <a href="mailto:contact@botami-agency.com" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>contact@botami-agency.com</a>
               </p>
               <p className="text-sm opacity-70">Téléphone sur demande</p>
             </div>

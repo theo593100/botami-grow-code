@@ -156,9 +156,9 @@ const Footer = () => (
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-left">
-          <a href="mailto:contact@botami.fr" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
+          <a href="mailto:contact@botami-agency.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
             <Mail className="w-4 h-4" />
-            <span className="text-sm">contact@botami.fr</span>
+            <span className="text-sm">contact@botami-agency.com</span>
           </a>
           <a href="tel:+33600000000" className="flex items-center gap-2 hover:opacity-80 transition-opacity" style={{ color: C.slate }}>
             <Phone className="w-4 h-4" />
