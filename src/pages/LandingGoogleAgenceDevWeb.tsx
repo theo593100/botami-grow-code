@@ -368,17 +368,17 @@ const LandingGoogleAgenceDevWeb = () => {
               className="text-sm font-semibold uppercase tracking-widest mb-5"
               style={{ color: C.amber }}
             >
-              Développement web sur mesure
+              Agence web sur mesure
             </p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>
-              Application web sur mesure. Pas un site vitrine.
+              Agence web. Applications et sites qui servent vraiment votre métier.
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: C.textSec }}>
-              Vous avez un besoin métier complexe. On crée une web app conçue pour vos utilisateurs — backoffice, front client, intégrations. Prix forfaitaire, 4 à 8 semaines, code source livré.
+              Vous cherchez une agence pour construire votre présence web — du site qui convertit à l'application métier complète. On livre en 4 à 8 semaines, prix forfaitaire annoncé d'avance, code source à vous.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -452,12 +452,12 @@ const LandingGoogleAgenceDevWeb = () => {
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
-              Agence web généraliste vs Botami Software
+              Agence web traditionnelle vs Botami Software
             </h2>
           </Reveal>
           <Reveal delay={100}>
             <p className="text-lg text-center mb-12" style={{ color: C.textSec }}>
-              On ne fait pas de sites vitrine. On construit des applications web métier.
+              Pourquoi on ne travaille ni au TJM ni avec des templates.
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -469,7 +469,7 @@ const LandingGoogleAgenceDevWeb = () => {
                       Critère
                     </th>
                     <th className={`${heading} text-sm uppercase tracking-wide py-4 px-4 border-b-2`} style={{ borderColor: "#E5E7EB", color: C.textSec }}>
-                      Agence généraliste
+                      Agence traditionnelle
                     </th>
                     <th className={`${heading} text-sm uppercase tracking-wide py-4 px-4 border-b-2`} style={{ borderColor: C.amber, color: C.amber }}>
                       Botami Software
