@@ -511,9 +511,6 @@ const LandingGoogle = () => {
             <a href="mailto:contact@botami-agency.com" className="hover:text-white transition-colors block">
               contact@botami-agency.com
             </a>
-            <a href="tel:+33600000000" className="hover:text-white transition-colors block">
-              06 00 00 00 00
-            </a>
           </div>
 
           <div className="flex flex-col md:items-end gap-4">
