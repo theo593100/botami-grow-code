@@ -616,7 +616,7 @@ const LandingGoogleAgenceDevWeb = () => {
         <div className="max-w-2xl mx-auto">
           <Reveal>
             <p className="text-lg md:text-xl font-medium mb-8" style={{ color: C.text }}>
-              🇫🇷 Entreprise française. Code source remis à chaque projet. Pas de site vitrine — des applications qui travaillent.
+              🇫🇷 Entreprise française. Code source remis à chaque projet. Prix forfaitaire. Du site au logiciel métier.
             </p>
           </Reveal>
           <Reveal delay={100}>
