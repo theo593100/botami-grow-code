@@ -268,8 +268,7 @@ const LandingGoogleLogicielComptabilite = () => {
           <div className="space-y-2">
             <div className="flex items-center gap-2.5 mb-1"><img src={logo} alt="Botami Software" className="h-7 w-7 brightness-0 invert" /><span className={`${heading} text-lg text-white`}>Botami Software</span></div>
             <p>🇫🇷 Entreprise française</p>
-            <a href="mailto:contact@botami.fr" className="hover:text-white transition-colors block">contact@botami.fr</a>
-            <a href="tel:+33600000000" className="hover:text-white transition-colors block">06 00 00 00 00</a>
+            <a href="mailto:contact@botami-agency.com" className="hover:text-white transition-colors block">contact@botami-agency.com</a>
           </div>
           <div className="flex flex-col md:items-end gap-4">
             <div className="flex gap-4"><a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a><span>|</span><a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a></div>

@@ -17,8 +17,8 @@ const Footer = () => (
         <div>
           <p className="font-heading font-semibold mb-3">Contact</p>
           <div className="flex flex-col gap-2 text-sm opacity-70">
-            <a href="mailto:contact@botami.fr" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <Mail className="w-4 h-4" /> contact@botami.fr
+            <a href="mailto:contact@botami-agency.com" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
+              <Mail className="w-4 h-4" /> contact@botami-agency.com
             </a>
             <span className="flex items-center gap-2">
               <MapPin className="w-4 h-4" /> Nîmes, France
