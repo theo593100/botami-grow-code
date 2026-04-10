@@ -350,6 +350,8 @@ const ProcessTimeline = () => {
 const LandingGoogleAgenceDevWeb = () => {
   useEffect(() => {
     document.title = "Agence web — applications et sites sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Agence web spécialisée en applications et sites sur mesure. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
   }, []);
 
   return (
