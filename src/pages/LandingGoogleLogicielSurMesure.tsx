@@ -7,10 +7,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  Target,
-  Clock,
+  Monitor,
+  Layers2,
   Code2,
-  Settings2,
+  Clock,
   FileText,
   Layers,
   Hammer,
@@ -98,24 +98,24 @@ const CTA = ({ id }: { id?: string }) => (
 /* ─── Value prop cards ─── */
 const valueProps = [
   {
-    icon: Target,
-    title: "Conçu pour votre métier exactement",
-    desc: "Pas de compromis. Pas de fonctionnalités inutiles. Un logiciel qui fait votre métier, rien d'autre. Vos utilisateurs sont heureux.",
+    icon: Monitor,
+    title: "Votre métier, pas un template",
+    desc: "Chaque entreprise a ses règles : comment on facture, comment on suit un dossier, comment on valide, comment on archive. Un SaaS générique vous oblige à rentrer dans ses cases. On fait l'inverse : l'outil suit vos règles.",
   },
   {
-    icon: Settings2,
-    title: "Plus d'abonnements mal adaptés",
-    desc: "Logiciel standard à 500€/mois qui ne fait que 40% de vos besoins. Notre logiciel : 5 000–15 000€ une seule fois, et il fait 100%.",
+    icon: Layers2,
+    title: "Un seul outil, pas 7 abonnements",
+    desc: "Beaucoup d'entreprises paient 4 à 8 SaaS qui ne se parlent pas, plus des Excel partagés, plus un Notion pour relier le tout. On remplace cette stack par un seul outil conçu pour votre flux de travail.",
   },
   {
     icon: Code2,
-    title: "Vous êtes propriétaires",
-    desc: "Code source, données, hébergement. Votre logiciel est à vous. Zéro dépendance d'un vendor.",
+    title: "Prix forfaitaire, propriété totale",
+    desc: "Pas d'abonnement par utilisateur, pas de licence qui se renouvelle, pas de module facturé à part. Un forfait, une fois. Le code est à vous. Vos données sont chez vous. Vous pouvez changer de prestataire demain.",
   },
   {
     icon: Clock,
-    title: "Livré vite, fonctionnel immédiatement",
-    desc: "4 à 8 semaines. Votre équipe l'utilise le jour de la livraison. Pas de long apprentissage — c'est taillé pour vous.",
+    title: "4 à 8 semaines, pas 6 mois",
+    desc: "Maquette validée en semaine 2. Développement itératif. Vous voyez avancer chaque semaine sur un environnement de staging. Pas de tunnel de 6 mois avec une livraison qu'on découvre à la fin.",
   },
 ];
 
@@ -138,12 +138,12 @@ const clientLogos = [
 
 /* ─── Comparatif data ─── */
 const comparatifRows = [
-  { critere: "Modèle de prix", erp: "Abonnement mensuel + coût de paramétrage", botami: "Forfait 5 000-15 000€, une seule fois" },
-  { critere: "Propriété du code", erp: "Non, logiciel éditeur", botami: "Oui, code source remis à la livraison" },
-  { critere: "Délai de livraison", erp: "3 à 9 mois (paramétrage, formation, migration)", botami: "4 à 8 semaines" },
-  { critere: "Personnalisation", erp: "Contrainte par les possibilités de l'éditeur", botami: "Conçu sur mesure pour votre métier" },
-  { critere: "Dépendance au fournisseur", erp: "Totale (lock-in vendor)", botami: "Zéro — vous pouvez partir avec tout" },
-  { critere: "Coût sur 3 ans", erp: "15 000 à 60 000€ selon taille", botami: "5 000-15 000€ (payé une fois)" },
+  { critere: "Modèle de prix", erp: "Abonnement mensuel par utilisateur + modules en option", botami: "Forfait 5 000-15 000€, une seule fois" },
+  { critere: "Propriété du code", erp: "Aucune", botami: "Oui, code source remis à la livraison" },
+  { critere: "Adaptation à vos process", erp: "Limitée aux options prévues par l'éditeur", botami: "Sur mesure, chaque règle métier intégrée" },
+  { critere: "Intégrations", erp: "Via connecteurs payants (Zapier, Make, API limitées)", botami: "Natives, définies au cahier des charges" },
+  { critere: "Dépendance au fournisseur", erp: "Totale (données et logique chez l'éditeur)", botami: "Zéro — hébergement et données chez vous" },
+  { critere: "Coût sur 3 ans (20 utilisateurs)", erp: "15 000 à 40 000€", botami: "5 000-15 000€ (payé une fois)" },
 ];
 
 /* ─── Process steps ─── */
@@ -153,52 +153,52 @@ const steps = [
     icon: FileText,
     title: "Cahier des charges",
     time: "1-2 semaines",
-    desc: "On comprend votre métier en détail. Vos processus, vos frustrations avec les outils actuels, vos vrais besoins. On documente tout précisément.",
+    desc: "On vient voir comment vous travaillez. On liste les écrans, les données, les règles de gestion, les rôles utilisateur, les intégrations nécessaires. On propose une architecture claire.",
   },
   {
     num: "02",
     icon: Layers,
     title: "Maquette",
     time: "1-2 semaines",
-    desc: "Prototype cliquable. Votre équipe teste la navigation, les écrans. Elle valide avant le code. Vous voyez exactement ce que vous aurez.",
+    desc: "Prototype cliquable de tous les écrans du périmètre. Vous testez la navigation, validez les parcours, ajustez avant qu'on code une ligne.",
   },
   {
     num: "03",
     icon: Hammer,
     title: "Développement",
     time: "4-8 semaines",
-    desc: "On construit. Vos données migrées progressivement. Tests en continu sur vos cas réels. Itérations rapides si besoin.",
+    desc: "Construction itérative sur un environnement de staging. Vous testez chaque semaine avec vos vrais cas d'usage. Corrections et ajustements au fil de l'eau.",
   },
   {
     num: "04",
     icon: PackageCheck,
     title: "Livraison + formation",
     time: "1 semaine",
-    desc: "Logiciel en production. Équipe formée en détail. Code source documenté. Vous êtes autonomes immédiatement.",
+    desc: "Mise en production. Import de vos données existantes (Excel, SaaS actuels). Formation des équipes. Remise du code source, des accès et de la documentation.",
   },
 ];
 
 /* ─── FAQ ─── */
 const faqs = [
   {
-    q: "Pourquoi un logiciel sur mesure plutôt qu'adapter un logiciel standard ?",
-    a: "Parce que l'adaptation coûte cher et laisse des angles morts. Un logiciel sur mesure fait votre métier entièrement. Retour sur investissement plus rapide.",
+    q: "C'est quoi la différence avec un SaaS que je peux louer ?",
+    a: "Un SaaS, vous le louez — chaque mois, par utilisateur, tant que vous l'utilisez. Un logiciel sur mesure, vous l'achetez — une fois, pour votre cas précis. Le SaaS a du sens quand votre besoin est standard. Le sur mesure a du sens quand il ne l'est pas, ou quand les abonnements cumulés deviennent disproportionnés.",
   },
   {
-    q: "Quel est votre délai type pour une PME ?",
-    a: "4 à 8 semaines selon la complexité de votre métier. Les deux premières semaines : cahier des charges + maquette. Puis développement itératif, tests inclus.",
+    q: "À partir de quelle taille d'entreprise ça vaut le coup ?",
+    a: "Pas une question de taille mais de décalage entre vos besoins et ce que le marché propose. Une TPE de 5 personnes avec un process métier précis peut avoir plus besoin de sur mesure qu'une ETI de 200 qui utilise du standard. Bilan honnête en appel découverte.",
   },
   {
-    q: "Et après la livraison, comment on le maintient ?",
-    a: "Le code est documenté. Vous pouvez l'embaucher quelqu'un, nous proposer la maintenance, ou rester autonome. Pas obligatoire, c'est votre choix.",
+    q: "Et si notre besoin évolue dans 2 ans ?",
+    a: "Vous avez le code, vous choisissez. Soit on ajoute des fonctionnalités au cas par cas, soit vous reprenez en interne, soit un autre prestataire reprend. Pas d'abonnement qui vous force à rester.",
   },
   {
-    q: "On peut rajouter des fonctionnalités après la livraison ?",
-    a: "Bien sûr. Le logiciel est le vôtre. Vous pouvez améliorer, ajouter des modules. Tarif à définir ensemble — nous ou autre dev, c'est vous qui décidez.",
+    q: "Comment on migre depuis nos outils actuels ?",
+    a: "Inclus dans la semaine de livraison. Export depuis vos SaaS actuels (CSV, API) ou vos fichiers Excel, import dans le nouveau logiciel. L'historique est préservé quand les données sont exportables.",
   },
   {
-    q: "Et si le logiciel ne match pas à 100% nos besoins après la livraison ?",
-    a: "On ajuste pendant la période de test. Ajustements mineurs inclus avant livraison finale. Après, c'est du périmètre supplémentaire — à coter séparément.",
+    q: "Vous faites quoi si on a un bug après la livraison ?",
+    a: "Garantie de correction des bugs sur le périmètre livré. Les évolutions (nouvelles fonctionnalités) sont discutées au cas par cas. Pas d'abonnement de maintenance obligatoire — vous payez quand il y a quelque chose à faire.",
   },
 ];
 
@@ -323,6 +323,10 @@ const ProcessTimeline = () => {
 
 /* ─── Page ─── */
 const LandingGoogleLogicielSurMesure = () => {
+  useEffect(() => {
+    document.title = "Logiciel sur mesure pour entreprise | Botami Software";
+  }, []);
+
   return (
     <div className={body} style={{ backgroundColor: C.bg, color: C.text }}>
       {/* ─── Header ─── */}
@@ -343,17 +347,17 @@ const LandingGoogleLogicielSurMesure = () => {
               className="text-sm font-semibold uppercase tracking-widest mb-5"
               style={{ color: C.amber }}
             >
-              Développement logiciel sur mesure pour PME
+              Logiciel sur mesure pour entreprise
             </p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className={`${heading} text-3xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6`}>
-              Logiciel sur mesure pour votre PME. Fini les outils génériques.
+              Logiciel sur mesure. Construit autour de votre métier, pas l'inverse.
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: C.textSec }}>
-              Vous faites un métier unique. Les logiciels standard ne couvrent que 60% de vos besoins. On crée votre logiciel qui fait 100% de votre métier — prix forfaitaire, livraison 4 à 8 semaines.
+              Vous avez un process métier que personne sur le marché ne fait exactement. On construit le logiciel qui le reflète — pas un SaaS qui vous force à changer votre manière de travailler. Forfait 5&nbsp;000 à 15&nbsp;000€, 4 à 8 semaines, code source à vous.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -438,11 +442,11 @@ const LandingGoogleLogicielSurMesure = () => {
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
-              ERP/CRM standard vs Botami Software
+             <h2 className={`${heading} text-2xl md:text-4xl mb-4 text-center`}>
+              SaaS générique vs Botami Software
             </h2>
             <p className="text-lg text-center mb-14 max-w-2xl mx-auto" style={{ color: C.textSec }}>
-              Un logiciel qui fait votre métier, pas un outil générique qu'on configure pendant 6 mois.
+              Pourquoi un logiciel générique finit toujours par ne pas faire exactement ce qu'il faut.
             </p>
           </Reveal>
 
@@ -453,7 +457,7 @@ const LandingGoogleLogicielSurMesure = () => {
                 <thead>
                   <tr style={{ backgroundColor: C.bg }}>
                     <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>Critère</th>
-                    <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>ERP ou CRM standard (type Odoo, Sage, Salesforce)</th>
+                    <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.text }}>SaaS générique du marché</th>
                     <th className="px-6 py-4 text-sm font-semibold" style={{ color: C.amber }}>Botami Software</th>
                   </tr>
                 </thead>
@@ -478,7 +482,7 @@ const LandingGoogleLogicielSurMesure = () => {
                   <h4 className="text-sm font-semibold mb-3" style={{ color: C.text }}>{r.critere}</h4>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-xs font-medium mb-1" style={{ color: C.textSec }}>ERP/CRM standard</p>
+                     <p className="text-xs font-medium mb-1" style={{ color: C.textSec }}>SaaS générique</p>
                       <p className="text-sm" style={{ color: C.textSec }}>{r.erp}</p>
                     </div>
                     <div className="pt-2 border-t" style={{ borderColor: "#E5E7EB" }}>
@@ -610,7 +614,7 @@ const LandingGoogleLogicielSurMesure = () => {
             <LPFormCalendly
               route="/lp/google/logiciel-sur-mesure"
               title="Réservez votre appel découverte gratuit"
-              subtitle="15-20 minutes pour comprendre votre métier. Sans engagement."
+              subtitle="15-20 minutes pour évaluer votre besoin. On vous dit honnêtement si un logiciel sur mesure est pertinent pour votre cas, ou pas."
               buttonLabel="Je réserve mon appel découverte gratuit"
             />
           </Reveal>
@@ -618,16 +622,15 @@ const LandingGoogleLogicielSurMesure = () => {
       </section>
 
       {/* ─── Bloc 7 — Dernier CTA ─── */}
-      <section className="px-4 md:px-8 py-16 text-center">
+      <section className="px-4 md:px-8 py-16 md:py-20 text-center" style={{ backgroundColor: C.amberLight }}>
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className={`${heading} text-2xl md:text-3xl mb-6`}>
-              Prêt à remplacer vos outils génériques ?
-            </h2>
-            <CTA id="cta-bottom" />
-            <p className="mt-6 text-sm" style={{ color: C.textSec }}>
-              Entreprise française. Code source remis. Prix transparent. Logiciel pensé pour votre métier.
+            <p className="text-lg md:text-xl font-medium mb-8" style={{ color: C.text }}>
+              🇫🇷 Entreprise française. Code source remis à chaque projet. Prix forfaitaire. Votre métier, pas un template.
             </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <CTA id="cta-bottom" />
           </Reveal>
         </div>
       </section>
