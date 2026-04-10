@@ -413,6 +413,7 @@ const LandingGoogleDeveloppementApplication = () => {
 
       {/* Bloc 6 — Réservation */}
       <LPFormCalendly
+              route="/lp/google/developpement-application"
         title="Parlons de votre budget et votre projet"
         subtitle="15-20 minutes pour évaluer la complexité et le coût de votre app. Sans engagement."
         buttonLabel="Je réserve mon appel découverte gratuit"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const C = {
   bg: "#FAF7F2",
@@ -38,12 +39,14 @@ interface Props {
   title: string;
   subtitle: string;
   buttonLabel?: string;
+  route?: string;
 }
 
 const LPFormCalendly = ({
   title,
   subtitle,
   buttonLabel = "Je réserve mon appel découverte gratuit",
+  route,
 }: Props) => {
   const [form, setForm] = useState({
     prenom: "",
@@ -54,6 +57,13 @@ const LPFormCalendly = ({
     taille: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  // Track page view
+  useEffect(() => {
+    if (route) {
+      supabase.from("landing_page_events").insert({ route, event_type: "page_view" }).then();
+    }
+  }, [route]);
 
   useEffect(() => {
     // Load Calendly widget script
@@ -78,6 +88,9 @@ const LPFormCalendly = ({
     e.preventDefault();
     setSubmitted(true);
     (window as any).gtag_report_lead_form?.();
+    if (route) {
+      supabase.from("landing_page_events").insert({ route, event_type: "cta_click" }).then();
+    }
   };
 
   return (

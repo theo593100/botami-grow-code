@@ -608,6 +608,7 @@ const LandingGoogleLogicielSurMesure = () => {
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <LPFormCalendly
+              route="/lp/google/logiciel-sur-mesure"
               title="Réservez votre appel découverte gratuit"
               subtitle="15-20 minutes pour comprendre votre métier. Sans engagement."
               buttonLabel="Je réserve mon appel découverte gratuit"

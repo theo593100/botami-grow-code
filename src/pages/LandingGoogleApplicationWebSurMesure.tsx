@@ -432,6 +432,7 @@ const LandingGoogleApplicationWebSurMesure = () => {
 
       {/* Bloc 6 — Réservation */}
       <LPFormCalendly
+              route="/lp/google/application-web-sur-mesure"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour évaluer votre application web. Sans engagement."
         buttonLabel="Je réserve mon appel découverte gratuit"

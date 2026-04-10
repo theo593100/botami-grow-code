@@ -264,6 +264,7 @@ const LandingGoogleDev = () => {
 
       {/* Formulaire + Calendly */}
       <LPFormCalendly
+              route="/lp/google/dev-sur-mesure"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour parler de votre projet. Sans engagement."
       />

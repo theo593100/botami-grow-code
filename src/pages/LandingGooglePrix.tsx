@@ -388,6 +388,7 @@ const LandingGooglePrix = () => {
 
       {/* ─── Bloc 6 — Formulaire + Calendly ─── */}
       <LPFormCalendly
+              route="/lp/google/prix"
         title="Parlons de votre budget et votre projet"
         subtitle="15-20 minutes pour évaluer la complexité et le coût. Sans engagement."
       />

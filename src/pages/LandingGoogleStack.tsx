@@ -192,6 +192,7 @@ const LandingGoogleStack = () => {
       </section>
 
       <LPFormCalendly
+              route="/lp/google/stack-bricole"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour démonter votre stack actuelle. Sans engagement."
       />

@@ -586,6 +586,7 @@ const LandingGoogleMobile = () => {
 
       {/* ─── Bloc 6 — Formulaire + Calendly ─── */}
       <LPFormCalendly
+              route="/lp/google/application-mobile"
         title="Réservez votre appel découverte gratuit"
         subtitle="15-20 minutes pour évaluer votre projet mobile. Sans engagement."
       />
