@@ -18,7 +18,6 @@ import LandingGoogleCrmSurMesure from "./pages/LandingGoogleCrmSurMesure.tsx";
 import LandingGoogleLogicielFacturation from "./pages/LandingGoogleLogicielFacturation.tsx";
 import LandingGoogleLogicielComptabilite from "./pages/LandingGoogleLogicielComptabilite.tsx";
 import LandingGoogleLogicielSurMesure from "./pages/LandingGoogleLogicielSurMesure.tsx";
-import LandingGoogleLogicielSurMesure from "./pages/LandingGoogleLogicielSurMesure.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
