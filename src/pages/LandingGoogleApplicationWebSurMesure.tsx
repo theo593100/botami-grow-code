@@ -178,6 +178,12 @@ const LandingGoogleApplicationWebSurMesure = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    document.title = "Application web sur mesure | Botami Software";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Application web sur mesure accessible partout. Forfait 5 000–15 000€, livré en 4 à 8 semaines, code source à vous.");
+  }, []);
+
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
