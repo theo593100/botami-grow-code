@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2,
   Clock,
-  Code2,
   Euro,
+  FileText,
+  Hammer,
   Layers,
   Linkedin,
   Mail,
+  PackageCheck,
   Phone,
   Shield,
-  Users,
 } from "lucide-react";
 import {
   Accordion,
@@ -35,26 +36,34 @@ const heading = "font-heading font-bold";
 const ctaBtn =
   "inline-block font-body font-semibold text-white rounded-lg px-8 py-4 text-base md:text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5";
 
-const pricingFactors = [
+const steps = [
   {
+    num: "01",
+    icon: FileText,
+    title: "Cahier des charges",
+    time: "1-2 semaines",
+    desc: "On comprend votre besoin métier. On définit les fonctionnalités, les écrans, les intégrations, les règles de gestion. On propose une architecture claire.",
+  },
+  {
+    num: "02",
     icon: Layers,
-    title: "Complexité métier",
-    desc: "Gestion simple de commandes : ~5 000-7 000€. Système d'automatisation complexe avec 10 workflows : 10 000-15 000€.",
+    title: "Maquette",
+    time: "1-2 semaines",
+    desc: "Prototype cliquable de toute l'application. Vous testez la navigation, validez les écrans, ajustez avant qu'on code une ligne.",
   },
   {
-    icon: Clock,
-    title: "Volume de données et reporting",
-    desc: "Peu de données : prix bas. Énormes volumes, rapports sophisqués, historique détaillé : prix monte.",
+    num: "03",
+    icon: Hammer,
+    title: "Développement",
+    time: "4-8 semaines",
+    desc: "On construit. Versions testables chaque semaine sur un environnement de staging. Vous testez sur vos vrais cas d'usage. Bugs corrigés en continu.",
   },
   {
-    icon: Code2,
-    title: "Intégrations externes",
-    desc: "App isolée : moins cher. Connexions à 3-5 outils externes (Stripe, Google Sheets, Salesforce) : coût augmente.",
-  },
-  {
-    icon: Users,
-    title: "Délai souhaité",
-    desc: "Vous voulez vite ? C'est faisable, mais c'est du travail. Délai un peu plus long = coût peut baisser un peu. Discutons ensemble.",
+    num: "04",
+    icon: PackageCheck,
+    title: "Livraison + formation",
+    time: "1 semaine",
+    desc: "Mise en production. Migration des données si besoin. Formation de l'équipe. Remise du code source, des accès, de la documentation.",
   },
 ];
 
