@@ -13,6 +13,7 @@ import LandingGoogleApplicationWebSurMesure from "./pages/LandingGoogleApplicati
 import LandingGoogleDeveloppementApplication from "./pages/LandingGoogleDeveloppementApplication.tsx";
 import LandingGoogleLogicielBtp from "./pages/LandingGoogleLogicielBtp.tsx";
 import LandingGoogleLogicielRh from "./pages/LandingGoogleLogicielRh.tsx";
+import LandingGoogleErpSurMesure from "./pages/LandingGoogleErpSurMesure.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminSignup from "./pages/AdminSignup.tsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.tsx";
