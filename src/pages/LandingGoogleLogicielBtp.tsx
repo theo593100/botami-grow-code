@@ -144,30 +144,30 @@ const steps = [
   {
     num: "01",
     icon: FileText,
-    title: "Cahier des charges",
-    time: "1-2 semaines",
-    desc: "On vient voir comment vous travaillez. Devis, chantiers, pointage, facturation. On liste vos règles métier. On dessine l'architecture.",
+    title: "Cadrage & cahier des charges",
+    time: "~1 semaine",
+    desc: "On identifie votre besoin ensemble. Livrable : un document clair qui décrit exactement ce qu'on va construire.",
   },
   {
     num: "02",
     icon: Layers,
-    title: "Maquette",
-    time: "1-2 semaines",
-    desc: "Prototype cliquable de tous les écrans : saisie de devis, vue chantier, app mobile compagnon, tableau de bord. Vous validez avant qu'on code.",
+    title: "Maquette & validation",
+    time: "~1 semaine",
+    desc: "Prototype cliquable, écrans réels. Vous validez avant qu'on écrive une seule ligne de code.",
   },
   {
     num: "03",
     icon: Hammer,
     title: "Développement",
-    time: "4-8 semaines",
-    desc: "On construit. Vous testez chaque semaine sur un environnement de staging, avec vos vraies données de test. Corrections en continu.",
+    time: "~1-2 semaines",
+    desc: "On construit. Versions testables à chaque étape. Pas de tunnel de 3 mois sans nouvelles.",
   },
   {
     num: "04",
     icon: PackageCheck,
     title: "Livraison + formation",
-    time: "1 semaine",
-    desc: "Mise en production. Import de vos données existantes (Excel, ancien logiciel). Formation chefs de chantier et bureau. Code source, accès, doc remis.",
+    time: "~2-3 jours",
+    desc: "Application en production. Données migrées. Équipe formée. Code source entre vos mains.",
   },
 ];
 
@@ -520,7 +520,7 @@ const LandingGoogleLogicielBtp = () => {
             </h2>
             <div className="flex justify-center mb-4">
               <span className="inline-flex items-center gap-2 text-sm md:text-base font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
-                <Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison
+                <Clock className="w-4 h-4" /> ~4 semaines du brief à la livraison
               </span>
             </div>
           </Reveal>
