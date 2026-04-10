@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const C = {
   bg: "#FAF7F2",
