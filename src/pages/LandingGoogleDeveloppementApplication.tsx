@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2,
   Clock,
-  Code2,
   Euro,
+  FileText,
+  Hammer,
   Layers,
   Linkedin,
   Mail,
+  PackageCheck,
   Phone,
   Shield,
-  Users,
 } from "lucide-react";
 import {
   Accordion,
@@ -35,26 +36,34 @@ const heading = "font-heading font-bold";
 const ctaBtn =
   "inline-block font-body font-semibold text-white rounded-lg px-8 py-4 text-base md:text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5";
 
-const pricingFactors = [
+const steps = [
   {
+    num: "01",
+    icon: FileText,
+    title: "Cahier des charges",
+    time: "1-2 semaines",
+    desc: "On comprend votre besoin métier. On définit les fonctionnalités, les écrans, les intégrations, les règles de gestion. On propose une architecture claire.",
+  },
+  {
+    num: "02",
     icon: Layers,
-    title: "Complexité métier",
-    desc: "Gestion simple de commandes : ~5 000-7 000€. Système d'automatisation complexe avec 10 workflows : 10 000-15 000€.",
+    title: "Maquette",
+    time: "1-2 semaines",
+    desc: "Prototype cliquable de toute l'application. Vous testez la navigation, validez les écrans, ajustez avant qu'on code une ligne.",
   },
   {
-    icon: Clock,
-    title: "Volume de données et reporting",
-    desc: "Peu de données : prix bas. Énormes volumes, rapports sophisqués, historique détaillé : prix monte.",
+    num: "03",
+    icon: Hammer,
+    title: "Développement",
+    time: "4-8 semaines",
+    desc: "On construit. Versions testables chaque semaine sur un environnement de staging. Vous testez sur vos vrais cas d'usage. Bugs corrigés en continu.",
   },
   {
-    icon: Code2,
-    title: "Intégrations externes",
-    desc: "App isolée : moins cher. Connexions à 3-5 outils externes (Stripe, Google Sheets, Salesforce) : coût augmente.",
-  },
-  {
-    icon: Users,
-    title: "Délai souhaité",
-    desc: "Vous voulez vite ? C'est faisable, mais c'est du travail. Délai un peu plus long = coût peut baisser un peu. Discutons ensemble.",
+    num: "04",
+    icon: PackageCheck,
+    title: "Livraison + formation",
+    time: "1 semaine",
+    desc: "Mise en production. Migration des données si besoin. Formation de l'équipe. Remise du code source, des accès, de la documentation.",
   },
 ];
 
@@ -330,20 +339,47 @@ const LandingGoogleDeveloppementApplication = () => {
         </div>
       </section>
 
-      {/* Bloc 3 — Facteurs de prix */}
+      {/* Bloc 3 — Process */}
       <section className="px-4 md:px-8 py-16 md:py-24" style={{ backgroundColor: C.card }}>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h2 className={`${heading} text-2xl md:text-3xl mb-4 text-center`} style={{ color: C.charcoal }}>
-            Pourquoi le coût varie entre 5 000€ et 15 000€
+            Comment ça se passe
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-            {pricingFactors.map((pf, idx) => (
-              <div key={idx} className="p-6 rounded-xl border" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
-                <pf.icon className="w-8 h-8 mb-4" style={{ color: C.amber }} />
-                <h3 className={`${heading} text-lg mb-2`} style={{ color: C.charcoal }}>{pf.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: C.slate }}>{pf.desc}</p>
-              </div>
-            ))}
+          <div className="flex justify-center mb-12">
+            <span className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-full shadow-sm" style={{ backgroundColor: "#ECFDF5", color: C.success, border: "1.5px solid #A7F3D0" }}>
+              <Clock className="w-4 h-4" /> 4 à 8 semaines du brief à la livraison
+            </span>
+          </div>
+          <div className="flex flex-col gap-10">
+            {steps.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.num} className="flex gap-6 items-start">
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                    style={{ backgroundColor: C.amber, color: "#FFFFFF" }}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="pt-1">
+                    <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                      <h3 className={`${heading} text-lg md:text-xl`} style={{ color: C.charcoal }}>
+                        {s.title}
+                      </h3>
+                      <span
+                        className="text-sm font-medium px-2.5 py-0.5 rounded-full"
+                        style={{ color: C.slate, backgroundColor: C.amberPale }}
+                      >
+                        {s.time}
+                      </span>
+                    </div>
+                    <p className="leading-relaxed max-w-lg" style={{ color: C.slate }}>
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
