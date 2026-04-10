@@ -39,12 +39,14 @@ interface Props {
   title: string;
   subtitle: string;
   buttonLabel?: string;
+  route?: string;
 }
 
 const LPFormCalendly = ({
   title,
   subtitle,
   buttonLabel = "Je réserve mon appel découverte gratuit",
+  route,
 }: Props) => {
   const [form, setForm] = useState({
     prenom: "",
