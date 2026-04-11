@@ -21,8 +21,8 @@ import {
   Linkedin,
 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import eliasPhoto from "@/assets/elias.png";
-import theoPhoto from "@/assets/theo.png";
+import eliasPhoto from "@/assets/elias.webp";
+import theoPhoto from "@/assets/theo.webp";
 import logo from "@/assets/logo-botami.svg";
 
 import logoBlackfox from "@/assets/clients/blackfox.png";
