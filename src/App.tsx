@@ -26,6 +26,7 @@ import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
+import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CookieBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
