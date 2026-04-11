@@ -21,7 +21,7 @@ const Footer = () => (
               <Mail className="w-4 h-4" /> contact@botami-agency.com
             </a>
             <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" /> Nîmes, France
+              <MapPin className="w-4 h-4" /> Lille · Paris · Nîmes
             </span>
           </div>
         </div>
