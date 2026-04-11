@@ -30,6 +30,7 @@ const Footer = () => (
           <div className="flex flex-col gap-2 text-sm opacity-70">
             <a href="/mentions-legales" className="hover:opacity-100 transition-opacity">Mentions légales</a>
             <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity">Politique de confidentialité</a>
+            <a href="/politique-cookies" className="hover:opacity-100 transition-opacity">Politique de cookies</a>
           </div>
         </div>
       </div>
