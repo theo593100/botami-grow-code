@@ -26,6 +26,7 @@ import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
+import MentionsLegales from "./pages/MentionsLegales.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
