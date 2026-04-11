@@ -26,6 +26,7 @@ import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
+import MentionsLegales from "./pages/MentionsLegales.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/lp/google/logiciel-comptabilite" element={<LandingGoogleLogicielComptabilite />} />
           <Route path="/lp/google/logiciel-sur-mesure" element={<LandingGoogleLogicielSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
