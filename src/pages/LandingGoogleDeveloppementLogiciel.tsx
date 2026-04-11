@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Linkedin,
 } from "lucide-react";
+import ComparisonTable from "@/components/lp/ComparisonTable";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import eliasPhoto from "@/assets/elias.png";
 import theoPhoto from "@/assets/theo.png";
