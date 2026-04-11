@@ -239,11 +239,27 @@ const LandingGoogleLogicielRh = () => {
         <div className="max-w-5xl mx-auto">
           <Reveal><p className={`${heading} text-lg md:text-xl text-center mb-10`} style={{ color: C.text }}>Notre équipe accompagne des entreprises en acquisition digitale depuis des années</p></Reveal>
           <Reveal delay={100}>
-            <div className="flex flex-wrap items-center justify-center gap-8 mb-12">
+            <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
               {clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />))}
             </div>
           </Reveal>
-          <Reveal delay={200}><p className="text-center text-base md:text-lg leading-relaxed max-w-3xl mx-auto" style={{ color: C.textSec }}>On les a vues se battre avec des SaaS trop chers, des Excel qui craquent, des outils qui ne collent pas à leur métier. Botami Software est né de ce constat : quand les outils du marché ne suffisent plus, on construit celui qu'il vous faut.</p></Reveal>
+          <Reveal delay={200}>
+            <div className="relative max-w-2xl mx-auto px-6 py-8">
+              <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
+              <span className="absolute bottom-0 right-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>
+              <p className="text-center text-lg md:text-xl leading-relaxed italic" style={{ color: C.textSec }}>
+                On les a vues se battre avec des{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>SaaS trop chers</span>,
+                des{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>Excel qui craquent</span>,
+                des outils qui ne collent pas à leur métier.
+                <br className="hidden md:block" />{" "}
+                <span className="font-bold" style={{ color: C.text }}>Botami Software</span> est né de ce constat&nbsp;:{" "}
+                <span className="font-semibold" style={{ color: C.amber }}>quand les outils du marché ne suffisent plus</span>,
+                on construit celui qu'il vous faut.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
