@@ -256,6 +256,20 @@ const LandingGoogleApplicationWebSurMesure = () => {
         </div>
       </section>
 
+      <ComparisonTable
+        h2="Application web standard vs Botami Software"
+        subtitle="Pourquoi les briques SaaS finissent toujours par vous freiner."
+        headers={["Critère", "SaaS standard", "Botami Software"]}
+        rows={[
+          ["Modèle de prix", "Abonnement par utilisateur, augmente avec l'équipe", "Forfait 5 000–15 000€, une seule fois"],
+          ["Propriété du code", "Aucune — vous louez l'accès", "Oui, code source remis"],
+          ["Adaptation à votre workflow", "Ce que l'éditeur a prévu, rien de plus", "Construite autour de votre manière de travailler"],
+          ["Intégrations", "Celles que l'éditeur propose", "Connectée à vos outils, aux bons endroits"],
+          ["Dépendance au fournisseur", "Forte (prix, support, fin de vie produit)", "Zéro — vous partez avec tout"],
+          ["Coût sur 3 ans", "7 200€ à 36 000€ selon le SaaS", "5 000–15 000€ (payé une fois)"],
+        ]}
+      />
+
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <Reveal>

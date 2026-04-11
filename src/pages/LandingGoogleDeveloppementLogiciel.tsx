@@ -256,6 +256,20 @@ const LandingGoogleDeveloppementLogiciel = () => {
         </div>
       </section>
 
+      <ComparisonTable
+        h2="Logiciel standard vs Botami Software"
+        subtitle="Pourquoi un SaaS du marché finit toujours par coûter plus cher qu'il n'y paraît."
+        headers={["Critère", "Logiciel standard", "Botami Software"]}
+        rows={[
+          ["Modèle de prix", "Abonnement mensuel ou licence annuelle par utilisateur", "Forfait 5 000–15 000€, une seule fois"],
+          ["Propriété du code", "Aucune — vous louez l'accès", "Oui, code source remis"],
+          ["Adaptation métier", "Ce que l'éditeur a prévu, rien de plus", "Sur mesure dès la conception"],
+          ["Évolutions", "Roadmap de l'éditeur, pas la vôtre", "Vous décidez, quand vous voulez"],
+          ["Dépendance au fournisseur", "Forte (prix, support, fin de vie produit)", "Zéro — vous partez avec tout"],
+          ["Coût sur 3 ans", "7 200€ à 36 000€ selon le SaaS", "5 000–15 000€ (payé une fois)"],
+        ]}
+      />
+
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <Reveal>
