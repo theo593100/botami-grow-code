@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Linkedin,
 } from "lucide-react";
+import ComparisonTable from "@/components/lp/ComparisonTable";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import eliasPhoto from "@/assets/elias.png";
 import theoPhoto from "@/assets/theo.png";
@@ -254,6 +255,20 @@ const LandingGoogleDeveloppementApplication = () => {
           </Reveal>
         </div>
       </section>
+
+      <ComparisonTable
+        h2="Application standard vs Botami Software"
+        subtitle="Pourquoi un outil générique ne remplace jamais un outil pensé pour vous."
+        headers={["Critère", "Application standard", "Botami Software"]}
+        rows={[
+          ["Modèle de prix", "Abonnement mensuel ou licence par utilisateur", "Forfait 5 000–15 000€, une seule fois"],
+          ["Propriété du code", "Aucune — vous louez l'accès", "Oui, code source remis"],
+          ["Délai de mise en place", "Configuration + formation + contournements", "4 à 8 semaines, livrée et opérationnelle"],
+          ["Adaptation métier", "Vous entrez dans ses cases", "Elle entre dans les vôtres"],
+          ["Dépendance au fournisseur", "Forte (prix, support, fin de vie produit)", "Zéro — vous partez avec tout"],
+          ["Coût sur 3 ans", "7 200€ à 36 000€ selon l'outil", "5 000–15 000€ (payé une fois)"],
+        ]}
+      />
 
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
