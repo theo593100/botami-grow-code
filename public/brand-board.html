@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botami Software — Brand Board V1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Palette principale — direction ambre/chaud */
+    --primary: #C4872C;
+    --primary-light: #D4A04A;
+    --primary-dark: #A06B1E;
+    --primary-deeper: #8B5A18;
+    --primary-bg: #FEF3E2;
+
+    /* Neutres chauds */
+    --dark: #1A1A1A;
+    --dark-surface: #2D2D2D;
+    --neutral-700: #4B4B4B;
+    --neutral-500: #6B7280;
+    --neutral-400: #9CA3AF;
+    --neutral-300: #E5E0D8;
+    --neutral-200: #F0EBE3;
+
+    /* Fonds */
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+
+    /* Utilitaires */
+    --success: #10B981;
+    --error: #DC2626;
+
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-lg: 24px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    padding: 32px;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 48px 24px;
+    background: var(--dark);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(196,135,44,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,160,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--neutral-400);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .header .title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -1px;
+    position: relative;
+  }
+  .header .title span { color: var(--primary-light); }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--neutral-400);
+    margin-top: 12px;
+    position: relative;
+  }
+  .header .version {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 16px;
+    background: rgba(196,135,44,0.1);
+    border: 1px solid rgba(196,135,44,0.2);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* ── Bento Grid ── */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--neutral-300);
+    transition: transform 0.2s ease;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--neutral-400);
+    margin-bottom: 24px;
+  }
+
+  /* ── Logo Card (large) ── */
+  .card-logo {
+    grid-column: span 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    background: var(--cream);
+  }
+  .logo-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .logo-icon {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    letter-spacing: -1.5px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .logo-text .software {
+    font-weight: 400;
+    color: var(--neutral-500);
+  }
+  .logo-note {
+    font-size: 13px;
+    color: var(--neutral-400);
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  /* ── Logo Dark Card ── */
+  .card-logo-dark {
+    grid-column: span 4;
+    min-height: 320px;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-logo-dark .card-label { color: var(--neutral-500); }
+  .card-logo-dark .logo-text { color: var(--white); }
+  .card-logo-dark .logo-text .software { color: var(--neutral-400); }
+  .card-logo-dark .logo-note { color: var(--neutral-500); }
+
+  /* ── Icon Showcase ── */
+  .card-icon {
+    grid-column: span 4;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .icon-sizes {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  .icon-sizes .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .icon-sizes .icon-item span {
+    font-size: 11px;
+    color: var(--neutral-400);
+    font-weight: 500;
+  }
+
+  /* ── Color Palette ── */
+  .card-colors {
+    grid-column: span 8;
+    min-height: 280px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .color-swatch {
+    border-radius: var(--radius-sm);
+    aspect-ratio: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .color-swatch.large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .color-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .color-hex {
+    font-family: 'DM Sans', monospace;
+    font-size: 12px;
+    opacity: 0.8;
+    color: var(--white);
+  }
+  .color-swatch.light-swatch .color-name,
+  .color-swatch.light-swatch .color-hex {
+    color: var(--dark);
+  }
+
+  /* ── Typography ── */
+  .card-typo {
+    grid-column: span 7;
+    min-height: 320px;
+  }
+  .typo-display {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    letter-spacing: -2px;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .typo-display-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    color: var(--neutral-500);
+    margin-bottom: 28px;
+  }
+  .typo-body-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .typo-body-demo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--neutral-700);
+    max-width: 500px;
+  }
+  .typo-body-demo strong {
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  /* ── Weights ── */
+  .card-weights {
+    grid-column: span 5;
+    min-height: 320px;
+    background: var(--dark);
+    color: var(--white);
+  }
+  .card-weights .card-label { color: var(--neutral-500); }
+  .weight-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .weight-item {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .weight-item .w-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--neutral-500);
+    min-width: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .w-300 { font-weight: 300; color: var(--neutral-400); }
+  .w-400 { font-weight: 400; color: var(--neutral-300); }
+  .w-500 { font-weight: 500; }
+  .w-600 { font-weight: 600; }
+  .w-700 { font-weight: 700; }
+  /* Space Grotesk n'a pas de 800 — max 700 */
+
+  /* ── CTA Preview ── */
+  .card-cta {
+    grid-column: span 12;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 32px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    border: 1.5px solid var(--dark);
+  }
+  .btn-outline:hover { background: var(--dark); color: var(--white); }
+  .btn-soft {
+    background: var(--primary-bg);
+    color: var(--primary-dark);
+    border: 1px solid rgba(196,135,44,0.15);
+  }
+  .btn-soft:hover { background: #FCEAC8; }
+  .tag-line {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--primary);
+  }
+
+  /* ── Usage Rules ── */
+  .card-rules {
+    grid-column: span 6;
+    background: var(--cream);
+    border: 1px solid var(--neutral-300);
+  }
+  .rule-list { display: flex; flex-direction: column; gap: 16px; }
+  .rule {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .rule-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+  .rule-do .rule-icon { background: #D1FAE5; color: #059669; }
+  .rule-dont .rule-icon { background: #FEE2E2; color: #DC2626; }
+  .rule-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--neutral-700);
+  }
+
+  /* ── Tone Card ── */
+  .card-tone {
+    grid-column: span 6;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deeper) 100%);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card-tone .card-label { color: rgba(255,255,255,0.5); }
+  .tone-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .tone-word {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+  }
+  .tone-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── Lockup Variants ── */
+  .card-lockups {
+    grid-column: span 12;
+    min-height: 200px;
+  }
+  .lockup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .lockup-item {
+    border-radius: var(--radius-sm);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 140px;
+  }
+  .lockup-item.on-cream { background: var(--cream); border: 1px solid var(--neutral-300); }
+  .lockup-item.on-dark { background: var(--dark); }
+  .lockup-item.on-primary { background: var(--primary); }
+  .lockup-item .lockup-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .lockup-item.on-cream .lockup-label { color: var(--neutral-400); }
+  .lockup-item.on-dark .lockup-label { color: var(--neutral-500); }
+  .lockup-item.on-primary .lockup-label { color: rgba(255,255,255,0.6); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 24px 16px;
+    color: var(--neutral-400);
+    font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    body { padding: 16px; }
+    .bento { grid-template-columns: 1fr; }
+    .card-logo, .card-logo-dark, .card-icon, .card-colors,
+    .card-typo, .card-weights, .card-rules, .card-tone,
+    .card-lockups, .card-cta { grid-column: span 1; }
+    .lockup-grid { grid-template-columns: 1fr; }
+    .color-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<div class="header">
+  <h1>Brand Board</h1>
+  <div class="title">Botami <span>Software</span></div>
+  <div class="subtitle">Kit visuel V1 — Identité de marque</div>
+  <div class="version">Avril 2026 — Version 1.0</div>
+</div>
+
+<!-- ── Bento Grid ── -->
+<div class="bento">
+
+  <!-- Logo — fond crème -->
+  <div class="card card-logo">
+    <div class="card-label">Logo principal</div>
+    <div class="logo-main">
+      <svg class="logo-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+      </svg>
+      <div class="logo-text">
+        Botami <span class="software">Software</span>
+      </div>
+    </div>
+    <div class="logo-note">Logo horizontal — usage principal (site, docs, présentations)</div>
+  </div>
+
+  <!-- Logo — fond sombre -->
+  <div class="card card-logo-dark">
+    <div class="card-label">Fond sombre</div>
+    <div class="logo-main" style="flex-direction: column; gap: 16px; align-items: center;">
+      <svg width="56" height="56" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+      </svg>
+      <div class="logo-text" style="font-size: 24px; text-align: center;">
+        Botami <span class="software">Software</span>
+      </div>
+    </div>
+    <div class="logo-note">Logo empilé — réseaux sociaux, favicon, espaces réduits</div>
+  </div>
+
+  <!-- Icône seule -->
+  <div class="card card-icon">
+    <div class="card-label">Icône / Favicon</div>
+    <div class="icon-sizes">
+      <div class="icon-item">
+        <svg width="64" height="64" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+        </svg>
+        <span>64px</span>
+      </div>
+      <div class="icon-item">
+        <svg width="40" height="40" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+        </svg>
+        <span>40px</span>
+      </div>
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+        </svg>
+        <span>24px</span>
+      </div>
+      <div class="icon-item">
+        <svg width="16" height="16" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+        </svg>
+        <span>16px</span>
+      </div>
+    </div>
+    <div class="logo-note" style="font-size: 12px; color: var(--neutral-400);">
+      Icône officielle — fichier source : icone-botami.svg
+    </div>
+  </div>
+
+  <!-- Couleurs -->
+  <div class="card card-colors">
+    <div class="card-label">Palette de couleurs</div>
+    <div class="color-grid">
+      <div class="color-swatch large" style="background: var(--primary);">
+        <div class="color-name">Ambre Botami</div>
+        <div class="color-hex">#C4872C</div>
+      </div>
+      <div class="color-swatch" style="background: var(--primary-light);">
+        <div class="color-name">Ambre clair</div>
+        <div class="color-hex">#D4A04A</div>
+      </div>
+      <div class="color-swatch" style="background: var(--dark);">
+        <div class="color-name">Charbon</div>
+        <div class="color-hex">#1A1A1A</div>
+      </div>
+      <div class="color-swatch" style="background: var(--success);">
+        <div class="color-name">Succès</div>
+        <div class="color-hex">#10B981</div>
+      </div>
+      <div class="color-swatch" style="background: var(--neutral-500);">
+        <div class="color-name">Ardoise</div>
+        <div class="color-hex">#6B7280</div>
+      </div>
+      <div class="color-swatch light-swatch" style="background: var(--primary-bg); border: 1px solid rgba(196,135,44,0.15);">
+        <div class="color-name">Ambre pâle</div>
+        <div class="color-hex">#FEF3E2</div>
+      </div>
+      <div class="color-swatch light-swatch" style="background: var(--cream); border: 1px solid var(--neutral-300);">
+        <div class="color-name">Crème</div>
+        <div class="color-hex">#FAF7F2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typographie Display -->
+  <div class="card card-typo">
+    <div class="card-label">Typographie</div>
+    <div class="typo-display">Space Grotesk</div>
+    <div class="typo-display-name">Titres & Logo</div>
+    <div class="typo-body-label">DM Sans — Corps de texte</div>
+    <div class="typo-body-demo">
+      On développe des <strong>applications sur mesure</strong> pour les PME/TPE, au prix et à la vitesse que l'IA rend possibles, avec l'accompagnement de gens qui comprennent le métier — pas juste le code.
+    </div>
+  </div>
+
+  <!-- Graisses -->
+  <div class="card card-weights">
+    <div class="card-label">Graisses Space Grotesk</div>
+    <div class="weight-list">
+      <div class="weight-item w-300">
+        <span class="w-label">Light</span> Botami Software
+      </div>
+      <div class="weight-item w-400">
+        <span class="w-label">Regular</span> Botami Software
+      </div>
+      <div class="weight-item w-500">
+        <span class="w-label">Medium</span> Botami Software
+      </div>
+      <div class="weight-item w-600">
+        <span class="w-label">Semi</span> Botami Software
+      </div>
+      <div class="weight-item w-700">
+        <span class="w-label">Bold</span> Botami Software
+      </div>
+<!-- Space Grotesk max weight = 700, pas de 800 -->
+    </div>
+  </div>
+
+  <!-- CTA Preview -->
+  <div class="card card-cta">
+    <div class="card-label">Boutons & éléments UI</div>
+    <div class="tag-line">DÉVELOPPEMENT SUR MESURE POUR PME</div>
+    <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px; letter-spacing: -1px; color: var(--dark); text-align: center; max-width: 600px; line-height: 1.2;">
+      On remplace vos SaaS par des applications qui vous appartiennent.
+    </div>
+    <div style="font-size: 15px; color: var(--neutral-500); text-align: center;">Forfait transparent de 5 000 à 15 000 €. Code source, données, hébergement — tout est chez vous.</div>
+    <div class="cta-row">
+      <a class="btn btn-primary">Parler de votre projet</a>
+      <a class="btn btn-outline">Voir comment ça marche</a>
+    </div>
+    <div class="cta-row" style="margin-top: 8px;">
+      <a class="btn btn-soft">Bouton secondaire doux</a>
+    </div>
+  </div>
+
+  <!-- Règles d'usage -->
+  <div class="card card-rules">
+    <div class="card-label">Règles d'usage</div>
+    <div class="rule-list">
+      <div class="rule rule-do">
+        <div class="rule-icon">✓</div>
+        <div class="rule-text">Fond par défaut = crème #FAF7F2, pas blanc pur</div>
+      </div>
+      <div class="rule rule-do">
+        <div class="rule-icon">✓</div>
+        <div class="rule-text">L'ambre est la couleur d'action (CTA, liens, taglines)</div>
+      </div>
+      <div class="rule rule-do">
+        <div class="rule-icon">✓</div>
+        <div class="rule-text">Les cards et sections utilisent du blanc #FFF sur fond crème</div>
+      </div>
+      <div class="rule rule-dont">
+        <div class="rule-icon">✗</div>
+        <div class="rule-text">Pas de bleu, pas de violet — la palette est chaude uniquement</div>
+      </div>
+      <div class="rule rule-dont">
+        <div class="rule-icon">✗</div>
+        <div class="rule-text">Ne pas utiliser l'ambre comme fond de section (trop lourd)</div>
+      </div>
+      <div class="rule rule-dont">
+        <div class="rule-icon">✗</div>
+        <div class="rule-text">Ne pas substituer Space Grotesk par Inter ou Arial</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ton de marque -->
+  <div class="card card-tone">
+    <div class="card-label">Personnalité de marque</div>
+    <div class="tone-words">
+      <span class="tone-word">Direct</span>
+      <span class="tone-word">Fiable</span>
+      <span class="tone-word">Accessible</span>
+      <span class="tone-word">Concret</span>
+    </div>
+    <div class="tone-note">
+      On tutoie avec le "on". On parle résultats, pas promesses.<br>
+      Professionnel mais pas corporate. Tech mais compréhensible.<br>
+      Le client se dit : "Ces gens comprennent mon problème."
+    </div>
+  </div>
+
+  <!-- Déclinaisons -->
+  <div class="card card-lockups">
+    <div class="card-label">Déclinaisons</div>
+    <div class="lockup-grid">
+      <div class="lockup-item on-cream">
+        <div class="logo-main" style="gap: 14px;">
+          <svg width="40" height="40" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+          </svg>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: var(--dark); letter-spacing: -0.5px;">Botami <span style="font-weight: 400; color: var(--neutral-500);">Software</span></span>
+        </div>
+        <div class="lockup-label" style="color: var(--neutral-400);">Sur fond crème</div>
+      </div>
+      <div class="lockup-item on-dark">
+        <div class="logo-main" style="gap: 14px;">
+          <svg width="40" height="40" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#C4872C" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+          </svg>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: white; letter-spacing: -0.5px;">Botami <span style="font-weight: 400; color: var(--neutral-400);">Software</span></span>
+        </div>
+        <div class="lockup-label" style="color: var(--neutral-500);">Sur fond sombre</div>
+      </div>
+      <div class="lockup-item on-primary">
+        <div class="logo-main" style="gap: 14px;">
+          <svg width="40" height="40" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <path fill="white" d="M242.89,285.2v2.53c0,3.51-.64,6.59-1.91,9.24-.7,1.44-1.58,2.75-2.65,3.93-.65.72-1.36,1.39-2.15,2.02-4.47,3.54-10.34,5.32-17.6,5.32h-31.39v-43.55h31.39c7.43,0,13.33,1.77,17.72,5.31.16.13.31.26.46.39,1.22,1.04,2.25,2.21,3.1,3.5,2.02,3.07,3.03,6.84,3.03,11.31ZM442.6,119.91v260.18c0,34.52-27.99,62.51-62.51,62.51H119.91c-34.52,0-62.51-27.99-62.51-62.51V119.91c0-34.52,27.99-62.51,62.51-62.51h260.18c34.52,0,62.51,27.99,62.51,62.51ZM369.53,288.77c0-10.08-2.45-18.25-7.34-24.51-4.9-6.25-11.44-11.21-19.62-14.87-8.19-3.66-17.43-6.54-27.73-8.65l-13.16-3.18c-7.77-1.78-14.44-3.86-20.01-6.21-2.38-1.01-4.54-2.15-6.47-3.42-1.06-.7-2.06-1.44-2.98-2.22-1.3-1.09-2.45-2.26-3.46-3.51-3.04-3.73-4.56-8.61-4.56-14.63,0-7.81,2.62-14.1,7.84-18.86.86-.78,1.8-1.53,2.8-2.23.05-.03.1-.07.16-.1,7.06-4.89,16.38-7.33,27.94-7.33,8.1,0,15.32,1.22,21.65,3.66,6.33,2.43,11.31,6.17,14.94,11.21,3.63,5.04,5.44,11.71,5.44,19.99v10.24h21.02v-10.24c0-11.7-2.75-21.41-8.23-29.13-5.49-7.72-13-13.57-22.54-17.56-9.53-3.98-20.3-5.98-32.28-5.98s-22.24,1.88-31.27,5.62c-2.97,1.23-5.72,2.63-8.25,4.22-1.08.67-2.13,1.38-3.13,2.12-3.78,2.79-6.99,6.04-9.63,9.75-4.98,6.99-7.47,15.28-7.47,24.87s2.23,17.43,6.71,23.53c2.61,3.56,5.81,6.72,9.6,9.47,1.05.76,2.13,1.49,3.26,2.18,1.81,1.11,3.72,2.14,5.75,3.1,7.93,3.74,17.04,6.91,27.34,9.51l13.17,3.17c7.93,1.79,14.85,3.86,20.76,6.22,5.91,2.35,10.51,5.4,13.8,9.14,3.29,3.74,4.94,8.78,4.94,15.12,0,9.1-3.63,16.66-10.89,22.67-7.26,6.02-17.81,9.02-31.65,9.02-11.97,0-22.01-2.71-30.14-8.14-1.03-.69-2.04-1.42-3.01-2.2.49-1.16.92-2.35,1.3-3.57,1.45-4.64,2.18-9.73,2.18-15.26v-2.54c0-8.43-1.56-15.27-4.68-20.5-3.13-5.23-6.88-9.25-11.27-12.03-4.39-2.78-8.44-4.68-12.15-5.7v-4.55c2.57-.82,5.26-2.03,8.04-3.63-3.63-2.79-6.75-5.95-9.33-9.46-2.72-3.71-4.7-8.01-5.91-12.87-1.03,3.38-2.98,6.21-5.85,8.49-4.47,3.54-10.16,5.31-17.09,5.31h-30.88v-42.54h30.88c7.1,0,12.83,1.74,17.22,5.2,1.94,1.52,3.44,3.33,4.52,5.42.81-8.04,3.43-15.23,7.84-21.42,2.67-3.74,5.91-7.07,9.67-9.97-2.29-1.56-4.78-2.95-7.47-4.16-8.02-3.63-17.43-5.45-28.23-5.45h-91.15v29.37h23.29v118.5h-23.29v29.37h92.16c10.64,0,19.96-1.86,27.98-5.57,2.76-1.27,5.31-2.75,7.65-4.41,1.02-.72,1.99-1.47,2.92-2.26,1.03.72,2.08,1.42,3.16,2.07,2.27,1.38,4.67,2.62,7.21,3.72,10.12,4.39,21.6,6.59,34.43,6.59s24.01-2.08,33.55-6.22c9.53-4.15,16.92-9.96,22.15-17.44,5.23-7.47,7.85-16.25,7.85-26.33Z"/>
+          </svg>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: white; letter-spacing: -0.5px;">Botami <span style="font-weight: 400; color: rgba(255,255,255,0.7);">Software</span></span>
+        </div>
+        <div class="lockup-label" style="color: rgba(255,255,255,0.6);">Sur fond ambre</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Botami Software — Brand Board V1 — Avril 2026<br>
+  Direction ambre/chaud. Kit visuel fonctionnel.
+</div>
+
+</body>
+</html>
