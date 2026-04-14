@@ -26,18 +26,15 @@ import eliasPhoto from "@/assets/elias.webp";
 import theoPhoto from "@/assets/theo.webp";
 import logo from "@/assets/logo-botami.svg";
 
-import logoBlackfox from "@/assets/clients/blackfox.png";
 import logoDesMurs from "@/assets/clients/des-murs-a-paris.png";
 import logoErgosante from "@/assets/clients/ergosante.png";
 import logoJD from "@/assets/clients/jd-sports.png";
 import logoKijiji from "@/assets/clients/kijiji.png";
-import logoLibralerte from "@/assets/clients/libralerte.png";
 import logoProvence from "@/assets/clients/mademoiselle-provence.png";
 import logoNotaires from "@/assets/clients/notaires-de-france.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoSkinCafeine from "@/assets/clients/skin-cafeine.png";
 import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 
 /* ─── palette tokens ─── */
@@ -54,18 +51,15 @@ const C = {
 } as const;
 
 const clientLogos = [
-  { src: logoBlackfox, alt: "Blackfox" },
   { src: logoDesMurs, alt: "Des Murs à Paris" },
   { src: logoErgosante, alt: "Ergo Santé" },
   { src: logoJD, alt: "JD Sports" },
   { src: logoKijiji, alt: "Kijiji" },
-  { src: logoLibralerte, alt: "Libr'Alerte" },
   { src: logoProvence, alt: "Mademoiselle Provence" },
   { src: logoNotaires, alt: "Notaires de France" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoSkinCafeine, alt: "Skin Cafeine" },
   { src: logoStAubin, alt: "St-Aubin Avocats" },
 ];
 
