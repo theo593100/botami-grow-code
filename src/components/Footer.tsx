@@ -29,7 +29,9 @@ const Footer = () => (
           <p className="font-heading font-semibold mb-3">Légal</p>
           <div className="flex flex-col gap-2 text-sm opacity-70">
             <a href="/mentions-legales" className="hover:opacity-100 transition-opacity">Mentions légales</a>
-            <a href="#" className="hover:opacity-100 transition-opacity">Politique de confidentialité</a>
+            <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity">Politique de confidentialité</a>
+            <a href="/politique-cookies" className="hover:opacity-100 transition-opacity">Politique de cookies</a>
+            <a href="/cgv" className="hover:opacity-100 transition-opacity">CGV</a>
           </div>
         </div>
       </div>
