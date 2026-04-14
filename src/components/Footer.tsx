@@ -31,6 +31,7 @@ const Footer = () => (
             <a href="/mentions-legales" className="hover:opacity-100 transition-opacity">Mentions légales</a>
             <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity">Politique de confidentialité</a>
             <a href="/politique-cookies" className="hover:opacity-100 transition-opacity">Politique de cookies</a>
+            <a href="/cgv" className="hover:opacity-100 transition-opacity">CGV</a>
           </div>
         </div>
       </div>
