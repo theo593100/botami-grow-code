@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -170,8 +188,14 @@ export type Database = {
           email: string
           first_name: string
           id: string
+          message: string | null
+          notes: string | null
           phone: string | null
+          prochaine_action: string | null
           source_route: string | null
+          statut: string | null
+          updated_at: string | null
+          updated_by: string | null
         }
         Insert: {
           budget?: string | null
@@ -181,8 +205,14 @@ export type Database = {
           email: string
           first_name: string
           id?: string
+          message?: string | null
+          notes?: string | null
           phone?: string | null
+          prochaine_action?: string | null
           source_route?: string | null
+          statut?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
         }
         Update: {
           budget?: string | null
@@ -192,8 +222,14 @@ export type Database = {
           email?: string
           first_name?: string
           id?: string
+          message?: string | null
+          notes?: string | null
           phone?: string | null
+          prochaine_action?: string | null
           source_route?: string | null
+          statut?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
         }
         Relationships: []
       }
@@ -286,6 +322,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_admin_email: { Args: { check_email: string }; Returns: boolean }
       move_to_dlq: {
         Args: {
           dlq_name: string
