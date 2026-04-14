@@ -36,7 +36,6 @@ import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 const C = {
@@ -57,12 +56,11 @@ const clientLogos = [
   { src: logoJD, alt: "JD Group" },
   { src: logoKijiji, alt: "Kijiji" },
   { src: logoProvence, alt: "Mademoiselle Provence" },
-  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoNotaires, alt: "Notaires de France", h: "h-14" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoStAubin, alt: "St-Aubin Avocats" },
-  { src: logoTransitionsPro, alt: "Transitions Pro" },
+  { src: logoTransitionsPro, alt: "Transitions Pro", h: "h-14" },
 ];
 
 const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -236,7 +234,7 @@ const LandingGoogleLogicielRh = () => {
           <Reveal><p className={`${heading} text-lg md:text-xl text-center mb-10`} style={{ color: C.text }}>Notre équipe accompagne des entreprises en acquisition digitale depuis des années</p></Reveal>
           <Reveal delay={100}>
             <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
-              {clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />))}
+              {clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className={`${l.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`} />))}
             </div>
           </Reveal>
           <Reveal delay={200}>

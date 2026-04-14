@@ -36,7 +36,6 @@ import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 const C = { bg: "#FAF7F2", card: "#FFFFFF", amber: "#C4872C", amberHover: "#D4A04A", amberLight: "#FEF3E2", text: "#1A1A1A", textSec: "#6B7280", success: "#10B981", footer: "#1A1A1A" } as const;
@@ -47,12 +46,11 @@ const clientLogos = [
   { src: logoJD, alt: "JD Group" },
   { src: logoKijiji, alt: "Kijiji" },
   { src: logoProvence, alt: "Mademoiselle Provence" },
-  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoNotaires, alt: "Notaires de France", h: "h-14" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoStAubin, alt: "St-Aubin Avocats" },
-  { src: logoTransitionsPro, alt: "Transitions Pro" },
+  { src: logoTransitionsPro, alt: "Transitions Pro", h: "h-14" },
 ];
 
 const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -210,7 +208,7 @@ const LandingGoogleErpSurMesure = () => {
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <Reveal><p className={`${heading} text-lg md:text-xl text-center mb-10`} style={{ color: C.text }}>Notre équipe accompagne des entreprises en acquisition digitale depuis des années</p></Reveal>
-          <Reveal delay={100}><div className="flex flex-wrap items-center justify-center gap-8 mb-10">{clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />))}</div></Reveal>
+          <Reveal delay={100}><div className="flex flex-wrap items-center justify-center gap-8 mb-10">{clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className={`${l.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`} />))}</div></Reveal>
           <Reveal delay={200}>
             <div className="relative max-w-2xl mx-auto px-6 py-8">
               <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>

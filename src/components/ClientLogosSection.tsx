@@ -9,7 +9,6 @@ import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 const clientLogos = [
@@ -18,12 +17,11 @@ const clientLogos = [
   { src: logoJD, alt: "JD Group" },
   { src: logoKijiji, alt: "Kijiji" },
   { src: logoProvence, alt: "Mademoiselle Provence" },
-  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoNotaires, alt: "Notaires de France", h: "h-14" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoStAubin, alt: "St-Aubin Avocats" },
-  { src: logoTransitionsPro, alt: "Transitions Pro" },
+  { src: logoTransitionsPro, alt: "Transitions Pro", h: "h-14" },
 ];
 
 const ClientLogosSection = () => (
@@ -35,7 +33,7 @@ const ClientLogosSection = () => (
             key={i}
             src={logo.src}
             alt={logo.alt}
-            className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+            className={`${logo.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`}
           />
         ))}
       </div>
