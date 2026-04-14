@@ -26,14 +26,15 @@ import logo from "@/assets/logo-botami.svg";
 
 import logoDesMurs from "@/assets/clients/des-murs-a-paris.png";
 import logoErgosante from "@/assets/clients/ergosante.png";
-import logoJD from "@/assets/clients/jd-sports.png";
+import logoJD from "@/assets/clients/jd-group.png";
 import logoKijiji from "@/assets/clients/kijiji.png";
 import logoProvence from "@/assets/clients/mademoiselle-provence.png";
-import logoNotaires from "@/assets/clients/notaires-de-france.png";
+import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
 import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
+import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 const C = {
   bg: "#FAF7F2",
@@ -74,6 +75,17 @@ const valueProps = [
 ];
 
 const clientLogos = [
+  { src: logoDesMurs, alt: "Des Murs à Paris" },
+  { src: logoErgosante, alt: "Ergo Santé" },
+  { src: logoJD, alt: "JD Group" },
+  { src: logoKijiji, alt: "Kijiji" },
+  { src: logoProvence, alt: "Mademoiselle Provence" },
+  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoPoupina, alt: "Poupina" },
+  { src: logoProarti, alt: "Proarti" },
+  { src: logoSkills, alt: "Skills Communication" },
+  { src: logoStAubin, alt: "St-Aubin Avocats" },
+  { src: logoTransitionsPro, alt: "Transitions Pro" },
 ];
 
 const comparatifRows = [
