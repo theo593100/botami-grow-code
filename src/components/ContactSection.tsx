@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Linkedin } from "lucide-react";
+import { Mail, MapPin, Linkedin, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const situations = [
   "Je paie un SaaS qui ne me convient pas",
@@ -21,16 +22,68 @@ const ContactSection = () => {
     situation: "",
     message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.prenom || !form.email) {
       toast.error("Veuillez remplir les champs requis.");
       return;
     }
-    toast.success("Merci ! Nous reviendrons vers vous rapidement.");
-    setForm({ prenom: "", email: "", telephone: "", situation: "", message: "" });
+
+    setLoading(true);
+
+    const leadId = crypto.randomUUID();
+    const sourceRoute = window.location.pathname;
+
+    // Save lead to database
+    await supabase.from("leads").insert({
+      id: leadId,
+      first_name: form.prenom,
+      email: form.email,
+      phone: form.telephone || null,
+      message: form.situation ? `[${form.situation}] ${form.message}` : form.message || null,
+      source_route: sourceRoute,
+    });
+
+    // Send notification emails to both addresses
+    const templateData = {
+      firstName: form.prenom,
+      email: form.email,
+      phone: form.telephone || undefined,
+      sourceRoute,
+    };
+
+    const recipients = ["elias@botami-agency.com", "theo@botami-agency.com"];
+    recipients.forEach((recipient) => {
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "new-lead-notification",
+          recipientEmail: recipient,
+          idempotencyKey: `lead-notif-${leadId}-${recipient}`,
+          templateData,
+        },
+      });
+    });
+
+    setLoading(false);
+    setSubmitted(true);
   };
+
+  if (submitted) {
+    return (
+      <section id="contact" className="section-padding">
+        <div className="container-narrow">
+          <div className="bg-card border rounded-2xl p-12 text-center max-w-lg mx-auto">
+            <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-accent" />
+            <h3 className="font-heading text-xl font-bold mb-2">Demande envoyée !</h3>
+            <p className="text-muted-foreground">Nous reviendrons vers vous sous 24h.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="section-padding">
@@ -137,8 +190,8 @@ const ContactSection = () => {
               />
             </div>
 
-            <Button type="submit" variant="hero" size="lg" className="w-full text-base">
-              Demander un diagnostic gratuit
+            <Button type="submit" variant="hero" size="lg" className="w-full text-base" disabled={loading}>
+              {loading ? "Envoi en cours…" : "Demander un diagnostic gratuit"}
             </Button>
             <p className="text-xs text-muted-foreground text-center">
               Pas de newsletter, pas de relance commerciale. Juste une réponse à votre besoin.
