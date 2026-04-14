@@ -31,6 +31,7 @@ import MentionsLegales from "./pages/MentionsLegales.tsx";
 import CGV from "./pages/CGV.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgv" element={<CGV />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
           
           {/* Admin */}
           <Route path="/admin" element={<AdminLogin />} />
