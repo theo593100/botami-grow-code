@@ -1,7 +1,6 @@
 import { FileText, Users, LogOut, UserCheck } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { useLocation } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 import {
   Sidebar,
   SidebarContent,
@@ -17,16 +16,15 @@ import {
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
-  { title: "Landing pages", url: "/admin/landing-pages", icon: FileText },
   { title: "Leads", url: "/admin/leads", icon: UserCheck },
+  { title: "Landing pages", url: "/admin/landing-pages", icon: FileText },
   { title: "Utilisateurs", url: "/admin/users", icon: Users },
 ];
 
 export function AdminSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const location = useLocation();
-  const { signOut, user } = useAuth();
+  const { signOut, user } = useAdminAuth();
 
   return (
     <Sidebar collapsible="icon">
