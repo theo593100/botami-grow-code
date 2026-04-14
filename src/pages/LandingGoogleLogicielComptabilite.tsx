@@ -62,6 +62,17 @@ const valueProps = [
 ];
 
 const clientLogos = [
+  { src: logoDesMurs, alt: "Des Murs à Paris" },
+  { src: logoErgosante, alt: "Ergo Santé" },
+  { src: logoJD, alt: "JD Group" },
+  { src: logoKijiji, alt: "Kijiji" },
+  { src: logoProvence, alt: "Mademoiselle Provence" },
+  { src: logoNotaires, alt: "Notaires de France" },
+  { src: logoPoupina, alt: "Poupina" },
+  { src: logoProarti, alt: "Proarti" },
+  { src: logoSkills, alt: "Skills Communication" },
+  { src: logoStAubin, alt: "St-Aubin Avocats" },
+  { src: logoTransitionsPro, alt: "Transitions Pro" },
 ];
 
 const comparatifRows = [
