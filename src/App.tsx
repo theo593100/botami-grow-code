@@ -25,6 +25,7 @@ import AdminResetPassword from "./pages/AdminResetPassword.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
 import LandingPages from "./pages/admin/LandingPages.tsx";
 import UsersPage from "./pages/admin/UsersPage.tsx";
+import LeadsPage from "./pages/admin/LeadsPage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import MentionsLegales from "./pages/MentionsLegales.tsx";
 import CGV from "./pages/CGV.tsx";
@@ -67,6 +68,7 @@ const App = () => (
           <Route path="/admin/reset-password" element={<AdminResetPassword />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="landing-pages" element={<LandingPages />} />
+            <Route path="leads" element={<LeadsPage />} />
             <Route path="users" element={<UsersPage />} />
           </Route>
 
