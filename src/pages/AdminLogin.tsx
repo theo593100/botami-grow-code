@@ -1,32 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail } from "lucide-react";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+  const { sendMagicLink, user, isAdmin, loading: authLoading } = useAdminAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authLoading && user && isAdmin) {
+      navigate("/admin/leads");
+    }
+  }, [user, isAdmin, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
-
-    const { error } = await signIn(email, password);
-    if (error) {
-      setError("Email ou mot de passe incorrect.");
-      setLoading(false);
-    } else {
-      navigate("/admin/landing-pages");
-    }
+    await sendMagicLink(email.trim().toLowerCase());
+    setSent(true);
+    setLoading(false);
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-muted-foreground">Chargement…</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -36,54 +44,46 @@ const AdminLogin = () => {
             Botami Software
           </div>
           <CardTitle className="text-lg font-body text-muted-foreground font-normal">
-            Espace administration
+            Espace administrateur
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="admin@botami.fr"
-              />
+          {sent ? (
+            <div className="text-center space-y-4 py-4">
+              <Mail className="h-12 w-12 mx-auto text-primary" />
+              <p className="text-sm text-muted-foreground">
+                Si cet email est autorisé, un lien de connexion vient de lui
+                être envoyé. Vérifiez votre boîte mail.
+              </p>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSent(false)}
+                className="text-muted-foreground"
+              >
+                Réessayer avec un autre email
+              </Button>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Mot de passe</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {error && (
-              <p className="text-sm text-destructive">{error}</p>
-            )}
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Connexion..." : "Se connecter"}
-            </Button>
-          </form>
-          <div className="mt-4 text-center space-y-2">
-            <button
-              onClick={() => navigate("/admin/forgot-password")}
-              className="text-sm text-muted-foreground hover:text-foreground underline"
-            >
-              Mot de passe oublié ?
-            </button>
-            <br />
-            <button
-              onClick={() => navigate("/admin/signup")}
-              className="text-sm text-muted-foreground hover:text-foreground underline"
-            >
-              Pas encore de compte ? Créer un compte
-            </button>
-          </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="votre@email.com"
+                />
+              </div>
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading
+                  ? "Envoi en cours…"
+                  : "Recevoir un lien de connexion"}
+              </Button>
+            </form>
+          )}
         </CardContent>
       </Card>
     </div>
