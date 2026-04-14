@@ -36,7 +36,6 @@ import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 const C = { bg: "#FAF7F2", card: "#FFFFFF", amber: "#C4872C", amberHover: "#D4A04A", amberLight: "#FEF3E2", text: "#1A1A1A", textSec: "#6B7280", success: "#10B981", footer: "#1A1A1A" } as const;
@@ -51,7 +50,6 @@ const clientLogos = [
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoStAubin, alt: "St-Aubin Avocats" },
   { src: logoTransitionsPro, alt: "Transitions Pro" },
 ];
 

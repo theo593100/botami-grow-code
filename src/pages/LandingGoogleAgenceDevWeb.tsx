@@ -35,7 +35,6 @@ import logoNotaires from "@/assets/clients/notaires-de-france-new.png";
 import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
-import logoStAubin from "@/assets/clients/st-aubin-avocats.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
 
 /* ─── palette tokens ─── */
@@ -61,7 +60,6 @@ const clientLogos = [
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoStAubin, alt: "St-Aubin Avocats" },
   { src: logoTransitionsPro, alt: "Transitions Pro" },
 ];
 
