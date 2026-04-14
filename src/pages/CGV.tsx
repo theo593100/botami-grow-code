@@ -84,9 +84,8 @@ const CGV = () => (
         <h3>6.2 Échéancier</h3>
         <p>Sauf stipulation contraire au devis, le paiement s'effectue selon l'échéancier suivant :</p>
         <ul>
-          <li><strong>40 %</strong> à la signature du devis, à titre d'acompte.</li>
-          <li><strong>30 %</strong> à la validation des maquettes.</li>
-          <li><strong>30 %</strong> à la livraison de l'application.</li>
+          <li><strong>50 %</strong> à la signature du devis, à titre d'acompte.</li>
+          <li><strong>50 %</strong> à la livraison de l'application.</li>
         </ul>
 
         <h3>6.3 Modalités</h3>
@@ -158,7 +157,16 @@ const CGV = () => (
 
         <h3>9.4 Droit de référence</h3>
         <p>
-          Le Client autorise le Prestataire à mentionner son nom, son logo et une description succincte du projet dans ses supports commerciaux (site web, portfolio, présentations), sauf clause de confidentialité renforcée expressément convenue.
+          Le Client autorise le Prestataire, sauf clause de confidentialité renforcée expressément convenue, à :
+        </p>
+        <p>
+          <strong>Utilisation libre (par défaut)</strong> : mentionner le nom du Client, son logo, son secteur d'activité et une description succincte du projet (nature de l'application, problème résolu) dans ses supports commerciaux (site web, portfolio, présentations, réseaux sociaux).
+        </p>
+        <p>
+          <strong>Utilisation soumise à accord préalable</strong> : la publication de captures d'écran ou visuels de l'interface de l'application, d'études de cas détaillées, de témoignages attribués ou de citations du Client nécessite son accord écrit préalable. Le Client dispose de <strong>15 jours</strong> pour valider ou refuser la publication proposée. À défaut de réponse dans ce délai, la demande est réputée refusée.
+        </p>
+        <p>
+          Dans tous les cas, le Prestataire s'engage à ne diffuser aucune donnée confidentielle, financière ou nominative des utilisateurs finaux du Client dans le cadre de ses communications.
         </p>
 
         <h2>Article 10 — Confidentialité</h2>
