@@ -84,10 +84,22 @@ const LPFormCalendly = ({
     return () => window.removeEventListener("message", handleCalendlyMessage);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     (window as any).gtag_report_lead_form?.();
+
+    // Save lead to database
+    supabase.from("leads").insert({
+      first_name: form.prenom,
+      email: form.email,
+      phone: form.tel || null,
+      company: form.entreprise || null,
+      budget: form.depense || null,
+      company_size: form.taille || null,
+      source_route: route || window.location.pathname,
+    }).then();
+
     if (route) {
       supabase.from("landing_page_events").insert({ route, event_type: "cta_click" }).then();
     }

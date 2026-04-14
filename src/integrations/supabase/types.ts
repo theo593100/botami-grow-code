@@ -74,6 +74,42 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          budget: string | null
+          company: string | null
+          company_size: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          phone: string | null
+          source_route: string | null
+        }
+        Insert: {
+          budget?: string | null
+          company?: string | null
+          company_size?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          phone?: string | null
+          source_route?: string | null
+        }
+        Update: {
+          budget?: string | null
+          company?: string | null
+          company_size?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          phone?: string | null
+          source_route?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
