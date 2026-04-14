@@ -89,16 +89,43 @@ const LPFormCalendly = ({
     setSubmitted(true);
     (window as any).gtag_report_lead_form?.();
 
+    const leadId = crypto.randomUUID();
+    const sourceRoute = route || window.location.pathname;
+
     // Save lead to database
     supabase.from("leads").insert({
+      id: leadId,
       first_name: form.prenom,
       email: form.email,
       phone: form.tel || null,
       company: form.entreprise || null,
       budget: form.depense || null,
       company_size: form.taille || null,
-      source_route: route || window.location.pathname,
+      source_route: sourceRoute,
     }).then();
+
+    // Send notification emails
+    const templateData = {
+      firstName: form.prenom,
+      email: form.email,
+      phone: form.tel || undefined,
+      company: form.entreprise || undefined,
+      budget: form.depense || undefined,
+      companySize: form.taille || undefined,
+      sourceRoute,
+    };
+
+    const recipients = ["elias@botami-agency.com", "theo@botami-agency.com"];
+    recipients.forEach((recipient) => {
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "new-lead-notification",
+          recipientEmail: recipient,
+          idempotencyKey: `lead-notif-${leadId}-${recipient}`,
+          templateData,
+        },
+      });
+    });
 
     if (route) {
       supabase.from("landing_page_events").insert({ route, event_type: "cta_click" }).then();
