@@ -192,7 +192,7 @@ const LandingGoogleLogicielComptabilite = () => {
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <Reveal><p className={`${heading} text-lg md:text-xl text-center mb-10`}>Notre équipe accompagne des entreprises en acquisition digitale depuis des années</p></Reveal>
-          <Reveal delay={100}><div className="flex flex-wrap items-center justify-center gap-8 mb-10">{clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />))}</div></Reveal>
+          <Reveal delay={100}><div className="flex flex-wrap items-center justify-center gap-8 mb-10">{clientLogos.map((l, i) => (<img key={i} src={l.src} alt={l.alt} className={`${l.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`} />))}</div></Reveal>
           <Reveal delay={200}>
             <div className="relative max-w-2xl mx-auto px-6 py-8">
               <span className="absolute top-0 left-2 text-6xl md:text-7xl leading-none font-heading select-none" style={{ color: C.amber, opacity: 0.25 }}>"</span>

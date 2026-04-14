@@ -410,7 +410,7 @@ const LandingGoogleCrmSurMesure = () => {
                   key={i}
                   src={l.src}
                   alt={l.alt}
-                  className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  className={`${l.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`}
                 />
               ))}
             </div>

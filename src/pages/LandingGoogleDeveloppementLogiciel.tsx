@@ -226,7 +226,7 @@ const LandingGoogleDeveloppementLogiciel = () => {
           <Reveal delay={100}>
             <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
               {clientLogos.map((l, i) => (
-                <img key={i} src={l.src} alt={l.alt} className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
+                <img key={i} src={l.src} alt={l.alt} className={`${l.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`} />
               ))}
             </div>
           </Reveal>
