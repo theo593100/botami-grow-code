@@ -203,7 +203,7 @@ const LandingPrix = () => {
               Qui on est
             </h3>
             <p className="leading-relaxed mb-3" style={{ color: C.textSec }}>
-              Elias — 10 ans d'expertise en publicité digitale (Google Ads, Meta Ads). Il comprend les problèmes business avant de toucher au code.
+              Elias — 10 ans d'expertise en marketing digital (Google Ads, Meta Ads). Il comprend les problèmes business avant de toucher au code.
             </p>
             <p className="leading-relaxed mb-3" style={{ color: C.textSec }}>
               Théo — Parcours marketing en startup. Orienté résultat, pas technologie.

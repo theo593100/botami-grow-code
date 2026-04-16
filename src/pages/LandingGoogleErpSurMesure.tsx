@@ -102,7 +102,7 @@ const faqs = [
 const guarantees = ["Prix forfaitaire annoncé avant de commencer", "Code source remis à la livraison", "Maquette validée avant le développement", "Droit de changer de prestataire à tout moment"];
 
 const team = [
-  { name: "Elias", role: "CEO", photo: eliasPhoto, desc: "Il cadre votre projet et pilote la relation client. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.", objectPosition: "center 20%" },
+  { name: "Elias", role: "CEO", photo: eliasPhoto, desc: "Il cadre votre projet et pilote la relation client. 10 ans en marketing digital, il connaît les outils métier et sait quand ils ne suffisent plus.", objectPosition: "center 20%" },
   { name: "Théo", role: "CTO", photo: theoPhoto, desc: "Il conçoit et développe votre application de A à Z. Parcours startup et marketing tech, il construit des outils qui servent le business, pas la technique.", objectPosition: "center 35%" },
 ];
 
