@@ -666,6 +666,10 @@ const LandingGoogleLogicielBtp = () => {
               <a href="/politique-cookies" className="hover:text-white transition-colors">
                 Politique de cookies
               </a>
+              <span>|</span>
+              <a href="/cgv" className="hover:text-white transition-colors">
+                CGV
+              </a>
             </div>
             <a
               href="https://linkedin.com/company/botami"

@@ -281,7 +281,7 @@ const LandingGoogleLogicielComptabilite = () => {
             <a href="mailto:contact@botami-agency.com" className="hover:text-white transition-colors block">contact@botami-agency.com</a>
           </div>
           <div className="flex flex-col md:items-end gap-4">
-            <div className="flex gap-4"><a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a><span>|</span><a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a><span>|</span><a href="/politique-cookies" className="hover:text-white transition-colors">Politique de cookies</a></div>
+            <div className="flex gap-4"><a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a><span>|</span><a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a><span>|</span><a href="/politique-cookies" className="hover:text-white transition-colors">Politique de cookies</a><span>|</span><a href="/cgv" className="hover:text-white transition-colors">CGV</a></div>
             <a href="https://linkedin.com/company/botami" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
           </div>
         </div>

@@ -382,6 +382,7 @@ const LandingPrix = () => {
                 <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
                 <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a>
                 <a href="/politique-cookies" className="hover:text-white transition-colors">Politique de cookies</a>
+                <a href="/cgv" className="hover:text-white transition-colors">CGV</a>
               </div>
               <a
                 href="https://www.linkedin.com/company/botami"
