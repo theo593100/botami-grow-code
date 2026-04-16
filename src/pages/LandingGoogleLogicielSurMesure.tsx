@@ -651,9 +651,11 @@ const LandingGoogleLogicielSurMesure = () => {
             <div>
               <h4 className="font-semibold mb-3">Légal</h4>
               <div className="flex flex-wrap gap-3 text-sm opacity-70">
-                <a href="#" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Mentions légales</a>
+                <a href="/mentions-legales" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Mentions légales</a>
                 <span>|</span>
-                <a href="#" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Politique de confidentialité</a>
+                <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Politique de confidentialité</a>
+                <span>|</span>
+                <a href="/politique-cookies" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Politique de cookies</a>
               </div>
             </div>
           </div>
