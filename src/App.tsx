@@ -61,6 +61,7 @@ const App = () => (
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgv" element={<CGV />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/politique-cookies" element={<PolitiqueCookies />} />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
           
           {/* Admin */}
