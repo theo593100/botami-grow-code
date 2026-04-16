@@ -17,11 +17,11 @@ const clientLogos = [
   { src: logoJD, alt: "JD Group" },
   { src: logoKijiji, alt: "Kijiji" },
   { src: logoProvence, alt: "Mademoiselle Provence" },
-  { src: logoNotaires, alt: "Notaires de France", h: "h-14" },
+  { src: logoNotaires, alt: "Notaires de France" },
   { src: logoPoupina, alt: "Poupina" },
   { src: logoProarti, alt: "Proarti" },
   { src: logoSkills, alt: "Skills Communication" },
-  { src: logoTransitionsPro, alt: "Transitions Pro", h: "h-14" },
+  { src: logoTransitionsPro, alt: "Transitions Pro" },
 ];
 
 const ClientLogosSection = () => (
@@ -33,7 +33,7 @@ const ClientLogosSection = () => (
             key={i}
             src={logo.src}
             alt={logo.alt}
-            className={`${logo.h || "h-10"} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`}
+            className={`h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`}
           />
         ))}
       </div>
