@@ -656,6 +656,7 @@ const LandingGoogleLogicielSurMesure = () => {
                 <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Politique de confidentialité</a>
                 <span>|</span>
                 <a href="/politique-cookies" className="hover:opacity-100 transition-opacity" style={{ color: "#FFFFFF" }}>Politique de cookies</a>
+                <a href="/cgv" className="hover:text-white transition-colors">CGV</a>
               </div>
             </div>
           </div>
