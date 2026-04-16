@@ -395,7 +395,7 @@ const LandingGoogleAgenceDevWeb = () => {
               const Icon = c.icon;
               return (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="rounded-2xl p-6 md:p-8 border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
+                  <div className="h-full flex flex-col rounded-2xl p-6 md:p-8 border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden" style={{ backgroundColor: C.bg, borderColor: "#E5E7EB" }}>
                     <div className="flex items-center justify-between mb-5">
                       <div
                         className="flex items-center justify-center w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
