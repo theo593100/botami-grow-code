@@ -235,7 +235,7 @@ const team = [
     name: "Elias",
     role: "CEO",
     photo: eliasPhoto,
-    desc: "Il cadre votre projet et pilote la relation client. 10 ans en publicité digitale, il connaît les outils métier et sait quand ils ne suffisent plus.",
+    desc: "Il cadre votre projet et pilote la relation client. 10 ans en marketing digital, il connaît les outils métier et sait quand ils ne suffisent plus.",
     objectPosition: "center 20%",
   },
   {
