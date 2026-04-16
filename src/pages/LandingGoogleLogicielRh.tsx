@@ -376,7 +376,7 @@ const LandingGoogleLogicielRh = () => {
             <div className="flex gap-4">
               <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
               <span>|</span>
-              <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a>
+              <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a><span>|</span><a href="/politique-cookies" className="hover:text-white transition-colors">Politique de cookies</a>
             </div>
             <a href="https://linkedin.com/company/botami" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
           </div>
