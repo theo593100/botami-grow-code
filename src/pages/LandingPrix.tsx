@@ -379,8 +379,8 @@ const LandingPrix = () => {
               <p>Entreprise française</p>
               <p>Garantie : code source remis à chaque projet</p>
               <div className="flex flex-wrap gap-4 mt-4">
-                <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-                <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
+                <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
+                <a href="/politique-de-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</a>
               </div>
               <a
                 href="https://www.linkedin.com/company/botami"

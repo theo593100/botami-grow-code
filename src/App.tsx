@@ -26,6 +26,7 @@ import LeadsPage from "./pages/admin/LeadsPage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import MentionsLegales from "./pages/MentionsLegales.tsx";
 import CGV from "./pages/CGV.tsx";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgv" element={<CGV />} />
+          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
           
           {/* Admin */}
