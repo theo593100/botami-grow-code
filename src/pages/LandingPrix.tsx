@@ -5,6 +5,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { serviceSchema, faqSchema } from "@/lib/structured-data";
+
+const LANDING_PRIX_FAQS = [
+  { q: "Combien ça coûte ?", a: "Entre 5 000 € et 15 000 € selon la complexité. Prix forfaitaire — pas de TJM, pas de compteur qui tourne." },
+  { q: "Et si ça ne marche plus dans un an ?", a: "Le code est documenté et transférable. Un autre développeur peut le reprendre demain. Maintenance optionnelle proposée." },
+  { q: "J'ai pas le temps de gérer un projet IT.", a: "Vous n'avez rien à gérer. On absorbe la charge projet : on pose les questions, on propose, vous validez." },
+  { q: "Comment je sais que c'est bien fait ?", a: "Maquette cliquable avant le développement, versions testables en cours de route, recette finale sur vos cas réels." },
+  { q: "Et si je veux changer de prestataire ?", a: "Le code source vous appartient. L'hébergement est chez vous. Vos données sont à vous. Aucun lock-in." },
+];
 
 /* ─── palette tokens (inline, standalone from site design system) ─── */
 const C = {
@@ -51,6 +62,21 @@ const LandingPrix = () => {
 
   return (
     <div style={{ backgroundColor: C.bg, color: C.text }} className={`${body} min-h-screen`}>
+      <SEO
+        title="Combien coûtent vos abonnements logiciels ? | Botami Software"
+        description="Une application sur mesure se rentabilise en 1 à 3 ans face à vos abonnements SaaS. Forfait 5 000–15 000 €, livré en semaines, code source à vous."
+        canonical="/lp/prix"
+      />
+      <StructuredData
+        data={[
+          serviceSchema({
+            name: "Application sur mesure pour PME — alternative aux SaaS",
+            description: "Application métier sur mesure remplaçant vos abonnements SaaS, livrée en semaines pour 5 000–15 000 €.",
+            path: "/lp/prix",
+          }),
+          faqSchema(LANDING_PRIX_FAQS),
+        ]}
+      />
       {/* ── Header ── */}
       <header className="py-5 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
