@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-10 mb-10">
         <div>
           <div className="flex items-center gap-2.5 mb-3">
-            <img src={logo} alt="Botami Software" className="h-7 w-7 brightness-0 invert" />
+            <img src={logo} alt="Logo Botami Software" className="h-7 w-7 brightness-0 invert" width={28} height={28} loading="lazy" />
             <p className="font-heading text-xl font-bold">Botami Software</p>
           </div>
           <p className="text-sm opacity-70 leading-relaxed max-w-xs">

@@ -32,7 +32,10 @@ const ClientLogosSection = () => (
           <img
             key={i}
             src={logo.src}
-            alt={logo.alt}
+            alt={`Logo ${logo.alt}`}
+            width={120}
+            height={40}
+            loading="lazy"
             className={`h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0`}
           />
         ))}

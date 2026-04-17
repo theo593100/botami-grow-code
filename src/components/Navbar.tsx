@@ -35,7 +35,7 @@ const Navbar = () => {
     >
       <div className="container-wide flex items-center justify-between h-full px-4 md:px-8">
         <a href="#" className="flex items-center gap-2.5">
-          <img src={logo} alt="Botami Software" className="h-8 w-8" />
+          <img src={logo} alt="Logo Botami Software" className="h-8 w-8" width={32} height={32} loading="eager" />
           <span className="font-heading text-2xl font-bold tracking-tight text-foreground">Botami Software</span>
         </a>
 
