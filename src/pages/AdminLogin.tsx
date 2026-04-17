@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail } from "lucide-react";
+import SEO from "@/components/seo/SEO";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -38,6 +39,7 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <SEO title="Connexion administrateur | Botami Software" description="Espace administrateur Botami Software." noindex />
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="font-heading text-2xl font-bold tracking-tight text-foreground mb-2">

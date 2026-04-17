@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/seo/SEO";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -33,6 +34,11 @@ const Unsubscribe = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <SEO
+        title="Désinscription des emails | Botami Software"
+        description="Page de désinscription des emails Botami Software."
+        noindex
+      />
       <div className="max-w-md w-full text-center space-y-6">
         {status === "loading" && <p className="text-muted-foreground">Vérification…</p>}
         {status === "valid" && (
