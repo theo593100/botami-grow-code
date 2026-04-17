@@ -1,10 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import LPFormCalendly from "@/components/lp/LPFormCalendly";
 import {
-import SEO from "@/components/seo/SEO";
-import StructuredData from "@/components/seo/StructuredData";
-import { serviceSchema, faqSchema } from "@/lib/structured-data";
-import { LP_META } from "@/lib/lp-meta";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -39,6 +35,10 @@ import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
+import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { serviceSchema, faqSchema } from "@/lib/structured-data";
+import { LP_META } from "@/lib/lp-meta";
 
 const C = { bg: "#FAF7F2", card: "#FFFFFF", amber: "#C4872C", amberHover: "#D4A04A", amberLight: "#FEF3E2", text: "#1A1A1A", textSec: "#6B7280", success: "#10B981", footer: "#1A1A1A" } as const;
 
