@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import LPFormCalendly from "@/components/lp/LPFormCalendly";
 import {
+import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { serviceSchema, faqSchema } from "@/lib/structured-data";
+import { LP_META } from "@/lib/lp-meta";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -140,6 +144,21 @@ const ProcessTimeline = () => {
 
   return (
     <div className="relative" ref={timelineRef}>
+      <SEO
+        title={LP_META["developpement-logiciel"].title}
+        description={LP_META["developpement-logiciel"].description}
+        canonical={LP_META["developpement-logiciel"].path}
+      />
+      <StructuredData
+        data={[
+          serviceSchema({
+            name: LP_META["developpement-logiciel"].serviceName,
+            description: LP_META["developpement-logiciel"].description,
+            path: LP_META["developpement-logiciel"].path,
+            serviceType: LP_META["developpement-logiciel"].serviceType,
+          }),
+        ]}
+      />
       <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 hidden md:block" style={{ backgroundColor: "#E5E7EB" }} />
       <div className="absolute left-6 md:left-7 top-0 w-0.5 hidden md:block transition-none" style={{ height: `${progress}%`, backgroundColor: C.amber }} />
       <div className="flex flex-col gap-12">
