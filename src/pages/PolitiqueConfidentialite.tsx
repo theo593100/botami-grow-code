@@ -1,8 +1,23 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { webPageSchema } from "@/lib/structured-data";
 
 const PolitiqueConfidentialite = () => (
   <>
+    <SEO
+      title="Politique de confidentialité | Botami Software"
+      description="Politique de confidentialité de Botami Software : données collectées, finalités, durées de conservation, droits RGPD et coordonnées du responsable de traitement."
+      canonical="/politique-de-confidentialite"
+    />
+    <StructuredData
+      data={webPageSchema({
+        name: "Politique de confidentialité — Botami Software",
+        description: "Traitement des données personnelles sur software.botami-agency.com conformément au RGPD.",
+        path: "/politique-de-confidentialite",
+      })}
+    />
     <Navbar />
     <main className="min-h-screen bg-background text-foreground pt-28 pb-20 px-4 md:px-8">
       <div className="container-wide max-w-3xl mx-auto prose prose-headings:font-heading prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground">

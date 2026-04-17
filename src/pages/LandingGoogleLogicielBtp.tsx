@@ -37,6 +37,10 @@ import logoPoupina from "@/assets/clients/poupina.png";
 import logoProarti from "@/assets/clients/proarti.png";
 import logoSkills from "@/assets/clients/skills-communication.png";
 import logoTransitionsPro from "@/assets/clients/transitions-pro.png";
+import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { serviceSchema, faqSchema } from "@/lib/structured-data";
+import { LP_META } from "@/lib/lp-meta";
 
 /* ─── palette tokens ─── */
 const C = {
@@ -296,6 +300,21 @@ const ProcessTimeline = () => {
 
   return (
     <div className="relative" ref={timelineRef}>
+      <SEO
+        title={LP_META["logiciel-btp"].title}
+        description={LP_META["logiciel-btp"].description}
+        canonical={LP_META["logiciel-btp"].path}
+      />
+      <StructuredData
+        data={[
+          serviceSchema({
+            name: LP_META["logiciel-btp"].serviceName,
+            description: LP_META["logiciel-btp"].description,
+            path: LP_META["logiciel-btp"].path,
+            serviceType: LP_META["logiciel-btp"].serviceType,
+          }),
+        ]}
+      />
       <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 hidden md:block" style={{ backgroundColor: "#E5E7EB" }} />
       <div
         className="absolute left-6 md:left-7 top-0 w-0.5 hidden md:block transition-none"

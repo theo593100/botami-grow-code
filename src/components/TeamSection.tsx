@@ -39,7 +39,10 @@ const TeamCard = ({ member, index }: { member: typeof team[0]; index: number }) 
         {member.photo ? (
           <img
             src={member.photo}
-            alt={member.name}
+            alt={`Portrait de ${member.name}, ${member.role} de Botami Software`}
+            width={400}
+            height={533}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 ease-out group-hover:scale-105"
             style={{
               objectPosition: member.name === "Théo" ? "center 35%" : "center 20%",
