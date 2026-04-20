@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
@@ -32,6 +32,8 @@ const STATUT_OPTIONS = [
   { value: "nouveau", label: "Nouveau" },
   { value: "contacte", label: "Contacté" },
   { value: "qualifie", label: "Qualifié" },
+  { value: "non_qualifie", label: "Non qualifié" },
+  { value: "hors_sujet", label: "Hors sujet" },
   { value: "proposition_envoyee", label: "Proposition envoyée" },
   { value: "signe", label: "Signé" },
   { value: "perdu", label: "Perdu" },
@@ -52,14 +54,16 @@ export function LeadDrawer({ lead, open, onClose, onSave }: Props) {
   const [notes, setNotes] = useState(lead?.notes ?? "");
   const [saving, setSaving] = useState(false);
 
-  // Reset form when lead changes
-  const resetForm = () => {
+  // Sync form state whenever the selected lead changes.
+  // Bug fix: notes/statut/date were stuck on the first opened lead because
+  // useState initializers only run once.
+  useEffect(() => {
     setStatut(lead?.statut ?? "nouveau");
     setProchaineAction(
       lead?.prochaine_action ? new Date(lead.prochaine_action) : undefined
     );
     setNotes(lead?.notes ?? "");
-  };
+  }, [lead?.id]);
 
   const handleSave = async () => {
     if (!lead) return;
