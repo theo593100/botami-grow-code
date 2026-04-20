@@ -40,6 +40,8 @@ const STATUT_OPTIONS = [
   { value: "nouveau", label: "Nouveau" },
   { value: "contacte", label: "Contacté" },
   { value: "qualifie", label: "Qualifié" },
+  { value: "non_qualifie", label: "Non qualifié" },
+  { value: "hors_sujet", label: "Hors sujet" },
   { value: "proposition_envoyee", label: "Proposition envoyée" },
   { value: "signe", label: "Signé" },
   { value: "perdu", label: "Perdu" },
@@ -49,6 +51,8 @@ const STATUT_COLORS: Record<string, string> = {
   nouveau: "bg-blue-100 text-blue-800",
   contacte: "bg-amber-100 text-amber-800",
   qualifie: "bg-purple-100 text-purple-800",
+  non_qualifie: "bg-orange-100 text-orange-800",
+  hors_sujet: "bg-slate-100 text-slate-700",
   proposition_envoyee: "bg-indigo-100 text-indigo-800",
   signe: "bg-green-100 text-green-800",
   perdu: "bg-gray-100 text-gray-500",
@@ -94,7 +98,7 @@ const LeadsPage = () => {
     const today = new Date();
     today.setHours(23, 59, 59, 999);
     return leads.filter((l) => {
-      if (l.statut === "signe" || l.statut === "perdu") return false;
+      if (["signe", "perdu", "non_qualifie", "hors_sujet"].includes(l.statut)) return false;
       if (!l.prochaine_action) return false;
       return parseISO(l.prochaine_action) <= today;
     }).length;
@@ -108,7 +112,7 @@ const LeadsPage = () => {
       const today = new Date();
       today.setHours(23, 59, 59, 999);
       result = result.filter((l) => {
-        if (l.statut === "signe" || l.statut === "perdu") return false;
+        if (["signe", "perdu", "non_qualifie", "hors_sujet"].includes(l.statut)) return false;
         if (!l.prochaine_action) return false;
         return parseISO(l.prochaine_action) <= today;
       });
@@ -207,7 +211,7 @@ const LeadsPage = () => {
   };
 
   const isUrgent = (lead: Lead) => {
-    if (lead.statut === "signe" || lead.statut === "perdu") return false;
+    if (["signe", "perdu", "non_qualifie", "hors_sujet"].includes(lead.statut)) return false;
     if (!lead.prochaine_action) return false;
     const d = parseISO(lead.prochaine_action);
     return isPast(d) || isToday(d);
