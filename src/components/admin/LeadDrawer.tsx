@@ -84,7 +84,6 @@ export function LeadDrawer({ lead, open, onClose, onSave }: Props) {
       open={open}
       onOpenChange={(o) => {
         if (!o) onClose();
-        else resetForm();
       }}
     >
       <SheetContent className="w-full sm:w-[40vw] sm:max-w-[600px] overflow-y-auto">
