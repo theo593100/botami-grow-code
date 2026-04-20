@@ -112,7 +112,7 @@ const LeadsPage = () => {
       const today = new Date();
       today.setHours(23, 59, 59, 999);
       result = result.filter((l) => {
-        if (l.statut === "signe" || l.statut === "perdu") return false;
+        if (["signe", "perdu", "non_qualifie", "hors_sujet"].includes(l.statut)) return false;
         if (!l.prochaine_action) return false;
         return parseISO(l.prochaine_action) <= today;
       });
