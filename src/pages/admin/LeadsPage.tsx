@@ -211,7 +211,7 @@ const LeadsPage = () => {
   };
 
   const isUrgent = (lead: Lead) => {
-    if (lead.statut === "signe" || lead.statut === "perdu") return false;
+    if (["signe", "perdu", "non_qualifie", "hors_sujet"].includes(lead.statut)) return false;
     if (!lead.prochaine_action) return false;
     const d = parseISO(lead.prochaine_action);
     return isPast(d) || isToday(d);
