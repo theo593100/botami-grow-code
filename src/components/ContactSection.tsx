@@ -1,34 +1,30 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Linkedin, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-
-const situations = [
-  "Je paie un SaaS qui ne me convient pas",
-  "Mon fichier Excel a atteint ses limites",
-  "J'ai un outil interne obsolète",
-  "Autre / je ne suis pas sûr",
-];
+import { home, type SituationKey } from "@/content/home";
+import { BtnSubmit, SecNum } from "@/components/home/atoms";
+import { InfoRow, SituationChip } from "@/components/home/compounds";
 
 const ContactSection = () => {
+  const c = home.contact;
   const [form, setForm] = useState({
     prenom: "",
     email: "",
-    telephone: "",
-    situation: "",
+    entreprise: "",
+    situation: "projet" as SituationKey,
     message: "",
+    honeypot: "", // anti-bot
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (form.honeypot) return; // bot
     if (!form.prenom || !form.email) {
-      toast.error("Veuillez remplir les champs requis.");
+      toast.error("Merci de renseigner votre prénom et votre email.");
       return;
     }
 
@@ -36,27 +32,36 @@ const ContactSection = () => {
 
     const leadId = crypto.randomUUID();
     const sourceRoute = window.location.pathname;
+    const situationLabel =
+      c.form.situations.find((s) => s.key === form.situation)?.label ?? "";
 
-    // Save lead to database
-    await supabase.from("leads").insert({
+    // Persistance Supabase
+    const { error: dbError } = await supabase.from("leads").insert({
       id: leadId,
       first_name: form.prenom,
       email: form.email,
-      phone: form.telephone || null,
-      message: form.situation ? `[${form.situation}] ${form.message}` : form.message || null,
+      phone: null,
+      message: `[${situationLabel}]${form.entreprise ? ` (${form.entreprise})` : ""}${
+        form.message ? ` — ${form.message}` : ""
+      }`,
       source_route: sourceRoute,
     });
 
-    // Send notification emails to both addresses
+    if (dbError) {
+      setLoading(false);
+      toast.error(
+        "Un problème est survenu. Vous pouvez nous écrire à contact@botami-agency.com.",
+      );
+      return;
+    }
+
+    // Notifs internes (best-effort, n'empêche pas le succès)
     const templateData = {
       firstName: form.prenom,
       email: form.email,
-      phone: form.telephone || undefined,
       sourceRoute,
     };
-
-    const recipients = ["elias@botami-agency.com", "theo@botami-agency.com"];
-    recipients.forEach((recipient) => {
+    ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
       supabase.functions.invoke("send-transactional-email", {
         body: {
           templateName: "new-lead-notification",
@@ -71,132 +76,198 @@ const ContactSection = () => {
     setSubmitted(true);
   };
 
-  if (submitted) {
-    return (
-      <section id="contact" className="section-padding">
-        <div className="container-narrow">
-          <div className="bg-card border rounded-2xl p-12 text-center max-w-lg mx-auto">
-            <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-accent" />
-            <h3 className="font-heading text-xl font-bold mb-2">Demande envoyée !</h3>
-            <p className="text-muted-foreground">Nous reviendrons vers vous sous 24h.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section id="contact" className="section-padding">
-      <div className="container-narrow">
-        <div className="grid lg:grid-cols-2 gap-14">
-          {/* Left info */}
+    <section
+      id="contact"
+      data-screen-label="08 Contact"
+      className="py-20 sm:py-24 lg:py-28"
+    >
+      <div className="bo-wrap">
+        <SecNum className="mb-10 sm:mb-12">{c.secNum}</SecNum>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-24">
+          {/* Colonne gauche : H2 + lead + InfoRows */}
           <div>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Parlons de votre projet</h2>
-            <p className="text-lg text-muted-foreground mb-10">
-              Diagnostic gratuit, sans engagement. On vous dit si le sur-mesure est la bonne réponse pour vous.
+            <h2 className="font-display font-bold leading-[0.98] tracking-[-0.03em] text-ink text-[clamp(36px,6vw,60px)] bo-text-balance mb-5">
+              {c.title.before}
+              <span className="bo-ital">{c.title.ital}</span>
+              {c.title.after}
+            </h2>
+            <p className="text-[17px] text-n-700 leading-[1.6] max-w-[420px] mb-10 lg:mb-12 bo-text-pretty">
+              {c.lead}
             </p>
-            <div className="flex flex-col gap-5">
-              <a href="mailto:contact@botami-agency.com" className="flex items-center gap-3 text-foreground hover:text-accent transition-colors">
-                <Mail className="w-5 h-5 text-accent" />
-                contact@botami-agency.com
-              </a>
-              <div className="flex items-center gap-3 text-foreground">
-                <MapPin className="w-5 h-5 text-accent" />
-                Nîmes, France
-              </div>
-              <a
-                href="https://linkedin.com/company/botami"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-accent transition-colors"
-              >
-                <Linkedin className="w-5 h-5 text-accent" />
-                LinkedIn
-              </a>
-            </div>
+            <dl className="border-b border-n-300">
+              {c.info.map((item) => (
+                <InfoRow
+                  key={item.label}
+                  label={item.label}
+                  value={
+                    "href" in item && item.href ? (
+                      <a
+                        href={item.href}
+                        className="hover:text-ambre-dark transition-colors"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )
+                  }
+                  secondary={"secondary" in item ? item.secondary : undefined}
+                />
+              ))}
+            </dl>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-card border rounded-2xl p-8 space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="prenom">Prénom *</Label>
-                <Input
-                  id="prenom"
-                  required
-                  value={form.prenom}
-                  onChange={(e) => setForm({ ...form, prenom: e.target.value })}
-                  className="mt-1.5"
-                />
-              </div>
-              <div>
-                <Label htmlFor="email">Email *</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="mt-1.5"
-                />
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="telephone">Téléphone</Label>
-              <Input
-                id="telephone"
-                type="tel"
-                value={form.telephone}
-                onChange={(e) => setForm({ ...form, telephone: e.target.value })}
-                className="mt-1.5"
+          {/* Colonne droite : formulaire */}
+          {submitted ? (
+            <div className="bg-white border-[1.5px] border-ink rounded-card p-10 sm:p-12 text-center">
+              <CheckCircle2
+                className="w-12 h-12 mx-auto mb-4 text-ambre-dark"
+                aria-hidden="true"
               />
+              <h3 className="font-display text-[24px] font-semibold tracking-[-0.02em] mb-2 text-ink">
+                {c.form.successTitle}
+              </h3>
+              <p className="text-[15px] text-n-700 leading-[1.6]">
+                {c.form.successBody}
+              </p>
             </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white border-[1.5px] border-ink rounded-card p-6 sm:p-8"
+              noValidate
+            >
+              {/* Honeypot anti-bot, masqué */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.honeypot}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, honeypot: e.target.value }))
+                }
+                aria-hidden="true"
+                className="hidden"
+              />
 
-            <fieldset>
-              <legend className="text-sm font-medium mb-3">Votre situation actuelle</legend>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {situations.map((s) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="flex flex-col gap-2">
                   <label
-                    key={s}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg border cursor-pointer transition-colors text-sm ${
-                      form.situation === s
-                        ? "border-accent bg-accent/10 text-foreground"
-                        : "border-border bg-background text-muted-foreground hover:border-accent/50"
-                    }`}
+                    htmlFor="prenom"
+                    className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500"
                   >
-                    <input
-                      type="radio"
-                      name="situation"
-                      value={s}
-                      checked={form.situation === s}
-                      onChange={(e) => setForm({ ...form, situation: e.target.value })}
-                      className="accent-accent"
-                    />
-                    {s}
+                    {c.form.labels.prenom}
                   </label>
-                ))}
+                  <input
+                    id="prenom"
+                    name="prenom"
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    placeholder={c.form.placeholders.prenom}
+                    value={form.prenom}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, prenom: e.target.value }))
+                    }
+                    className="h-11 px-3.5 border-[1.5px] border-ink rounded-[10px] bg-cream text-[15px] text-ink placeholder:text-n-500 focus:border-ambre focus:outline-none transition-colors font-sans"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="email"
+                    className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500"
+                  >
+                    {c.form.labels.email}
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder={c.form.placeholders.email}
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, email: e.target.value }))
+                    }
+                    className="h-11 px-3.5 border-[1.5px] border-ink rounded-[10px] bg-cream text-[15px] text-ink placeholder:text-n-500 focus:border-ambre focus:outline-none transition-colors font-sans"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 sm:col-span-2">
+                  <label
+                    htmlFor="entreprise"
+                    className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500"
+                  >
+                    {c.form.labels.entreprise}
+                  </label>
+                  <input
+                    id="entreprise"
+                    name="entreprise"
+                    type="text"
+                    autoComplete="organization"
+                    placeholder={c.form.placeholders.entreprise}
+                    value={form.entreprise}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, entreprise: e.target.value }))
+                    }
+                    className="h-11 px-3.5 border-[1.5px] border-ink rounded-[10px] bg-cream text-[15px] text-ink placeholder:text-n-500 focus:border-ambre focus:outline-none transition-colors font-sans"
+                  />
+                </div>
+
+                <fieldset className="flex flex-col gap-3 sm:col-span-2">
+                  <legend className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mb-1">
+                    {c.form.legendSituation}
+                  </legend>
+                  <div className="flex flex-wrap gap-2">
+                    {c.form.situations.map((s) => (
+                      <SituationChip
+                        key={s.key}
+                        selected={form.situation === s.key}
+                        onSelect={() =>
+                          setForm((f) => ({ ...f, situation: s.key }))
+                        }
+                      >
+                        {s.label}
+                      </SituationChip>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <div className="flex flex-col gap-2 sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500"
+                  >
+                    {c.form.labels.message}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder={c.form.placeholders.message}
+                    value={form.message}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, message: e.target.value }))
+                    }
+                    className="min-h-[120px] px-3.5 py-3 border-[1.5px] border-ink rounded-[10px] bg-cream text-[15px] text-ink placeholder:text-n-500 focus:border-ambre focus:outline-none transition-colors font-sans resize-y leading-[1.5]"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 mt-2">
+                  <BtnSubmit fullWidth disabled={loading}>
+                    {loading ? "Envoi en cours…" : c.form.submitLabel}
+                  </BtnSubmit>
+                  <p className="text-[12px] text-n-500 text-center mt-3 leading-[1.5]">
+                    {c.form.fineprint}
+                  </p>
+                </div>
               </div>
-            </fieldset>
-
-            <div>
-              <Label htmlFor="message">Décrivez brièvement votre besoin</Label>
-              <Textarea
-                id="message"
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="mt-1.5"
-              />
-            </div>
-
-            <Button type="submit" variant="hero" size="lg" className="w-full text-base" disabled={loading}>
-              {loading ? "Envoi en cours…" : "Demander un diagnostic gratuit"}
-            </Button>
-            <p className="text-xs text-muted-foreground text-center">
-              Pas de newsletter, pas de relance commerciale. Juste une réponse à votre besoin.
-            </p>
-          </form>
+            </form>
+          )}
         </div>
       </div>
     </section>

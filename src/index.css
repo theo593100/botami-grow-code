@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+    /* === shadcn tokens (back-office, LPs, composants UI) — conservés === */
     --background: 40 33% 97%;
     --foreground: 220 20% 14%;
 
@@ -50,6 +51,23 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* === Tokens Botami (hi-fi) — utilisés par les sections home === */
+    --bo-ambre: #C4872C;
+    --bo-ambre-dark: #A06B1E;
+    --bo-ambre-bg: #FEF3E2;
+    --bo-ink: #1A1A1A;
+    --bo-cream: #FAF7F2;
+    --bo-white: #FFFFFF;
+    --bo-n200: #F0EBE3;
+    --bo-n300: #E5E0D8;
+    --bo-n500: #6B7280;
+    --bo-n700: #4B4B4B;
+    --bo-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --bo-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    --bo-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --bo-wrap: 1240px;
+    --bo-gutter: 64px;
   }
 
   .dark {
@@ -93,6 +111,7 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -101,7 +120,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
+    scroll-padding-top: 88px;
   }
 }
 
@@ -126,19 +145,67 @@
   .container-wide {
     @apply max-w-6xl mx-auto;
   }
+
+  /* === Wrap Botami : largeur 1240px + gutter 64px responsive === */
+  .bo-wrap {
+    max-width: var(--bo-wrap);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--bo-gutter);
+    padding-right: var(--bo-gutter);
+  }
+  @media (max-width: 1024px) {
+    .bo-wrap { padding-left: 32px; padding-right: 32px; }
+  }
+  @media (max-width: 640px) {
+    .bo-wrap { padding-left: 20px; padding-right: 20px; }
+  }
+
+  /* Grain ultra-discret sur le crème (background body home uniquement) */
+  .bo-grain {
+    background-color: var(--bo-cream);
+    background-image: radial-gradient(circle at 1px 1px, rgba(26,26,26,0.018) 1px, transparent 0);
+    background-size: 4px 4px;
+  }
+
+  .bo-text-balance { text-wrap: balance; }
+  .bo-text-pretty { text-wrap: pretty; }
+
+  /* Italique ambre signature pour les H1/H2 */
+  .bo-ital {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--bo-ambre);
+  }
+
+  /* Marquee mask (fade gauche/droite) */
+  .bo-mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+
+  /* Focus ring Botami */
+  .bo-focus:focus-visible {
+    outline: 2px solid var(--bo-ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(196,135,44,0.25);
+  }
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
   animation: fade-up 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

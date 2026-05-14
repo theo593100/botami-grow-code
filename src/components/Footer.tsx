@@ -1,45 +1,52 @@
-import { Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo-botami.svg";
+import { home } from "@/content/home";
+import { Brand } from "@/components/home/atoms";
 
-const Footer = () => (
-  <footer className="bg-primary text-primary-foreground py-14 px-4 md:px-8">
-    <div className="container-wide">
-      <div className="grid md:grid-cols-3 gap-10 mb-10">
-        <div>
-          <div className="flex items-center gap-2.5 mb-3">
-            <img src={logo} alt="Logo Botami Software" className="h-7 w-7 brightness-0 invert" width={28} height={28} loading="lazy" />
-            <p className="font-heading text-xl font-bold">Botami Software</p>
+const Footer = () => {
+  const c = home.footer;
+  return (
+    <footer
+      data-screen-label="09 Footer"
+      className="pt-24 pb-8 border-t-[1.5px] border-ink mt-12 sm:mt-16 bg-cream"
+    >
+      <div className="bo-wrap">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 sm:gap-12 mb-12 sm:mb-16">
+          <div className="foot-brand sm:col-span-2 lg:col-span-1">
+            <Brand brandName="Botami" brandSuffix="Software" />
+            <p className="font-display text-[18px] font-medium tracking-[-0.01em] text-n-700 mt-4 leading-[1.4] max-w-[340px]">
+              {c.tagline}
+            </p>
           </div>
-          <p className="text-sm opacity-70 leading-relaxed max-w-xs">
-            Applications sur mesure pour PME. Livrées en semaines. À vous pour toujours.
-          </p>
+
+          {c.columns.map((col) => (
+            <div key={col.title}>
+              <h5 className="font-display text-[11px] uppercase tracking-[0.15em] font-semibold text-ink mb-4">
+                {col.title}
+              </h5>
+              <ul className="grid gap-2">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-[13px] text-n-700 hover:text-ink hover:border-b hover:border-current pb-px transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div>
-          <p className="font-heading font-semibold mb-3">Contact</p>
-          <div className="flex flex-col gap-2 text-sm opacity-70">
-            <a href="mailto:contact@botami-agency.com" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <Mail className="w-4 h-4" /> contact@botami-agency.com
-            </a>
-            <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" /> Lille · Paris · Nîmes
-            </span>
-          </div>
-        </div>
-        <div>
-          <p className="font-heading font-semibold mb-3">Légal</p>
-          <div className="flex flex-col gap-2 text-sm opacity-70">
-            <a href="/mentions-legales" className="hover:opacity-100 transition-opacity">Mentions légales</a>
-            <a href="/politique-de-confidentialite" className="hover:opacity-100 transition-opacity">Politique de confidentialité</a>
-            <a href="/politique-cookies" className="hover:opacity-100 transition-opacity">Politique de cookies</a>
-            <a href="/cgv" className="hover:opacity-100 transition-opacity">CGV</a>
-          </div>
+
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pt-8 border-t border-n-300 font-mono text-[12px] text-n-500 tracking-[0.04em]">
+          <span>{c.bottomLeft}</span>
+          <a href={c.bottomRightHref} className="hover:text-ink transition-colors">
+            {c.bottomRight}
+          </a>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/20 pt-6 text-xs opacity-50">
-        <span>© 2026 Botami Software SAS. Tous droits réservés.</span>
-      </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;
