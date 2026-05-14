@@ -201,11 +201,17 @@
   animation: fade-up 0.6s ease-out both;
 }
 
+/* Reduced motion : on stoppe uniquement ce qui est nuisible
+   (animations infinies / scroll-linked), pas les transitions hover. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+  .bo-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .bo-scroll-marquee {
+    transform: none !important;
+  }
+  html {
     scroll-behavior: auto !important;
   }
 }

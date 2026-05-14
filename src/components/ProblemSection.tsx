@@ -1,6 +1,6 @@
 import { home } from "@/content/home";
 import { SecNum } from "@/components/home/atoms";
-import { Pillar, PillarFr } from "@/components/home/compounds";
+import { Pillar } from "@/components/home/compounds";
 import elias from "@/assets/elias.webp";
 
 const ProblemSection = () => {
@@ -61,7 +61,8 @@ const ProblemSection = () => {
               {c.body[1]}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-8 sm:mt-9">
+            {/* 3 piliers équilibrés. La souveraineté FR a sa propre section. */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-8 sm:mt-9">
               {c.pillars.map((p) => {
                 const iconMono = "iconMono" in p && p.iconMono === true;
                 return (
@@ -74,12 +75,6 @@ const ProblemSection = () => {
                   />
                 );
               })}
-              <PillarFr
-                icon={c.pillarFr.icon}
-                title={c.pillarFr.title}
-                body={c.pillarFr.body}
-                tag={c.pillarFr.tag}
-              />
             </div>
           </div>
         </div>

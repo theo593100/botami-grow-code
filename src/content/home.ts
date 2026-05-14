@@ -143,11 +143,51 @@ export const home = {
         body: "4 à 8 semaines pour un MVP fonctionnel. Pas 6 mois de découverte, pas de roadmap glissante.",
       },
     ],
-    pillarFr: {
-      tag: "Pilier #4",
-      icon: "FR",
-      title: "Propriété totale & souveraineté française",
-      body: "Votre app. Votre code. Vos données. Hébergement OVH ou Scaleway en France, conforme RGPD sans contorsion. Pas de transfert hors UE.",
+  },
+
+  /* ============ SOUVERAINETÉ (section dédiée — copy à venir de la session copywriting) ============ */
+  souverainete: {
+    secNum: "— 06 / Souveraineté",
+    // [COPY] Titre + lead en attente de la session copywriting.
+    // Structure à conserver : titre avec un mot en italique ambre + lead 1-2 lignes.
+    title: {
+      before: "Votre app. Vos données. ",
+      ital: "Votre destin.",
+      after: "",
+    },
+    lead: "[COPY À VENIR] Promesse de souveraineté Botami : pourquoi on refuse l'empilement d'API étrangères et ce que ça change concrètement pour vos données.",
+    cards: [
+      {
+        key: "propriete",
+        icon: "{ }",
+        iconMono: true,
+        title: "Propriété du code & des données",
+        body: "[COPY À VENIR] Sources, dépôt git, droits PI transférés à la livraison. Vos données restent chez vous, exportables à tout moment, sans clause de retour.",
+      },
+      {
+        key: "hebergement-fr",
+        // Drapeau FR utilisé en pictogramme. Implémenté en SVG inline dans le composant.
+        icon: "FLAG_FR",
+        title: "Hébergement français",
+        body: "[COPY À VENIR] OVH ou Scaleway en France. Pas de transfert hors UE, pas de Cloud Act, pas de question à se poser le jour d'un audit.",
+      },
+      {
+        key: "rgpd",
+        icon: "RGPD",
+        title: "RGPD natif",
+        body: "[COPY À VENIR] Conformité RGPD intégrée dès la conception : registre des traitements, droit à l'effacement, journal d'accès. Pas de contorsion après coup.",
+      },
+      {
+        key: "rgaa-rse",
+        icon: "♿",
+        title: "Accessibilité & démarche RSE",
+        body: "[COPY À VENIR] Code livré aux standards RGAA. Stack sobre, dépendances minimales, empreinte serveur mesurée.",
+      },
+    ],
+    cta: {
+      label: "[COPY] En savoir plus sur notre engagement",
+      // Page dédiée prévue en V2. En attendant : ancre vers le contact.
+      href: "#contact",
     },
   },
 
@@ -274,7 +314,7 @@ export const home = {
         n: "05",
         title: "Suivi (optionnel)",
         desc: "Trois mois de garantie inclus. Au-delà, contrat de maintenance au tarif horaire, sans engagement de durée — vous arrêtez quand vous voulez.",
-        duration: "3 mois +",
+        duration: "∞",
         deliverable: "SLA si demandé",
         cost: "Garantie offerte",
       },
@@ -287,7 +327,7 @@ export const home = {
 
   /* ============ FAQ ============ */
   faq: {
-    secNum: "— 06 / FAQ",
+    secNum: "— 07 / FAQ",
     title: {
       before: "Les questions ",
       ital: "qu'on nous pose",
@@ -323,7 +363,7 @@ export const home = {
 
   /* ============ CONTACT ============ */
   contact: {
-    secNum: "— 07 / Contact",
+    secNum: "— 08 / Contact",
     title: {
       before: "Parlons de ",
       ital: "votre projet.",

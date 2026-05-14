@@ -1,5 +1,5 @@
 import { home } from "@/content/home";
-import { Btn, PricingPill, SecNum, StatItem } from "@/components/home/atoms";
+import { PricingPill, SecNum, StatItem } from "@/components/home/atoms";
 
 const HeroSection = () => {
   const c = home.hero;
@@ -34,16 +34,11 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* Colonne droite : lead + CTA + dispo */}
+          {/* Colonne droite : lead + dispo (CTA secondaire retiré tant qu'il n'y a pas assez de cas) */}
           <div className="pb-2 lg:pb-3">
-            <p className="text-[17px] text-n-700 leading-[1.6] max-w-[360px] mb-6">
+            <p className="text-[17px] text-n-700 leading-[1.6] max-w-[360px] mb-7">
               {c.lead}
             </p>
-            <div className="flex items-center gap-4 mb-7 flex-wrap">
-              <Btn variant="ghost" href={c.secondaryCta.href} iconRight={false}>
-                {c.secondaryCta.label}
-              </Btn>
-            </div>
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 flex items-center gap-2">
               <span
                 className="w-[7px] h-[7px] rounded-full bg-[#2E8F4F]"

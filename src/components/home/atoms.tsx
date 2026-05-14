@@ -295,36 +295,41 @@ export const StatItem = ({
   );
 };
 
-/* ---------- Glyph (logo "B" carré) ---------- */
-export const Glyph = ({ size = 32 }: { size?: number }) => (
-  <span
+/* ---------- Glyph (logo officiel ambre, SVG vectoriel) ---------- */
+import iconeBotami from "@/assets/icone-botami.svg";
+
+export const Glyph = ({ size = 36 }: { size?: number }) => (
+  <img
+    src={iconeBotami}
+    alt=""
     aria-hidden="true"
-    className="inline-grid place-items-center bg-ink text-cream font-display font-bold tracking-[-0.02em]"
-    style={{
-      width: size,
-      height: size,
-      borderRadius: Math.round(size / 4),
-      fontSize: Math.round(size * 0.56),
-    }}
-  >
-    B
-  </span>
+    width={size}
+    height={size}
+    className="block"
+    style={{ width: size, height: size }}
+  />
 );
 
-/* ---------- Brand (logo + texte) ---------- */
+/* ---------- Brand (logo + texte) ----------
+ * Conforme charte : "Botami" en Space Grotesk 700 (Bold) charbon,
+ * "Software" en Space Grotesk 400 (Regular) ardoise n-500.
+ */
 export const Brand = ({
   brandName,
   brandSuffix,
   className,
+  size = 36,
 }: {
   brandName: string;
   brandSuffix: string;
   className?: string;
+  size?: number;
 }) => (
-  <span className={cn("inline-flex items-center gap-3", className)}>
-    <Glyph />
-    <span className="font-display font-semibold text-[17px] tracking-[-0.01em] text-ink">
-      {brandName} <span className="text-n-500 font-medium">{brandSuffix}</span>
+  <span className={cn("inline-flex items-center gap-2.5", className)}>
+    <Glyph size={size} />
+    <span className="font-display tracking-[-0.01em] text-[17px] leading-none whitespace-nowrap">
+      <span className="font-bold text-ink">{brandName}</span>{" "}
+      <span className="font-normal text-n-500">{brandSuffix}</span>
     </span>
   </span>
 );

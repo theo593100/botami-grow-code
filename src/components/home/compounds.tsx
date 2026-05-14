@@ -2,7 +2,7 @@
  * Composants composés Botami (hi-fi).
  */
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowCircle, Chip } from "./atoms";
 import { Sketch } from "./sketches";
 
@@ -241,15 +241,16 @@ export const FaqRow = ({
   </details>
 );
 
-/* ---------- Marquee (noms clients bandeau charbon) ---------- */
-export const Marquee = ({
+/* ---------- MarqueeContinuous (animation CSS infinie) ----------
+ * Variante "MODE A". Défile en continu, vitesse constante.
+ */
+export const MarqueeContinuous = ({
   items,
   className,
 }: {
   items: string[];
   className?: string;
 }) => {
-  // dupliquer pour boucle fluide (translateX -50%)
   const loop = [...items, ...items];
   return (
     <div
@@ -259,7 +260,8 @@ export const Marquee = ({
       )}
       aria-hidden="true"
     >
-      <div className="flex gap-[72px] w-max animate-marquee-x will-change-transform">
+      {/* Important : .bo-marquee-track est ciblé par la règle prefers-reduced-motion */}
+      <div className="bo-marquee-track flex gap-[72px] w-max animate-marquee-x will-change-transform">
         {loop.map((name, i) => (
           <span
             key={`${name}-${i}`}
@@ -275,6 +277,98 @@ export const Marquee = ({
     </div>
   );
 };
+
+/* ---------- MarqueeScrollLinked (défilement piloté par le scroll page) ----------
+ * Variante "MODE B". La position horizontale du track est mappée linéairement
+ * à la progression de la section dans le viewport. Permet d'avoir les items
+ * "prestige" au centre (quand la section est au centre de l'écran).
+ *
+ * Implémentation :
+ *  - on calcule la progression de la section dans le viewport (0 → 1)
+ *  - on translate le track de 0 (début liste) à -50% (fin liste)
+ *  - requestAnimationFrame pour la perf
+ *  - prefers-reduced-motion désactive le translate (cible .bo-scroll-marquee)
+ */
+export const MarqueeScrollLinked = ({
+  items,
+  className,
+}: {
+  items: string[];
+  className?: string;
+}) => {
+  const loop = [...items, ...items];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const container = containerRef.current;
+    if (!track || !container) return;
+
+    let lastProgress = -1;
+
+    const update = () => {
+      rafRef.current = null;
+      const rect = container.getBoundingClientRect();
+      const wh = window.innerHeight;
+      // progress : 0 = section juste en train d'entrer par le bas
+      //            1 = section juste sortie par le haut
+      const total = wh + rect.height;
+      const raw = (wh - rect.top) / total;
+      const progress = Math.min(1, Math.max(0, raw));
+      if (Math.abs(progress - lastProgress) < 0.0005) return;
+      lastProgress = progress;
+      const trackWidth = track.scrollWidth;
+      // -50% à fond (loop) = -trackWidth/2 px
+      const translate = -progress * (trackWidth / 2);
+      track.style.transform = `translate3d(${translate}px, 0, 0)`;
+    };
+
+    const onScroll = () => {
+      if (rafRef.current === null) {
+        rafRef.current = window.requestAnimationFrame(update);
+      }
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn("relative overflow-hidden bo-mask-fade-x", className)}
+      aria-hidden="true"
+    >
+      <div
+        ref={trackRef}
+        className="bo-scroll-marquee flex gap-[72px] w-max will-change-transform"
+      >
+        {loop.map((name, i) => (
+          <span
+            key={`${name}-${i}`}
+            className="font-display text-[22px] sm:text-[26px] lg:text-[30px] font-medium tracking-[-0.02em] text-cream/70 whitespace-nowrap inline-flex items-center gap-[72px]"
+          >
+            {name}
+            <span className="text-ambre text-[30px]" aria-hidden="true">
+              ·
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* Alias de compat — on garde l'export Marquee historique pointé sur Continuous. */
+export const Marquee = MarqueeContinuous;
 
 /* ---------- SituationChip ---------- */
 export const SituationChip = ({
