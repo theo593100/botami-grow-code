@@ -1,9 +1,6 @@
 import { home } from "@/content/home";
 import { SecNum, StatItem } from "@/components/home/atoms";
-import {
-  MarqueeContinuous,
-  MarqueeScrollLinked,
-} from "@/components/home/compounds";
+import { MarqueeContinuous } from "@/components/home/compounds";
 
 const ClientLogosSection = () => {
   const c = home.bandeau;
@@ -29,22 +26,11 @@ const ClientLogosSection = () => {
           </a>
         </div>
 
-        {/* === Test A/B des deux marquees — à arbitrer par Théo ===
-            Une fois la décision prise, supprimer le bloc non retenu. */}
-        <div className="mb-12 sm:mb-16 lg:mb-20 space-y-8">
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-cream/45 mb-3">
-              Mode A · Défilement continu
-            </div>
-            <MarqueeContinuous items={c.marquee} />
-          </div>
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-cream/45 mb-3">
-              Mode B · Défilement piloté par le scroll
-            </div>
-            <MarqueeScrollLinked items={c.marquee} />
-          </div>
-        </div>
+        {/* Marquee défilement continu (mode B scroll-linked retiré après test) */}
+        <MarqueeContinuous
+          items={c.marquee}
+          className="mb-12 sm:mb-16 lg:mb-20"
+        />
 
         {/* 3 stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-0">
