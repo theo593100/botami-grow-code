@@ -125,70 +125,60 @@ export const home = {
       "Les SaaS sont conçus pour 10 000 boîtes différentes. Vous payez chaque mois pour 90 % de features qui ne vous servent à rien — et le jour où vous arrêtez l'abonnement, tout disparaît.",
       "Une app sur mesure coûte le prix de 18 mois d'abonnement SaaS. Sauf qu'au bout de 18 mois, vous ne payez plus rien. Et le code est à vous.",
     ],
+    // 3 piliers (la propriété du code a basculé dans la section souveraineté
+    // — il n'apparaît donc plus ici pour éviter la redondance).
     pillars: [
       {
-        icon: "€",
-        title: "Forfait, pas d'abonnement",
-        body: "Devis fixe. Paiement en 3 fois. Aucun coût récurrent au-delà de l'hébergement (~30 €/mois).",
+        icon: "✦",
+        title: "Sur mesure, pas de bricolage",
+        body: "Une application dédiée à votre métier, pas un SaaS qu'il faut tordre.",
       },
       {
-        icon: "</>",
-        iconMono: true,
-        title: "Le code vous appartient",
-        body: "Sources, dépôt git, droits de propriété intellectuelle — transférés à la livraison. Sans clause de retour.",
+        icon: "€",
+        title: "Proposition commerciale claire",
+        body: "Le prix qu'on annonce est le prix que vous payez. À partir de 5 000 €.",
       },
       {
         icon: "⌁",
-        title: "Livré vite, vraiment",
-        body: "4 à 8 semaines pour un MVP fonctionnel. Pas 6 mois de découverte, pas de roadmap glissante.",
+        title: "Livré en 4 à 8 semaines",
+        body: "Cahier des charges, développement, recette, mise en production.",
       },
     ],
   },
 
-  /* ============ SOUVERAINETÉ (section dédiée — copy à venir de la session copywriting) ============ */
+  /* ============ SOUVERAINETÉ (section dédiée) ============
+   * Copy intégrée mot pour mot depuis le brief copywriting (14 mai).
+   * Référence durable : marketing/positionnement-souverainete.md
+   */
   souverainete: {
-    secNum: "— 06 / Souveraineté",
-    // [COPY] Titre + lead en attente de la session copywriting.
-    // Structure à conserver : titre avec un mot en italique ambre + lead 1-2 lignes.
-    title: {
-      before: "Votre app. Vos données. ",
-      ital: "Votre destin.",
-      after: "",
-    },
-    lead: "[COPY À VENIR] Promesse de souveraineté Botami : pourquoi on refuse l'empilement d'API étrangères et ce que ça change concrètement pour vos données.",
-    cards: [
+    // Eyebrow ambre uppercase (style "Souveraineté numérique") — pas le format
+    // numéroté "— XX / X" pour cette section, choix éditorial copywriter.
+    eyebrow: "Souveraineté numérique",
+    h2: "Votre logiciel, vos données, votre infrastructure.",
+    lead: "On développe en France, on héberge en France, et tout ce qu'on construit vous appartient.",
+    points: [
       {
         key: "propriete",
-        icon: "{ }",
-        iconMono: true,
-        title: "Propriété du code & des données",
-        body: "[COPY À VENIR] Sources, dépôt git, droits PI transférés à la livraison. Vos données restent chez vous, exportables à tout moment, sans clause de retour.",
+        title: "Propriété du code et des données",
+        body: "Le code source et la base de données vous appartiennent. Pas de licence, pas de location.",
       },
       {
         key: "hebergement-fr",
-        // Drapeau FR utilisé en pictogramme. Implémenté en SVG inline dans le composant.
-        icon: "FLAG_FR",
         title: "Hébergement français",
-        body: "[COPY À VENIR] OVH ou Scaleway en France. Pas de transfert hors UE, pas de Cloud Act, pas de question à se poser le jour d'un audit.",
+        body: "OVH ou Scaleway, au choix. Vos données ne quittent pas le territoire français.",
       },
       {
         key: "rgpd",
-        icon: "RGPD",
         title: "RGPD natif",
-        body: "[COPY À VENIR] Conformité RGPD intégrée dès la conception : registre des traitements, droit à l'effacement, journal d'accès. Pas de contorsion après coup.",
+        body: "Conformité intégrée dès la conception, pas un correctif ajouté après coup.",
       },
       {
         key: "rgaa-rse",
-        icon: "♿",
-        title: "Accessibilité & démarche RSE",
-        body: "[COPY À VENIR] Code livré aux standards RGAA. Stack sobre, dépendances minimales, empreinte serveur mesurée.",
+        title: "Accessibilité et RSE",
+        body: "Conception RGAA pour les obligations secteur public et les entreprises engagées.",
       },
     ],
-    cta: {
-      label: "[COPY] En savoir plus sur notre engagement",
-      // Page dédiée prévue en V2. En attendant : ancre vers le contact.
-      href: "#contact",
-    },
+    // Pas de CTA — choix éditorial copywriter (cohérence parcours).
   },
 
   /* ============ RÉALISATIONS ============ */
