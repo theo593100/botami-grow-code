@@ -184,6 +184,23 @@
             mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
   }
 
+  /* Marquee CSS pur — déclaré ici (pas via Tailwind) pour éviter tout
+     risque de purge JIT côté Lovable. */
+  .bo-marquee-track {
+    animation: bo-marquee-x 42s linear infinite;
+  }
+  .bo-marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes bo-marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@layer utilities {
+
   /* Focus ring Botami */
   .bo-focus:focus-visible {
     outline: 2px solid var(--bo-ink);

@@ -260,8 +260,9 @@ export const MarqueeContinuous = ({
       )}
       aria-hidden="true"
     >
-      {/* Important : .bo-marquee-track est ciblé par la règle prefers-reduced-motion */}
-      <div className="bo-marquee-track flex gap-[72px] w-max animate-marquee-x will-change-transform">
+      {/* L'animation est déclarée en CSS pur dans index.css (.bo-marquee-track)
+          pour échapper à la purge Tailwind JIT côté Lovable. */}
+      <div className="bo-marquee-track flex gap-[72px] w-max will-change-transform">
         {loop.map((name, i) => (
           <span
             key={`${name}-${i}`}
@@ -319,10 +320,11 @@ export const MarqueeScrollLinked = ({
       const progress = Math.min(1, Math.max(0, raw));
       if (Math.abs(progress - lastProgress) < 0.0005) return;
       lastProgress = progress;
-      const trackWidth = track.scrollWidth;
-      // -50% à fond (loop) = -trackWidth/2 px
-      const translate = -progress * (trackWidth / 2);
-      track.style.transform = `translate3d(${translate}px, 0, 0)`;
+      // Track contient la liste dupliquée : à -50% on a parcouru exactement
+      // une fois la liste. Pourcentage = plus robuste que scrollWidth en px
+      // (qui peut renvoyer 0 au premier render dans certains navigateurs).
+      const translate = -progress * 50;
+      track.style.transform = `translate3d(${translate}%, 0, 0)`;
     };
 
     const onScroll = () => {
