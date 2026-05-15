@@ -1,0 +1,33 @@
+# Botami Software
+
+> Agence française de développement en binôme humain-IA. Applications web et mobile sur mesure pour PME et TPE, livrées en 4 à 8 semaines, forfait à partir de 5 000 € HT, code source transmis et hébergement souverain. Présence à Nîmes, Lille et Paris.
+
+Botami Software (marque de la société BOTA-AG) conçoit, développe et déploie des applications métier sur mesure : outils internes, back-offices, espaces clients, applications mobiles iOS/Android, refontes de logiciels vieillissants et intégrations CRM/ERP. Forfait fixe sans abonnement, 100 % du code source transmis au client, hébergement en France.
+
+## Pages
+
+- [Accueil](/): Positionnement, services, processus, FAQ, contact.
+- [Étude de cas GATEFORGE TP](/etude-de-cas): Application métier développée pour Transitions Pro Île-de-France — 15 000 € d'économies annuelles pour 5 800 € de développement.
+
+## Landing pages
+
+- [Tarifs et forfait](/lp/prix): Détail du forfait à partir de 5 000 € HT et garanties commerciales.
+- [Agence dev web](/lp/google/agence-dev-web): Développement d'applications web sur mesure.
+- [Application mobile](/lp/google/application-mobile): Développement iOS et Android.
+- [Développement logiciel](/lp/google/developpement-logiciel): Logiciels métier sur mesure.
+- [Application web sur mesure](/lp/google/application-web-sur-mesure): Outils internes et back-offices.
+- [Développement application](/lp/google/developpement-application): Conception et développement d'applications.
+- [Logiciel BTP](/lp/google/logiciel-btp): Logiciels métier pour le secteur BTP.
+- [Logiciel RH](/lp/google/logiciel-rh): Solutions RH sur mesure.
+- [ERP sur mesure](/lp/google/erp-sur-mesure): ERP métier conçus pour PME.
+- [CRM sur mesure](/lp/google/crm-sur-mesure): CRM ajustés au process commercial.
+- [Logiciel facturation](/lp/google/logiciel-facturation): Facturation électronique conforme 2026.
+- [Logiciel comptabilité](/lp/google/logiciel-comptabilite): Outils comptables sur mesure.
+- [Logiciel sur mesure](/lp/google/logiciel-sur-mesure): Vue d'ensemble du sur-mesure logiciel.
+
+## Optional
+
+- [Mentions légales](/mentions-legales): Éditeur, hébergeur, contact.
+- [CGV](/cgv): Conditions générales de vente.
+- [Politique de confidentialité](/politique-de-confidentialite): Traitement des données personnelles (RGPD).
+- [Politique cookies](/politique-cookies): Cookies déposés et gestion du consentement.
