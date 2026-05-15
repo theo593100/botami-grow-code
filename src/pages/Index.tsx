@@ -16,6 +16,7 @@ import {
   organizationSchema,
   websiteSchema,
   faqSchema,
+  servicesListSchema,
 } from "@/lib/structured-data";
 import { home } from "@/content/home";
 
@@ -40,7 +41,7 @@ const Index = () => {
         keywords="agence dev binôme IA, agence développement IA, application sur mesure PME, développement logiciel PME, alternative SaaS, souveraineté française logiciel, agence Nîmes Lille Paris"
       />
       <StructuredData
-        data={[organizationSchema(), websiteSchema(), faqSchema(homeFaqs)]}
+        data={[organizationSchema(), websiteSchema(), servicesListSchema(), faqSchema(homeFaqs)]}
       />
       <Navbar />
       <main>
