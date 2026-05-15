@@ -17,6 +17,7 @@ const RealCardSolo = ({
   result,
   sketch,
   image,
+  video,
   href,
   external,
 }: {
@@ -26,6 +27,7 @@ const RealCardSolo = ({
   result: string;
   sketch: "dashboard" | "form" | "list";
   image?: string;
+  video?: string;
   href?: string;
   external?: boolean;
 }) => {
@@ -38,15 +40,25 @@ const RealCardSolo = ({
       className="group block border-[1.5px] border-ink rounded-card overflow-hidden bg-white bo-focus transition-colors"
     >
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr]">
-        {/* Visuel : screenshot si fourni, sinon esquisse SVG */}
+        {/* Visuel : vidéo si fournie, sinon screenshot, sinon esquisse SVG */}
         <div className="relative aspect-[16/10] lg:aspect-auto bg-n-200 border-b-[1.5px] lg:border-b-0 lg:border-r-[1.5px] border-ink overflow-hidden">
-          {image ? (
+          {video ? (
+            <video
+              src={video}
+              poster={image}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+          ) : image ? (
             <img
               src={image}
               alt={`Capture du back-office ${client}`}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover object-top"
-              // Si l'image 404, on bascule sur l'esquisse en remplaçant src
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
               }}
