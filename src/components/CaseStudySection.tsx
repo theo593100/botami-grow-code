@@ -143,6 +143,7 @@ const CaseStudySection = () => {
             result={cards[0].result}
             sketch={cards[0].sketch}
             image={"image" in cards[0] ? cards[0].image : undefined}
+            video={"video" in cards[0] ? (cards[0] as { video?: string }).video : undefined}
             href={"href" in cards[0] ? cards[0].href : undefined}
             external={"external" in cards[0] ? cards[0].external : undefined}
           />
