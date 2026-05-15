@@ -195,9 +195,9 @@ export const home = {
       ital: "Démo interactive",
       after: " disponible.",
     },
-    rightLinkLabel: "Voir la démo →",
-    rightLinkHref: "https://demo.botami-agency.com",
-    rightLinkExternal: true,
+    rightLinkLabel: "",
+    rightLinkHref: "",
+    rightLinkExternal: false,
     cards: [
       {
         size: "large" as const,
