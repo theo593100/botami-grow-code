@@ -51,7 +51,7 @@ const RealCardSolo = ({
               muted
               playsInline
               preload="metadata"
-              className="absolute inset-0 w-full h-full object-contain bg-n-100"
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
           ) : image ? (
             <img
@@ -83,9 +83,11 @@ const RealCardSolo = ({
             </p>
           )}
           <div className="flex flex-col gap-3 lg:items-end">
-            <Chip>{result}</Chip>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-n-500 font-medium lg:text-right">
+              {result}
+            </span>
             {href && (
-              <span className="inline-flex items-center gap-2 text-sm text-ink font-medium border-b border-ink pb-0.5 self-start lg:self-end group-hover:text-ambre-dark group-hover:border-ambre-dark transition-colors">
+              <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-cream text-sm font-medium self-start lg:self-end group-hover:bg-ambre-dark transition-colors">
                 Ouvrir la démo interactive
                 <ArrowRightIcon className="w-3.5 h-3.5" />
               </span>
