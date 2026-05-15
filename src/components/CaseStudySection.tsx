@@ -39,9 +39,9 @@ const RealCardSolo = ({
       rel={external ? "noopener noreferrer" : undefined}
       className="group block border-[1.5px] border-ink rounded-card overflow-hidden bg-white bo-focus transition-colors"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr]">
+      <div className="flex flex-col">
         {/* Visuel : vidéo si fournie, sinon screenshot, sinon esquisse SVG */}
-        <div className="relative aspect-[16/10] lg:aspect-auto bg-n-200 border-b-[1.5px] lg:border-b-0 lg:border-r-[1.5px] border-ink overflow-hidden">
+        <div className="relative aspect-[16/9] bg-n-200 border-b-[1.5px] border-ink overflow-hidden">
           {video ? (
             <video
               src={video}
@@ -51,7 +51,7 @@ const RealCardSolo = ({
               muted
               playsInline
               preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              className="absolute inset-0 w-full h-full object-contain bg-n-100"
             />
           ) : image ? (
             <img
@@ -68,25 +68,29 @@ const RealCardSolo = ({
           )}
         </div>
         {/* Méta */}
-        <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center gap-4 sm:gap-5">
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-n-500 font-medium">
-            {category}
-          </span>
-          <h3 className="font-display text-[28px] sm:text-[32px] lg:text-[36px] font-semibold tracking-[-0.02em] leading-[1.1] text-ink">
-            {client}
-          </h3>
+        <div className="p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-4 sm:gap-6 lg:items-end">
+          <div className="flex flex-col gap-2 sm:gap-3 lg:max-w-[280px]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-n-500 font-medium">
+              {category}
+            </span>
+            <h3 className="font-display text-[28px] sm:text-[32px] lg:text-[36px] font-semibold tracking-[-0.02em] leading-[1.05] text-ink">
+              {client}
+            </h3>
+          </div>
           {description && (
-            <p className="text-[14px] sm:text-[15px] text-n-700 leading-[1.55]">
+            <p className="text-[14px] sm:text-[15px] text-n-700 leading-[1.55] lg:max-w-[520px]">
               {description}
             </p>
           )}
-          <Chip>{result}</Chip>
-          {href && (
-            <span className="inline-flex items-center gap-2 mt-1 text-sm text-ink font-medium border-b border-ink pb-0.5 self-start group-hover:text-ambre-dark group-hover:border-ambre-dark transition-colors">
-              Ouvrir la démo interactive
-              <ArrowRightIcon className="w-3.5 h-3.5" />
-            </span>
-          )}
+          <div className="flex flex-col gap-3 lg:items-end">
+            <Chip>{result}</Chip>
+            {href && (
+              <span className="inline-flex items-center gap-2 text-sm text-ink font-medium border-b border-ink pb-0.5 self-start lg:self-end group-hover:text-ambre-dark group-hover:border-ambre-dark transition-colors">
+                Ouvrir la démo interactive
+                <ArrowRightIcon className="w-3.5 h-3.5" />
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </Wrapper>
