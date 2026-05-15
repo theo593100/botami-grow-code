@@ -41,6 +41,14 @@ const Unsubscribe = () => {
         description="Page de désinscription des emails Botami Software."
         noindex
       />
+      <StructuredData
+        data={[
+          breadcrumbSchema([
+            { name: "Accueil", url: "/" },
+            { name: "Désinscription", url: "/unsubscribe" },
+          ]),
+        ]}
+      />
       <div className="max-w-md w-full text-center space-y-6">
         {status === "loading" && <p className="text-muted-foreground">Vérification…</p>}
         {status === "valid" && (
