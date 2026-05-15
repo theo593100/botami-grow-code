@@ -201,10 +201,15 @@ export const home = {
     cards: [
       {
         size: "large" as const,
-        category: "[Secteur Gateforge — à confirmer]",
+        category: "Gestion d'événements",
         client: "Gateforge",
-        result: "[Résultat / KPI à confirmer]",
+        description:
+          "Inscriptions et billets en QR code, scan d'entrée à chaque atelier, ajout de participants en live, stats temps réel. Fonctionne hors réseau.",
+        result: "Front + back-office en accès libre",
         sketch: "dashboard" as const,
+        // Screenshot back-office, servi depuis public/realisations/.
+        // Si fichier absent → fallback automatique sur l'esquisse SVG.
+        image: "/realisations/gateforge-stats.png" as string | undefined,
         href: "https://demo.botami-agency.com",
         external: true,
       },
