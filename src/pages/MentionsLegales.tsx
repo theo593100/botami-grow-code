@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
 import StructuredData from "@/components/seo/StructuredData";
-import { webPageSchema } from "@/lib/structured-data";
+import { webPageSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 const MentionsLegales = () => (
   <>
@@ -12,11 +12,17 @@ const MentionsLegales = () => (
       canonical="/mentions-legales"
     />
     <StructuredData
-      data={webPageSchema({
-        name: "Mentions légales — Botami Software",
-        description: "Informations légales relatives au site software.botami-agency.com édité par BOTA-AG.",
-        path: "/mentions-legales",
-      })}
+      data={[
+        webPageSchema({
+          name: "Mentions légales — Botami Software",
+          description: "Informations légales relatives au site software.botami-agency.com édité par BOTA-AG.",
+          path: "/mentions-legales",
+        }),
+        breadcrumbSchema([
+          { name: "Accueil", url: "/" },
+          { name: "Mentions légales", url: "/mentions-legales" },
+        ]),
+      ]}
     />
     <Navbar />
     <main className="min-h-screen bg-background text-foreground pt-28 pb-20 px-4 md:px-8">
