@@ -123,7 +123,9 @@ export const RealCard = ({
       {image ? (
         <img
           src={image}
-          alt={`${client} — capture d'application`}
+          alt={`${client} — capture d'application métier sur mesure développée par Botami Software`}
+          width={1600}
+          height={size === "large" ? 1000 : 1200}
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
         />

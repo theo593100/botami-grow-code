@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grain" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.6" fill="#000" opacity="0.018"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#FAF7F2"/>
+  <rect width="1200" height="630" fill="url(#grain)"/>
+
+  <!-- Logo carré ambre 80x80 avec BS serif blanc -->
+  <g transform="translate(96,235)">
+    <rect width="160" height="160" rx="20" fill="#C4872C"/>
+    <text x="80" y="112" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" fill="#FFFFFF">BS</text>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(304,330)">
+    <text font-family="'Space Grotesk', system-ui, sans-serif" font-size="92" font-weight="700" fill="#1A1A1A">
+      <tspan>Botami </tspan><tspan font-weight="400" fill="#6B7280">Software</tspan>
+    </text>
+    <text y="70" font-family="'Space Grotesk', system-ui, sans-serif" font-size="38" font-weight="500" fill="#1A1A1A">
+      Agence dev en binôme avec l'IA
+    </text>
+  </g>
+
+  <!-- Cities tagline -->
+  <text x="1104" y="566" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="18" font-weight="500" fill="#6B7280" letter-spacing="3.24">NÎMES · LILLE · PARIS</text>
+</svg>
