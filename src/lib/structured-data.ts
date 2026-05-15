@@ -7,7 +7,11 @@ import { SITE_URL, SITE_NAME, absoluteUrl } from "./seo-config";
 const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_ID = `${SITE_URL}/#website`;
 
-/** Organization schema — Botami Software / BOTA-AG. */
+/** Organization schema — Botami Software / BOTA-AG.
+ *  - address (principale) = siège social Paris
+ *  - location[] = couverture multi-villes (Paris, Lille, Nîmes)
+ *    Décision KB #016 (14 mai 2026, presence-territoriale-3-villes).
+ */
 export const organizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -25,8 +29,43 @@ export const organizationSchema = () => ({
     addressLocality: "Paris",
     addressCountry: "FR",
   },
+  location: [
+    {
+      "@type": "Place",
+      name: "Botami Software — Paris (siège)",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Paris",
+        postalCode: "75008",
+        addressCountry: "FR",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "Botami Software — Lille",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Lille",
+        addressCountry: "FR",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "Botami Software — Nîmes",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Nîmes",
+        addressCountry: "FR",
+      },
+    },
+  ],
   founder: [{ "@type": "Person", name: "Elias Ouannou" }],
-  areaServed: "FR",
+  areaServed: [
+    { "@type": "Country", name: "France" },
+    { "@type": "City", name: "Paris" },
+    { "@type": "City", name: "Lille" },
+    { "@type": "City", name: "Nîmes" },
+  ],
   sameAs: [],
 });
 

@@ -42,7 +42,7 @@ export const home = {
 
   /* ============ HERO ============ */
   hero: {
-    eyebrow: "— 00 / Studio sur mesure · Nîmes",
+    eyebrow: "— 00 / Agence dev en binôme avec l'IA · Nîmes · Lille · Paris",
     h1: {
       before: "On code ",
       ital: "ce que vous",
@@ -181,37 +181,32 @@ export const home = {
     // Pas de CTA — choix éditorial copywriter (cohérence parcours).
   },
 
-  /* ============ RÉALISATIONS ============ */
+  /* ============ RÉALISATIONS ============
+   * Pour l'instant : un seul cas live (Gateforge). Les autres clients
+   * (Mondial Box, DK PaceBoard) en attente d'accord public.
+   * Quand on aura d'autres cas, on ajoute des entrées dans `cards` ;
+   * le composant gère 1 carte (pleine largeur) ou 3+ cartes (1 grand + petites).
+   */
   realisations: {
-    secNum: "— 03 / Réalisations",
+    secNum: "— 03 / Étude de cas",
     title: {
-      before: "Projets récents. ",
-      ital: "Trois métiers",
-      after: ", zéro template.",
+      // Titre adapté au mono-cas. À élargir quand on en aura plus.
+      before: "Un projet en clair. ",
+      ital: "Démo interactive",
+      after: " disponible.",
     },
-    rightLinkLabel: "Voir toutes les études de cas →",
-    rightLinkHref: "/etude-de-cas",
+    rightLinkLabel: "Voir la démo →",
+    rightLinkHref: "https://demo.botami-agency.com",
+    rightLinkExternal: true,
     cards: [
       {
         size: "large" as const,
-        category: "Transport sanitaire",
-        client: "Transitions Pro",
-        result: "÷ 3 le temps de traitement",
+        category: "[Secteur Gateforge — à confirmer]",
+        client: "Gateforge",
+        result: "[Résultat / KPI à confirmer]",
         sketch: "dashboard" as const,
-      },
-      {
-        size: "small" as const,
-        category: "Matériel médical",
-        client: "Ergosanté",
-        result: "+ 40 % de devis signés",
-        sketch: "form" as const,
-      },
-      {
-        size: "small" as const,
-        category: "Immobilier · Paris",
-        client: "Des Murs à Paris",
-        result: "SaaS remplacé : 14 k€/an",
-        sketch: "list" as const,
+        href: "https://demo.botami-agency.com",
+        external: true,
       },
     ],
   },
@@ -266,7 +261,7 @@ export const home = {
     right:
       "Notre processus tient sur une page A4. On l'envoie en clair dès le premier rendez-vous, devis compris.",
     paperTitle: "Du brief à la mise en prod, sans surprise.",
-    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Nîmes" },
+    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Nîmes · Lille · Paris" },
     steps: [
       {
         n: "01",
@@ -362,7 +357,7 @@ export const home = {
     lead: "Un échange de 30 minutes, sans engagement. On vous dit franchement si on peut aider — et combien ça coûterait.",
     info: [
       { label: "Email", value: "contact@botami-agency.com", href: "mailto:contact@botami-agency.com" },
-      { label: "Lieu", value: "Nîmes, France", secondary: "Sur rendez-vous · présentiel ou visio" },
+      { label: "Lieu", value: "Nîmes · Lille · Paris", secondary: "Sur rendez-vous · présentiel ou visio" },
       { label: "Réponse", value: "Sous 24 h ouvrées", secondary: "Souvent moins." },
     ],
     form: {
@@ -424,7 +419,7 @@ export const home = {
         ],
       },
     ],
-    bottomLeft: "© 2026 BOTA-AG · NÎMES",
+    bottomLeft: "© 2026 BOTA-AG · NÎMES · LILLE · PARIS",
     bottomRight: "CONTACT@BOTAMI-AGENCY.COM",
     bottomRightHref: "mailto:contact@botami-agency.com",
   },
