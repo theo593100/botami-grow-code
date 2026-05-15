@@ -160,7 +160,7 @@ const CaseStudySection = () => {
                   sketch={big.sketch}
                 />
                 <div className="grid grid-cols-1 gap-6">
-                  {(rest as typeof cards).map((card) => (
+                  {(rest as unknown as typeof cards).map((card) => (
                     <RealCard
                       key={card.client}
                       size="small"
