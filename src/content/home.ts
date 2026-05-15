@@ -209,6 +209,8 @@ export const home = {
         sketch: "dashboard" as const,
         // Screenshot back-office, servi depuis public/realisations/.
         // Si fichier absent → fallback automatique sur l'esquisse SVG.
+        // Vidéo de démo (lecture auto en boucle, muet) — fallback image si <video> indisponible.
+        video: "/realisations/gateforge-demo.mp4" as string | undefined,
         image: "/realisations/gateforge-stats.png" as string | undefined,
         href: "https://demo.botami-agency.com",
         external: true,
