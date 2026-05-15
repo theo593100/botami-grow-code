@@ -28,7 +28,7 @@ const ClientLogosSection = () => {
 
         {/* Marquee défilement continu (mode B scroll-linked retiré après test) */}
         <MarqueeContinuous
-          items={c.marquee}
+          items={[...c.marquee]}
           className="mb-12 sm:mb-16 lg:mb-20"
         />
 
