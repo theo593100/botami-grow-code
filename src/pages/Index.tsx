@@ -36,7 +36,7 @@ const Index = () => {
     <>
       <SEO
         title="Botami Software — Agence dev en binôme avec l'IA"
-        description="Agence française de développement en binôme humain-IA. Applications web et mobile sur mesure pour PME. Nîmes · Lille · Paris. Forfait à partir de 5 000 € HT. Livré en 4 à 8 semaines. Code source transmis, hébergement souverain."
+        description="Agence française de dev en binôme humain-IA. Applications sur mesure pour PME, à partir de 5 000 € HT, livrées en 4 à 8 semaines. Code source transmis."
         canonical="/"
         keywords="agence dev binôme IA, agence développement IA, application sur mesure PME, développement logiciel PME, alternative SaaS, souveraineté française logiciel, agence Nîmes Lille Paris"
       />

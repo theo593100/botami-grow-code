@@ -7,8 +7,8 @@ import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 const CaseStudy = () => (
   <>
     <SEO
-      title="Étude de cas GATEFORGE TP — Application métier pour Transitions Pro | Botami Software"
-      description="Comment Botami Software a développé GATEFORGE TP pour Transitions Pro Île-de-France : 15 000 € d'économies annuelles vs 5 800 € de développement, livré en quelques semaines."
+      title="Étude de cas GATEFORGE TP — Botami Software"
+      description="GATEFORGE TP pour Transitions Pro Île-de-France : 15 000 € d'économies annuelles pour 5 800 € de développement, livré en quelques semaines."
       canonical="/etude-de-cas"
       ogType="article"
     />
