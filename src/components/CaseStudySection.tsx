@@ -51,7 +51,7 @@ const RealCardSolo = ({
               muted
               playsInline
               preload="metadata"
-              className="absolute inset-0 w-full h-full object-contain bg-n-100"
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
           ) : image ? (
             <img
