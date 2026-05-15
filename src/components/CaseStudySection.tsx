@@ -56,7 +56,9 @@ const RealCardSolo = ({
           ) : image ? (
             <img
               src={image}
-              alt={`Capture du back-office ${client}`}
+              alt={`Tableau de bord ${client} : statistiques de présence, taux de remplissage et arrivées par créneau d'un événement professionnel`}
+              width={1920}
+              height={1200}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover object-top"
               onError={(e) => {

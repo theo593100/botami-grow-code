@@ -166,3 +166,59 @@ export const articleSchema = (params: {
   author: { "@id": ORG_ID },
   publisher: { "@id": ORG_ID },
 });
+
+/** ItemList of services offered on the home page. */
+export const servicesListSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    {
+      "@type": "Service",
+      position: 1,
+      name: "Applications web sur mesure",
+      description:
+        "Outils internes, back-offices, espaces clients. Remplacement de SaaS, Excel ou Notion par une vraie application dédiée.",
+      provider: { "@id": ORG_ID },
+      areaServed: "FR",
+    },
+    {
+      "@type": "Service",
+      position: 2,
+      name: "Applications mobiles",
+      description:
+        "iOS et Android sur une seule base de code pour équipes terrain, commerciaux itinérants, opérateurs logistique.",
+      provider: { "@id": ORG_ID },
+      areaServed: "FR",
+    },
+    {
+      "@type": "Service",
+      position: 3,
+      name: "Refonte d'outils internes",
+      description:
+        "Réécriture de logiciels métier vieillissants sans interruption de service. Migration progressive, données préservées.",
+      provider: { "@id": ORG_ID },
+      areaServed: "FR",
+    },
+    {
+      "@type": "Service",
+      position: 4,
+      name: "Intégrations et automatisations",
+      description:
+        "Connexion CRM-ERP, automatisation de facturation, branchement d'API. Forfait sur périmètre précis, livré sous 2 à 4 semaines.",
+      provider: { "@id": ORG_ID },
+      areaServed: "FR",
+    },
+  ],
+});
+
+/** BreadcrumbList — pass an ordered list of {name, url}. */
+export const breadcrumbSchema = (items: { name: string; url: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    item: absoluteUrl(item.url),
+  })),
+});

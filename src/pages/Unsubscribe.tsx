@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/seo/SEO";
+import StructuredData from "@/components/seo/StructuredData";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -38,6 +40,14 @@ const Unsubscribe = () => {
         title="Désinscription des emails | Botami Software"
         description="Page de désinscription des emails Botami Software."
         noindex
+      />
+      <StructuredData
+        data={[
+          breadcrumbSchema([
+            { name: "Accueil", url: "/" },
+            { name: "Désinscription", url: "/unsubscribe" },
+          ]),
+        ]}
       />
       <div className="max-w-md w-full text-center space-y-6">
         {status === "loading" && <p className="text-muted-foreground">Vérification…</p>}

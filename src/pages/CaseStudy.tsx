@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
 import StructuredData from "@/components/seo/StructuredData";
-import { articleSchema } from "@/lib/structured-data";
+import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 const CaseStudy = () => (
   <>
@@ -13,12 +13,18 @@ const CaseStudy = () => (
       ogType="article"
     />
     <StructuredData
-      data={articleSchema({
-        headline: "GATEFORGE TP — Application métier sur mesure pour Transitions Pro Île-de-France",
-        description:
-          "Étude de cas Botami Software : conception et développement de GATEFORGE TP, application métier qui a permis 15 000 € d'économies annuelles à Transitions Pro Île-de-France, pour un coût de 5 800 € en one-shot.",
-        path: "/etude-de-cas",
-      })}
+      data={[
+        articleSchema({
+          headline: "GATEFORGE TP — Application métier sur mesure pour Transitions Pro Île-de-France",
+          description:
+            "Étude de cas Botami Software : conception et développement de GATEFORGE TP, application métier qui a permis 15 000 € d'économies annuelles à Transitions Pro Île-de-France, pour un coût de 5 800 € en one-shot.",
+          path: "/etude-de-cas",
+        }),
+        breadcrumbSchema([
+          { name: "Accueil", url: "/" },
+          { name: "Étude de cas", url: "/etude-de-cas" },
+        ]),
+      ]}
     />
     <Navbar />
     <main className="pt-[var(--nav-height)] flex items-center justify-center min-h-[calc(100vh-var(--nav-height))]">

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
 import StructuredData from "@/components/seo/StructuredData";
-import { webPageSchema } from "@/lib/structured-data";
+import { webPageSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 const PolitiqueCookies = () => (
   <>
@@ -12,11 +12,17 @@ const PolitiqueCookies = () => (
       canonical="/politique-cookies"
     />
     <StructuredData
-      data={webPageSchema({
-        name: "Politique de gestion des cookies — Botami Software",
-        description: "Cookies utilisés sur le site, finalités, durées et gestion du consentement.",
-        path: "/politique-cookies",
-      })}
+      data={[
+        webPageSchema({
+          name: "Politique de gestion des cookies — Botami Software",
+          description: "Cookies utilisés sur le site, finalités, durées et gestion du consentement.",
+          path: "/politique-cookies",
+        }),
+        breadcrumbSchema([
+          { name: "Accueil", url: "/" },
+          { name: "Politique cookies", url: "/politique-cookies" },
+        ]),
+      ]}
     />
     <Navbar />
     <main className="min-h-screen bg-background text-foreground pt-28 pb-20 px-4 md:px-8">

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
 import StructuredData from "@/components/seo/StructuredData";
-import { webPageSchema } from "@/lib/structured-data";
+import { webPageSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 const CGV = () => (
   <>
@@ -12,11 +12,17 @@ const CGV = () => (
       canonical="/cgv"
     />
     <StructuredData
-      data={webPageSchema({
-        name: "Conditions Générales de Vente — Botami Software",
-        description: "Conditions générales applicables aux prestations de développement logiciel sur mesure de BOTA-AG.",
-        path: "/cgv",
-      })}
+      data={[
+        webPageSchema({
+          name: "Conditions Générales de Vente — Botami Software",
+          description: "Conditions générales applicables aux prestations de développement logiciel sur mesure de BOTA-AG.",
+          path: "/cgv",
+        }),
+        breadcrumbSchema([
+          { name: "Accueil", url: "/" },
+          { name: "CGV", url: "/cgv" },
+        ]),
+      ]}
     />
     <Navbar />
     <main className="min-h-screen bg-background text-foreground pt-28 pb-20 px-4 md:px-8">

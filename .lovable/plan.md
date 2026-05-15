@@ -1,65 +1,47 @@
+## Objectif
+Appliquer 7 optimisations SEO ciblées sur Botami Software, sans toucher au contenu produit ni aux LPs Google Ads.
 
+## Étapes
 
-## SEO & AEO — Plan d'implémentation
+**1. `index.html` — méta-tags par défaut**
+- Title : `Botami Software — Agence dev en binôme avec l'IA`
+- Description (et og/twitter title+description identiques) : nouvelle phrase positionnement Nîmes·Lille·Paris, "à partir de 5 000 € HT", livré 4-8 semaines.
+- og:image et twitter:image → `https://software.botami-agency.com/og-default.png`
 
-Le site est une SPA Vite/React (CSR) avec ~25 routes publiques + zone `/admin`. Custom domain : `software.botami-agency.com`. Les infos business (BOTA-AG, Paris, contact@botami-agency.com, Elias Ouannou) sont déjà en mémoire — je n'ai pas besoin de les redemander.
+**2. OG image par défaut**
+- Génère `public/og-default.svg` (1200×630, fond crème grain, bloc logo ambre + "Botami Software" + tagline + "Nîmes · Lille · Paris").
+- Tente conversion PNG via `nix run nixpkgs#librsvg -- rsvg-convert` vers `public/og-default.png`. Si échec, garde uniquement le SVG et signale qu'une conversion manuelle est nécessaire (et bascule temporairement la meta og:image vers `.svg` ou laisse `.png` en attendant l'upload).
 
-### 1. Meta tags dynamiques
+**3. `public/sitemap.xml`**
+- Tous les `<lastmod>` → `2026-05-15`.
+- Vérifie que `/etude-de-cas` est présent (oui déjà, priority 0.7) et home priority 1.0 weekly (oui).
+- Aucune autre modification.
 
-- Installer `react-helmet-async`, wrapper `<HelmetProvider>` autour de `<App />` dans `main.tsx`.
-- Créer `src/components/seo/SEO.tsx` avec props `title`, `description`, `canonical`, `ogImage`, `ogType="website"`, `noindex=false`, `keywords?`. Émet : title, meta description, canonical, OG complets (title/description/image/url/type/site_name="Botami Software"/locale=fr_FR), Twitter summary_large_image.
-- Centraliser dans `src/lib/seo-config.ts` : `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE`.
-- Ajouter `<SEO>` en tête de chaque page avec valeurs spécifiques.
-- Nettoyer `index.html` : fallback générique uniquement (Helmet écrasera). GA/Clarity/gtag intacts.
-- `noindex` pour : `/admin/*`, `/unsubscribe`, `/404`, et selon ta réponse Q1 sur les LPs Ads.
+**4. Preconnect Google Fonts**
+- Insérer dans `<head>` avant `<link rel="canonical">` les 3 lignes : `preconnect googleapis`, `preconnect gstatic` (crossorigin), `preload` Space Grotesk woff2.
 
-### 2. JSON-LD — schemas proposés
+**5. Audit `<img>` (composants home + case study uniquement, pas les LPs)**
+Cibles : `CaseStudySection.tsx`, `TeamSection.tsx`, `ProblemSection.tsx`, `home/compounds.tsx`, `home/atoms.tsx`.
+- Ajouter `width`/`height` HTML, `loading="lazy"` (sauf hero), alt descriptif ou `alt=""` + `role="presentation"` pour décoratives.
+- Cas Gateforge dans CaseStudySection : actuellement `alt={`Capture du back-office ${client}`}` — remplacer par alt SEO long ("Tableau de bord Gateforge : statistiques de présence, taux de remplissage et arrivées par créneau d'un événement professionnel") + `width="1920"` + `height="1200"`. Note : le chemin `/realisations/gateforge-stats.png` n'existe pas dans le code actuel ; le composant utilise `image` venant de `home.ts`. On applique les attributs sur le `<img>` existant.
+- LPs Google Ads exclues (mention "ne pas toucher").
 
-| Page | Schemas |
-|---|---|
-| `/` | `Organization` + `WebSite` + `FAQPage` |
-| `/lp/google/*` & `/lp/prix` | `Service` + `FAQPage` (si FAQ présente) |
-| `/etude-de-cas` | `Article` (case study GATEFORGE TP) |
-| Pages légales | `WebPage` |
-| `/admin/*`, `/unsubscribe`, `/404` | aucun |
+**6. `servicesListSchema()` + injection Index**
+- Ajout export dans `src/lib/structured-data.ts` (ItemList de 4 Service tel que spécifié).
+- Dans `src/pages/Index.tsx`, ajouter au tableau passé à `<StructuredData data={[...]}>`.
 
-Composant `<StructuredData data={...} />` injecte un `<script type="application/ld+json">` via Helmet.
+**7. `breadcrumbSchema()` + 5 pages secondaires**
+- Ajout export dans `src/lib/structured-data.ts`.
+- Insertion `<StructuredData data={[breadcrumbSchema([...])]}>` dans :
+  - `CaseStudy.tsx` (déjà a un StructuredData → on l'ajoute au tableau existant)
+  - `MentionsLegales.tsx`
+  - `CGV.tsx`
+  - `PolitiqueConfidentialite.tsx`
+  - `PolitiqueCookies.tsx`
+  - `Unsubscribe.tsx`
 
-### 3. Sitemap
+## Hors périmètre
+- Aucun changement sur HeroSection, ProblemSection (texte), ServicesSection, Navbar, Footer, LPs Google Ads, edge functions, admin.
 
-Statique dans `/public/sitemap.xml` listant les routes publiques (Index, LandingPrix, 13 LP Google, CaseStudy, 4 légales). Format avec `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>` (1.0 home, 0.8 LPs, 0.5 légales). Pas de contenu Supabase public à indexer → **statique, à régénérer manuellement** quand de nouvelles routes apparaissent (je le mentionnerai dans le récap).
-
-### 4. robots.txt
-
-Réécrire `/public/robots.txt` :
-- `User-agent: *` → `Allow: /`, `Disallow: /admin`, `/unsubscribe`
-- Bloc explicite autorisant `GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`
-- `Sitemap:` selon ta réponse Q3
-
-### 5. Hiérarchie HTML sémantique
-
-Audit page par page. Vérifications : un seul `<h1>` (Hero), pas de saut H2→H4, présence de `<main>`/`<nav>`/`<footer>`/`<section>`. Corrections listées dans le récap.
-
-### 6. Audit images
-
-Pour chaque `<img>` : alt descriptif (logos partenaires, photos équipe), `alt=""` pour décoratifs, `width`/`height` explicites, `loading="eager"` + `fetchpriority="high"` sur hero, `loading="lazy"` ailleurs. Alts devinés listés pour validation.
-
-### Questions avant exécution
-
-J'ai 3 incertitudes qui changent le code livré :
-
-**Q1 — Indexation des 13 LPs Google Ads**
-- (a) Indexer (SEO + Ads) — risque de cannibalisation entre LPs au contenu très similaire
-- (b) **Recommandé : Noindex** (Ads uniquement) — évite la duplication de contenu
-- (c) Indexer seulement `/lp/google` parent, noindex sur les 12 variantes
-
-**Q2 — SearchAction dans schema WebSite**
-- (a) **Recommandé : Ne pas inclure** (pas de search interne, évite warnings GSC)
-- (b) Inclure quand même
-
-**Q3 — URL Sitemap dans robots.txt**
-- (a) `https://software.botami-agency.com/sitemap.xml` (custom domain confirmé)
-- (b) Placeholder `DOMAIN_A_REMPLACER`
-
-Réponds avec ex. "Q1=b, Q2=a, Q3=a" et je passe à l'exécution.
-
+## Risque / point d'attention
+- Si la conversion SVG→PNG échoue côté sandbox, l'og:image pointera vers un fichier inexistant tant que tu ne convertis pas manuellement. Je te le signalerai et tu pourras soit (a) uploader le PNG, soit (b) je bascule temporairement la meta sur `.svg` (LinkedIn ne supporte pas SVG en og:image — donc préférable de générer le PNG).
