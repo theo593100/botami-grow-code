@@ -36,9 +36,10 @@ const HeroSection = () => {
 
           {/* Colonne droite : lead + dispo (CTA secondaire retiré tant qu'il n'y a pas assez de cas) */}
           <div className="pb-2 lg:pb-3">
-            <p className="text-[17px] text-n-700 leading-[1.6] max-w-[360px] mb-7">
-              {c.lead}
-            </p>
+            <p 
+              className="text-[17px] text-n-700 leading-[1.6] max-w-[360px] mb-7"
+              dangerouslySetInnerHTML={{ __html: c.lead }}
+            />
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 flex items-center gap-2">
               <span
                 className="w-[7px] h-[7px] rounded-full bg-[#2E8F4F]"
