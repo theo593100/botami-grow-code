@@ -38,21 +38,30 @@ const SouveraineteSection = () => {
 
         {/* Grille 4 sous-points */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {c.points.map((p) => (
-            <article key={p.key}>
-              {/* Filet ambre 24×2px */}
-              <div
-                className="h-[2px] w-6 bg-ambre mb-4"
-                aria-hidden="true"
-              />
-              <h3 className="font-display font-semibold text-[18px] text-ink leading-[1.3] mb-2.5">
-                {p.title}
-              </h3>
-              <p className="font-sans text-[15px] text-n-500 leading-[1.5]">
-                {p.body}
-              </p>
-            </article>
-          ))}
+          {c.points.map((p, i) => {
+            const Icon = ICONS[i];
+            return (
+              <article key={p.key}>
+                {/* Picto Lucide */}
+                {Icon && (
+                  <div className="mb-3" aria-hidden="true">
+                    <Icon size={32} strokeWidth={1.5} color="#C4872C" />
+                  </div>
+                )}
+                {/* Filet ambre 24×2px */}
+                <div
+                  className="h-[2px] w-6 bg-ambre mb-4"
+                  aria-hidden="true"
+                />
+                <h3 className="font-display font-semibold text-[18px] text-ink leading-[1.3] mb-2.5">
+                  {p.title}
+                </h3>
+                <p className="font-sans text-[15px] text-n-500 leading-[1.5]">
+                  {p.body}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
