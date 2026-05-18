@@ -8,8 +8,8 @@ const ICONS = [FileCode, Server, ShieldCheck, Accessibility];
  *
  * Spec :
  *  - Fond #FFFFFF (se détache du crème de la page)
- *  - Pas d'icônes décoratives sur les 4 sous-points
- *  - Filet visuel ambre 24×2px au-dessus de chaque micro-titre
+ *  - Picto Lucide React au-dessus de chaque micro-titre (stroke 1.5, ambre)
+ *  - Filet visuel ambre 24×2px sous chaque picto
  *  - Grille 4 cols desktop ≥1024 / 2×2 tablet ≥640 / stack mobile
  *  - Pas de CTA (choix éditorial)
  *  - Eyebrow ambre uppercase, H2 sobre charbon (pas d'italique)
