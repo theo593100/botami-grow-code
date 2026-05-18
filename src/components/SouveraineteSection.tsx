@@ -1,12 +1,15 @@
 import { home } from "@/content/home";
+import { FileCode, Server, ShieldCheck, Accessibility } from "lucide-react";
+
+const ICONS = [FileCode, Server, ShieldCheck, Accessibility];
 
 /**
  * Section Souveraineté — version conforme au brief copywriting (14 mai).
  *
  * Spec :
  *  - Fond #FFFFFF (se détache du crème de la page)
- *  - Pas d'icônes décoratives sur les 4 sous-points
- *  - Filet visuel ambre 24×2px au-dessus de chaque micro-titre
+ *  - Picto Lucide React au-dessus de chaque micro-titre (stroke 1.5, ambre)
+ *  - Filet visuel ambre 24×2px sous chaque picto
  *  - Grille 4 cols desktop ≥1024 / 2×2 tablet ≥640 / stack mobile
  *  - Pas de CTA (choix éditorial)
  *  - Eyebrow ambre uppercase, H2 sobre charbon (pas d'italique)
@@ -35,21 +38,30 @@ const SouveraineteSection = () => {
 
         {/* Grille 4 sous-points */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {c.points.map((p) => (
-            <article key={p.key}>
-              {/* Filet ambre 24×2px */}
-              <div
-                className="h-[2px] w-6 bg-ambre mb-4"
-                aria-hidden="true"
-              />
-              <h3 className="font-display font-semibold text-[18px] text-ink leading-[1.3] mb-2.5">
-                {p.title}
-              </h3>
-              <p className="font-sans text-[15px] text-n-500 leading-[1.5]">
-                {p.body}
-              </p>
-            </article>
-          ))}
+          {c.points.map((p, i) => {
+            const Icon = ICONS[i];
+            return (
+              <article key={p.key}>
+                {/* Picto Lucide */}
+                {Icon && (
+                  <div className="mb-3" aria-hidden="true">
+                    <Icon size={32} strokeWidth={1.5} color="#C4872C" />
+                  </div>
+                )}
+                {/* Filet ambre 24×2px */}
+                <div
+                  className="h-[2px] w-6 bg-ambre mb-4"
+                  aria-hidden="true"
+                />
+                <h3 className="font-display font-semibold text-[18px] text-ink leading-[1.3] mb-2.5">
+                  {p.title}
+                </h3>
+                <p className="font-sans text-[15px] text-n-500 leading-[1.5]">
+                  {p.body}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
