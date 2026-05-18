@@ -1,4 +1,7 @@
 import { home } from "@/content/home";
+import { FileCode, Server, ShieldCheck, Accessibility } from "lucide-react";
+
+const ICONS = [FileCode, Server, ShieldCheck, Accessibility];
 
 /**
  * Section Souveraineté — version conforme au brief copywriting (14 mai).
