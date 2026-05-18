@@ -153,7 +153,7 @@ export const home = {
   souverainete: {
     // Eyebrow ambre uppercase (style "Souveraineté numérique") — pas le format
     // numéroté "— XX / X" pour cette section, choix éditorial copywriter.
-    eyebrow: "Souveraineté numérique",
+    eyebrow: "RGPD & souveraineté numérique",
     h2: "Votre logiciel, vos données, votre infrastructure.",
     lead: "On développe en France, on héberge en France, et tout ce qu'on construit vous appartient.",
     points: [
