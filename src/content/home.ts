@@ -57,7 +57,7 @@ export const home = {
       caption: "Pas d'abonnement",
     },
     lead:
-      "Botami Software développe des applications web et mobile sur mesure pour les PME françaises. Vous payez une fois. Le code vous appartient.",
+      "Botami Software développe des applications web et mobile sur mesure pour les PME. </br>Vous payez une fois. Le code vous appartient.",
     secondaryCta: { label: "Voir nos réalisations", href: "#realisations" },
     availability: "Créneaux dispo · T3 2026",
     stats: [
