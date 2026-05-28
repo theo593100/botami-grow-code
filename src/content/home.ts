@@ -42,11 +42,11 @@ export const home = {
 
   /* ============ HERO ============ */
   hero: {
-    eyebrow: "— 00 / Agence dev en binôme avec l'IA · Nîmes · Lille · Paris",
+    eyebrow: "— 00 / Agence Vibe coding · Paris · Nîmes · Lille",
     h1: {
-      before: "On code ",
-      ital: "ce que vous",
-      after: "utilisez vraiment.",
+      before: "On remplace vos ",
+      ital: "Saas et excel bricolés",
+      after: " par des app qui vous appartiennent.",
     },
     subline: "Le reste, on vous fait économiser.",
     pricingPill: {
