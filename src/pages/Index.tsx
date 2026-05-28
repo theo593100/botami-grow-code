@@ -35,10 +35,10 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Botami Software — Agence dev en binôme avec l'IA"
-        description="Agence française de dev en binôme humain-IA. Applications sur mesure pour PME, à partir de 5 000 € HT, livrées en 4 à 8 semaines. Code source transmis."
+        title="Botami Software — Agence Vibe coding"
+        description="Agence Vibe coding française. Applications sur mesure pour PME, à partir de 5 000 € HT, livrées en 4 à 8 semaines. Code source transmis."
         canonical="/"
-        keywords="agence dev binôme IA, agence développement IA, application sur mesure PME, développement logiciel PME, alternative SaaS, souveraineté française logiciel, agence Nîmes Lille Paris"
+        keywords="agence vibe coding, application sur mesure PME, développement logiciel PME, alternative SaaS, souveraineté française logiciel, agence Paris Nîmes Lille"
       />
       <StructuredData
         data={[organizationSchema(), websiteSchema(), servicesListSchema(), faqSchema(homeFaqs)]}
