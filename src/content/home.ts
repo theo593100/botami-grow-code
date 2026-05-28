@@ -364,7 +364,7 @@ export const home = {
     lead: "Un échange de 30 minutes, sans engagement. On vous dit franchement si on peut aider — et combien ça coûterait.",
     info: [
       { label: "Email", value: "contact@botami-agency.com", href: "mailto:contact@botami-agency.com" },
-      { label: "Lieu", value: "Nîmes · Lille · Paris", secondary: "Sur rendez-vous · présentiel ou visio" },
+      { label: "Lieu", value: "Paris · Nîmes · Lille", secondary: "Sur rendez-vous · présentiel ou visio" },
       { label: "Réponse", value: "Sous 24 h ouvrées", secondary: "Souvent moins." },
     ],
     form: {
