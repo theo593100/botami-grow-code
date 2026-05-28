@@ -268,7 +268,7 @@ export const home = {
     right:
       "Notre processus tient sur une page A4. On l'envoie en clair dès le premier rendez-vous, devis compris.",
     paperTitle: "Du brief à la mise en prod, sans surprise.",
-    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Nîmes · Lille · Paris" },
+    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Paris · Nîmes · Lille" },
     steps: [
       {
         n: "01",
