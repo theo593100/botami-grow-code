@@ -42,11 +42,11 @@ export const home = {
 
   /* ============ HERO ============ */
   hero: {
-    eyebrow: "— 00 / Agence dev en binôme avec l'IA · Nîmes · Lille · Paris",
+    eyebrow: "— 00 / Agence Vibe coding · Paris · Nîmes · Lille",
     h1: {
-      before: "On code ",
-      ital: "ce que vous",
-      after: "utilisez vraiment.",
+      before: "On remplace vos ",
+      ital: "Saas et excel bricolés",
+      after: " par des app qui vous appartiennent.",
     },
     subline: "Le reste, on vous fait économiser.",
     pricingPill: {
@@ -268,7 +268,7 @@ export const home = {
     right:
       "Notre processus tient sur une page A4. On l'envoie en clair dès le premier rendez-vous, devis compris.",
     paperTitle: "Du brief à la mise en prod, sans surprise.",
-    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Nîmes · Lille · Paris" },
+    paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Paris · Nîmes · Lille" },
     steps: [
       {
         n: "01",
@@ -364,7 +364,7 @@ export const home = {
     lead: "Un échange de 30 minutes, sans engagement. On vous dit franchement si on peut aider — et combien ça coûterait.",
     info: [
       { label: "Email", value: "contact@botami-agency.com", href: "mailto:contact@botami-agency.com" },
-      { label: "Lieu", value: "Nîmes · Lille · Paris", secondary: "Sur rendez-vous · présentiel ou visio" },
+      { label: "Lieu", value: "Paris · Nîmes · Lille", secondary: "Sur rendez-vous · présentiel ou visio" },
       { label: "Réponse", value: "Sous 24 h ouvrées", secondary: "Souvent moins." },
     ],
     form: {
