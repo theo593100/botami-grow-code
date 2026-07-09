@@ -327,12 +327,14 @@ const GestionIntervention = () => {
                       ← Retour
                     </button>
                     {current.multi && (
-                      <BtnSubmit
-                        variant="primary"
+                      <button
+                        type="button"
+                        onClick={goNext}
                         disabled={!currentAnswered}
+                        className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        <span onClick={(e) => { e.preventDefault(); goNext(); }}>Continuer</span>
-                      </BtnSubmit>
+                        Continuer <ArrowRightIcon className="w-[14px] h-[14px]" />
+                      </button>
                     )}
                   </div>
                 </div>
