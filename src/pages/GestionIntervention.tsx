@@ -284,7 +284,7 @@ const GestionIntervention = () => {
                   </div>
                 </div>
 
-                <div key={current.id} className="animate-fade-in">
+                <div key={current.id} className="animate-fade-up">
                   <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[26px] sm:text-[30px] leading-[1.15]">
                     {current.label}
                   </h2>
@@ -343,7 +343,7 @@ const GestionIntervention = () => {
 
             {/* ===== 3. GATE ===== */}
             {phase === "gate" && (
-              <div className="max-w-xl mx-auto animate-fade-in">
+              <div className="max-w-xl mx-auto animate-fade-up">
                 <div className="mb-6 h-1.5 rounded-full bg-n-300 overflow-hidden">
                   <div className="h-full bg-ambre" style={{ width: "100%" }} />
                 </div>
@@ -409,7 +409,7 @@ const GestionIntervention = () => {
 
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
-              <div className="animate-fade-in">
+              <div className="animate-fade-up">
                 <Eyebrow className="text-ambre-dark">Votre cahier des charges</Eyebrow>
                 <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08] mt-3">
                   Logiciel de gestion d'intervention sur mesure
