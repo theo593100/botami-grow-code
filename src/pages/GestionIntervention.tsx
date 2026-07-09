@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
-import { Eyebrow, Btn, BtnSubmit } from "@/components/home/atoms";
+import { Eyebrow, Btn, BtnSubmit, ArrowRightIcon } from "@/components/home/atoms";
 import { supabase } from "@/integrations/supabase/client";
 
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
