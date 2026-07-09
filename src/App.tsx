@@ -31,6 +31,7 @@ import PolitiqueCookies from "./pages/PolitiqueCookies.tsx";
 import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
+import GestionIntervention from "./pages/GestionIntervention.tsx";
 
 const queryClient = new QueryClient();
 
