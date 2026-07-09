@@ -59,6 +59,7 @@ const App = () => (
           <Route path="/lp/google/logiciel-comptabilite" element={<LandingGoogleLogicielComptabilite />} />
           <Route path="/lp/google/logiciel-sur-mesure" element={<LandingGoogleLogicielSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
+          <Route path="/gestion-intervention" element={<GestionIntervention />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgv" element={<CGV />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
