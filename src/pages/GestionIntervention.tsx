@@ -251,20 +251,20 @@ const GestionIntervention = () => {
               <div className="text-center">
                 <Eyebrow className="text-ambre-dark">Cadeau · gratuit · &lt; 2 min</Eyebrow>
                 <h1 className="font-display font-semibold tracking-[-0.03em] text-ink text-[34px] sm:text-[48px] leading-[1.05] mt-4">
-                  On vous offre le cahier des charges de votre outil de gestion d'intervention.
+                  Le cahier des charges de votre logiciel de gestion d'intervention — gratuit, en 2 minutes.
                 </h1>
                 <p className="text-n-700 text-[17px] leading-[1.6] mt-6 max-w-2xl mx-auto">
-                  8 questions, 2 minutes. À chaque étape on partage un conseil concret pour clarifier
-                  votre projet. À la fin, on vous génère un cahier des charges propre et structuré —
-                  le vôtre, à garder, même si vous décidez de le faire réaliser ailleurs.
+                  Aucun outil du marché ne colle vraiment à votre façon de travailler. Répondez à
+                  8 questions : on vous génère le cahier des charges de l'outil qu'il vous faudrait —
+                  un document clair, à vous, prêt à l'emploi.
                 </p>
                 <div className="mt-9 flex justify-center">
                   <Btn href="#" onClick={(e) => { e.preventDefault(); setPhase("quiz"); }}>
-                    Recevoir mon cahier des charges gratuit
+                    Je génère mon cahier des charges
                   </Btn>
                 </div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-4">
-                  Sans engagement · aucun démarchage
+                  Gratuit · sans engagement
                 </p>
               </div>
             )}
