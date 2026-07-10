@@ -150,7 +150,9 @@ Structure EXACTE, 6 sections :
 
 6. Périmètre & suite — ce qui est hors V1 mais possible ensuite, et la mention : "Diagnostic et cahier des charges affiné : gratuit avec un expert Botami."
 
-Ton factuel, phrases courtes, pas de superlatifs, pas de promesse chiffrée de délai ou de performance. Rends du Markdown propre.`;
+Ton factuel, phrases courtes, pas de superlatifs, pas de promesse chiffrée de délai ou de performance. Rends du Markdown propre.
+
+IMPORTANT — Format : n'utilise JAMAIS de tableaux Markdown (pas de "|" ni de lignes "---"). Présente toute information structurée (par ex. les fonctionnalités avec description / critère d'acceptation / priorité) sous forme de listes à puces ou de sous-sections. Utilise uniquement titres (#, ##, ###), paragraphes, listes à puces (-) et gras (**).`;
 
 const asArray = (v: unknown): string[] =>
   Array.isArray(v) ? v.map(String) : v == null || v === "" ? [] : [String(v)];
