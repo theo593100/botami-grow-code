@@ -15,6 +15,7 @@ type Question = {
   label: string;
   multi?: boolean;
   options: string[];
+  tip: string;
 };
 
 const QUESTIONS: Question[] = [
@@ -22,11 +23,13 @@ const QUESTIONS: Question[] = [
     id: "activite",
     label: "Votre activité ?",
     options: ["Maintenance", "SAV", "Installation", "Dépannage", "Nettoyage", "Sécurité", "Autre"],
+    tip: "Bon à savoir : un outil pensé pour votre métier précis évite les 40 % de champs inutiles des logiciels génériques. On part toujours de votre vocabulaire, pas de l'inverse.",
   },
   {
     id: "actuel",
     label: "Aujourd'hui, vous gérez vos interventions avec quoi ?",
     options: ["Excel", "Agenda partagé", "Plusieurs outils", "Un logiciel", "Papier + téléphone"],
+    tip: "Conseil : listez vos 3 outils actuels et le temps de ressaisie entre chacun. C'est souvent là que se cachent 3 à 5 h perdues par semaine — le premier poste à digitaliser.",
   },
   {
     id: "fonctions",
@@ -43,6 +46,7 @@ const QUESTIONS: Question[] = [
       "Signature client",
       "Photos",
     ],
+    tip: "Astuce : commencez par 2-3 fonctions vraiment critiques plutôt qu'une usine à gaz. Un périmètre resserré se livre plus vite et s'adopte mieux par les équipes.",
   },
   {
     id: "utilisateurs",
@@ -53,38 +57,40 @@ const QUESTIONS: Question[] = [
       "Bureau + terrain avec droits différents",
       "+ un accès client",
     ],
+    tip: "Repère : dès qu'il y a du terrain, prévoyez des droits différenciés. Un technicien ne doit voir que sa tournée du jour — ça simplifie l'usage et protège vos données clients.",
   },
   {
     id: "integrations",
     label: "Il doit se connecter à quoi ?",
     multi: true,
     options: ["Compta", "Facturation électronique", "Email / SMS", "Agenda", "Aucun"],
+    tip: "À noter : la facturation électronique devient obligatoire pour les PME. Autant l'anticiper dès maintenant dans votre cahier des charges plutôt que de recâbler plus tard.",
   },
   {
     id: "reprise",
     label: "Des données à reprendre ?",
     options: ["Un Excel", "Un autre logiciel", "Non"],
+    tip: "Conseil : gardez une copie propre de votre base actuelle (clients, contrats). Une reprise bien préparée, c'est un démarrage sans re-saisir des mois d'historique.",
   },
   {
     id: "usage",
     label: "Utilisé où ?",
     options: ["Bureau", "Mobile terrain", "Les deux"],
+    tip: "Bon réflexe : si vos équipes sont sur le terrain, exigez un mode hors-ligne. Une intervention en zone sans réseau ne doit jamais bloquer un rapport.",
   },
   {
     id: "volume",
     label: "Combien d'interventions par mois environ ?",
     options: ["Moins de 50", "50 à 200", "Plus de 200"],
+    tip: "Repère : au-delà de 200 interventions/mois, l'automatisation des relances et de la planification rapporte plus que n'importe quelle nouvelle recrue au planning.",
   },
 ];
 
 type Answers = Record<string, string | string[]>;
 type Phase = "intro" | "quiz" | "gate" | "result";
 
-/* ---------- Faux CDC / fourchette (branché plus tard) ---------- */
+/* ---------- Cahier des charges (modèle statique) ---------- */
 const FAKE_RESULT = {
-  min: 8000,
-  max: 14000,
-  delai: "5 à 7 semaines",
   sections: [
     {
       title: "Contexte & objectif",
@@ -119,7 +125,7 @@ const FAKE_RESULT = {
   ],
 };
 
-const fmtEur = (n: number) => n.toLocaleString("fr-FR");
+
 
 const GestionIntervention = () => {
   const [phase, setPhase] = useState<Phase>("intro");
@@ -159,10 +165,6 @@ const GestionIntervention = () => {
       }
       return { ...prev, [q.id]: opt };
     });
-    // avance automatiquement pour les questions à choix unique
-    if (!q.multi) {
-      setTimeout(() => goNext(), 180);
-    }
   };
 
   const goNext = () => {
@@ -235,10 +237,10 @@ const GestionIntervention = () => {
   return (
     <>
       <SEO
-        title="Générateur de cahier des charges — Logiciel de gestion d'intervention"
-        description="Répondez à 8 questions et générez gratuitement le cahier des charges de votre logiciel de gestion d'intervention sur mesure, avec une fourchette de prix indicative."
+        title="Cahier des charges gratuit — Logiciel de gestion d'intervention"
+        description="8 questions, des conseils concrets à chaque étape, et votre cahier des charges prêt à l'emploi — gratuit, à garder même si vous consultez ailleurs."
         canonical={ROUTE}
-        keywords="logiciel gestion intervention, cahier des charges, application métier sur mesure, planning techniciens, rapport d'intervention"
+        keywords="cahier des charges gratuit, logiciel gestion intervention, application métier sur mesure, planning techniciens, rapport d'intervention"
       />
       <Navbar />
       <main className="bg-cream min-h-screen">
@@ -247,22 +249,22 @@ const GestionIntervention = () => {
             {/* ===== 1. INTRO ===== */}
             {phase === "intro" && (
               <div className="text-center">
-                <Eyebrow className="text-ambre-dark">Générateur gratuit · &lt; 2 min</Eyebrow>
+                <Eyebrow className="text-ambre-dark">Cadeau · gratuit · &lt; 2 min</Eyebrow>
                 <h1 className="font-display font-semibold tracking-[-0.03em] text-ink text-[34px] sm:text-[48px] leading-[1.05] mt-4">
-                  Un logiciel de gestion d'intervention conçu pour votre métier.
+                  On vous offre le cahier des charges de votre outil de gestion d'intervention.
                 </h1>
                 <p className="text-n-700 text-[17px] leading-[1.6] mt-6 max-w-2xl mx-auto">
-                  Les outils génériques vous font rentrer dans leurs cases. On construit le vôtre,
-                  autour de vos tournées, vos techniciens, vos rapports. Répondez à 8 questions :
-                  on vous génère le cahier des charges et une fourchette de prix.
+                  8 questions, 2 minutes. À chaque étape on partage un conseil concret pour clarifier
+                  votre projet. À la fin, on vous génère un cahier des charges propre et structuré —
+                  le vôtre, à garder, même si vous décidez de le faire réaliser ailleurs.
                 </p>
                 <div className="mt-9 flex justify-center">
                   <Btn href="#" onClick={(e) => { e.preventDefault(); setPhase("quiz"); }}>
-                    Je génère mon cahier des charges
+                    Recevoir mon cahier des charges gratuit
                   </Btn>
                 </div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-4">
-                  Gratuit · sans engagement
+                  Sans engagement · aucun démarchage
                 </p>
               </div>
             )}
@@ -318,6 +320,16 @@ const GestionIntervention = () => {
                     })}
                   </div>
 
+                  {/* Conseil offert à chaque étape */}
+                  {currentAnswered && (
+                    <div className="mt-6 rounded-xl bg-ambre-bg border border-ambre/60 p-4 sm:p-5 animate-fade-up">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ambre-dark mb-1.5">
+                        Le conseil Botami
+                      </p>
+                      <p className="text-n-700 text-[15px] leading-[1.6]">{current.tip}</p>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mt-8">
                     <button
                       type="button"
@@ -326,16 +338,15 @@ const GestionIntervention = () => {
                     >
                       ← Retour
                     </button>
-                    {current.multi && (
-                      <button
-                        type="button"
-                        onClick={goNext}
-                        disabled={!currentAnswered}
-                        className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus disabled:opacity-60 disabled:cursor-not-allowed"
-                      >
-                        Continuer <ArrowRightIcon className="w-[14px] h-[14px]" />
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      disabled={!currentAnswered}
+                      className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {step === QUESTIONS.length - 1 ? "Voir mon cahier des charges" : "Continuer"}{" "}
+                      <ArrowRightIcon className="w-[14px] h-[14px]" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -352,7 +363,8 @@ const GestionIntervention = () => {
                   Votre cahier des charges est prêt.
                 </h2>
                 <p className="text-n-700 mt-3">
-                  Indiquez votre email pour l'afficher — on vous envoie aussi une copie.
+                  On vous l'affiche tout de suite et on vous en envoie une copie propre par email —
+                  à garder, réutiliser, ou transmettre à qui vous voulez.
                 </p>
 
                 <form
@@ -410,10 +422,14 @@ const GestionIntervention = () => {
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
               <div className="animate-fade-up">
-                <Eyebrow className="text-ambre-dark">Votre cahier des charges</Eyebrow>
+                <Eyebrow className="text-ambre-dark">Votre cadeau · cahier des charges</Eyebrow>
                 <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08] mt-3">
                   Logiciel de gestion d'intervention sur mesure
                 </h2>
+                <p className="text-n-700 leading-[1.6] mt-4 max-w-2xl">
+                  Voici le document, à vous. Une copie vient de partir dans votre boîte mail. Vous
+                  pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
+                </p>
 
                 <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle space-y-8">
                   {FAKE_RESULT.sections.map((sec, i) => (
@@ -441,28 +457,18 @@ const GestionIntervention = () => {
                   ))}
                 </div>
 
-                {/* Encart fourchette */}
-                <div className="mt-8 rounded-2xl bg-ambre-bg border border-ambre p-6 sm:p-8">
-                  <p className="font-display font-semibold text-ink text-[20px] tracking-[-0.01em]">
-                    À partir de 5 000 €.
+                {/* Offre commerciale — révélée seulement à la toute fin, en douceur */}
+                <div className="mt-10 border-t border-n-300 pt-8">
+                  <p className="text-n-700 leading-[1.6]">
+                    Si vous voulez, on peut le réaliser pour vous. On échange 30 min, on affine
+                    ensemble ce document, et on vous dit précisément ce que ça implique.
                   </p>
-                  <p className="text-n-700 leading-[1.6] mt-2">
-                    Pour un projet comme le vôtre : fourchette indicative{" "}
-                    <b className="text-ink">
-                      {fmtEur(FAKE_RESULT.min)} – {fmtEur(FAKE_RESULT.max)} €
-                    </b>
-                    , ~{FAKE_RESULT.delai}.
-                  </p>
-                  <p className="text-n-500 text-sm mt-2">
-                    Montant non contractuel, confirmé avec un expert.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-                  <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500">
-                    Copie envoyée par email
-                  </span>
+                  <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                    <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
+                    <span className="text-n-500 text-sm">
+                      Projets à partir de 5 000 € · sans engagement.
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
