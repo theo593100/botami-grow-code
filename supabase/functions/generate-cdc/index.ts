@@ -295,6 +295,17 @@ Deno.serve(async (req) => {
       consentement: consent,
     });
 
+    // Envoi de l'email automatique au lead (CDC en PDF + lien de réservation)
+    if (cdc_markdown) {
+      try {
+        await sendLeadEmail(email, cdc_markdown);
+      } catch (e) {
+        console.error("Envoi email lead échoué:", String(e));
+      }
+    }
+
+
+
     return new Response(
       JSON.stringify({
         cdc_markdown,
