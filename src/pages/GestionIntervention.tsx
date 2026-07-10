@@ -15,6 +15,7 @@ type Question = {
   label: string;
   multi?: boolean;
   options: string[];
+  tip: string;
 };
 
 const QUESTIONS: Question[] = [
@@ -22,11 +23,13 @@ const QUESTIONS: Question[] = [
     id: "activite",
     label: "Votre activité ?",
     options: ["Maintenance", "SAV", "Installation", "Dépannage", "Nettoyage", "Sécurité", "Autre"],
+    tip: "Bon à savoir : un outil pensé pour votre métier précis évite les 40 % de champs inutiles des logiciels génériques. On part toujours de votre vocabulaire, pas de l'inverse.",
   },
   {
     id: "actuel",
     label: "Aujourd'hui, vous gérez vos interventions avec quoi ?",
     options: ["Excel", "Agenda partagé", "Plusieurs outils", "Un logiciel", "Papier + téléphone"],
+    tip: "Conseil : listez vos 3 outils actuels et le temps de ressaisie entre chacun. C'est souvent là que se cachent 3 à 5 h perdues par semaine — le premier poste à digitaliser.",
   },
   {
     id: "fonctions",
@@ -43,6 +46,7 @@ const QUESTIONS: Question[] = [
       "Signature client",
       "Photos",
     ],
+    tip: "Astuce : commencez par 2-3 fonctions vraiment critiques plutôt qu'une usine à gaz. Un périmètre resserré se livre plus vite et s'adopte mieux par les équipes.",
   },
   {
     id: "utilisateurs",
@@ -53,27 +57,32 @@ const QUESTIONS: Question[] = [
       "Bureau + terrain avec droits différents",
       "+ un accès client",
     ],
+    tip: "Repère : dès qu'il y a du terrain, prévoyez des droits différenciés. Un technicien ne doit voir que sa tournée du jour — ça simplifie l'usage et protège vos données clients.",
   },
   {
     id: "integrations",
     label: "Il doit se connecter à quoi ?",
     multi: true,
     options: ["Compta", "Facturation électronique", "Email / SMS", "Agenda", "Aucun"],
+    tip: "À noter : la facturation électronique devient obligatoire pour les PME. Autant l'anticiper dès maintenant dans votre cahier des charges plutôt que de recâbler plus tard.",
   },
   {
     id: "reprise",
     label: "Des données à reprendre ?",
     options: ["Un Excel", "Un autre logiciel", "Non"],
+    tip: "Conseil : gardez une copie propre de votre base actuelle (clients, contrats). Une reprise bien préparée, c'est un démarrage sans re-saisir des mois d'historique.",
   },
   {
     id: "usage",
     label: "Utilisé où ?",
     options: ["Bureau", "Mobile terrain", "Les deux"],
+    tip: "Bon réflexe : si vos équipes sont sur le terrain, exigez un mode hors-ligne. Une intervention en zone sans réseau ne doit jamais bloquer un rapport.",
   },
   {
     id: "volume",
     label: "Combien d'interventions par mois environ ?",
     options: ["Moins de 50", "50 à 200", "Plus de 200"],
+    tip: "Repère : au-delà de 200 interventions/mois, l'automatisation des relances et de la planification rapporte plus que n'importe quelle nouvelle recrue au planning.",
   },
 ];
 
