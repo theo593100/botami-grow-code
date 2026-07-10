@@ -366,7 +366,8 @@ const GestionIntervention = () => {
                   Votre cahier des charges est prêt.
                 </h2>
                 <p className="text-n-700 mt-3">
-                  Indiquez votre email pour l'afficher — on vous envoie aussi une copie.
+                  On vous l'affiche tout de suite et on vous en envoie une copie propre par email —
+                  à garder, réutiliser, ou transmettre à qui vous voulez.
                 </p>
 
                 <form
