@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Droplet, Zap, Wrench, Sparkles, ShieldCheck, Leaf } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -305,8 +305,84 @@ const GestionIntervention = () => {
                   Gratuit · sans engagement · aucune inscription
                 </p>
 
+                {/* ===== Comment ça marche ===== */}
+                <div className="mt-20 sm:mt-28">
+                  <Eyebrow className="text-ambre-dark">Comment ça marche</Eyebrow>
+                  <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[28px] sm:text-[38px] leading-[1.08] mt-4">
+                    Trois étapes, deux minutes.
+                  </h2>
+                  <div className="grid sm:grid-cols-3 gap-5 mt-10">
+                    {[
+                      {
+                        n: "1",
+                        title: "Vous répondez à 8 questions",
+                        text: "Sur votre équipe, vos interventions, votre facturation. Deux minutes, aucune info personnelle demandée.",
+                      },
+                      {
+                        n: "2",
+                        title: "On génère le cahier des charges",
+                        text: "Un document structuré : fonctionnalités, contraintes, budget et délais estimés. Concret, pas du jargon.",
+                      },
+                      {
+                        n: "3",
+                        title: "Vous repartez avec le document",
+                        text: "À vous, sans engagement. Utilisez-le avec nous, un autre prestataire, ou juste pour y voir clair.",
+                      },
+                    ].map((s) => (
+                      <div
+                        key={s.n}
+                        className="rounded-2xl bg-white border border-n-300 p-6 sm:p-7 text-left shadow-subtle"
+                      >
+                        <span className="grid place-items-center w-11 h-11 rounded-full border-[1.5px] border-ambre text-ambre-dark font-display font-semibold">
+                          {s.n}
+                        </span>
+                        <h3 className="font-display font-semibold text-ink text-[19px] leading-[1.2] mt-5">
+                          {s.title}
+                        </h3>
+                        <p className="text-n-700 text-[15px] leading-[1.6] mt-3">{s.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ===== Pour qui ===== */}
+                <div className="mt-20 sm:mt-28">
+                  <Eyebrow className="text-ambre-dark">Pour qui</Eyebrow>
+                  <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[28px] sm:text-[38px] leading-[1.08] mt-4">
+                    Pensé pour les métiers de l'intervention.
+                  </h2>
+                  <p className="text-n-700 text-[17px] leading-[1.6] mt-5 max-w-2xl mx-auto">
+                    Si vos équipes se déplacent, planifient et rendent compte, ce cahier des charges
+                    est fait pour vous.
+                  </p>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+                    {[
+                      { Icon: Droplet, title: "Plomberie · chauffage · CVC", sub: "Dépannage & entretien récurrent" },
+                      { Icon: Zap, title: "Électricité", sub: "Installations & mises en conformité" },
+                      { Icon: Wrench, title: "Maintenance & SAV", sub: "Contrats & tickets clients" },
+                      { Icon: Sparkles, title: "Nettoyage & propreté", sub: "Tournées & contrôles qualité" },
+                      { Icon: ShieldCheck, title: "Sécurité & télésurveillance", sub: "Installations & rondes planifiées" },
+                      { Icon: Leaf, title: "Espaces verts & paysagisme", sub: "Chantiers & passages planifiés" },
+                    ].map(({ Icon, title, sub }) => (
+                      <div
+                        key={title}
+                        className="flex items-center gap-4 rounded-2xl bg-white border border-n-300 p-5 text-left shadow-subtle"
+                      >
+                        <span className="grid place-items-center w-12 h-12 rounded-xl bg-ambre-bg flex-none">
+                          <Icon size={22} strokeWidth={1.5} className="text-ambre-dark" />
+                        </span>
+                        <div>
+                          <p className="font-display font-semibold text-ink text-[16px] leading-[1.2]">{title}</p>
+                          <p className="text-n-500 text-[14px] leading-[1.4] mt-1">{sub}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             )}
+
 
             {/* ===== 2. QUIZ ===== */}
             {phase === "quiz" && current && (
