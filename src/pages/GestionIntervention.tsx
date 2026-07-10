@@ -372,7 +372,7 @@ const GestionIntervention = () => {
                   <div className="flex items-center justify-between mt-8">
                     <button
                       type="button"
-                      onClick={() => (step === 0 ? setPhase("intro") : setStep((s) => s - 1))}
+                      onClick={() => (step <= 1 ? setPhase("intro") : setStep((s) => s - 1))}
                       className="text-sm text-n-500 hover:text-ink transition-colors"
                     >
                       ← Retour
