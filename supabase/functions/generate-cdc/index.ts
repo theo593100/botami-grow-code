@@ -288,6 +288,7 @@ Deno.serve(async (req) => {
       first_name: "Lead cahier des charges",
       email,
       phone,
+      company,
       source_route: sourceRoute,
       activite: String(answers.activite ?? ""),
       reponses: answers,
