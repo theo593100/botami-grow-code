@@ -267,14 +267,44 @@ const GestionIntervention = () => {
                   8 questions : on vous génère le cahier des charges de l'outil qu'il vous faudrait —
                   un document clair, à vous, prêt à l'emploi.
                 </p>
-                <div className="mt-9 flex justify-center">
-                  <Btn href="#" onClick={(e) => { e.preventDefault(); setPhase("quiz"); }}>
-                    Je génère mon cahier des charges
-                  </Btn>
+                {/* Première question intégrée directement dans la page */}
+                <div className="mt-10 rounded-2xl bg-white border border-n-300 p-6 sm:p-8 shadow-subtle text-left max-w-2xl mx-auto">
+                  <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-n-500">
+                    <span className="text-ambre-dark">Générateur de cahier des charges</span>
+                    <span>Question 1 / {QUESTIONS.length}</span>
+                  </div>
+                  <div className="mt-3 h-1.5 rounded-full bg-n-300 overflow-hidden">
+                    <div className="h-full bg-ambre" style={{ width: `${(1 / QUESTIONS.length) * 100}%` }} />
+                  </div>
+
+                  <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[22px] sm:text-[26px] leading-[1.15] mt-6">
+                    {QUESTIONS[0].label}
+                  </h2>
+
+                  <div className="grid sm:grid-cols-2 gap-3 mt-6">
+                    {QUESTIONS[0].options.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => {
+                          setAnswers((prev) => ({ ...prev, [QUESTIONS[0].id]: opt }));
+                          setStep(1);
+                          setPhase("quiz");
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="flex items-center justify-between text-left rounded-xl border-[1.5px] border-n-300 bg-white text-ink px-5 py-4 text-[15px] transition-all hover:border-ambre hover:-translate-y-0.5 bo-focus"
+                      >
+                        <span>{opt}</span>
+                        <ArrowRightIcon className="w-[14px] h-[14px] text-ambre flex-none" />
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-4">
-                  Gratuit · sans engagement
+
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-6">
+                  Gratuit · sans engagement · aucune inscription
                 </p>
+
               </div>
             )}
 
