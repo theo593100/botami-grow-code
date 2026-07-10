@@ -119,8 +119,10 @@ const GestionIntervention = () => {
   const [answers, setAnswers] = useState<Answers>({});
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [genStep, setGenStep] = useState(0);
   const [result, setResult] = useState<CdcResult | null>(null);
   const [error, setError] = useState("");
 
