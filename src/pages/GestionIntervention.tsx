@@ -329,44 +329,56 @@ const GestionIntervention = () => {
                 </p>
 
                 {/* ===== Comment ça marche ===== */}
-                <div className="mt-20 sm:mt-28">
-                  <Eyebrow className="text-ambre-dark">Comment ça marche</Eyebrow>
-                  <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[28px] sm:text-[38px] leading-[1.08] mt-4">
-                    Trois étapes, deux minutes.
-                  </h2>
-                  <div className="grid sm:grid-cols-3 gap-5 mt-10">
-                    {[
-                      {
-                        n: "1",
-                        title: "Vous répondez à 8 questions",
-                        text: "Sur votre équipe, vos interventions, votre facturation. Deux minutes, aucune info personnelle demandée.",
-                      },
-                      {
-                        n: "2",
-                        title: "On génère le cahier des charges",
-                        text: "Un document structuré : fonctionnalités, contraintes, budget et délais estimés. Concret, pas du jargon.",
-                      },
-                      {
-                        n: "3",
-                        title: "Vous repartez avec le document",
-                        text: "À vous, sans engagement. Utilisez-le avec nous, un autre prestataire, ou juste pour y voir clair.",
-                      },
-                    ].map((s) => (
-                      <div
-                        key={s.n}
-                        className="rounded-2xl bg-white border border-n-300 p-6 sm:p-7 text-left shadow-subtle"
-                      >
-                        <span className="grid place-items-center w-11 h-11 rounded-full border-[1.5px] border-ambre text-ambre-dark font-display font-semibold">
-                          {s.n}
-                        </span>
-                        <h3 className="font-display font-semibold text-ink text-[19px] leading-[1.2] mt-5">
-                          {s.title}
-                        </h3>
-                        <p className="text-n-700 text-[15px] leading-[1.6] mt-3">{s.text}</p>
+                <section
+                  className="relative left-1/2 right-1/2 -translate-x-1/2 w-screen border-y border-n-300 py-20 sm:py-28 mt-20 sm:mt-28"
+                  style={{
+                    backgroundColor: "#FEF3E2",
+                    backgroundImage:
+                      "radial-gradient(circle at 1px 1px, rgba(26,26,26,0.018) 1px, transparent 0)",
+                    backgroundSize: "4px 4px",
+                  }}
+                >
+                  <div className="bo-wrap">
+                    <div className="max-w-3xl mx-auto text-center">
+                      <Eyebrow className="text-ambre-dark">Comment ça marche</Eyebrow>
+                      <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[28px] sm:text-[38px] leading-[1.08] mt-4">
+                        Trois étapes, deux minutes.
+                      </h2>
+                      <div className="grid sm:grid-cols-3 gap-5 mt-10">
+                        {[
+                          {
+                            n: "1",
+                            title: "Vous répondez à 8 questions",
+                            text: "Sur votre équipe, vos interventions, votre facturation. Deux minutes, aucune info personnelle demandée.",
+                          },
+                          {
+                            n: "2",
+                            title: "On génère le cahier des charges",
+                            text: "Un document structuré : fonctionnalités, contraintes, budget et délais estimés. Concret, pas du jargon.",
+                          },
+                          {
+                            n: "3",
+                            title: "Vous repartez avec le document",
+                            text: "À vous, sans engagement. Utilisez-le avec nous, un autre prestataire, ou juste pour y voir clair.",
+                          },
+                        ].map((s) => (
+                          <div
+                            key={s.n}
+                            className="rounded-2xl bg-white border border-n-300 p-6 sm:p-7 text-left shadow-subtle"
+                          >
+                            <span className="grid place-items-center w-11 h-11 rounded-full border-[1.5px] border-ambre text-ambre-dark font-display font-semibold">
+                              {s.n}
+                            </span>
+                            <h3 className="font-display font-semibold text-ink text-[19px] leading-[1.2] mt-5">
+                              {s.title}
+                            </h3>
+                            <p className="text-n-700 text-[15px] leading-[1.6] mt-3">{s.text}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
+                </section>
 
                 {/* ===== Pour qui ===== */}
                 <div className="mt-20 sm:mt-28">
