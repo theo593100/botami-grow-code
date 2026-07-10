@@ -214,6 +214,7 @@ Deno.serve(async (req) => {
     const answers: Record<string, unknown> = body?.answers ?? {};
     const email: string | undefined = body?.email;
     const phone: string | null = body?.phone ?? null;
+    const company: string | null = (body?.company ?? "").toString().trim() || null;
     const consent: boolean = !!body?.consent;
     const utm = body?.utm ?? {};
     const sourceRoute: string = body?.sourceRoute ?? "/gestion-intervention";
