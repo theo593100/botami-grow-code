@@ -168,10 +168,6 @@ const GestionIntervention = () => {
       }
       return { ...prev, [q.id]: opt };
     });
-    // avance automatiquement pour les questions à choix unique
-    if (!q.multi) {
-      setTimeout(() => goNext(), 180);
-    }
   };
 
   const goNext = () => {
