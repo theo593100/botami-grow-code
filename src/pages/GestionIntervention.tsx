@@ -574,6 +574,54 @@ const GestionIntervention = () => {
               </div>
             )}
 
+            {/* ===== 3bis. GÉNÉRATION EN COURS ===== */}
+            {phase === "generating" && (
+              <div className="max-w-xl mx-auto text-center animate-fade-up">
+                <Eyebrow className="text-ambre-dark">Génération en cours</Eyebrow>
+                <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[28px] sm:text-[32px] leading-[1.15] mt-3">
+                  On rédige votre cahier des charges…
+                </h2>
+                <p className="text-n-700 mt-3">
+                  Quelques secondes — on structure vos réponses en un document clair et complet.
+                </p>
+
+                <div className="mt-9 rounded-2xl bg-white border border-n-300 p-6 sm:p-8 text-left shadow-subtle space-y-4">
+                  {GEN_STEPS.map((label, i) => {
+                    const done = i < genStep;
+                    const active = i === genStep;
+                    return (
+                      <div key={label} className="flex items-center gap-3">
+                        <span
+                          className={[
+                            "grid place-items-center w-6 h-6 rounded-full flex-none transition-all",
+                            done ? "bg-ambre text-white" : active ? "bg-ambre-bg text-ambre-dark" : "bg-n-300 text-n-500",
+                          ].join(" ")}
+                        >
+                          {done ? (
+                            <Check size={13} strokeWidth={3} />
+                          ) : active ? (
+                            <Loader2 size={13} className="animate-spin" />
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                          )}
+                        </span>
+                        <span
+                          className={[
+                            "text-[15px] transition-colors",
+                            done || active ? "text-ink" : "text-n-500",
+                          ].join(" ")}
+                        >
+                          {label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+
+
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
               <div className="animate-fade-up">
