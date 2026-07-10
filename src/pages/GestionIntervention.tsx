@@ -439,31 +439,12 @@ const GestionIntervention = () => {
                   pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
                 </p>
 
-                <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle space-y-8">
-                  {FAKE_RESULT.sections.map((sec, i) => (
-                    <div key={sec.title}>
-                      <h3 className="font-display font-semibold text-ink text-[19px] tracking-[-0.01em] flex items-center gap-3">
-                        <span className="font-mono text-[12px] text-ambre-dark">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {sec.title}
-                      </h3>
-                      {sec.body && (
-                        <p className="text-n-700 leading-[1.6] mt-2">{sec.body}</p>
-                      )}
-                      {sec.items && (
-                        <ul className="mt-3 space-y-2">
-                          {sec.items.map((it) => (
-                            <li key={it} className="flex items-start gap-2.5 text-n-700">
-                              <Check size={17} className="text-ambre mt-1 flex-none" strokeWidth={2.5} />
-                              <span>{it}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+                <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle">
+                  <div className="bo-cdc max-w-none text-n-700 leading-[1.65]">
+                    <ReactMarkdown>{result?.cdc_markdown ?? ""}</ReactMarkdown>
+                  </div>
                 </div>
+
 
                 {/* ===== Bloc commercial — unique moment de vente, nettement séparé ===== */}
                 <div className="mt-14 pt-2">
