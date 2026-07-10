@@ -170,6 +170,7 @@ const GestionIntervention = () => {
     setSubmitted(true);
     setError("");
     (window as any).gtag_report_lead_form?.();
+    trackEvent("lead_email");
 
     try {
       const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
