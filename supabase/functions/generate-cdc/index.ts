@@ -1,5 +1,136 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { PDFDocument, StandardFonts, rgb } from "npm:pdf-lib@1.17.1";
+
+// Expéditeur unique — défini ici uniquement (pas en dur ailleurs)
+const EMAIL_FROM = "Botami <contact@botami-agency.com>";
+const EMAIL_SUBJECT = "Votre cahier des charges — Botami";
+const BOOKING_URL = "https://calendly.com/elias-botami-agency/30min";
+
+// ── Génération d'un PDF simple à partir du Markdown du CDC ─────────
+async function buildCdcPdf(markdown: string): Promise<Uint8Array> {
+  const doc = await PDFDocument.create();
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const fontBold = await doc.embedFont(StandardFonts.HelveticaBold);
+
+  const A4 = { w: 595.28, h: 841.89 };
+  const margin = 56;
+  const maxWidth = A4.w - margin * 2;
+  const ink = rgb(0.1, 0.1, 0.1);
+
+  let page = doc.addPage([A4.w, A4.h]);
+  let y = A4.h - margin;
+
+  const newPage = () => {
+    page = doc.addPage([A4.w, A4.h]);
+    y = A4.h - margin;
+  };
+
+  const drawWrapped = (text: string, size: number, useBold: boolean, gapAfter: number) => {
+    const f = useBold ? fontBold : font;
+    const words = text.split(/\s+/).filter(Boolean);
+    let line = "";
+    const flush = () => {
+      if (y < margin + size) newPage();
+      page.drawText(line, { x: margin, y, size, font: f, color: ink });
+      y -= size * 1.4;
+    };
+    for (const w of words) {
+      const test = line ? `${line} ${w}` : w;
+      if (f.widthOfTextAtSize(test, size) > maxWidth && line) {
+        flush();
+        line = w;
+      } else {
+        line = test;
+      }
+    }
+    if (line) flush();
+    y -= gapAfter;
+  };
+
+  const lines = markdown.replace(/\r/g, "").split("\n");
+  for (const raw of lines) {
+    const l = raw.trimEnd();
+    if (!l.trim()) {
+      y -= 6;
+      continue;
+    }
+    // Nettoyage inline du markdown (gras, code)
+    const clean = (s: string) =>
+      s.replace(/\*\*(.*?)\*\*/g, "$1").replace(/\*(.*?)\*/g, "$1").replace(/`(.*?)`/g, "$1");
+
+    if (/^#{1,2}\s/.test(l)) {
+      drawWrapped(clean(l.replace(/^#{1,2}\s/, "")), 15, true, 6);
+    } else if (/^#{3,}\s/.test(l)) {
+      drawWrapped(clean(l.replace(/^#{3,}\s/, "")), 12.5, true, 4);
+    } else if (/^\s*[-*]\s/.test(l)) {
+      drawWrapped("•  " + clean(l.replace(/^\s*[-*]\s/, "")), 10.5, false, 2);
+    } else if (/^---+$/.test(l)) {
+      y -= 8;
+    } else {
+      drawWrapped(clean(l), 10.5, false, 3);
+    }
+  }
+
+  return await doc.save();
+}
+
+function toBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunk = 8192;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
+}
+
+async function sendLeadEmail(email: string, cdcMarkdown: string) {
+  const lovableKey = Deno.env.get("LOVABLE_API_KEY");
+  const resendKey = Deno.env.get("RESEND_API_KEY");
+  if (!lovableKey || !resendKey) {
+    console.error("sendLeadEmail: clés manquantes (LOVABLE_API_KEY / RESEND_API_KEY)");
+    return;
+  }
+
+  let attachments: unknown[] = [];
+  try {
+    const pdf = await buildCdcPdf(cdcMarkdown);
+    attachments = [
+      { filename: "cahier-des-charges-botami.pdf", content: toBase64(pdf) },
+    ];
+  } catch (e) {
+    console.error("sendLeadEmail: échec génération PDF, envoi sans pièce jointe", String(e));
+  }
+
+  const html = `
+    <div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1a1a1a;line-height:1.6;max-width:560px">
+      <p>Bonjour,</p>
+      <p>Merci ! Voici votre <strong>cahier des charges</strong>, en pièce jointe (PDF), prêt à l'emploi. Vous pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.</p>
+      <p>Si vous souhaitez en discuter, réservez un échange :</p>
+      <p><a href="${BOOKING_URL}" style="display:inline-block;background:#C4872C;color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600">Réserver un échange</a></p>
+      <p style="color:#666;font-size:14px">— L'équipe Botami</p>
+    </div>`;
+
+  const res = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${lovableKey}`,
+      "X-Connection-Api-Key": resendKey,
+    },
+    body: JSON.stringify({
+      from: EMAIL_FROM,
+      to: [email],
+      subject: EMAIL_SUBJECT,
+      html,
+      attachments,
+    }),
+  });
+
+  if (!res.ok) {
+    console.error(`sendLeadEmail: Resend a échoué [${res.status}]: ${await res.text()}`);
+  }
+}
 
 const SYSTEM_PROMPT = `Tu es un consultant qui rédige un cahier des charges court et crédible (1 à 2 pages) pour une application métier sur mesure, en français. Tu ne fais pas un CDC parfait : tu fais un CDC de cadrage clair à partir de réponses brèves. Structure EXACTE, 6 sections :
 
