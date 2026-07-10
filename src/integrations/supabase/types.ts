@@ -181,55 +181,94 @@ export type Database = {
       }
       leads: {
         Row: {
+          activite: string | null
           budget: string | null
+          cdc_markdown: string | null
           company: string | null
           company_size: string | null
+          consentement: boolean | null
           created_at: string
+          delai: string | null
           email: string
           first_name: string
+          fourchette_max: number | null
+          fourchette_min: number | null
           id: string
           message: string | null
           notes: string | null
+          palier: string | null
           phone: string | null
           prochaine_action: string | null
+          reponses: Json | null
+          score: number | null
           source_route: string | null
           statut: string | null
           updated_at: string | null
           updated_by: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
         }
         Insert: {
+          activite?: string | null
           budget?: string | null
+          cdc_markdown?: string | null
           company?: string | null
           company_size?: string | null
+          consentement?: boolean | null
           created_at?: string
+          delai?: string | null
           email: string
           first_name: string
+          fourchette_max?: number | null
+          fourchette_min?: number | null
           id?: string
           message?: string | null
           notes?: string | null
+          palier?: string | null
           phone?: string | null
           prochaine_action?: string | null
+          reponses?: Json | null
+          score?: number | null
           source_route?: string | null
           statut?: string | null
           updated_at?: string | null
           updated_by?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
         }
         Update: {
+          activite?: string | null
           budget?: string | null
+          cdc_markdown?: string | null
           company?: string | null
           company_size?: string | null
+          consentement?: boolean | null
           created_at?: string
+          delai?: string | null
           email?: string
           first_name?: string
+          fourchette_max?: number | null
+          fourchette_min?: number | null
           id?: string
           message?: string | null
           notes?: string | null
+          palier?: string | null
           phone?: string | null
           prochaine_action?: string | null
+          reponses?: Json | null
+          score?: number | null
           source_route?: string | null
           statut?: string | null
           updated_at?: string | null
           updated_by?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
         }
         Relationships: []
       }

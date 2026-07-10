@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
@@ -8,7 +9,6 @@ import { supabase } from "@/integrations/supabase/client";
 
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
-const PRICE = { min: "5 000", max: "12 000", delai: "4 à 6 semaines" };
 
 /* ---------- Questionnaire ---------- */
 type Question = {
@@ -90,41 +90,16 @@ const QUESTIONS: Question[] = [
 type Answers = Record<string, string | string[]>;
 type Phase = "intro" | "quiz" | "gate" | "result";
 
-/* ---------- Cahier des charges (modèle statique) ---------- */
-const FAKE_RESULT = {
-  sections: [
-    {
-      title: "Contexte & objectif",
-      body: "Remplacer les outils génériques actuels par une application métier centralisée, pensée autour de vos tournées, vos techniciens et vos rapports d'intervention.",
-    },
-    {
-      title: "Périmètre fonctionnel",
-      items: [
-        "Planning des interventions avec vue calendrier et carte",
-        "Affectation des techniciens selon disponibilités et compétences",
-        "Fiche & rapport d'intervention (avec photos et signature client)",
-        "Application mobile terrain synchronisée en temps réel",
-        "Génération de devis & factures",
-      ],
-    },
-    {
-      title: "Utilisateurs & rôles",
-      body: "Comptes bureau et terrain avec droits différenciés, plus un accès client optionnel pour le suivi des demandes.",
-    },
-    {
-      title: "Intégrations",
-      body: "Connexion à votre compta, à la facturation électronique et aux notifications email / SMS.",
-    },
-    {
-      title: "Reprise de données",
-      body: "Import de votre base existante (Excel ou logiciel actuel) au lancement.",
-    },
-    {
-      title: "Livraison",
-      body: "Application web + mobile, code source transmis, formation de vos équipes incluse.",
-    },
-  ],
+/* ---------- Résultat (généré côté serveur) ---------- */
+type CdcResult = {
+  cdc_markdown: string;
+  fourchette_min: number;
+  fourchette_max: number;
+  delai: string;
+  palier: string;
 };
+
+const fmtEur = (n: number) => n.toLocaleString("fr-FR");
 
 
 
@@ -136,6 +111,8 @@ const GestionIntervention = () => {
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<CdcResult | null>(null);
+  const [error, setError] = useState("");
 
   // Capture UTM
   const utm = useMemo(() => {
@@ -189,72 +166,62 @@ const GestionIntervention = () => {
 
   const handleGateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consent) return;
+    if (!consent || submitted) return;
     setSubmitted(true);
+    setError("");
     (window as any).gtag_report_lead_form?.();
 
-    const leadId = crypto.randomUUID();
-    const messagePayload = {
-      answers,
-      utm,
-    };
-
-    supabase
-      .from("leads")
-      .insert({
-        id: leadId,
-        first_name: "Lead cahier des charges",
-        email,
-        phone: phone || null,
-        source_route: ROUTE,
-        message: JSON.stringify(messagePayload, null, 2),
-      })
-      .then();
-
-    supabase.from("landing_page_events").insert({ route: ROUTE, event_type: "cta_click" }).then();
-
-    const templateData = {
-      firstName: "Lead cahier des charges",
-      email,
-      phone: phone || undefined,
-      sourceRoute: ROUTE,
-      message: JSON.stringify(messagePayload, null, 2),
-    };
-    ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
-      supabase.functions.invoke("send-transactional-email", {
-        body: {
-          templateName: "new-lead-notification",
-          recipientEmail: recipient,
-          idempotencyKey: `cdc-notif-${leadId}-${recipient}`,
-          templateData,
-        },
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
+        body: { answers, email, phone: phone || null, consent, utm, sourceRoute: ROUTE },
       });
-    });
+      if (fnError || !data?.cdc_markdown) {
+        throw new Error(fnError?.message || "Génération impossible");
+      }
 
-    setPhase("result");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+      setResult(data as CdcResult);
+      supabase.from("landing_page_events").insert({ route: ROUTE, event_type: "cta_click" }).then();
+
+      // Notification interne
+      const templateData = {
+        firstName: "Lead cahier des charges",
+        email,
+        phone: phone || undefined,
+        sourceRoute: ROUTE,
+        message: JSON.stringify({ answers, utm, pricing: {
+          palier: data.palier, fourchette_min: data.fourchette_min,
+          fourchette_max: data.fourchette_max, delai: data.delai,
+        } }, null, 2),
+      };
+      ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "new-lead-notification",
+            recipientEmail: recipient,
+            idempotencyKey: `cdc-notif-${email}-${recipient}-${Date.now()}`,
+            templateData,
+          },
+        });
+      });
+
+      setPhase("result");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setError("Une erreur est survenue. Réessayez dans un instant.");
+      setSubmitted(false);
+    }
   };
 
   const handleDownloadPdf = () => {
+    if (!result) return;
+    const esc = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8" />
       <title>Cahier des charges - Logiciel de gestion d'intervention</title>
       <style>
-        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6}
-        h1{font-size:26px;margin-bottom:24px}
-        h2{font-size:17px;margin-top:28px}
-        ul{padding-left:20px}
-        .n{color:#C4872C;font-family:monospace;margin-right:8px}
-      </style></head><body>
-      <h1>Cahier des charges — Logiciel de gestion d'intervention sur mesure</h1>
-      ${FAKE_RESULT.sections
-        .map(
-          (sec, i) =>
-            `<h2><span class="n">${String(i + 1).padStart(2, "0")}</span>${sec.title}</h2>` +
-            (sec.body ? `<p>${sec.body}</p>` : "") +
-            (sec.items ? `<ul>${sec.items.map((it) => `<li>${it}</li>`).join("")}</ul>` : ""),
-        )
-        .join("")}
-      </body></html>`;
+        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6;white-space:pre-wrap}
+        h1{font-size:24px}
+      </style></head><body>${esc(result.cdc_markdown)}</body></html>`;
     const w = window.open("", "_blank");
     if (!w) return;
     w.document.write(html);
@@ -262,6 +229,7 @@ const GestionIntervention = () => {
     w.focus();
     setTimeout(() => w.print(), 300);
   };
+
 
   return (
     <>
@@ -441,8 +409,9 @@ const GestionIntervention = () => {
                       .
                     </span>
                   </label>
+                  {error && <p className="text-sm text-red-600">{error}</p>}
                   <BtnSubmit variant="primary" fullWidth disabled={!consent || submitted}>
-                    Recevoir mon cahier des charges
+                    {submitted ? "Génération en cours…" : "Recevoir mon cahier des charges"}
                   </BtnSubmit>
                 </form>
               </div>
@@ -470,31 +439,12 @@ const GestionIntervention = () => {
                   pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
                 </p>
 
-                <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle space-y-8">
-                  {FAKE_RESULT.sections.map((sec, i) => (
-                    <div key={sec.title}>
-                      <h3 className="font-display font-semibold text-ink text-[19px] tracking-[-0.01em] flex items-center gap-3">
-                        <span className="font-mono text-[12px] text-ambre-dark">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {sec.title}
-                      </h3>
-                      {sec.body && (
-                        <p className="text-n-700 leading-[1.6] mt-2">{sec.body}</p>
-                      )}
-                      {sec.items && (
-                        <ul className="mt-3 space-y-2">
-                          {sec.items.map((it) => (
-                            <li key={it} className="flex items-start gap-2.5 text-n-700">
-                              <Check size={17} className="text-ambre mt-1 flex-none" strokeWidth={2.5} />
-                              <span>{it}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+                <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle">
+                  <div className="bo-cdc max-w-none text-n-700 leading-[1.65]">
+                    <ReactMarkdown>{result?.cdc_markdown ?? ""}</ReactMarkdown>
+                  </div>
                 </div>
+
 
                 {/* ===== Bloc commercial — unique moment de vente, nettement séparé ===== */}
                 <div className="mt-14 pt-2">
@@ -504,8 +454,9 @@ const GestionIntervention = () => {
                     </h3>
                     <p className="text-cream/80 leading-[1.6] mt-3 max-w-2xl">
                       Botami réalise ce type d'outil sur mesure. Pour un projet comme le vôtre :
-                      à partir de {PRICE.min} €, fourchette indicative {PRICE.min} – {PRICE.max} €,
-                      ~{PRICE.delai}. Montant non contractuel, confirmé avec un expert.
+                      à partir de {fmtEur(result?.fourchette_min ?? 5000)} €, fourchette indicative{" "}
+                      {fmtEur(result?.fourchette_min ?? 5000)} – {fmtEur(result?.fourchette_max ?? 12000)} €,
+                      ~{result?.delai ?? "4 à 6 semaines"}. Montant non contractuel, confirmé avec un expert.
                     </p>
                     <div className="mt-7">
                       <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
