@@ -98,7 +98,15 @@ const QUESTIONS: Question[] = [
 ];
 
 type Answers = Record<string, string | string[]>;
-type Phase = "intro" | "quiz" | "gate" | "result";
+type Phase = "intro" | "quiz" | "gate" | "generating" | "result";
+
+const GEN_STEPS = [
+  "Analyse de vos réponses",
+  "Cadrage du contexte et des objectifs",
+  "Rédaction des fonctionnalités et priorités",
+  "Estimation du budget et des délais",
+  "Mise en forme de votre document",
+];
 
 /* ---------- Résultat (généré côté serveur) ---------- */
 type CdcResult = {
