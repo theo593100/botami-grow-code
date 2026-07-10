@@ -89,11 +89,8 @@ const QUESTIONS: Question[] = [
 type Answers = Record<string, string | string[]>;
 type Phase = "intro" | "quiz" | "gate" | "result";
 
-/* ---------- Faux CDC / fourchette (branché plus tard) ---------- */
+/* ---------- Cahier des charges (modèle statique) ---------- */
 const FAKE_RESULT = {
-  min: 8000,
-  max: 14000,
-  delai: "5 à 7 semaines",
   sections: [
     {
       title: "Contexte & objectif",
