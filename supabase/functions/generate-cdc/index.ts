@@ -132,7 +132,11 @@ async function sendLeadEmail(email: string, cdcMarkdown: string) {
   }
 }
 
-const SYSTEM_PROMPT = `Tu es un consultant qui rédige un cahier des charges court et crédible (1 à 2 pages) pour une application métier sur mesure, en français. Tu ne fais pas un CDC parfait : tu fais un CDC de cadrage clair à partir de réponses brèves. Structure EXACTE, 6 sections :
+const SYSTEM_PROMPT = `Tu es un consultant qui rédige un cahier des charges court et crédible (1 à 2 pages) pour une application métier sur mesure, en français. Tu ne fais pas un CDC parfait : tu fais un CDC de cadrage clair à partir de réponses brèves.
+
+Si un nom d'entreprise cliente est fourni, commence le document par une courte ligne "Désignation des parties" : "Le Client : <entreprise>" et "Le Prestataire : Botami Software". Si aucun nom n'est fourni, n'invente rien et saute cette ligne.
+
+Structure EXACTE, 6 sections :
 
 1. Contexte client — secteur/activité, outil(s) actuel(s), problèmes que ça pose.
 
