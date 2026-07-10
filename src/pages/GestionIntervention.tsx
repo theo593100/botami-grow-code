@@ -90,41 +90,16 @@ const QUESTIONS: Question[] = [
 type Answers = Record<string, string | string[]>;
 type Phase = "intro" | "quiz" | "gate" | "result";
 
-/* ---------- Cahier des charges (modèle statique) ---------- */
-const FAKE_RESULT = {
-  sections: [
-    {
-      title: "Contexte & objectif",
-      body: "Remplacer les outils génériques actuels par une application métier centralisée, pensée autour de vos tournées, vos techniciens et vos rapports d'intervention.",
-    },
-    {
-      title: "Périmètre fonctionnel",
-      items: [
-        "Planning des interventions avec vue calendrier et carte",
-        "Affectation des techniciens selon disponibilités et compétences",
-        "Fiche & rapport d'intervention (avec photos et signature client)",
-        "Application mobile terrain synchronisée en temps réel",
-        "Génération de devis & factures",
-      ],
-    },
-    {
-      title: "Utilisateurs & rôles",
-      body: "Comptes bureau et terrain avec droits différenciés, plus un accès client optionnel pour le suivi des demandes.",
-    },
-    {
-      title: "Intégrations",
-      body: "Connexion à votre compta, à la facturation électronique et aux notifications email / SMS.",
-    },
-    {
-      title: "Reprise de données",
-      body: "Import de votre base existante (Excel ou logiciel actuel) au lancement.",
-    },
-    {
-      title: "Livraison",
-      body: "Application web + mobile, code source transmis, formation de vos équipes incluse.",
-    },
-  ],
+/* ---------- Résultat (généré côté serveur) ---------- */
+type CdcResult = {
+  cdc_markdown: string;
+  fourchette_min: number;
+  fourchette_max: number;
+  delai: string;
+  palier: string;
 };
+
+const fmtEur = (n: number) => n.toLocaleString("fr-FR");
 
 
 
