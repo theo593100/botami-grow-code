@@ -111,6 +111,8 @@ const GestionIntervention = () => {
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<CdcResult | null>(null);
+  const [error, setError] = useState("");
 
   // Capture UTM
   const utm = useMemo(() => {
@@ -164,72 +166,62 @@ const GestionIntervention = () => {
 
   const handleGateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consent) return;
+    if (!consent || submitted) return;
     setSubmitted(true);
+    setError("");
     (window as any).gtag_report_lead_form?.();
 
-    const leadId = crypto.randomUUID();
-    const messagePayload = {
-      answers,
-      utm,
-    };
-
-    supabase
-      .from("leads")
-      .insert({
-        id: leadId,
-        first_name: "Lead cahier des charges",
-        email,
-        phone: phone || null,
-        source_route: ROUTE,
-        message: JSON.stringify(messagePayload, null, 2),
-      })
-      .then();
-
-    supabase.from("landing_page_events").insert({ route: ROUTE, event_type: "cta_click" }).then();
-
-    const templateData = {
-      firstName: "Lead cahier des charges",
-      email,
-      phone: phone || undefined,
-      sourceRoute: ROUTE,
-      message: JSON.stringify(messagePayload, null, 2),
-    };
-    ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
-      supabase.functions.invoke("send-transactional-email", {
-        body: {
-          templateName: "new-lead-notification",
-          recipientEmail: recipient,
-          idempotencyKey: `cdc-notif-${leadId}-${recipient}`,
-          templateData,
-        },
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
+        body: { answers, email, phone: phone || null, consent, utm, sourceRoute: ROUTE },
       });
-    });
+      if (fnError || !data?.cdc_markdown) {
+        throw new Error(fnError?.message || "Génération impossible");
+      }
 
-    setPhase("result");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+      setResult(data as CdcResult);
+      supabase.from("landing_page_events").insert({ route: ROUTE, event_type: "cta_click" }).then();
+
+      // Notification interne
+      const templateData = {
+        firstName: "Lead cahier des charges",
+        email,
+        phone: phone || undefined,
+        sourceRoute: ROUTE,
+        message: JSON.stringify({ answers, utm, pricing: {
+          palier: data.palier, fourchette_min: data.fourchette_min,
+          fourchette_max: data.fourchette_max, delai: data.delai,
+        } }, null, 2),
+      };
+      ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "new-lead-notification",
+            recipientEmail: recipient,
+            idempotencyKey: `cdc-notif-${email}-${recipient}-${Date.now()}`,
+            templateData,
+          },
+        });
+      });
+
+      setPhase("result");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setError("Une erreur est survenue. Réessayez dans un instant.");
+      setSubmitted(false);
+    }
   };
 
   const handleDownloadPdf = () => {
+    if (!result) return;
+    const esc = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8" />
       <title>Cahier des charges - Logiciel de gestion d'intervention</title>
       <style>
-        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6}
-        h1{font-size:26px;margin-bottom:24px}
-        h2{font-size:17px;margin-top:28px}
-        ul{padding-left:20px}
-        .n{color:#C4872C;font-family:monospace;margin-right:8px}
-      </style></head><body>
-      <h1>Cahier des charges — Logiciel de gestion d'intervention sur mesure</h1>
-      ${FAKE_RESULT.sections
-        .map(
-          (sec, i) =>
-            `<h2><span class="n">${String(i + 1).padStart(2, "0")}</span>${sec.title}</h2>` +
-            (sec.body ? `<p>${sec.body}</p>` : "") +
-            (sec.items ? `<ul>${sec.items.map((it) => `<li>${it}</li>`).join("")}</ul>` : ""),
-        )
-        .join("")}
-      </body></html>`;
+        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6;white-space:pre-wrap}
+        h1{font-size:24px}
+      </style></head><body>${esc(result.cdc_markdown)}</body></html>`;
     const w = window.open("", "_blank");
     if (!w) return;
     w.document.write(html);
@@ -237,6 +229,7 @@ const GestionIntervention = () => {
     w.focus();
     setTimeout(() => w.print(), 300);
   };
+
 
   return (
     <>
