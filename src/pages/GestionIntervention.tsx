@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/seo/SEO";
@@ -8,7 +9,6 @@ import { supabase } from "@/integrations/supabase/client";
 
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
-const PRICE = { min: "5 000", max: "12 000", delai: "4 à 6 semaines" };
 
 /* ---------- Questionnaire ---------- */
 type Question = {
