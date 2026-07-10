@@ -360,7 +360,7 @@ const GestionIntervention = () => {
                 </div>
                 <Eyebrow className="text-ambre-dark">Dernière étape</Eyebrow>
                 <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[28px] sm:text-[32px] leading-[1.15] mt-3">
-                  Votre cahier des charges est prêt.
+                  Où vous envoie-t-on votre cahier des charges ?
                 </h2>
                 <p className="text-n-700 mt-3">
                   On vous l'affiche tout de suite et on vous en envoie une copie propre par email —
