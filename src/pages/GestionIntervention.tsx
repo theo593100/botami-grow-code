@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
+const PRICE = { min: "5 000", max: "12 000", delai: "4 à 6 semaines" };
 
 /* ---------- Questionnaire ---------- */
 type Question = {
