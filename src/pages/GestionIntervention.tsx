@@ -524,6 +524,22 @@ const GestionIntervention = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5">
+                      Nom de votre entreprise
+                    </label>
+                    <input
+                      type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      placeholder="Ex. Entreprise Martin"
+                      className="w-full rounded-lg border border-n-300 px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-ambre focus:border-transparent"
+                    />
+                    <p className="text-n-500 text-[13px] leading-[1.5] mt-1.5">
+                      Elle figurera dans la <span className="text-ink">désignation des parties</span> de votre
+                      cahier des charges, comme sur un vrai document contractuel.
+                    </p>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-ink mb-1.5">
                       Téléphone — je préfère être rappelé
                     </label>
                     <input
