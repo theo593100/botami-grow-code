@@ -192,9 +192,17 @@ const GestionIntervention = () => {
     (window as any).gtag_report_lead_form?.();
     trackEvent("lead_email");
 
+    // Affiche l'écran de génération avec progression des étapes
+    setGenStep(0);
+    setPhase("generating");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    const stepTimer = setInterval(() => {
+      setGenStep((s) => Math.min(s + 1, GEN_STEPS.length - 1));
+    }, 2200);
+
     try {
       const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
-        body: { answers, email, phone: phone || null, consent, utm, sourceRoute: ROUTE },
+        body: { answers, email, phone: phone || null, company: company || null, consent, utm, sourceRoute: ROUTE },
       });
       if (fnError || !data?.cdc_markdown) {
         throw new Error(fnError?.message || "Génération impossible");
@@ -208,8 +216,9 @@ const GestionIntervention = () => {
         firstName: "Lead cahier des charges",
         email,
         phone: phone || undefined,
+        company: company || undefined,
         sourceRoute: ROUTE,
-        message: JSON.stringify({ answers, utm, pricing: {
+        message: JSON.stringify({ answers, company, utm, pricing: {
           palier: data.palier, fourchette_min: data.fourchette_min,
           fourchette_max: data.fourchette_max, delai: data.delai,
         } }, null, 2),
@@ -225,12 +234,16 @@ const GestionIntervention = () => {
         });
       });
 
+      clearInterval(stepTimer);
+      setGenStep(GEN_STEPS.length - 1);
       setPhase("result");
       trackEvent("cdc_genere");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
+      clearInterval(stepTimer);
       setError("Une erreur est survenue. Réessayez dans un instant.");
       setSubmitted(false);
+      setPhase("gate");
     }
   };
 
