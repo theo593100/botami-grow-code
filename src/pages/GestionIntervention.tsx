@@ -451,10 +451,20 @@ const GestionIntervention = () => {
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
               <div className="animate-fade-up">
-                <Eyebrow className="text-ambre-dark">Votre cadeau · cahier des charges</Eyebrow>
-                <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08] mt-3">
-                  Logiciel de gestion d'intervention sur mesure
-                </h2>
+                <Eyebrow className="text-ambre-dark">Votre cahier des charges</Eyebrow>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mt-3">
+                  <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08]">
+                    Votre cahier des charges
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={handleDownloadPdf}
+                    className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus flex-none"
+                  >
+                    Télécharger en PDF
+                    <ArrowRightIcon className="w-[14px] h-[14px]" />
+                  </button>
+                </div>
                 <p className="text-n-700 leading-[1.6] mt-4 max-w-2xl">
                   Voici le document, à vous. Une copie vient de partir dans votre boîte mail. Vous
                   pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
@@ -486,17 +496,20 @@ const GestionIntervention = () => {
                   ))}
                 </div>
 
-                {/* Offre commerciale — révélée seulement à la toute fin, en douceur */}
-                <div className="mt-10 border-t border-n-300 pt-8">
-                  <p className="text-n-700 leading-[1.6]">
-                    Si vous voulez, on peut le réaliser pour vous. On échange 30 min, on affine
-                    ensemble ce document, et on vous dit précisément ce que ça implique.
-                  </p>
-                  <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
-                    <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
-                    <span className="text-n-500 text-sm">
-                      Projets à partir de 5 000 € · sans engagement.
-                    </span>
+                {/* ===== Bloc commercial — unique moment de vente, nettement séparé ===== */}
+                <div className="mt-14 pt-2">
+                  <div className="rounded-2xl bg-ink text-cream p-7 sm:p-10">
+                    <h3 className="font-display font-semibold tracking-[-0.02em] text-[24px] sm:text-[28px] leading-[1.15]">
+                      Envie de le concrétiser ?
+                    </h3>
+                    <p className="text-cream/80 leading-[1.6] mt-3 max-w-2xl">
+                      Botami réalise ce type d'outil sur mesure. Pour un projet comme le vôtre :
+                      à partir de {PRICE.min} €, fourchette indicative {PRICE.min} – {PRICE.max} €,
+                      ~{PRICE.delai}. Montant non contractuel, confirmé avec un expert.
+                    </p>
+                    <div className="mt-7">
+                      <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
+                    </div>
                   </div>
                 </div>
               </div>
