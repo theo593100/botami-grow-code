@@ -323,6 +323,16 @@ const GestionIntervention = () => {
                     })}
                   </div>
 
+                  {/* Conseil offert à chaque étape */}
+                  {currentAnswered && (
+                    <div className="mt-6 rounded-xl bg-ambre-bg border border-ambre/60 p-4 sm:p-5 animate-fade-up">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ambre-dark mb-1.5">
+                        Le conseil Botami
+                      </p>
+                      <p className="text-n-700 text-[15px] leading-[1.6]">{current.tip}</p>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mt-8">
                     <button
                       type="button"
@@ -331,16 +341,15 @@ const GestionIntervention = () => {
                     >
                       ← Retour
                     </button>
-                    {current.multi && (
-                      <button
-                        type="button"
-                        onClick={goNext}
-                        disabled={!currentAnswered}
-                        className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus disabled:opacity-60 disabled:cursor-not-allowed"
-                      >
-                        Continuer <ArrowRightIcon className="w-[14px] h-[14px]" />
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      disabled={!currentAnswered}
+                      className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {step === QUESTIONS.length - 1 ? "Voir mon cahier des charges" : "Continuer"}{" "}
+                      <ArrowRightIcon className="w-[14px] h-[14px]" />
+                    </button>
                   </div>
                 </div>
               </div>
