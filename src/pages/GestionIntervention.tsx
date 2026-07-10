@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
+const PRICE = { min: "5 000", max: "12 000", delai: "4 à 6 semaines" };
 
 /* ---------- Questionnaire ---------- */
 type Question = {
@@ -234,6 +235,34 @@ const GestionIntervention = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleDownloadPdf = () => {
+    const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8" />
+      <title>Cahier des charges - Logiciel de gestion d'intervention</title>
+      <style>
+        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6}
+        h1{font-size:26px;margin-bottom:24px}
+        h2{font-size:17px;margin-top:28px}
+        ul{padding-left:20px}
+        .n{color:#C4872C;font-family:monospace;margin-right:8px}
+      </style></head><body>
+      <h1>Cahier des charges — Logiciel de gestion d'intervention sur mesure</h1>
+      ${FAKE_RESULT.sections
+        .map(
+          (sec, i) =>
+            `<h2><span class="n">${String(i + 1).padStart(2, "0")}</span>${sec.title}</h2>` +
+            (sec.body ? `<p>${sec.body}</p>` : "") +
+            (sec.items ? `<ul>${sec.items.map((it) => `<li>${it}</li>`).join("")}</ul>` : ""),
+        )
+        .join("")}
+      </body></html>`;
+    const w = window.open("", "_blank");
+    if (!w) return;
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    setTimeout(() => w.print(), 300);
+  };
+
   return (
     <>
       <SEO
@@ -251,20 +280,20 @@ const GestionIntervention = () => {
               <div className="text-center">
                 <Eyebrow className="text-ambre-dark">Cadeau · gratuit · &lt; 2 min</Eyebrow>
                 <h1 className="font-display font-semibold tracking-[-0.03em] text-ink text-[34px] sm:text-[48px] leading-[1.05] mt-4">
-                  On vous offre le cahier des charges de votre outil de gestion d'intervention.
+                  Le cahier des charges de votre logiciel de gestion d'intervention — gratuit, en 2 minutes.
                 </h1>
                 <p className="text-n-700 text-[17px] leading-[1.6] mt-6 max-w-2xl mx-auto">
-                  8 questions, 2 minutes. À chaque étape on partage un conseil concret pour clarifier
-                  votre projet. À la fin, on vous génère un cahier des charges propre et structuré —
-                  le vôtre, à garder, même si vous décidez de le faire réaliser ailleurs.
+                  Aucun outil du marché ne colle vraiment à votre façon de travailler. Répondez à
+                  8 questions : on vous génère le cahier des charges de l'outil qu'il vous faudrait —
+                  un document clair, à vous, prêt à l'emploi.
                 </p>
                 <div className="mt-9 flex justify-center">
                   <Btn href="#" onClick={(e) => { e.preventDefault(); setPhase("quiz"); }}>
-                    Recevoir mon cahier des charges gratuit
+                    Je génère mon cahier des charges
                   </Btn>
                 </div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-4">
-                  Sans engagement · aucun démarchage
+                  Gratuit · sans engagement
                 </p>
               </div>
             )}
@@ -360,7 +389,7 @@ const GestionIntervention = () => {
                 </div>
                 <Eyebrow className="text-ambre-dark">Dernière étape</Eyebrow>
                 <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[28px] sm:text-[32px] leading-[1.15] mt-3">
-                  Votre cahier des charges est prêt.
+                  Où vous envoie-t-on votre cahier des charges ?
                 </h2>
                 <p className="text-n-700 mt-3">
                   On vous l'affiche tout de suite et on vous en envoie une copie propre par email —
@@ -413,7 +442,7 @@ const GestionIntervention = () => {
                     </span>
                   </label>
                   <BtnSubmit variant="primary" fullWidth disabled={!consent || submitted}>
-                    Voir mon cahier des charges
+                    Recevoir mon cahier des charges
                   </BtnSubmit>
                 </form>
               </div>
@@ -422,10 +451,20 @@ const GestionIntervention = () => {
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
               <div className="animate-fade-up">
-                <Eyebrow className="text-ambre-dark">Votre cadeau · cahier des charges</Eyebrow>
-                <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08] mt-3">
-                  Logiciel de gestion d'intervention sur mesure
-                </h2>
+                <Eyebrow className="text-ambre-dark">Votre cahier des charges</Eyebrow>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mt-3">
+                  <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08]">
+                    Votre cahier des charges
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={handleDownloadPdf}
+                    className="inline-flex items-center gap-2 px-[18px] py-3 rounded-[10px] text-sm font-medium bg-ambre text-white hover:bg-ambre-dark transition-colors bo-focus flex-none"
+                  >
+                    Télécharger en PDF
+                    <ArrowRightIcon className="w-[14px] h-[14px]" />
+                  </button>
+                </div>
                 <p className="text-n-700 leading-[1.6] mt-4 max-w-2xl">
                   Voici le document, à vous. Une copie vient de partir dans votre boîte mail. Vous
                   pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
@@ -457,17 +496,20 @@ const GestionIntervention = () => {
                   ))}
                 </div>
 
-                {/* Offre commerciale — révélée seulement à la toute fin, en douceur */}
-                <div className="mt-10 border-t border-n-300 pt-8">
-                  <p className="text-n-700 leading-[1.6]">
-                    Si vous voulez, on peut le réaliser pour vous. On échange 30 min, on affine
-                    ensemble ce document, et on vous dit précisément ce que ça implique.
-                  </p>
-                  <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
-                    <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
-                    <span className="text-n-500 text-sm">
-                      Projets à partir de 5 000 € · sans engagement.
-                    </span>
+                {/* ===== Bloc commercial — unique moment de vente, nettement séparé ===== */}
+                <div className="mt-14 pt-2">
+                  <div className="rounded-2xl bg-ink text-cream p-7 sm:p-10">
+                    <h3 className="font-display font-semibold tracking-[-0.02em] text-[24px] sm:text-[28px] leading-[1.15]">
+                      Envie de le concrétiser ?
+                    </h3>
+                    <p className="text-cream/80 leading-[1.6] mt-3 max-w-2xl">
+                      Botami réalise ce type d'outil sur mesure. Pour un projet comme le vôtre :
+                      à partir de {PRICE.min} €, fourchette indicative {PRICE.min} – {PRICE.max} €,
+                      ~{PRICE.delai}. Montant non contractuel, confirmé avec un expert.
+                    </p>
+                    <div className="mt-7">
+                      <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
+                    </div>
                   </div>
                 </div>
               </div>
