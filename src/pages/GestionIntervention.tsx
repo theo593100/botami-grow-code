@@ -413,7 +413,7 @@ const GestionIntervention = () => {
                     </span>
                   </label>
                   <BtnSubmit variant="primary" fullWidth disabled={!consent || submitted}>
-                    Voir mon cahier des charges
+                    Recevoir mon cahier des charges
                   </BtnSubmit>
                 </form>
               </div>
