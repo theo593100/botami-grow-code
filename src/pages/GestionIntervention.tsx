@@ -425,10 +425,14 @@ const GestionIntervention = () => {
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
               <div className="animate-fade-up">
-                <Eyebrow className="text-ambre-dark">Votre cahier des charges</Eyebrow>
+                <Eyebrow className="text-ambre-dark">Votre cadeau · cahier des charges</Eyebrow>
                 <h2 className="font-display font-semibold tracking-[-0.03em] text-ink text-[30px] sm:text-[40px] leading-[1.08] mt-3">
                   Logiciel de gestion d'intervention sur mesure
                 </h2>
+                <p className="text-n-700 leading-[1.6] mt-4 max-w-2xl">
+                  Voici le document, à vous. Une copie vient de partir dans votre boîte mail. Vous
+                  pouvez l'utiliser tel quel, l'affiner, ou le confier au prestataire de votre choix.
+                </p>
 
                 <div className="mt-8 rounded-2xl bg-white border border-n-300 p-6 sm:p-9 shadow-subtle space-y-8">
                   {FAKE_RESULT.sections.map((sec, i) => (
@@ -456,28 +460,18 @@ const GestionIntervention = () => {
                   ))}
                 </div>
 
-                {/* Encart fourchette */}
-                <div className="mt-8 rounded-2xl bg-ambre-bg border border-ambre p-6 sm:p-8">
-                  <p className="font-display font-semibold text-ink text-[20px] tracking-[-0.01em]">
-                    À partir de 5 000 €.
+                {/* Offre commerciale — révélée seulement à la toute fin, en douceur */}
+                <div className="mt-10 border-t border-n-300 pt-8">
+                  <p className="text-n-700 leading-[1.6]">
+                    Si vous voulez, on peut le réaliser pour vous. On échange 30 min, on affine
+                    ensemble ce document, et on vous dit précisément ce que ça implique.
                   </p>
-                  <p className="text-n-700 leading-[1.6] mt-2">
-                    Pour un projet comme le vôtre : fourchette indicative{" "}
-                    <b className="text-ink">
-                      {fmtEur(FAKE_RESULT.min)} – {fmtEur(FAKE_RESULT.max)} €
-                    </b>
-                    , ~{FAKE_RESULT.delai}.
-                  </p>
-                  <p className="text-n-500 text-sm mt-2">
-                    Montant non contractuel, confirmé avec un expert.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-                  <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500">
-                    Copie envoyée par email
-                  </span>
+                  <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                    <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
+                    <span className="text-n-500 text-sm">
+                      Projets à partir de 5 000 € · sans engagement.
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
