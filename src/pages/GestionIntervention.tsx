@@ -10,6 +10,16 @@ import { supabase } from "@/integrations/supabase/client";
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
 
+// Réutilise l'analytics déjà en place (GA4/gtag + Microsoft Clarity)
+const trackEvent = (name: string) => {
+  try {
+    (window as any).gtag?.("event", name, { route: ROUTE });
+    (window as any).clarity?.("event", name);
+  } catch {
+    /* no-op */
+  }
+};
+
 /* ---------- Questionnaire ---------- */
 type Question = {
   id: string;
@@ -170,6 +180,7 @@ const GestionIntervention = () => {
     setSubmitted(true);
     setError("");
     (window as any).gtag_report_lead_form?.();
+    trackEvent("lead_email");
 
     try {
       const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
@@ -205,6 +216,7 @@ const GestionIntervention = () => {
       });
 
       setPhase("result");
+      trackEvent("cdc_genere");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       setError("Une erreur est survenue. Réessayez dans un instant.");
