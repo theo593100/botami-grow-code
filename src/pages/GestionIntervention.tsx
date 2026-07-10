@@ -10,6 +10,16 @@ import { supabase } from "@/integrations/supabase/client";
 const CALENDLY_URL = "https://calendly.com/elias-botami-agency/30min";
 const ROUTE = "/gestion-intervention";
 
+// Réutilise l'analytics déjà en place (GA4/gtag + Microsoft Clarity)
+const trackEvent = (name: string) => {
+  try {
+    (window as any).gtag?.("event", name, { route: ROUTE });
+    (window as any).clarity?.("event", name);
+  } catch {
+    /* no-op */
+  }
+};
+
 /* ---------- Questionnaire ---------- */
 type Question = {
   id: string;
