@@ -216,6 +216,7 @@ const GestionIntervention = () => {
       });
 
       setPhase("result");
+      trackEvent("cdc_genere");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       setError("Une erreur est survenue. Réessayez dans un instant.");
