@@ -125,7 +125,7 @@ const FAKE_RESULT = {
   ],
 };
 
-const fmtEur = (n: number) => n.toLocaleString("fr-FR");
+
 
 const GestionIntervention = () => {
   const [phase, setPhase] = useState<Phase>("intro");
