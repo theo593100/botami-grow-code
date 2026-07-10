@@ -241,7 +241,11 @@ Deno.serve(async (req) => {
       );
     }
 
-    const userMessage = `Réponses au questionnaire :\n${JSON.stringify(answers, null, 2)}`;
+    const userMessage = `${
+      company
+        ? `Nom de l'entreprise cliente (à utiliser dans la désignation des parties, ex. "Le Client : ${company}") : ${company}\n\n`
+        : ""
+    }Réponses au questionnaire :\n${JSON.stringify(answers, null, 2)}`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
