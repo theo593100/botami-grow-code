@@ -454,8 +454,9 @@ const GestionIntervention = () => {
                     </h3>
                     <p className="text-cream/80 leading-[1.6] mt-3 max-w-2xl">
                       Botami réalise ce type d'outil sur mesure. Pour un projet comme le vôtre :
-                      à partir de {PRICE.min} €, fourchette indicative {PRICE.min} – {PRICE.max} €,
-                      ~{PRICE.delai}. Montant non contractuel, confirmé avec un expert.
+                      à partir de {fmtEur(result?.fourchette_min ?? 5000)} €, fourchette indicative{" "}
+                      {fmtEur(result?.fourchette_min ?? 5000)} – {fmtEur(result?.fourchette_max ?? 12000)} €,
+                      ~{result?.delai ?? "4 à 6 semaines"}. Montant non contractuel, confirmé avec un expert.
                     </p>
                     <div className="mt-7">
                       <Btn href={CALENDLY_URL}>Réserver un échange avec Botami</Btn>
