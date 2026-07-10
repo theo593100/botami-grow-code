@@ -235,6 +235,34 @@ const GestionIntervention = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleDownloadPdf = () => {
+    const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8" />
+      <title>Cahier des charges - Logiciel de gestion d'intervention</title>
+      <style>
+        body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;max-width:720px;margin:40px auto;padding:0 24px;line-height:1.6}
+        h1{font-size:26px;margin-bottom:24px}
+        h2{font-size:17px;margin-top:28px}
+        ul{padding-left:20px}
+        .n{color:#C4872C;font-family:monospace;margin-right:8px}
+      </style></head><body>
+      <h1>Cahier des charges — Logiciel de gestion d'intervention sur mesure</h1>
+      ${FAKE_RESULT.sections
+        .map(
+          (sec, i) =>
+            `<h2><span class="n">${String(i + 1).padStart(2, "0")}</span>${sec.title}</h2>` +
+            (sec.body ? `<p>${sec.body}</p>` : "") +
+            (sec.items ? `<ul>${sec.items.map((it) => `<li>${it}</li>`).join("")}</ul>` : ""),
+        )
+        .join("")}
+      </body></html>`;
+    const w = window.open("", "_blank");
+    if (!w) return;
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    setTimeout(() => w.print(), 300);
+  };
+
   return (
     <>
       <SEO
