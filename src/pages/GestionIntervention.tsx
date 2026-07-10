@@ -409,8 +409,9 @@ const GestionIntervention = () => {
                       .
                     </span>
                   </label>
+                  {error && <p className="text-sm text-red-600">{error}</p>}
                   <BtnSubmit variant="primary" fullWidth disabled={!consent || submitted}>
-                    Recevoir mon cahier des charges
+                    {submitted ? "Génération en cours…" : "Recevoir mon cahier des charges"}
                   </BtnSubmit>
                 </form>
               </div>
