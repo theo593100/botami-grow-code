@@ -132,7 +132,11 @@ async function sendLeadEmail(email: string, cdcMarkdown: string) {
   }
 }
 
-const SYSTEM_PROMPT = `Tu es un consultant qui rédige un cahier des charges court et crédible (1 à 2 pages) pour une application métier sur mesure, en français. Tu ne fais pas un CDC parfait : tu fais un CDC de cadrage clair à partir de réponses brèves. Structure EXACTE, 6 sections :
+const SYSTEM_PROMPT = `Tu es un consultant qui rédige un cahier des charges court et crédible (1 à 2 pages) pour une application métier sur mesure, en français. Tu ne fais pas un CDC parfait : tu fais un CDC de cadrage clair à partir de réponses brèves.
+
+Si un nom d'entreprise cliente est fourni, commence le document par une courte ligne "Désignation des parties" : "Le Client : <entreprise>" et "Le Prestataire : Botami Software". Si aucun nom n'est fourni, n'invente rien et saute cette ligne.
+
+Structure EXACTE, 6 sections :
 
 1. Contexte client — secteur/activité, outil(s) actuel(s), problèmes que ça pose.
 
@@ -214,6 +218,7 @@ Deno.serve(async (req) => {
     const answers: Record<string, unknown> = body?.answers ?? {};
     const email: string | undefined = body?.email;
     const phone: string | null = body?.phone ?? null;
+    const company: string | null = (body?.company ?? "").toString().trim() || null;
     const consent: boolean = !!body?.consent;
     const utm = body?.utm ?? {};
     const sourceRoute: string = body?.sourceRoute ?? "/gestion-intervention";
@@ -240,7 +245,11 @@ Deno.serve(async (req) => {
       );
     }
 
-    const userMessage = `Réponses au questionnaire :\n${JSON.stringify(answers, null, 2)}`;
+    const userMessage = `${
+      company
+        ? `Nom de l'entreprise cliente (à utiliser dans la désignation des parties, ex. "Le Client : ${company}") : ${company}\n\n`
+        : ""
+    }Réponses au questionnaire :\n${JSON.stringify(answers, null, 2)}`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -279,6 +288,7 @@ Deno.serve(async (req) => {
       first_name: "Lead cahier des charges",
       email,
       phone,
+      company,
       source_route: sourceRoute,
       activite: String(answers.activite ?? ""),
       reponses: answers,

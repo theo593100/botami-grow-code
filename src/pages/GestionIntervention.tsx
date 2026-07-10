@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check, Droplet, Zap, Wrench, Sparkles, ShieldCheck, Leaf } from "lucide-react";
+import { Check, Droplet, Zap, Wrench, Sparkles, ShieldCheck, Leaf, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -98,7 +98,15 @@ const QUESTIONS: Question[] = [
 ];
 
 type Answers = Record<string, string | string[]>;
-type Phase = "intro" | "quiz" | "gate" | "result";
+type Phase = "intro" | "quiz" | "gate" | "generating" | "result";
+
+const GEN_STEPS = [
+  "Analyse de vos réponses",
+  "Cadrage du contexte et des objectifs",
+  "Rédaction des fonctionnalités et priorités",
+  "Estimation du budget et des délais",
+  "Mise en forme de votre document",
+];
 
 /* ---------- Résultat (généré côté serveur) ---------- */
 type CdcResult = {
@@ -119,8 +127,10 @@ const GestionIntervention = () => {
   const [answers, setAnswers] = useState<Answers>({});
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [genStep, setGenStep] = useState(0);
   const [result, setResult] = useState<CdcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -182,9 +192,17 @@ const GestionIntervention = () => {
     (window as any).gtag_report_lead_form?.();
     trackEvent("lead_email");
 
+    // Affiche l'écran de génération avec progression des étapes
+    setGenStep(0);
+    setPhase("generating");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    const stepTimer = setInterval(() => {
+      setGenStep((s) => Math.min(s + 1, GEN_STEPS.length - 1));
+    }, 2200);
+
     try {
       const { data, error: fnError } = await supabase.functions.invoke("generate-cdc", {
-        body: { answers, email, phone: phone || null, consent, utm, sourceRoute: ROUTE },
+        body: { answers, email, phone: phone || null, company: company || null, consent, utm, sourceRoute: ROUTE },
       });
       if (fnError || !data?.cdc_markdown) {
         throw new Error(fnError?.message || "Génération impossible");
@@ -198,8 +216,9 @@ const GestionIntervention = () => {
         firstName: "Lead cahier des charges",
         email,
         phone: phone || undefined,
+        company: company || undefined,
         sourceRoute: ROUTE,
-        message: JSON.stringify({ answers, utm, pricing: {
+        message: JSON.stringify({ answers, company, utm, pricing: {
           palier: data.palier, fourchette_min: data.fourchette_min,
           fourchette_max: data.fourchette_max, delai: data.delai,
         } }, null, 2),
@@ -215,12 +234,16 @@ const GestionIntervention = () => {
         });
       });
 
+      clearInterval(stepTimer);
+      setGenStep(GEN_STEPS.length - 1);
       setPhase("result");
       trackEvent("cdc_genere");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
+      clearInterval(stepTimer);
       setError("Une erreur est survenue. Réessayez dans un instant.");
       setSubmitted(false);
+      setPhase("gate");
     }
   };
 
@@ -501,6 +524,22 @@ const GestionIntervention = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-1.5">
+                      Nom de votre entreprise
+                    </label>
+                    <input
+                      type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      placeholder="Ex. Entreprise Martin"
+                      className="w-full rounded-lg border border-n-300 px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-ambre focus:border-transparent"
+                    />
+                    <p className="text-n-500 text-[13px] leading-[1.5] mt-1.5">
+                      Elle figurera dans la <span className="text-ink">désignation des parties</span> de votre
+                      cahier des charges, comme sur un vrai document contractuel.
+                    </p>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-ink mb-1.5">
                       Téléphone — je préfère être rappelé
                     </label>
                     <input
@@ -534,6 +573,54 @@ const GestionIntervention = () => {
                 </form>
               </div>
             )}
+
+            {/* ===== 3bis. GÉNÉRATION EN COURS ===== */}
+            {phase === "generating" && (
+              <div className="max-w-xl mx-auto text-center animate-fade-up">
+                <Eyebrow className="text-ambre-dark">Génération en cours</Eyebrow>
+                <h2 className="font-display font-semibold tracking-[-0.02em] text-ink text-[28px] sm:text-[32px] leading-[1.15] mt-3">
+                  On rédige votre cahier des charges…
+                </h2>
+                <p className="text-n-700 mt-3">
+                  Quelques secondes — on structure vos réponses en un document clair et complet.
+                </p>
+
+                <div className="mt-9 rounded-2xl bg-white border border-n-300 p-6 sm:p-8 text-left shadow-subtle space-y-4">
+                  {GEN_STEPS.map((label, i) => {
+                    const done = i < genStep;
+                    const active = i === genStep;
+                    return (
+                      <div key={label} className="flex items-center gap-3">
+                        <span
+                          className={[
+                            "grid place-items-center w-6 h-6 rounded-full flex-none transition-all",
+                            done ? "bg-ambre text-white" : active ? "bg-ambre-bg text-ambre-dark" : "bg-n-300 text-n-500",
+                          ].join(" ")}
+                        >
+                          {done ? (
+                            <Check size={13} strokeWidth={3} />
+                          ) : active ? (
+                            <Loader2 size={13} className="animate-spin" />
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                          )}
+                        </span>
+                        <span
+                          className={[
+                            "text-[15px] transition-colors",
+                            done || active ? "text-ink" : "text-n-500",
+                          ].join(" ")}
+                        >
+                          {label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+
 
             {/* ===== 4. RÉSULTAT ===== */}
             {phase === "result" && (
