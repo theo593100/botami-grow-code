@@ -244,10 +244,10 @@ const GestionIntervention = () => {
   return (
     <>
       <SEO
-        title="Générateur de cahier des charges — Logiciel de gestion d'intervention"
-        description="Répondez à 8 questions et générez gratuitement le cahier des charges de votre logiciel de gestion d'intervention sur mesure, avec une fourchette de prix indicative."
+        title="Cahier des charges gratuit — Logiciel de gestion d'intervention"
+        description="8 questions, des conseils concrets à chaque étape, et votre cahier des charges prêt à l'emploi — gratuit, à garder même si vous consultez ailleurs."
         canonical={ROUTE}
-        keywords="logiciel gestion intervention, cahier des charges, application métier sur mesure, planning techniciens, rapport d'intervention"
+        keywords="cahier des charges gratuit, logiciel gestion intervention, application métier sur mesure, planning techniciens, rapport d'intervention"
       />
       <Navbar />
       <main className="bg-cream min-h-screen">
@@ -256,22 +256,22 @@ const GestionIntervention = () => {
             {/* ===== 1. INTRO ===== */}
             {phase === "intro" && (
               <div className="text-center">
-                <Eyebrow className="text-ambre-dark">Générateur gratuit · &lt; 2 min</Eyebrow>
+                <Eyebrow className="text-ambre-dark">Cadeau · gratuit · &lt; 2 min</Eyebrow>
                 <h1 className="font-display font-semibold tracking-[-0.03em] text-ink text-[34px] sm:text-[48px] leading-[1.05] mt-4">
-                  Un logiciel de gestion d'intervention conçu pour votre métier.
+                  On vous offre le cahier des charges de votre outil de gestion d'intervention.
                 </h1>
                 <p className="text-n-700 text-[17px] leading-[1.6] mt-6 max-w-2xl mx-auto">
-                  Les outils génériques vous font rentrer dans leurs cases. On construit le vôtre,
-                  autour de vos tournées, vos techniciens, vos rapports. Répondez à 8 questions :
-                  on vous génère le cahier des charges et une fourchette de prix.
+                  8 questions, 2 minutes. À chaque étape on partage un conseil concret pour clarifier
+                  votre projet. À la fin, on vous génère un cahier des charges propre et structuré —
+                  le vôtre, à garder, même si vous décidez de le faire réaliser ailleurs.
                 </p>
                 <div className="mt-9 flex justify-center">
                   <Btn href="#" onClick={(e) => { e.preventDefault(); setPhase("quiz"); }}>
-                    Je génère mon cahier des charges
+                    Recevoir mon cahier des charges gratuit
                   </Btn>
                 </div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-n-500 mt-4">
-                  Gratuit · sans engagement
+                  Sans engagement · aucun démarchage
                 </p>
               </div>
             )}
