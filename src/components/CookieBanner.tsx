@@ -19,7 +19,7 @@ const CookieBanner = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 px-4 py-3 flex items-center justify-center gap-4 text-sm font-body" style={{ backgroundColor: "#1A1A1A", color: "#D1D5DB" }}>
-      <p>Ce site utilise des cookies pour améliorer votre expérience.</p>
+      <p>Ce site utilise des cookies pour optimiser votre navigation et mesurer l'audience.</p>
       <div className="flex gap-2">
         <button
           onClick={handleRefuse}

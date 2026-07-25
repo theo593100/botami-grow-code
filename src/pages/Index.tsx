@@ -36,7 +36,7 @@ const Index = () => {
     <>
       <SEO
         title="Botami Software — Agence Vibe coding"
-        description="Agence Vibe coding française. Applications sur mesure pour PME, à partir de 5 000 € HT, livrées en 4 à 8 semaines. Code source transmis."
+        description="Botami Software conçoit des applications web et mobiles sur mesure pour les PME. Forfait à partir de 5 000 € HT, livrées en 4 à 8 semaines. Code source transmis."
         canonical="/"
         keywords="agence vibe coding, application sur mesure PME, développement logiciel PME, alternative SaaS, souveraineté française logiciel, agence Paris Nîmes Lille"
       />
