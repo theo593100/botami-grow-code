@@ -22,9 +22,11 @@ const ProblemSection = () => {
               <span className="bo-ital">{c.h2.l1Ital}</span>
               {c.h2.l1After}
               <br />
-              {c.h2.l2Before}
-              <span className="bo-ital">{c.h2.l2Ital}</span>
-              {c.h2.l2After}
+              <span className="text-[clamp(28px,5vw,52px)]">
+                {c.h2.l2Before}
+                <span className="bo-ital">{c.h2.l2Ital}</span>
+                {c.h2.l2After}
+              </span>
             </h2>
 
             <figure className="mt-10 sm:mt-12 border-l-[3px] border-ambre pl-6 py-1.5">
