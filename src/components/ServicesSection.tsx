@@ -27,7 +27,7 @@ const ServicesSection = () => {
                 index={item.index}
                 title={item.title}
                 desc={item.desc}
-                href="#contact"
+                href={`/${item.slug}`}
               />
             </li>
           ))}

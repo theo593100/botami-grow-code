@@ -32,6 +32,7 @@ import CookieBanner from "./components/CookieBanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import GestionIntervention from "./pages/GestionIntervention.tsx";
+import ServicePage from "./pages/ServicePage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,10 @@ const App = () => (
           <Route path="/lp/google/logiciel-sur-mesure" element={<LandingGoogleLogicielSurMesure />} />
           <Route path="/etude-de-cas" element={<CaseStudy />} />
           <Route path="/gestion-intervention" element={<GestionIntervention />} />
+          <Route path="/applications-web-sur-mesure" element={<ServicePage slug="applications-web-sur-mesure" />} />
+          <Route path="/applications-mobiles" element={<ServicePage slug="applications-mobiles" />} />
+          <Route path="/refonte-outils-internes" element={<ServicePage slug="refonte-outils-internes" />} />
+          <Route path="/integrations-automatisations" element={<ServicePage slug="integrations-automatisations" />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgv" element={<CGV />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
