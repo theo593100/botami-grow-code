@@ -76,7 +76,7 @@ export const home = {
       after: " : ça marche le jour de la livraison.",
     },
     right:
-      "Chaque projet commence par un cadrage gratuit. Si on n'est pas la bonne réponse, on vous le dit avant le devis.",
+      "Chaque projet commence par la réalisation du cahier des charges technique par nos experts. Le cahier des charges est offert.",
     items: [
       {
         index: "01",
