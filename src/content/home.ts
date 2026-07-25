@@ -63,7 +63,7 @@ export const home = {
     stats: [
       { num: "4–8", unit: " sem.", lbl: "Délai moyen de livraison" },
       { num: "100", unit: "%", lbl: "Code source transmis" },
-      { num: "0", unit: "", lbl: "Abonnement après livraison" },
+      { num: "0", unit: "", lbl: "dépendances après la livraison" },
     ],
   },
 
