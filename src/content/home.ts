@@ -36,6 +36,7 @@ export const home = {
     ],
     loginLabel: "Connexion client",
     ctaLabel: "Démarrer un projet",
+    title: "Votre application sur mesure en 4 semaines",
     brandName: "Botami",
     brandSuffix: "Software",
   },
