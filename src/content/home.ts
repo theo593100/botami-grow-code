@@ -239,9 +239,9 @@ export const home = {
   methode: {
     secNum: "— 05 / Méthode",
     title: {
-      before: "Cinq étapes. ",
-      ital: "Aucune de plus",
-      after: ".",
+      before: "Cinq étapes.",
+      ital: "",
+      after: "",
     },
     right:
       "Notre processus tient sur une page. Il vous est communiqué dès le premier rendez-vous, avec le devis.",
@@ -250,10 +250,10 @@ export const home = {
     steps: [
       {
         n: "01",
-        title: "Cadrage",
-        desc: "Nous prenons le temps de comprendre votre métier et d'identifier les points de friction réels. Nous vous indiquons avec transparence si une application sur mesure est la solution adaptée.",
+        title: "Cahier des charges technique",
+        desc: "Nous prenons le temps de comprendre votre métier et d'identifier les points de friction réels. Nous formalisons les besoins, les parcours et les contraintes dans un document contractuel.",
         duration: "3 à 5 jours",
-        deliverable: "Note de cadrage",
+        deliverable: "Cahier des charges",
         cost: "Gratuit",
       },
       {
@@ -282,7 +282,7 @@ export const home = {
       },
       {
         n: "05",
-        title: "Suivi (optionnel)",
+        title: "Maintenance et évolutions",
         desc: "Trois mois de garantie inclus. Au-delà, une maintenance au tarif horaire sans engagement de durée.",
         duration: "∞",
         deliverable: "SLA si demandé",
