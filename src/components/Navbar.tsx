@@ -38,7 +38,7 @@ const Navbar = () => {
           aria-label="Navigation principale"
           className="flex items-center justify-between py-[18px]"
         >
-          <a href="#hero" className="bo-focus rounded-md" aria-label="Accueil Botami Software">
+          <a href="/" className="bo-focus rounded-md" aria-label="Accueil Botami Software">
             <Brand brandName={c.brandName} brandSuffix={c.brandSuffix} />
           </a>
 
