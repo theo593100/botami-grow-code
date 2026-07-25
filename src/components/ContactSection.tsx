@@ -23,8 +23,8 @@ const ContactSection = () => {
     e.preventDefault();
 
     if (form.honeypot) return; // bot
-    if (!form.prenom || !form.email) {
-      toast.error("Merci de renseigner votre prénom et votre email.");
+    if (!form.prenom || !form.email || !form.entreprise || !form.message) {
+      toast.error("Merci de renseigner tous les champs obligatoires.");
       return;
     }
 
