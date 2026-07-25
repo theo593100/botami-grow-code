@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { home } from "@/content/home";
-import { Brand, Btn } from "@/components/home/atoms";
+import { Btn } from "@/components/home/atoms";
 
 const Navbar = () => {
   const c = home.header;
@@ -39,7 +39,9 @@ const Navbar = () => {
           className="flex items-center justify-between py-[18px]"
         >
           <a href="#hero" className="bo-focus rounded-md" aria-label="Accueil Botami Software">
-            <Brand brandName={c.brandName} brandSuffix={c.brandSuffix} />
+            <span className="text-base font-medium text-ink tracking-tight">
+              {c.title}
+            </span>
           </a>
 
           {/* Nav desktop */}
