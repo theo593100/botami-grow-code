@@ -44,22 +44,23 @@ export const home = {
   hero: {
     eyebrow: "— 00 / Agence Vibe coding · Paris · Nîmes · Lille",
     h1: {
-      before: "On développe votre ",
+      before: "Nous développons votre ",
       ital: "application sur mesure",
       after: " en 4 semaines.",
     },
-    subline: "",
+    subline:
+      "Botami Software conçoit des applications web et mobiles pour les PME. Vous investissez une fois : le code vous appartient.",
     pricingPill: {
       text: "Forfait à partir de ",
       strong1: "5 000 € HT",
-      mid: " · livré en ",
+      mid: " · délai de ",
       strong2: "4 à 8 semaines",
-      caption: "Pas d'abonnement",
+      caption: "Sans abonnement",
     },
     lead:
-      "Botami Software développe des applications web et mobile sur mesure pour les PME. </br>Vous payez une fois. Le code vous appartient.",
+      "Nous accompagnons les PME dans la conception d'applications métier adaptées à leurs processus. </br>Pas de location logicielle : vous financez une solution qui reste votre propriété.",
     secondaryCta: { label: "Voir nos réalisations", href: "#realisations" },
-    availability: "Créneaux dispo · T3 2026",
+    availability: "Disponibilité · T3 2026",
     stats: [
       { num: "4–8", unit: " sem.", lbl: "Délai moyen de livraison" },
       { num: "100", unit: "%", lbl: "Code source transmis" },
@@ -72,76 +73,74 @@ export const home = {
     secNum: "— 01 / Services",
     title: {
       before: "Quatre formats, ",
-      ital: "une seule promesse",
-      after: " : ça marche le jour de la livraison.",
+      ital: "une promesse",
+      after: " : une solution opérationnelle dès la livraison.",
     },
     right:
-      "Chaque projet commence par la réalisation du cahier des charges technique par nos experts. Le cahier des charges est offert.",
+      "Chaque projet débute par la rédaction d'un cahier des charges technique par nos experts. Ce document vous est offert.",
     items: [
       {
         index: "01",
         slug: "applications-web-sur-mesure" as SrvSlug,
         title: "Applications web sur mesure",
-        desc: "Outils internes, back-offices, espaces clients. On remplace votre Excel partagé ou votre Notion qui craque par une vraie app, sécurisée et hébergée chez vous si besoin.",
+        desc: "Outils internes, back-offices et espaces clients. Nous remplaçons vos tableurs partagés et vos outils limités par une application sécurisée, adaptée à vos processus et hébergée selon vos préférences.",
       },
       {
         index: "02",
         slug: "applications-mobiles" as SrvSlug,
         title: "Applications mobiles",
-        desc: "iOS & Android, une seule base de code. Pour les équipes terrain, les commerciaux itinérants, les opérateurs logistique — pas pour faire un Uber concurrent.",
+        desc: "iOS et Android à partir d'une seule base de code. À destination des équipes terrain, commerciaux itinérants et opérateurs logistiques — pour des outils métiers, non des applications grand public.",
       },
       {
         index: "03",
         slug: "refonte-outils-internes" as SrvSlug,
         title: "Refonte d'outils internes",
-        desc: "Vous avez un logiciel métier vieux de 10 ans qui tient toute la boîte ? On le réécrit sans interruption de service. Migration progressive, données préservées.",
+        desc: "Votre logiciel métier historique fait tourner l'ensemble de l'entreprise ? Nous le réécrivons sans interruption de service, avec une migration progressive et la préservation de vos données.",
       },
       {
         index: "04",
         slug: "integrations-automatisations" as SrvSlug,
         title: "Intégrations & automatisations",
-        desc: "Connecter votre CRM à votre ERP, automatiser une facturation, brancher une API. Travail au forfait sur périmètre précis, livré sous 2 à 4 semaines.",
+        desc: "Connectez votre CRM à votre ERP, automatisez une facturation ou intégrez une API. Interventions au forfait sur un périmètre précis, livrées en 2 à 4 semaines.",
       },
     ],
   },
 
   /* ============ ARGUMENTAIRE ============ */
   argu: {
-    secNum: "— 02 / Ce qui change avec nous",
+    secNum: "— 02 / Ce qui change avec Botami Software",
     h2: {
-      l1Before: "Vous payez ",
-      l1Ital: "100 %",
-      l1After: " du prix.",
-      l2Before: "Pour ",
-      l2Ital: "10 %",
-      l2After: " des fonctionnalités.",
+      l1Before: "Vous investissez dans ",
+      l1Ital: "l'essentiel",
+      l1After: ".",
+      l2Before: "Pas dans le ",
+      l2Ital: "superflu",
+      l2After: ".",
     },
     quote: {
-      text: "Les SaaS facturent dix outils dont vous en utilisez un. On code le seul qui vous sert. Et on s'arrête là.",
+      text: "Les SaaS facturent souvent dix outils dont un seul est réellement utilisé. Nous développons précisément celui dont vous avez besoin.",
       author: "Elias",
       role: "Co-fondateur · Botami Software",
     },
     body: [
-      "Les SaaS sont conçus pour 10 000 boîtes différentes. Vous payez chaque mois pour 90 % de features qui ne vous servent à rien — et le jour où vous arrêtez l'abonnement, tout disparaît.",
-      "Une app sur mesure coûte le prix de 18 mois d'abonnement SaaS. Sauf qu'au bout de 18 mois, vous ne payez plus rien. Et le code est à vous.",
+      "Les logiciels en SaaS sont conçus pour répondre à des besoins génériques. Vous financez un ensemble de fonctionnalités dont une grande partie ne correspond pas à vos processus. Le jour où vous résiliez, vos données et vos outils disparaissent.",
+      "Une application sur mesure représente un investissement équivalent à quelques mois d'abonnement. Passé ce seuil, vous ne payez plus rien. Le code et les données restent votre propriété.",
     ],
-    // 3 piliers (la propriété du code a basculé dans la section souveraineté
-    // — il n'apparaît donc plus ici pour éviter la redondance).
     pillars: [
       {
         icon: "✦",
-        title: "Sur mesure, pas de bricolage",
-        body: "Une application dédiée à votre métier, pas un SaaS qu'il faut tordre.",
+        title: "Sur mesure, sans compromis",
+        body: "Une application conçue pour votre métier, ajustée à vos processus.",
       },
       {
         icon: "€",
-        title: "Proposition commerciale claire",
-        body: "Le prix qu'on annonce est le prix que vous payez. À partir de 5 000 €.",
+        title: "Budget transparent",
+        body: "Le prix annoncé correspond au prix facturé. À partir de 5 000 € HT.",
       },
       {
         icon: "⌁",
-        title: "Livré en 4 à 8 semaines",
-        body: "Cahier des charges, développement, recette, mise en production.",
+        title: "Délai maîtrisé",
+        body: "Cahier des charges, développement, recette et mise en production dans un calendrier défini.",
       },
     ],
   },
@@ -151,11 +150,9 @@ export const home = {
    * Référence durable : marketing/positionnement-souverainete.md
    */
   souverainete: {
-    // Eyebrow ambre uppercase (style "Souveraineté numérique") — pas le format
-    // numéroté "— XX / X" pour cette section, choix éditorial copywriter.
     eyebrow: "RGPD & souveraineté numérique",
     h2: "Votre logiciel, vos données, votre infrastructure.",
-    lead: "On développe en France, on héberge en France, et tout ce qu'on construit vous appartient.",
+    lead: "Nous développons et hébergeons en France. Chaque solution construite vous appartient.",
     points: [
       {
         key: "propriete",
@@ -170,7 +167,7 @@ export const home = {
       {
         key: "rgpd",
         title: "RGPD natif",
-        body: "Conformité intégrée dès la conception, pas un correctif ajouté après coup.",
+        body: "Conformité intégrée dès la conception, sans correctif ultérieur.",
       },
       {
         key: "rgaa-rse",
@@ -178,7 +175,6 @@ export const home = {
         body: "Conception RGAA pour les obligations secteur public et les entreprises engagées.",
       },
     ],
-    // Pas de CTA — choix éditorial copywriter (cohérence parcours).
   },
 
   /* ============ RÉALISATIONS ============
@@ -190,8 +186,7 @@ export const home = {
   realisations: {
     secNum: "— 03 / Étude de cas",
     title: {
-      // Titre adapté au mono-cas. À élargir quand on en aura plus.
-      before: "Un projet en clair. ",
+      before: "Un projet concret. ",
       ital: "Démo interactive",
       after: " disponible.",
     },
@@ -204,7 +199,7 @@ export const home = {
   /* ============ BANDEAU CHARBON (clients + stats) ============ */
   bandeau: {
     secNum: "— 04 / Clients",
-    h2: "Ils ont arrêté de payer pour ne pas l'utiliser.",
+    h2: "Ils ont cessé de payer des outils qu'ils n'utilisaient pas.",
     linkLabel: "Voir les études de cas →",
     linkHref: "/etude-de-cas",
     marquee: [
@@ -224,17 +219,17 @@ export const home = {
     stats: [
       {
         num: "÷ 6",
-        lbl: "le coût de l'outillage logiciel sur 3 ans",
+        lbl: "réduction du coût logiciel sur 3 ans",
         src: "Source · audit clients Botami",
       },
       {
         num: "× 3",
-        lbl: "la vitesse de traitement des dossiers terrain",
+        lbl: "gain de vitesse sur le traitement des dossiers terrain",
         src: "Source · cas Transitions Pro",
       },
       {
         num: "+ 100 %",
-        lbl: "de propriété sur le code, les données, le destin de l'app",
+        lbl: "propriété du code, des données et de l'avenir de l'application",
         src: "Source · contrat type Botami",
       },
     ],
@@ -245,18 +240,18 @@ export const home = {
     secNum: "— 05 / Méthode",
     title: {
       before: "Cinq étapes. ",
-      ital: "Pas une de plus.",
-      after: "",
+      ital: "Aucune de plus",
+      after: ".",
     },
     right:
-      "Notre processus tient sur une page A4. On l'envoie en clair dès le premier rendez-vous, devis compris.",
-    paperTitle: "Du brief à la mise en prod, sans surprise.",
+      "Notre processus tient sur une page. Il vous est communiqué dès le premier rendez-vous, avec le devis.",
+    paperTitle: "Du brief à la mise en production, sans surprise.",
     paperDocMeta: { strong: "Document · Méthode V2.1", line: "Botami Software · Paris · Nîmes · Lille" },
     steps: [
       {
         n: "01",
         title: "Cadrage",
-        desc: "On comprend votre métier, on identifie les vrais points de friction. On vous dit franchement si une appli sur mesure est la bonne réponse — ou pas.",
+        desc: "Nous prenons le temps de comprendre votre métier et d'identifier les points de friction réels. Nous vous indiquons avec transparence si une application sur mesure est la solution adaptée.",
         duration: "3 à 5 jours",
         deliverable: "Note de cadrage",
         cost: "Gratuit",
@@ -264,7 +259,7 @@ export const home = {
       {
         n: "02",
         title: "Maquettage",
-        desc: "On dessine chaque écran à l'échelle réelle, avec votre vrai vocabulaire métier. Vous validez avant qu'on touche au code.",
+        desc: "Nous concevons chaque écran à l'échelle réelle, en utilisant votre vocabulaire métier. Vous validez avant le début du développement.",
         duration: "1 à 2 semaines",
         deliverable: "Maquette cliquable",
         cost: "Inclus forfait",
@@ -272,7 +267,7 @@ export const home = {
       {
         n: "03",
         title: "Développement",
-        desc: "On livre une version utilisable chaque semaine. Vous testez, on ajuste. Pas de « big reveal » à la fin du projet.",
+        desc: "Nous livrons une version utilisable chaque semaine. Vous testez, nous ajustons. La progression est visible en permanence, sans révélation finale.",
         duration: "3 à 6 semaines",
         deliverable: "Démos hebdo",
         cost: "Inclus forfait",
@@ -280,7 +275,7 @@ export const home = {
       {
         n: "04",
         title: "Mise en prod",
-        desc: "Déploiement sur votre serveur ou le nôtre. Formation de vos équipes, doc technique remise. Transfert du dépôt git en clair.",
+        desc: "Déploiement sur votre serveur ou sur notre infrastructure. Formation des équipes, documentation technique remise. Transfert du dépôt Git en clair.",
         duration: "3 à 5 jours",
         deliverable: "App en prod + sources",
         cost: "Inclus forfait",
@@ -288,15 +283,15 @@ export const home = {
       {
         n: "05",
         title: "Suivi (optionnel)",
-        desc: "Trois mois de garantie inclus. Au-delà, contrat de maintenance au tarif horaire, sans engagement de durée — vous arrêtez quand vous voulez.",
+        desc: "Trois mois de garantie inclus. Au-delà, une maintenance au tarif horaire sans engagement de durée.",
         duration: "∞",
         deliverable: "SLA si demandé",
         cost: "Garantie offerte",
       },
     ],
-    footTextBefore: "Pas sûr ",
-    footTextIta: "qu'une appli",
-    footTextAfter: " soit la bonne réponse ?",
+    footTextBefore: "Vous souhaitez ",
+    footTextIta: "vérifier",
+    footTextAfter: " la pertinence d'une application sur mesure ?",
     footCta: { label: "Demander un audit", href: "#contact" },
   },
 
@@ -305,33 +300,33 @@ export const home = {
     secNum: "— 07 / FAQ",
     title: {
       before: "Les questions ",
-      ital: "qu'on nous pose",
-      after: " avant de signer.",
+      ital: "fréquentes",
+      after: " avant de démarrer un projet.",
     },
     items: [
       {
-        q: "Combien ça coûte vraiment, une application sur mesure ?",
-        a: "Nos projets démarrent à 5 000 € HT et plafonnent rarement au-delà de 25 000 € HT pour une V1 complète. Le devis est fixe — pas de dépassement caché. À titre de comparaison, un SaaS à 200 €/mois représente 7 200 € sur 3 ans, sans jamais devenir votre propriété.",
+        q: "Combien coûte une application sur mesure ?",
+        a: "Nos projets démarrent à 5 000 € HT et plafonnent rarement au-delà de 25 000 € HT pour une V1 complète. Le devis est fixe : pas de dépassement caché. À titre de comparaison, un SaaS à 200 €/mois représente 7 200 € sur 3 ans, sans jamais devenir votre propriété.",
       },
       {
-        q: "Vous travaillez avec quelles technologies ?",
-        a: "Stack moderne et standard : React/TypeScript côté front, PostgreSQL + Node ou Python côté back, hébergement OVH ou Scaleway en France. Rien d'exotique : si vous changez de prestataire demain, n'importe quel développeur peut reprendre le projet.",
+        q: "Quelles technologies utilisez-vous ?",
+        a: "Une stack moderne et standard : React/TypeScript côté front, PostgreSQL avec Node ou Python côté back, hébergement OVH ou Scaleway en France. Rien d'exotique : si vous changez de prestataire, n'importe quel développeur peut reprendre le projet.",
       },
       {
-        q: "Et si on a besoin d'évolutions après la livraison ?",
-        a: "Vous avez le code source et un guide technique. Vous pouvez faire faire les évolutions par n'importe qui — y compris en interne. Si vous préférez qu'on s'en charge, on travaille au forfait sur périmètre précis ou au tarif horaire, sans engagement.",
+        q: "Et si nous avons besoin d'évolutions après la livraison ?",
+        a: "Vous disposez du code source et d'un guide technique. Vous pouvez faire faire les évolutions en interne ou par un autre prestataire. Si vous préférez que nous en assurions la continuité, nous travaillons au forfait sur périmètre précis ou au tarif horaire, sans engagement.",
       },
       {
-        q: "Pourquoi ne pas prendre un SaaS générique du marché ?",
-        a: "Pour 60 % des cas, un SaaS suffit largement et coûte moins cher à court terme. On vous le dit franchement lors du cadrage. Le sur-mesure devient pertinent quand vos process sont spécifiques, quand vous payez plusieurs SaaS qui se chevauchent, ou quand vous voulez retrouver le contrôle de vos données.",
+        q: "Pourquoi ne pas choisir un SaaS générique ?",
+        a: "Dans 60 % des cas, un SaaS suffit et coûte moins cher à court terme. Nous vous le disons clairement lors du cadrage. Le sur-mesure devient pertinent quand vos processus sont spécifiques, quand vous payez plusieurs SaaS qui se chevauchent, ou quand vous souhaitez reprendre le contrôle de vos données.",
       },
       {
         q: "Comment se passe le transfert du code à la fin du projet ?",
-        a: "Le dépôt git, les accès serveur, la documentation technique et les droits de propriété intellectuelle sont transférés à la livraison. Sans clause de retour, sans royalties, sans aucune dépendance contractuelle envers Botami.",
+        a: "Le dépôt Git, les accès serveur, la documentation technique et les droits de propriété intellectuelle vous sont transférés à la livraison. Sans clause de retour, sans royalties, sans dépendance contractuelle envers Botami.",
       },
       {
         q: "Êtes-vous éligibles au crédit d'impôt innovation (CII) ?",
-        a: "Les développements sur mesure peuvent ouvrir droit au CII selon le projet et votre secteur. On vous oriente vers un cabinet partenaire spécialisé si pertinent — Botami ne facture pas la prestation comme « R&D » par défaut.",
+        a: "Les développements sur mesure peuvent ouvrir droit au CII selon le projet et votre secteur. Nous vous orientons vers un cabinet partenaire spécialisé si pertinent. Botami ne facture pas la prestation comme de la R&D par défaut.",
       },
     ],
   },
@@ -341,10 +336,10 @@ export const home = {
     secNum: "— 08 / Contact",
     title: {
       before: "Parlons de ",
-      ital: "votre projet.",
-      after: "",
+      ital: "votre projet",
+      after: ".",
     },
-    lead: "Un échange de 30 minutes, sans engagement. On vous dit franchement si on peut aider — et combien ça coûterait.",
+    lead: "Un échange de 30 minutes, sans engagement. Nous évaluons ensemble la faisabilité de votre projet et vous communiquons une fourchette de budget.",
     info: [
       { label: "Email", value: "contact@botami-agency.com", href: "mailto:contact@botami-agency.com" },
       { label: "Lieu", value: "Paris · Nîmes · Lille", secondary: "Sur rendez-vous · présentiel ou visio" },
@@ -368,18 +363,18 @@ export const home = {
         prenom: "Camille",
         email: "camille@entreprise.fr",
         entreprise: "Nom de la société",
-        message: "Quelques lignes suffisent — on rappelle pour creuser.",
+        message: "Quelques lignes suffisent ; nous vous rappelons pour préciser votre besoin.",
       },
       submitLabel: "Demander un diagnostic gratuit",
       fineprint: "Réponse sous 24 h ouvrées · Aucune donnée transmise à des tiers",
       successTitle: "Merci.",
-      successBody: "On revient vers vous sous 24 h ouvrées.",
+      successBody: "Nous vous recontactons sous 24 h ouvrées.",
     },
   },
 
   /* ============ FOOTER ============ */
   footer: {
-    tagline: "Applications sur mesure pour PME. Livrées en semaines. À vous pour toujours.",
+    tagline: "Applications sur mesure pour PME, livrées en quelques semaines et qui vous appartiennent.",
     columns: [
       {
         title: "Services",

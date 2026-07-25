@@ -90,7 +90,7 @@ const RealCardSolo = ({
             </span>
             {href && (
               <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-cream text-sm font-medium self-start lg:self-end group-hover:bg-ambre-dark transition-colors">
-                Ouvrir la démo interactive
+                Découvrir la démo interactive
                 <ArrowRightIcon className="w-3.5 h-3.5" />
               </span>
             )}

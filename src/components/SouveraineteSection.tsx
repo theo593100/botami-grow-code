@@ -70,7 +70,7 @@ const SouveraineteSection = () => {
           style={{ backgroundColor: "#FEF3E2" }}
         >
           <p className="font-sans text-[15px] text-ink leading-[1.5]">
-            <span className="font-medium">✓</span> Conformité RGPD intégrée dès la conception — pas d’option, pas de surcoût.
+            <span className="font-medium">✓</span> Conformité RGPD intégrée dès la conception : pas d'option, pas de surcoût.
           </p>
         </div>
       </div>
