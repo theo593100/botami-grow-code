@@ -21,9 +21,11 @@ const HeroSection = () => {
               <br />
               {c.h1.after}
             </h1>
-            <p className="mt-6 sm:mt-7 font-display font-medium text-n-700 leading-[1.15] tracking-[-0.02em] text-[clamp(20px,3.5vw,32px)] max-w-[680px]">
-              {c.subline}
-            </p>
+            {c.subline && (
+              <p className="mt-6 sm:mt-7 font-display font-medium text-n-700 leading-[1.15] tracking-[-0.02em] text-[clamp(20px,3.5vw,32px)] max-w-[680px]">
+                {c.subline}
+              </p>
+            )}
             <PricingPill
               className="mt-10 sm:mt-12"
               before={c.pricingPill.text}
