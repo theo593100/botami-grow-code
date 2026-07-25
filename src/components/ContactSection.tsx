@@ -208,6 +208,7 @@ const ContactSection = () => {
                     id="entreprise"
                     name="entreprise"
                     type="text"
+                    required
                     autoComplete="organization"
                     placeholder={c.form.placeholders.entreprise}
                     value={form.entreprise}
