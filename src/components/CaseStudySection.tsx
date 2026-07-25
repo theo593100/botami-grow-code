@@ -101,9 +101,22 @@ const RealCardSolo = ({
   );
 };
 
+type RealCardData = {
+  size?: "large" | "small";
+  category: string;
+  client: string;
+  description?: string;
+  result: string;
+  sketch: "dashboard" | "form" | "list";
+  image?: string;
+  video?: string;
+  href?: string;
+  external?: boolean;
+};
+
 const CaseStudySection = () => {
   const c = home.realisations;
-  const cards = c.cards;
+  const cards = c.cards as unknown as RealCardData[];
   if (cards.length === 0) return null;
   const single = cards.length === 1;
   return (
