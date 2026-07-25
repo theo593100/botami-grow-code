@@ -44,7 +44,7 @@ export const home = {
   hero: {
     eyebrow: "— 00 / Agence Vibe coding · Paris · Nîmes · Lille",
     h1: {
-      before: "Nous développons votre ",
+      before: "Votre ",
       ital: "application sur mesure",
       after: " en 4 semaines.",
     },
