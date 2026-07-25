@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { home } from "@/content/home";
-import { Brand, Btn } from "@/components/home/atoms";
+import { Btn } from "@/components/home/atoms";
 
 const Navbar = () => {
   const c = home.header;
