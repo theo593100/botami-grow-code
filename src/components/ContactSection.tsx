@@ -249,6 +249,7 @@ const ContactSection = () => {
                     id="message"
                     name="message"
                     rows={4}
+                    required
                     placeholder={c.form.placeholders.message}
                     value={form.message}
                     onChange={(e) =>
