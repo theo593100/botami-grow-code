@@ -57,8 +57,7 @@ export const home = {
       strong2: "4 à 8 semaines",
       caption: "Sans abonnement",
     },
-    lead:
-      "Nous accompagnons les PME dans la conception d'applications métier adaptées à leurs processus. </br>Pas de location logicielle : vous financez une solution qui reste votre propriété.",
+    lead: "",
     secondaryCta: { label: "Voir nos réalisations", href: "#realisations" },
     availability: "Disponibilité · T3 2026",
     stats: [
