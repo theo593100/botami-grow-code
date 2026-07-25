@@ -107,34 +107,35 @@ export const home = {
 
   /* ============ ARGUMENTAIRE ============ */
   argu: {
-    secNum: "— 02 / Ce qui change avec Botami Software",
+    secNum: "— 02 / Le prix après l'IA",
     h2: {
-      l1Before: "Vous investissez dans ",
-      l1Ital: "l'essentiel",
-      l1After: ".",
-      l2Before: "Pas dans le ",
-      l2Ital: "superflu",
-      l2After: ".",
+      l1Before: "Les agences facturent encore ",
+      l1Ital: "comme en 2018.",
+      l1After: "",
+      l2Before: "Nous répercutons les gains de ",
+      l2Ital: "l'IA",
+      l2After: " sur votre devis.",
     },
     quote: {
-      text: "Les SaaS facturent souvent dix outils dont un seul est réellement utilisé. Nous développons précisément celui dont vous avez besoin.",
+      text: "L'IA n'a pas remplacé l'expertise, mais elle a considérablement accéléré la documentation, les tests et le code répétitif. Au lieu de garder cette productivité en marge, nous la répercutons intégralement sur le devis. C'est pourquoi une application qui coûtait 30 000 € en agence traditionnelle démarre aujourd'hui à 5 000 € chez Botami.",
       author: "Elias",
       role: "Co-fondateur · Botami Software",
     },
     body: [
-      "Les logiciels en SaaS sont conçus pour répondre à des besoins génériques. Vous financez un ensemble de fonctionnalités dont une grande partie ne correspond pas à vos processus. Le jour où vous résiliez, vos données et vos outils disparaissent.",
-      "Une application sur mesure représente un investissement équivalent à quelques mois d'abonnement. Passé ce seuil, vous ne payez plus rien. Le code et les données restent votre propriété.",
+      "Les agences classiques facturent encore à la journée, comme si l'intelligence artificielle n'avait pas transformé la productivité du développement. Vous payez des heures de travail que l'IA réduit aujourd'hui de manière significative.",
+      "Chez Botami Software, nous intégrons ces gains de productivité directement dans nos devis. Le résultat : une application sur mesure, livrée en 4 à 8 semaines, à un budget six fois inférieur à celui d'une agence traditionnelle — avec la même qualité et le transfert complet du code source.",
     ],
     pillars: [
       {
         icon: "✦",
-        title: "Sur mesure, sans compromis",
-        body: "Une application conçue pour votre métier, ajustée à vos processus.",
+        title: "Développement assisté par l'IA",
+        body: "L'IA accélère les tâches répétitives. L'architecture, la sécurité et la compréhension métier restent 100 % humaines.",
       },
       {
-        icon: "€",
-        title: "Budget transparent",
-        body: "Le prix annoncé correspond au prix facturé. À partir de 5 000 € HT.",
+        icon: "÷6",
+        iconMono: true,
+        title: "Coûts divisés par six",
+        body: "Les gains de productivité sont répercutés sur le devis. Pas de marge cachée, pas de journée facturée inutilement.",
       },
       {
         icon: "⌁",
