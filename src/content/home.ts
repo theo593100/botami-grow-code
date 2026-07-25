@@ -44,11 +44,11 @@ export const home = {
   hero: {
     eyebrow: "— 00 / Agence Vibe coding · Paris · Nîmes · Lille",
     h1: {
-      before: "On remplace vos ",
-      ital: "Saas et excel bricolés",
-      after: " par des app qui vous appartiennent.",
+      before: "On développe votre ",
+      ital: "application",
+      after: " en 4 semaines.",
     },
-    subline: "Le reste, on vous fait économiser.",
+    subline: "",
     pricingPill: {
       text: "Forfait à partir de ",
       strong1: "5 000 € HT",
@@ -198,24 +198,7 @@ export const home = {
     rightLinkLabel: "",
     rightLinkHref: "",
     rightLinkExternal: false,
-    cards: [
-      {
-        size: "large" as const,
-        category: "Gestion d'événements",
-        client: "Gateforge",
-        description:
-          "Inscriptions et billets en QR code, scan d'entrée à chaque atelier, ajout de participants en live, stats temps réel. Fonctionne hors réseau.",
-        result: "Front + back-office en accès libre",
-        sketch: "dashboard" as const,
-        // Screenshot back-office, servi depuis public/realisations/.
-        // Si fichier absent → fallback automatique sur l'esquisse SVG.
-        // Vidéo de démo (lecture auto en boucle, muet) — fallback image si <video> indisponible.
-        video: "/realisations/gateforge-demo.mp4" as string | undefined,
-        image: "/realisations/gateforge-stats.png" as string | undefined,
-        href: "https://demo.botami-agency.com",
-        external: true,
-      },
-    ],
+    cards: [],
   },
 
   /* ============ BANDEAU CHARBON (clients + stats) ============ */

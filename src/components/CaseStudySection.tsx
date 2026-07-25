@@ -104,6 +104,7 @@ const RealCardSolo = ({
 const CaseStudySection = () => {
   const c = home.realisations;
   const cards = c.cards;
+  if (cards.length === 0) return null;
   const single = cards.length === 1;
   return (
     <section
