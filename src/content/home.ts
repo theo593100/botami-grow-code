@@ -93,7 +93,7 @@ export const home = {
       {
         index: "03",
         slug: "refonte-outils-internes" as SrvSlug,
-        title: "Refonte d'outils internes",
+        title: "Refonte d'outils métiers",
         desc: "Votre logiciel métier historique fait tourner l'ensemble de l'entreprise ? Nous le réécrivons sans interruption de service, avec une migration progressive et la préservation de vos données.",
       },
       {
