@@ -40,7 +40,8 @@ const Navbar = () => {
         >
           <a href="#hero" className="bo-focus rounded-md" aria-label="Accueil Botami Software">
             <span className="text-base font-medium text-ink tracking-tight">
-              {c.title}
+              {c.brandName}
+              <span className="text-ink/60 ml-0.5">{c.brandSuffix}</span>
             </span>
           </a>
 
