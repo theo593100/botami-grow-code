@@ -379,10 +379,10 @@ export const home = {
       {
         title: "Services",
         links: [
-          { label: "Applications web", href: "#services" },
-          { label: "Applications mobiles", href: "#services" },
-          { label: "Refonte d'outils", href: "#services" },
-          { label: "Intégrations", href: "#services" },
+          { label: "Applications web", href: "/applications-web-sur-mesure" },
+          { label: "Applications mobiles", href: "/applications-mobiles" },
+          { label: "Refonte d'outils", href: "/refonte-outils-internes" },
+          { label: "Intégrations", href: "/integrations-automatisations" },
         ],
       },
       {
