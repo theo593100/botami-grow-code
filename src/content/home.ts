@@ -356,7 +356,7 @@ export const home = {
       labels: {
         prenom: "Prénom",
         email: "Email",
-        entreprise: "Entreprise",
+        entreprise: "Entreprise (optionnel)",
         message: "Décrivez votre besoin",
       },
       placeholders: {
