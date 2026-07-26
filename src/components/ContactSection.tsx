@@ -23,7 +23,7 @@ const ContactSection = () => {
     e.preventDefault();
 
     if (form.honeypot) return; // bot
-    if (!form.prenom || !form.email || !form.entreprise || !form.message) {
+    if (!form.prenom || !form.email || !form.message) {
       toast.error("Merci de renseigner tous les champs obligatoires.");
       return;
     }
@@ -208,7 +208,6 @@ const ContactSection = () => {
                     id="entreprise"
                     name="entreprise"
                     type="text"
-                    required
                     autoComplete="organization"
                     placeholder={c.form.placeholders.entreprise}
                     value={form.entreprise}
