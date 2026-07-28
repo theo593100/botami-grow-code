@@ -201,19 +201,21 @@ export const PricingPill = ({
 }) => (
   <div
     className={cn(
-      "inline-flex items-center gap-3 sm:gap-[14px] bg-white border-[1.5px] border-ink rounded-full pl-[14px] pr-[18px] py-[11px] flex-wrap",
+      "inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-[14px] bg-white border-[1.5px] border-ink rounded-[20px] sm:rounded-full pl-4 pr-4 py-3 sm:pl-[14px] sm:pr-[18px] sm:py-[11px] max-w-full",
       className,
     )}
   >
-    <span className="w-2 h-2 rounded-full bg-ambre flex-none" aria-hidden="true" />
-    <span className="text-sm text-ink">
-      {before}
-      <b className="font-semibold">{strong1}</b>
-      {mid}
-      <b className="font-semibold">{strong2}</b>
-    </span>
+    <div className="flex items-center gap-3 sm:gap-[14px]">
+      <span className="w-2 h-2 rounded-full bg-ambre flex-none" aria-hidden="true" />
+      <span className="text-[13px] sm:text-sm text-ink">
+        {before}
+        <b className="font-semibold">{strong1}</b>
+        {mid}
+        <b className="font-semibold">{strong2}</b>
+      </span>
+    </div>
     <span className="hidden sm:block w-px h-[14px] bg-n-300" aria-hidden="true" />
-    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-n-500">
+    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-n-500 pl-5 sm:pl-0">
       {caption}
     </span>
   </div>
