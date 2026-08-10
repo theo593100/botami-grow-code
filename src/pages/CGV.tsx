@@ -212,6 +212,7 @@ const CGV = () => (
           <li>Les anomalies résultant d'un usage non conforme à la documentation.</li>
           <li>Les évolutions fonctionnelles hors périmètre initial.</li>
           <li>Les dysfonctionnements liés à l'environnement technique du Client (serveur, base de données, services tiers).</li>
+          <li>Les adaptations rendues nécessaires par l'évolution des environnements tiers postérieurement à la livraison : nouvelles versions des systèmes d'exploitation, exigences des plateformes de distribution (App Store, Google Play), évolutions de services externes. Ces adaptations font l'objet d'un devis soumis à validation avant intervention.</li>
         </ul>
 
         <h2>Article 12 — Responsabilité</h2>
