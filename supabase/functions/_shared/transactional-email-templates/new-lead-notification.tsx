@@ -13,11 +13,13 @@ interface NewLeadProps {
   company?: string
   budget?: string
   companySize?: string
+  situation?: string
+  message?: string
   sourceRoute?: string
 }
 
 const NewLeadNotificationEmail = ({
-  firstName, email, phone, company, budget, companySize, sourceRoute,
+  firstName, email, phone, company, budget, companySize, situation, message, sourceRoute,
 }: NewLeadProps) => (
   <Html lang="fr" dir="ltr">
     <Head />
@@ -36,6 +38,10 @@ const NewLeadNotificationEmail = ({
           <Text style={value}>{phone || '—'}</Text>
           <Text style={label}>Entreprise</Text>
           <Text style={value}>{company || '—'}</Text>
+          <Text style={label}>Situation</Text>
+          <Text style={value}>{situation || '—'}</Text>
+          <Text style={label}>Message</Text>
+          <Text style={value}>{message || '—'}</Text>
           <Text style={label}>Budget logiciel</Text>
           <Text style={value}>{budget || '—'}</Text>
           <Text style={label}>Taille de l'entreprise</Text>
@@ -43,6 +49,7 @@ const NewLeadNotificationEmail = ({
           <Text style={label}>Page source</Text>
           <Text style={value}>{sourceRoute || '—'}</Text>
         </Section>
+
         <Hr style={hr} />
         <Text style={footer}>Cet email a été envoyé automatiquement par {SITE_NAME}.</Text>
       </Container>

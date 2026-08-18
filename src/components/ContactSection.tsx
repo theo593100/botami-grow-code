@@ -59,8 +59,12 @@ const ContactSection = () => {
     const templateData = {
       firstName: form.prenom,
       email: form.email,
+      company: form.entreprise || undefined,
+      situation: situationLabel || undefined,
+      message: form.message || undefined,
       sourceRoute,
     };
+
     ["elias@botami-agency.com", "theo@botami-agency.com"].forEach((recipient) => {
       supabase.functions.invoke("send-transactional-email", {
         body: {
